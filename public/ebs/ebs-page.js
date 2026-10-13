@@ -90,23 +90,20 @@ function calculate() {
     } else {
       tr.style.background = "white";
     }
-    const cell = (value) =>
+    const cell = (value, label) =>
       value === null
-        ? '<td class="error">ERROR</td>'
-        : "<td>$" + value.toFixed(2) + "</td>";
+        ? `<td class="error" data-label="${label}">ERROR</td>`
+        : `<td data-label="${label}">$${value.toFixed(2)}</td>`;
     const totalCell =
       row.total === null
-        ? '<td class="error">ERROR</td>'
-        : '<td><strong>$' + row.total.toFixed(2) + "</strong></td>";
+        ? '<td class="error" data-label="Total">ERROR</td>'
+        : `<td data-label="Total"><strong>$${row.total.toFixed(2)}</strong></td>`;
     tr.innerHTML =
-      "<td>" +
-      row.type +
-      "</td><td>" +
-      row.durability +
-      "</td>" +
-      cell(row.storage) +
-      cell(row.iopsCost) +
-      cell(row.throughputCost) +
+      `<td>${row.type}</td>` +
+      `<td data-label="Durability">${row.durability}</td>` +
+      cell(row.storage, "Storage") +
+      cell(row.iopsCost, "IOPS") +
+      cell(row.throughputCost, "Throughput") +
       totalCell;
     tbody.appendChild(tr);
   });

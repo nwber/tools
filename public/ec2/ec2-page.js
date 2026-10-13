@@ -102,7 +102,7 @@ function renderTable(result) {
   const tbody = rows
     .map(
       ([label, burstable, candidate, note]) =>
-        `<tr><th scope="row">${label}</th><td>${burstable}</td><td>${candidate}</td><td class="note">${note}</td></tr>`,
+        `<tr><th scope="row">${label}</th><td data-label="Burstable">${burstable}</td><td data-label="Non-burstable">${candidate}</td><td class="note">${note}</td></tr>`,
     )
     .join("");
   $("comparison").innerHTML =

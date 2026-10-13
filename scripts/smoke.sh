@@ -46,6 +46,7 @@ fi
 body=$($CURL "$BASE/") || fail "GET / failed"; check
 grep -qi '<!doctype html' <<<"$body" || fail "GET / did not return an HTML page"
 grep -q 'AWS EBS Pricing' <<<"$body" || fail "index does not link the EBS tool"
+grep -q 'github.com/nwber/tools' <<<"$body" || fail "index is missing the repo link"
 
 body=$($CURL "$BASE/ebs/") || fail "GET /ebs/ failed"; check
 grep -q '<title>AWS EBS Pricing</title>' <<<"$body" || fail "/ebs/ did not return the calculator page"

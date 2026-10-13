@@ -22,6 +22,7 @@ function el(tag, attrs = {}, ...children) {
   for (const [key, value] of Object.entries(attrs)) {
     if (key === "class") node.className = value;
     else if (key.startsWith("on")) node.addEventListener(key.slice(2), value);
+    else if (key.startsWith("data-")) node.setAttribute(key, value);
     else node[key] = value;
   }
   node.append(...children);
@@ -72,18 +73,39 @@ function buildTables() {
     const retrieval = RETRIEVAL_CLASSES.find((entry) => entry.classId === classId);
     const cells = [
       el("td", { textContent: CLASS_LABELS[classId] }),
-      el("td", {}, numberInput(`put-${classId}`, classId === "standard" ? 100000 : 0, 0, "1")),
-      el("td", {}, numberInput(`get-${classId}`, classId === "standard" ? 1000000 : 0, 0, "1")),
-      el("td", {}, numberInput(`transition-${classId}`, 0, 0, "1")),
+      el(
+        "td",
+        { "data-label": "PUT / COPY / POST / LIST" },
+        numberInput(`put-${classId}`, classId === "standard" ? 100000 : 0, 0, "1"),
+      ),
+      el(
+        "td",
+        { "data-label": "GET / other" },
+        numberInput(`get-${classId}`, classId === "standard" ? 1000000 : 0, 0, "1"),
+      ),
+      el(
+        "td",
+        { "data-label": "Transitions into class" },
+        numberInput(`transition-${classId}`, 0, 0, "1"),
+      ),
     ];
     if (retrieval) {
-      cells.push(el("td", {}, numberInput(`retrieval-${classId}`, 0)));
+      cells.push(
+        el(
+          "td",
+          { "data-label": "Retrieved (GB)" },
+          numberInput(`retrieval-${classId}`, 0),
+        ),
+      );
       const select = el("select", { id: `mode-${classId}` });
       for (const mode of retrieval.modes) select.append(el("option", { value: mode, textContent: mode }));
       select.addEventListener("input", render);
-      cells.push(el("td", {}, select));
+      cells.push(el("td", { "data-label": "Retrieval mode" }, select));
     } else {
-      cells.push(el("td", { textContent: "—" }), el("td", { textContent: "—" }));
+      cells.push(
+        el("td", { "data-label": "Retrieved (GB)", textContent: "—" }),
+        el("td", { "data-label": "Retrieval mode", textContent: "—" }),
+      );
     }
     reqBody.append(el("tr", {}, ...cells));
   }
