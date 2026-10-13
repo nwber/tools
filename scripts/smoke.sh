@@ -3,10 +3,12 @@
 #
 # Usage: scripts/smoke.sh [base-url]
 #   base-url defaults to http://127.0.0.1:8787 (pywrangler dev).
+#   IP_BASE=<url> optionally also checks the dedicated ip.* hostname.
 
 set -euo pipefail
 
 BASE="${1:-http://127.0.0.1:8787}"
+IP_BASE="${IP_BASE:-}"
 CURL="curl -fsS --retry 5 --retry-delay 3 --retry-all-errors --max-time 30"
 
 fail() {
@@ -35,5 +37,11 @@ status=$(curl -s -o /dev/null -w '%{http_code}' "$BASE/api/ebs/calc?size_gb=0") 
 
 status=$(curl -s -o /dev/null -w '%{http_code}' "$BASE/api/missing") || fail "missing-route request failed"
 [[ "$status" == "404" ]] || fail "expected 404 for unknown api route, got $status"
+
+if [[ -n "$IP_BASE" ]]; then
+  body=$($CURL "$IP_BASE/ip") || fail "GET $IP_BASE/ip failed"
+  [[ -n "$body" ]] || fail "$IP_BASE/ip returned an empty body"
+  echo "ok: ip-host /ip -> $body"
+fi
 
 echo "all smoke checks passed for $BASE"

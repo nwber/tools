@@ -20,11 +20,16 @@
   "observability": {
     "enabled": true
   },
-  // Custom domain on the nbergeron.dev zone (already on this Cloudflare
+  // Custom domains on the nbergeron.dev zone (already on this Cloudflare
   // account, so DNS is automatic). Deployed with the account's API token.
+  // ip.nbergeron.dev is a dedicated, curl-friendly host for the IP endpoints.
   "routes": [
     {
       "pattern": "tools.nbergeron.dev",
+      "custom_domain": true
+    },
+    {
+      "pattern": "ip.nbergeron.dev",
       "custom_domain": true
     }
   ]
