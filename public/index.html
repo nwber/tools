@@ -40,8 +40,8 @@
   <body>
     <h1>tools.nbergeron.dev</h1>
     <p>
-      Phase 0 spike: Python on Cloudflare Workers. This page is a static asset
-      (zero Worker CPU); the endpoints below are Python.
+      Phase 0: Effect 4 on Cloudflare Workers, deployed with Alchemy. This page
+      is a static asset (zero Worker CPU); the endpoints below run in the Worker.
     </p>
     <ul>
       <li><a href="/ip">/ip</a> — client IP as plain text</li>
@@ -65,7 +65,7 @@
         "/api/health",
         "/api/ebs/calc?size_gb=100",
         "/api/ebs/calc?size_gb=1024&iops=5000&throughput_mbps=250",
-        "/api/ebs/calc?repeat=200",
+        "/api/ebs/calc?size_gb=16384&iops=256000&throughput_mbps=4000",
       ];
       document.getElementById("probe").addEventListener("click", async () => {
         out.textContent = "measuring…";

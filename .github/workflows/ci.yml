@@ -8,14 +8,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: astral-sh/setup-uv@v10.3.0
+      - uses: actions/setup-node@v4
         with:
-          enable-cache: true
+          node-version: 24
+          cache: npm
       - name: Install dependencies
-        run: uv sync --locked
+        run: npm ci
+      - name: Typecheck
+        run: npm run typecheck
       - name: Unit tests
-        run: uv run pytest
-      - name: Lint
-        run: |
-          uv run ruff check src tests
-          uv run ruff format --check src tests
+        run: npm test
