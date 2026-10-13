@@ -67,3 +67,27 @@ jobs:
       - name: No token secret
         if: env.HAS_CF_TOKEN != 'true'
         run: echo "CLOUDFLARE_API_TOKEN secret is not set; skipping probe."
+
+  # TEMPORARY (recovery): list the Worker scripts and Pages projects on the
+  # account so the pre-existing EBS tool's deployment can be identified for
+  # the Phase 1 port. Names only, no script content.
+  recover-tool:
+    runs-on: ubuntu-latest
+    env:
+      HAS_CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: List worker scripts and pages projects (names only)
+        if: env.HAS_CF_TOKEN == 'true'
+        run: |
+          set -uo pipefail
+          api() {
+            curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$@"
+          }
+          echo "== workers scripts (name, modified)"
+          api "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts" \
+            | jq -r '.result[] | [.id, .modified_on] | @tsv'
+          echo "== pages projects (name, subdomain)"
+          api "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects" \
+            | jq -r '.result[]? | [.name, .subdomain] | @tsv'
