@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+#
+# Block commits that contain secrets.
+# Enable per clone with:  git config core.hooksPath .githooks
+# Bypass (discouraged) with:  git commit --no-verify
+set -euo pipefail
+
+if ! command -v gitleaks >/dev/null 2>&1; then
+  echo "pre-commit: gitleaks not found in PATH." >&2
+  echo "  install it (see https://github.com/gitleaks/gitleaks) or bypass with: git commit --no-verify" >&2
+  exit 1
+fi
+
+exec gitleaks git --staged --redact --no-banner --config .gitleaks.toml
