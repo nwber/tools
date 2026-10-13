@@ -59,6 +59,9 @@ grep -q '<title>S3 Cost Calculator</title>' <<<"$body" || fail "/s3/ did not ret
 body=$($CURL "$BASE/speedtest/") || fail "GET /speedtest/ failed"; check
 grep -q '<title>Speed Test</title>' <<<"$body" || fail "/speedtest/ did not return the page"
 
+body=$($CURL "$BASE/aws-latency/") || fail "GET /aws-latency/ failed"; check
+grep -q '<title>AWS Region Latency</title>' <<<"$body" || fail "/aws-latency/ did not return the page"
+
 body=$($CURL "$BASE/data/ebs-pricing.json") || fail "GET /data/ebs-pricing.json failed"; check
 grep -q '"volumeTypes"' <<<"$body" || fail "pricing asset missing volumeTypes"
 
@@ -67,6 +70,9 @@ grep -q '"comparisons"' <<<"$body" || fail "burst spec asset missing comparisons
 
 body=$($CURL "$BASE/data/s3-pricing.json") || fail "GET /data/s3-pricing.json failed"; check
 grep -q '"intelligent-tiering"' <<<"$body" || fail "s3 pricing asset missing classes"
+
+body=$($CURL "$BASE/data/aws-regions.json") || fail "GET /data/aws-regions.json failed"; check
+grep -q '"regions"' <<<"$body" || fail "aws-regions asset missing regions"
 
 body=$($CURL "$BASE/ip") || fail "GET /ip failed"; check
 [[ -n "$body" ]] || fail "GET /ip returned an empty body"
@@ -86,6 +92,9 @@ grep -q '"comparisons"' <<<"$body" || fail "/api/ec2/burst-spec missing comparis
 
 body=$($CURL "$BASE/api/s3/pricing") || fail "GET /api/s3/pricing failed"; check
 grep -q '"intelligent-tiering"' <<<"$body" || fail "/api/s3/pricing missing classes"
+
+body=$($CURL "$BASE/api/aws/regions") || fail "GET /api/aws/regions failed"; check
+grep -q '"probe"' <<<"$body" || fail "/api/aws/regions missing probe metadata"
 
 body=$($CURL "$BASE/speedtest/ping") || fail "GET /speedtest/ping failed"; check
 [[ "$body" == "pong" ]] || fail "ping did not return pong: $body"
@@ -108,5 +117,6 @@ if [[ -n "$IP_BASE" ]]; then
   echo "ok: ip-host /ip -> $body"
 fi
 
-[[ "$CHECKS" -ge 19 ]] || fail "only $CHECKS checks ran; expected at least 19"
+# 22 unconditional checks (23 with IP_BASE)
+[[ "$CHECKS" -ge 22 ]] || fail "only $CHECKS checks ran; expected at least 22"
 echo "all $CHECKS smoke checks passed for $BASE"

@@ -61,6 +61,11 @@
         <a href="/speedtest/">Speed Test</a> — latency/jitter and parallel
         download/upload throughput against this edge
       </li>
+      <li>
+        <a href="/aws-latency/">AWS Region Latency</a> — browser-to-AWS
+        round-trip latency per region (median + jitter against the regional
+        DynamoDB health endpoints)
+      </li>
     </ul>
 
     <h2>API</h2>
@@ -81,6 +86,11 @@
       <li>
         <a href="/api/s3/pricing">/api/s3/pricing</a> — the S3 price dataset
         (<code>/data/s3-pricing.json</code> is the same file for direct use)
+      </li>
+      <li>
+        <a href="/api/aws/regions">/api/aws/regions</a> — the AWS region list
+        and probe metadata used by the latency test
+        (<code>/data/aws-regions.json</code> is the same file for direct use)
       </li>
       <li>
         <code>/speedtest/ping</code>, <code>/speedtest/down?bytes=N</code>,

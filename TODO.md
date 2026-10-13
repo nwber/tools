@@ -82,8 +82,26 @@ Phase 4 — S3 cost calculator — COMPLETE (2026-10-14)
   usagetypes disambiguated by the operation attribute).
 - GET /api/s3/pricing for API use; browser-verified math.
 
-Remaining in phase 4: data transfer estimator, CIDR/subnet planner,
-AZ latency tool (added 2026-10-14).
+Phase 4 — AWS region latency — COMPLETE (2026-10-14)
+
+- /aws-latency/ live: browser-measured HTTPS RTT to all 34 commercial AWS
+  regions against the regional DynamoDB health URL
+  (https://dynamodb.<region>.amazonaws.com/ answers 200 with a tiny text
+  body, no redirect; the s3/ec2/sts root endpoints 30x to aws.amazon.com).
+- Scope revision: the original item asked for availability zones, but AWS
+  publishes no public per-AZ HTTPS endpoints — zone-pinned endpoints exist
+  only for resources you create (RDS instances, NLBs, ...). The tool
+  therefore measures regions, which is what the plan's fallback clause
+  called for.
+- Dataset from botocore's endpoints.json (scripts/generate-aws-regions.mjs
+  -> public/data/aws-regions.json: codes, display names, geography groups,
+  source sha256 recorded); also served at GET /api/aws/regions.
+- UI: group filters (US & Canada + Europe pre-selected), sample-major probe
+  schedule with a concurrency cap, first probe per region discarded as
+  DNS/TCP/TLS warm-up, opaque no-cors fetches timed with performance.now(),
+  rows ranked by median when the run finishes (or is stopped).
+
+Remaining in phase 4: data transfer estimator, CIDR/subnet planner.
 
 One Python Worker: static assets (HTML/CSS/JS/JSON) + Python endpoints for dynamic behavior + speed test streaming.
 Free-plan-aware layout: pricing datasets and UI logic are static/zero-CPU where possible; Python WorkerEntrypoint (plain, not FastAPI) as default to keep CPU and startup minimal — FastAPI only if the Phase 0 spike shows comfortable headroom.
