@@ -38,7 +38,7 @@ async function request(
   if (init?.method !== undefined) initOptions.method = init.method;
   if (init?.headers !== undefined) initOptions.headers = init.headers;
   if (init?.body !== undefined) initOptions.body = init.body;
-  const webRequest = new Request(`https://tools.nbergeron.dev${path}`, initOptions);
+  const webRequest = new Request(`https://toolbox.nbergeron.dev${path}`, initOptions);
   if (init?.cf !== undefined) {
     Object.assign(webRequest, { cf: init.cf });
   }

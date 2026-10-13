@@ -1,6 +1,6 @@
 # tools
 
-One TypeScript codebase for **https://tools.nbergeron.dev** (and
+One TypeScript codebase for **https://toolbox.nbergeron.dev** (and
 **https://ip.nbergeron.dev**):
 
 - **Runtime** — a Cloudflare Worker written as an [Effect 4](https://effect.website/docs/v4/onboarding)

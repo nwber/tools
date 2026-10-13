@@ -60,6 +60,6 @@ jobs:
         run: |
           export EXPECT_VERSION="$(grep -oP 'WORKER_VERSION = "\K[^"]+' src/handler.ts)"
           echo "expecting worker version $EXPECT_VERSION"
-          scripts/smoke.sh https://tools.nbergeron.dev
+          scripts/smoke.sh https://toolbox.nbergeron.dev
         env:
           IP_BASE: https://ip.nbergeron.dev

@@ -8,6 +8,11 @@ favor of vitest. Phase 0 additionally validates the Alchemy deploy path
 original plan and still useful as history; where it conflicts with the
 revision, the revision wins.
 
+Revision (2026-10-14, second): the site moved from tools.nbergeron.dev to
+toolbox.nbergeron.dev — tools.nbergeron.dev was removed entirely (no alias),
+ip.nbergeron.dev was kept. Text below still says tools.nbergeron.dev where
+it records history.
+
 Phase 0 — COMPLETE (2026-10-13)
 
 - Delivered: Effect 4 Worker + Alchemy v2 IaC in nwber/tools; live at

@@ -36,7 +36,7 @@ import {
   parseDownloadBytes,
 } from "./tools/speedtest.ts";
 
-export const WORKER_VERSION = "0.6.0";
+export const WORKER_VERSION = "0.6.1";
 export const PHASE = 4;
 
 type ResponseEffect = Effect.Effect<HttpServerResponse.HttpServerResponse, HttpBodyError>;
@@ -58,10 +58,10 @@ const text = (body: string, status = 200) =>
 
 const NOT_FOUND_HTML = `<!doctype html>
 <html lang="en">
-  <head><meta charset="utf-8" /><title>404 — tools.nbergeron.dev</title></head>
+  <head><meta charset="utf-8" /><title>404 — toolbox.nbergeron.dev</title></head>
   <body style="font-family: ui-monospace, monospace; background: #0b1220; color: #d6e2f0">
     <h1>404</h1>
-    <p>no such tool (yet) — back to <a style="color: #7fb4ff" href="/">tools.nbergeron.dev</a></p>
+    <p>no such tool (yet) — back to <a style="color: #7fb4ff" href="/">toolbox.nbergeron.dev</a></p>
   </body>
 </html>
 `;

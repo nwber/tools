@@ -1,5 +1,5 @@
 /**
- * tools.nbergeron.dev — the Worker resource.
+ * toolbox.nbergeron.dev — the Worker resource.
  *
  * Declared as an Alchemy Runtime: the props describe the Worker to deploy,
  * the Effect is what it does. `main: import.meta.url` tells Alchemy to bundle
@@ -36,10 +36,10 @@ export default Cloudflare.Worker(
         "/speedtest/up",
       ],
     },
-    // tools.nbergeron.dev is canonical; ip.nbergeron.dev is the dedicated
+    // toolbox.nbergeron.dev is canonical; ip.nbergeron.dev is the dedicated
     // curl-friendly host for the IP endpoints.
     domain: {
-      name: "tools.nbergeron.dev",
+      name: "toolbox.nbergeron.dev",
       aliases: ["ip.nbergeron.dev"],
     },
   },
