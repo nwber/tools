@@ -36,6 +36,27 @@ Phase 1 — COMPLETE (2026-10-14)
 - The old workers.dev deployment is still live; decommission it whenever
   the custom-domain copy is confirmed as the one to keep.
 
+Phase 2 — COMPLETE (2026-10-14)
+
+- Scope revised per request: only t3a, t4g, t8i; each size tier compared
+  against the cheapest non-burstable instance with the same physical
+  processor and vCPU count (exact memory twin when one exists, else the
+  closest size, flagged in the UI).
+- Generated dataset (scripts/generate-burst-spec.mjs -> committed
+  public/data/ec2-burst-spec.json): 18 sizes, 14 regions where every
+  compared type is priced, on-demand + RI + Savings-Plan terms both sides;
+  credit tables from AWS docs, unlimited surcharges from the AWS pricing
+  page. Data gap surfaced: t8i has no RI pricing yet (falls back with a
+  visible note).
+- /ec2/: client-side simulation (credit accrual/spend, standard-mode
+  depletion + throttling, unlimited surcharges, break-even average CPU,
+  RI/SP toggle both sides), inline SVG credit chart, comparison table;
+  model documented in ec2-burst-calc.js and covered by hand-computed tests.
+- GET /api/ec2/burst-spec + smoke checks + index link. 42 tests total.
+- Follow-up hardening: smoke.sh now waits for the deployed WORKER_VERSION
+  to be live before checking (the first phase-2 deploy hit a POP still
+  serving the previous script version).
+
 One Python Worker: static assets (HTML/CSS/JS/JSON) + Python endpoints for dynamic behavior + speed test streaming.
 Free-plan-aware layout: pricing datasets and UI logic are static/zero-CPU where possible; Python WorkerEntrypoint (plain, not FastAPI) as default to keep CPU and startup minimal — FastAPI only if the Phase 0 spike shows comfortable headroom.
 No KV at launch; pricing tables are JSON assets refreshed by a scheduled GitHub Action (regenerates + commits + deploys). This avoids runtime cron entirely, which matters since free-plan cron CPU is also 10ms.
