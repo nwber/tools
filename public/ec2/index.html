@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EC2 Burst Calculator</title>
+    <style>
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+        color: #1f2933;
+      }
+      h1 {
+        color: #333;
+        border-bottom: 2px solid #e9ecef;
+        padding-bottom: 10px;
+      }
+      h2 {
+        font-size: 1.1rem;
+        margin-top: 2rem;
+      }
+      .form {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+        gap: 16px;
+        margin: 20px 0;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+      input,
+      select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font: inherit;
+        background: white;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 12px;
+        margin: 16px 0;
+      }
+      .card {
+        border: 1px solid #e3e8ee;
+        border-radius: 6px;
+        padding: 10px 12px;
+      }
+      .card-label {
+        font-size: 0.8rem;
+        color: #6d7f97;
+      }
+      .card-value {
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+      .card-sub {
+        font-size: 0.8rem;
+        color: #6d7f97;
+      }
+      .summary {
+        background: #f0f7ff;
+        border: 1px solid #cfe3ff;
+        border-radius: 6px;
+        padding: 10px 12px;
+        margin: 12px 0;
+      }
+      .warning {
+        color: #856404;
+        background: #fff3cd;
+        border-radius: 4px;
+        padding: 10px;
+        margin: 10px 0;
+        font-size: 0.9rem;
+      }
+      table.detail {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+      }
+      table.detail th,
+      table.detail td {
+        padding: 8px 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      table.detail th[scope="row"] {
+        font-weight: 500;
+        color: #52606d;
+      }
+      table.detail thead th {
+        background: #f8f9fa;
+      }
+      td.note {
+        color: #6d7f97;
+        font-size: 0.85rem;
+      }
+      #chart svg {
+        width: 100%;
+        height: auto;
+      }
+      .footnote {
+        color: #6d7f97;
+        font-size: 0.8rem;
+        margin-top: 2rem;
+      }
+      @media (max-width: 768px) {
+        .form {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>EC2 Burst Calculator</h1>
+    <p>
+      Compare AWS burstable instances (t3a, t4g, t8i) with the cheapest
+      non-burstable instance that has the same physical processor and vCPU count
+      — exact memory twin when it exists, otherwise the closest size.
+    </p>
+
+    <div class="form">
+      <div>
+        <label for="instance">Instance</label>
+        <select id="instance"></select>
+      </div>
+      <div>
+        <label for="region">Region</label>
+        <select id="region"></select>
+      </div>
+      <div>
+        <label for="avgCpu">Average CPU (%)</label>
+        <input type="number" id="avgCpu" value="15" min="0" max="100" step="1" />
+      </div>
+      <div>
+        <label for="peakCpu">Peak CPU (%)</label>
+        <input type="number" id="peakCpu" value="100" min="0" max="100" step="1" />
+      </div>
+      <div>
+        <label for="peakMinutes">Peak minutes / day</label>
+        <input type="number" id="peakMinutes" value="60" min="0" step="5" />
+      </div>
+      <div>
+        <label for="hoursPerDay">Hours / day</label>
+        <input type="number" id="hoursPerDay" value="24" min="1" max="24" step="1" />
+      </div>
+      <div>
+        <label for="days">Days</label>
+        <input type="number" id="days" value="30" min="1" max="90" step="1" />
+      </div>
+      <div>
+        <label for="mode">Credit mode</label>
+        <select id="mode">
+          <option value="standard">Standard (throttles at baseline)</option>
+          <option value="unlimited">Unlimited (surcharge, no throttling)</option>
+        </select>
+      </div>
+      <div>
+        <label for="term">Pricing</label>
+        <select id="term"></select>
+      </div>
+    </div>
+
+    <div id="cards" class="cards"></div>
+    <div id="summary" class="summary"></div>
+    <div id="notes"></div>
+
+    <h2>CPU credit balance</h2>
+    <div id="chart"></div>
+
+    <h2>Comparison</h2>
+    <div id="comparison"></div>
+
+    <p class="footnote">
+      Model: 1 CPU credit = 1 vCPU at 100% for 1 minute; the daily peak block is
+      served at the end of the active day from an initially empty credit
+      bucket. Surcharges and credit tables come from the generated dataset
+      (see <code>ec2-burst-spec.json</code> for sources). REST APIs and other
+      non-CPU fees are not included.
+    </p>
+
+    <script type="module" src="/ec2/ec2-page.js"></script>
+  </body>
+</html>

@@ -1,0 +1,3637 @@
+{
+  "generatedBy": "scripts/generate-burst-spec.mjs",
+  "sources": {
+    "specs_prices": "https://instances.vantage.sh/instances.json",
+    "credit_tables": "https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-credits-baseline-concepts.html#earning-CPU-credits",
+    "unlimited_pricing": "https://aws.amazon.com/ec2/pricing/on-demand/#T8i.2FT4g.2FT3.2FT3a.2FT2_Unlimited_Mode_Pricing"
+  },
+  "families": {
+    "t3a": {
+      "processor": "AMD EPYC 7571",
+      "unlimitedSurchargePerVcpuHour": 0.05
+    },
+    "t4g": {
+      "processor": "AWS Graviton2 Processor",
+      "unlimitedSurchargePerVcpuHour": 0.04
+    },
+    "t8i": {
+      "processor": "Intel Xeon Scalable (Granite Rapids)",
+      "unlimitedSurchargePerVcpuHour": 0.06
+    }
+  },
+  "regions": [
+    {
+      "id": "ap-northeast-1",
+      "name": "Asia Pacific (Tokyo)"
+    },
+    {
+      "id": "ap-northeast-2",
+      "name": "Asia Pacific (Seoul)"
+    },
+    {
+      "id": "ap-south-1",
+      "name": "Asia Pacific (Mumbai)"
+    },
+    {
+      "id": "ap-southeast-1",
+      "name": "Asia Pacific (Singapore)"
+    },
+    {
+      "id": "ap-southeast-2",
+      "name": "Asia Pacific (Sydney)"
+    },
+    {
+      "id": "ca-central-1",
+      "name": "Canada (Central)"
+    },
+    {
+      "id": "eu-central-1",
+      "name": "Europe (Frankfurt)"
+    },
+    {
+      "id": "eu-west-1",
+      "name": "Europe (Ireland)"
+    },
+    {
+      "id": "eu-west-2",
+      "name": "Europe (London)"
+    },
+    {
+      "id": "eu-west-3",
+      "name": "Europe (Paris)"
+    },
+    {
+      "id": "us-east-1",
+      "name": "US East (N. Virginia)"
+    },
+    {
+      "id": "us-east-2",
+      "name": "US East (Ohio)"
+    },
+    {
+      "id": "us-west-1",
+      "name": "US West (N. California)"
+    },
+    {
+      "id": "us-west-2",
+      "name": "US West (Oregon)"
+    }
+  ],
+  "sizes": [
+    {
+      "type": "t3a.nano",
+      "family": "t3a",
+      "size": "nano",
+      "vcpu": 2,
+      "memoryGiB": 0.5,
+      "baselinePct": 5,
+      "creditsPerHour": 6,
+      "maxCredits": 144,
+      "fullBurstMinutes": 72
+    },
+    {
+      "type": "t3a.micro",
+      "family": "t3a",
+      "size": "micro",
+      "vcpu": 2,
+      "memoryGiB": 1,
+      "baselinePct": 10,
+      "creditsPerHour": 12,
+      "maxCredits": 288,
+      "fullBurstMinutes": 144
+    },
+    {
+      "type": "t3a.small",
+      "family": "t3a",
+      "size": "small",
+      "vcpu": 2,
+      "memoryGiB": 2,
+      "baselinePct": 20,
+      "creditsPerHour": 24,
+      "maxCredits": 576,
+      "fullBurstMinutes": 288
+    },
+    {
+      "type": "t3a.medium",
+      "family": "t3a",
+      "size": "medium",
+      "vcpu": 2,
+      "memoryGiB": 4,
+      "baselinePct": 20,
+      "creditsPerHour": 24,
+      "maxCredits": 576,
+      "fullBurstMinutes": 288
+    },
+    {
+      "type": "t3a.large",
+      "family": "t3a",
+      "size": "large",
+      "vcpu": 2,
+      "memoryGiB": 8,
+      "baselinePct": 30,
+      "creditsPerHour": 36,
+      "maxCredits": 864,
+      "fullBurstMinutes": 432
+    },
+    {
+      "type": "t3a.xlarge",
+      "family": "t3a",
+      "size": "xlarge",
+      "vcpu": 4,
+      "memoryGiB": 16,
+      "baselinePct": 40,
+      "creditsPerHour": 96,
+      "maxCredits": 2304,
+      "fullBurstMinutes": 576
+    },
+    {
+      "type": "t3a.2xlarge",
+      "family": "t3a",
+      "size": "2xlarge",
+      "vcpu": 8,
+      "memoryGiB": 32,
+      "baselinePct": 40,
+      "creditsPerHour": 192,
+      "maxCredits": 4608,
+      "fullBurstMinutes": 576
+    },
+    {
+      "type": "t4g.nano",
+      "family": "t4g",
+      "size": "nano",
+      "vcpu": 2,
+      "memoryGiB": 0.5,
+      "baselinePct": 5,
+      "creditsPerHour": 6,
+      "maxCredits": 144,
+      "fullBurstMinutes": 72
+    },
+    {
+      "type": "t4g.micro",
+      "family": "t4g",
+      "size": "micro",
+      "vcpu": 2,
+      "memoryGiB": 1,
+      "baselinePct": 10,
+      "creditsPerHour": 12,
+      "maxCredits": 288,
+      "fullBurstMinutes": 144
+    },
+    {
+      "type": "t4g.small",
+      "family": "t4g",
+      "size": "small",
+      "vcpu": 2,
+      "memoryGiB": 2,
+      "baselinePct": 20,
+      "creditsPerHour": 24,
+      "maxCredits": 576,
+      "fullBurstMinutes": 288
+    },
+    {
+      "type": "t4g.medium",
+      "family": "t4g",
+      "size": "medium",
+      "vcpu": 2,
+      "memoryGiB": 4,
+      "baselinePct": 20,
+      "creditsPerHour": 24,
+      "maxCredits": 576,
+      "fullBurstMinutes": 288
+    },
+    {
+      "type": "t4g.large",
+      "family": "t4g",
+      "size": "large",
+      "vcpu": 2,
+      "memoryGiB": 8,
+      "baselinePct": 30,
+      "creditsPerHour": 36,
+      "maxCredits": 864,
+      "fullBurstMinutes": 432
+    },
+    {
+      "type": "t4g.xlarge",
+      "family": "t4g",
+      "size": "xlarge",
+      "vcpu": 4,
+      "memoryGiB": 16,
+      "baselinePct": 40,
+      "creditsPerHour": 96,
+      "maxCredits": 2304,
+      "fullBurstMinutes": 576
+    },
+    {
+      "type": "t4g.2xlarge",
+      "family": "t4g",
+      "size": "2xlarge",
+      "vcpu": 8,
+      "memoryGiB": 32,
+      "baselinePct": 40,
+      "creditsPerHour": 192,
+      "maxCredits": 4608,
+      "fullBurstMinutes": 576
+    },
+    {
+      "type": "t8i.nano",
+      "family": "t8i",
+      "size": "nano",
+      "vcpu": 2,
+      "memoryGiB": 0.5,
+      "baselinePct": 5,
+      "creditsPerHour": 6,
+      "maxCredits": 144,
+      "fullBurstMinutes": 72
+    },
+    {
+      "type": "t8i.micro",
+      "family": "t8i",
+      "size": "micro",
+      "vcpu": 2,
+      "memoryGiB": 1,
+      "baselinePct": 10,
+      "creditsPerHour": 12,
+      "maxCredits": 288,
+      "fullBurstMinutes": 144
+    },
+    {
+      "type": "t8i.small",
+      "family": "t8i",
+      "size": "small",
+      "vcpu": 2,
+      "memoryGiB": 2,
+      "baselinePct": 20,
+      "creditsPerHour": 24,
+      "maxCredits": 576,
+      "fullBurstMinutes": 288
+    },
+    {
+      "type": "t8i.medium",
+      "family": "t8i",
+      "size": "medium",
+      "vcpu": 2,
+      "memoryGiB": 4,
+      "baselinePct": 20,
+      "creditsPerHour": 24,
+      "maxCredits": 576,
+      "fullBurstMinutes": 288
+    }
+  ],
+  "comparisons": [
+    {
+      "burstable": "t3a.nano",
+      "candidate": "m5a.large",
+      "exact": false,
+      "candidateVcpu": 2,
+      "candidateMemoryGiB": 8,
+      "candidates": [
+        "m5a.large",
+        "m5ad.large"
+      ]
+    },
+    {
+      "burstable": "t3a.micro",
+      "candidate": "m5a.large",
+      "exact": false,
+      "candidateVcpu": 2,
+      "candidateMemoryGiB": 8,
+      "candidates": [
+        "m5a.large",
+        "m5ad.large"
+      ]
+    },
+    {
+      "burstable": "t3a.small",
+      "candidate": "m5a.large",
+      "exact": false,
+      "candidateVcpu": 2,
+      "candidateMemoryGiB": 8,
+      "candidates": [
+        "m5a.large",
+        "m5ad.large"
+      ]
+    },
+    {
+      "burstable": "t3a.medium",
+      "candidate": "m5a.large",
+      "exact": false,
+      "candidateVcpu": 2,
+      "candidateMemoryGiB": 8,
+      "candidates": [
+        "m5a.large",
+        "m5ad.large"
+      ]
+    },
+    {
+      "burstable": "t3a.large",
+      "candidate": "m5a.large",
+      "exact": true,
+      "candidateVcpu": 2,
+      "candidateMemoryGiB": 8,
+      "candidates": [
+        "m5a.large",
+        "m5ad.large"
+      ]
+    },
+    {
+      "burstable": "t3a.xlarge",
+      "candidate": "m5a.xlarge",
+      "exact": true,
+      "candidateVcpu": 4,
+      "candidateMemoryGiB": 16,
+      "candidates": [
+        "m5a.xlarge",
+        "m5ad.xlarge"
+      ]
+    },
+    {
+      "burstable": "t3a.2xlarge",
+      "candidate": "m5a.2xlarge",
+      "exact": true,
+      "candidateVcpu": 8,
+      "candidateMemoryGiB": 32,
+      "candidates": [
+        "m5a.2xlarge",
+        "m5ad.2xlarge"
+      ]
+    },
+    {
+      "burstable": "t4g.nano",
+      "candidate": "c6g.large",
+      "exact": false,
+      "candidateVcpu": 2,
+      "candidateMemoryGiB": 4,
+      "candidates": [
+        "c6g.large",
+        "c6gd.large",
+        "c6gn.large"
+      ]
+    },
+    {
+      "burstable": "t4g.micro",
+      "candidate": "c6g.large",
+      "exact": false,
+      "candidateVcpu": 2,
+      "candidateMemoryGiB": 4,
+      "candidates": [
+        "c6g.large",
+        "c6gd.large",
+        "c6gn.large"
+      ]
+    },
+    {
+      "burstable": "t4g.small",
+      "candidate": "c6g.large",
+      "exact": false,
+      "candidateVcpu": 2,
+      "candidateMemoryGiB": 4,
+      "candidates": [
+        "c6g.large",
+        "c6gd.large",
+        "c6gn.large"
+      ]
+    },
+    {
+      "burstable": "t4g.medium",
+      "candidate": "c6g.large",
+      "exact": true,
+      "candidateVcpu": 2,
+      "candidateMemoryGiB": 4,
+      "candidates": [
+        "c6g.large",
+        "c6gd.large",
+        "c6gn.large"
+      ]
+    },
+    {
+      "burstable": "t4g.large",
+      "candidate": "m6g.large",
+      "exact": true,
+      "candidateVcpu": 2,
+      "candidateMemoryGiB": 8,
+      "candidates": [
+        "m6g.large",
+        "m6gd.large",
+        "im4gn.large"
+      ]
+    },
+    {
+      "burstable": "t4g.xlarge",
+      "candidate": "m6g.xlarge",
+      "exact": true,
+      "candidateVcpu": 4,
+      "candidateMemoryGiB": 16,
+      "candidates": [
+        "m6g.xlarge",
+        "m6gd.xlarge",
+        "im4gn.xlarge"
+      ]
+    },
+    {
+      "burstable": "t4g.2xlarge",
+      "candidate": "m6g.2xlarge",
+      "exact": true,
+      "candidateVcpu": 8,
+      "candidateMemoryGiB": 32,
+      "candidates": [
+        "m6g.2xlarge",
+        "m6gd.2xlarge",
+        "im4gn.2xlarge"
+      ]
+    },
+    {
+      "burstable": "t8i.nano",
+      "candidate": "c8i-flex.large",
+      "exact": false,
+      "candidateVcpu": 2,
+      "candidateMemoryGiB": 4,
+      "candidates": [
+        "c8i-flex.large",
+        "c8i.large",
+        "c8id.large",
+        "c8ib.large",
+        "c8in.large",
+        "c8ine.large"
+      ]
+    },
+    {
+      "burstable": "t8i.micro",
+      "candidate": "c8i-flex.large",
+      "exact": false,
+      "candidateVcpu": 2,
+      "candidateMemoryGiB": 4,
+      "candidates": [
+        "c8i-flex.large",
+        "c8i.large",
+        "c8id.large",
+        "c8ib.large",
+        "c8in.large",
+        "c8ine.large"
+      ]
+    },
+    {
+      "burstable": "t8i.small",
+      "candidate": "c8i-flex.large",
+      "exact": false,
+      "candidateVcpu": 2,
+      "candidateMemoryGiB": 4,
+      "candidates": [
+        "c8i-flex.large",
+        "c8i.large",
+        "c8id.large",
+        "c8ib.large",
+        "c8in.large",
+        "c8ine.large"
+      ]
+    },
+    {
+      "burstable": "t8i.medium",
+      "candidate": "c8i-flex.large",
+      "exact": true,
+      "candidateVcpu": 2,
+      "candidateMemoryGiB": 4,
+      "candidates": [
+        "c8i-flex.large",
+        "c8i.large",
+        "c8id.large",
+        "c8ib.large",
+        "c8in.large",
+        "c8ine.large"
+      ]
+    }
+  ],
+  "prices": {
+    "t3a.nano": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.0061,
+          "ri1yrNoUpfront": 0.0039,
+          "ri3yrNoUpfront": 0.0026,
+          "sp1yrNoUpfront": 0.0048
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.0059,
+          "ri1yrNoUpfront": 0.0035,
+          "ri3yrNoUpfront": 0.0025,
+          "sp1yrNoUpfront": 0.0041
+        },
+        "ap-south-1": {
+          "onDemand": 0.0031,
+          "ri1yrNoUpfront": 0.0019,
+          "ri3yrNoUpfront": 0.0013,
+          "sp1yrNoUpfront": 0.0022
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.0059,
+          "ri1yrNoUpfront": 0.0037,
+          "ri3yrNoUpfront": 0.0025,
+          "sp1yrNoUpfront": 0.0043
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.0059,
+          "ri1yrNoUpfront": 0.0037,
+          "ri3yrNoUpfront": 0.0026,
+          "sp1yrNoUpfront": 0.0046
+        },
+        "ca-central-1": {
+          "onDemand": 0.0052,
+          "ri1yrNoUpfront": 0.0033,
+          "ri3yrNoUpfront": 0.0023,
+          "sp1yrNoUpfront": 0.0038
+        },
+        "eu-central-1": {
+          "onDemand": 0.0054,
+          "ri1yrNoUpfront": 0.0034,
+          "ri3yrNoUpfront": 0.0023,
+          "sp1yrNoUpfront": 0.0045
+        },
+        "eu-west-1": {
+          "onDemand": 0.0051,
+          "ri1yrNoUpfront": 0.0032,
+          "ri3yrNoUpfront": 0.0022,
+          "sp1yrNoUpfront": 0.0042
+        },
+        "eu-west-2": {
+          "onDemand": 0.0053,
+          "ri1yrNoUpfront": 0.0033,
+          "ri3yrNoUpfront": 0.0023,
+          "sp1yrNoUpfront": 0.0043
+        },
+        "eu-west-3": {
+          "onDemand": 0.0053,
+          "ri1yrNoUpfront": 0.0033,
+          "ri3yrNoUpfront": 0.0023,
+          "sp1yrNoUpfront": 0.0043
+        },
+        "us-east-1": {
+          "onDemand": 0.0047,
+          "ri1yrNoUpfront": 0.0029,
+          "ri3yrNoUpfront": 0.002,
+          "sp1yrNoUpfront": 0.0034
+        },
+        "us-east-2": {
+          "onDemand": 0.0047,
+          "ri1yrNoUpfront": 0.0029,
+          "ri3yrNoUpfront": 0.002,
+          "sp1yrNoUpfront": 0.0034
+        },
+        "us-west-1": {
+          "onDemand": 0.0056,
+          "ri1yrNoUpfront": 0.0035,
+          "ri3yrNoUpfront": 0.0024,
+          "sp1yrNoUpfront": 0.0047
+        },
+        "us-west-2": {
+          "onDemand": 0.0047,
+          "ri1yrNoUpfront": 0.0029,
+          "ri3yrNoUpfront": 0.002,
+          "sp1yrNoUpfront": 0.0034
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.112,
+          "ri1yrNoUpfront": 0.071,
+          "ri3yrNoUpfront": 0.048,
+          "sp1yrNoUpfront": 0.09
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.106,
+          "ri1yrNoUpfront": 0.066,
+          "ri3yrNoUpfront": 0.046,
+          "sp1yrNoUpfront": 0.076
+        },
+        "ap-south-1": {
+          "onDemand": 0.056,
+          "ri1yrNoUpfront": 0.035,
+          "ri3yrNoUpfront": 0.024,
+          "sp1yrNoUpfront": 0.041
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.108,
+          "ri1yrNoUpfront": 0.068,
+          "ri3yrNoUpfront": 0.047,
+          "sp1yrNoUpfront": 0.087
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.108,
+          "ri1yrNoUpfront": 0.068,
+          "ri3yrNoUpfront": 0.047,
+          "sp1yrNoUpfront": 0.086
+        },
+        "ca-central-1": {
+          "onDemand": 0.096,
+          "ri1yrNoUpfront": 0.06,
+          "ri3yrNoUpfront": 0.041,
+          "sp1yrNoUpfront": 0.076
+        },
+        "eu-central-1": {
+          "onDemand": 0.104,
+          "ri1yrNoUpfront": 0.066,
+          "ri3yrNoUpfront": 0.045,
+          "sp1yrNoUpfront": 0.085
+        },
+        "eu-west-1": {
+          "onDemand": 0.096,
+          "ri1yrNoUpfront": 0.06,
+          "ri3yrNoUpfront": 0.041,
+          "sp1yrNoUpfront": 0.084
+        },
+        "eu-west-2": {
+          "onDemand": 0.1,
+          "ri1yrNoUpfront": 0.063,
+          "ri3yrNoUpfront": 0.043,
+          "sp1yrNoUpfront": 0.086
+        },
+        "eu-west-3": {
+          "onDemand": 0.101,
+          "ri1yrNoUpfront": 0.064,
+          "ri3yrNoUpfront": 0.044,
+          "sp1yrNoUpfront": 0.082
+        },
+        "us-east-1": {
+          "onDemand": 0.086,
+          "ri1yrNoUpfront": 0.054,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.063
+        },
+        "us-east-2": {
+          "onDemand": 0.086,
+          "ri1yrNoUpfront": 0.054,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.068
+        },
+        "us-west-1": {
+          "onDemand": 0.101,
+          "ri1yrNoUpfront": 0.064,
+          "ri3yrNoUpfront": 0.044,
+          "sp1yrNoUpfront": 0.093
+        },
+        "us-west-2": {
+          "onDemand": 0.086,
+          "ri1yrNoUpfront": 0.054,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.068
+        }
+      }
+    },
+    "t3a.micro": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.0122,
+          "ri1yrNoUpfront": 0.0077,
+          "ri3yrNoUpfront": 0.0053,
+          "sp1yrNoUpfront": 0.0096
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.0117,
+          "ri1yrNoUpfront": 0.0071,
+          "ri3yrNoUpfront": 0.0051,
+          "sp1yrNoUpfront": 0.0081
+        },
+        "ap-south-1": {
+          "onDemand": 0.0062,
+          "ri1yrNoUpfront": 0.0039,
+          "ri3yrNoUpfront": 0.0026,
+          "sp1yrNoUpfront": 0.0045
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.0118,
+          "ri1yrNoUpfront": 0.0074,
+          "ri3yrNoUpfront": 0.005,
+          "sp1yrNoUpfront": 0.0085
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.0119,
+          "ri1yrNoUpfront": 0.0075,
+          "ri3yrNoUpfront": 0.0051,
+          "sp1yrNoUpfront": 0.0093
+        },
+        "ca-central-1": {
+          "onDemand": 0.0104,
+          "ri1yrNoUpfront": 0.0066,
+          "ri3yrNoUpfront": 0.0045,
+          "sp1yrNoUpfront": 0.0076
+        },
+        "eu-central-1": {
+          "onDemand": 0.0108,
+          "ri1yrNoUpfront": 0.0068,
+          "ri3yrNoUpfront": 0.0047,
+          "sp1yrNoUpfront": 0.009
+        },
+        "eu-west-1": {
+          "onDemand": 0.0102,
+          "ri1yrNoUpfront": 0.0064,
+          "ri3yrNoUpfront": 0.0044,
+          "sp1yrNoUpfront": 0.0084
+        },
+        "eu-west-2": {
+          "onDemand": 0.0106,
+          "ri1yrNoUpfront": 0.0067,
+          "ri3yrNoUpfront": 0.0046,
+          "sp1yrNoUpfront": 0.0086
+        },
+        "eu-west-3": {
+          "onDemand": 0.0106,
+          "ri1yrNoUpfront": 0.0067,
+          "ri3yrNoUpfront": 0.0046,
+          "sp1yrNoUpfront": 0.0086
+        },
+        "us-east-1": {
+          "onDemand": 0.0094,
+          "ri1yrNoUpfront": 0.0059,
+          "ri3yrNoUpfront": 0.0041,
+          "sp1yrNoUpfront": 0.0068
+        },
+        "us-east-2": {
+          "onDemand": 0.0094,
+          "ri1yrNoUpfront": 0.0059,
+          "ri3yrNoUpfront": 0.0041,
+          "sp1yrNoUpfront": 0.0068
+        },
+        "us-west-1": {
+          "onDemand": 0.0112,
+          "ri1yrNoUpfront": 0.007,
+          "ri3yrNoUpfront": 0.0048,
+          "sp1yrNoUpfront": 0.0094
+        },
+        "us-west-2": {
+          "onDemand": 0.0094,
+          "ri1yrNoUpfront": 0.0059,
+          "ri3yrNoUpfront": 0.0041,
+          "sp1yrNoUpfront": 0.0068
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.112,
+          "ri1yrNoUpfront": 0.071,
+          "ri3yrNoUpfront": 0.048,
+          "sp1yrNoUpfront": 0.09
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.106,
+          "ri1yrNoUpfront": 0.066,
+          "ri3yrNoUpfront": 0.046,
+          "sp1yrNoUpfront": 0.076
+        },
+        "ap-south-1": {
+          "onDemand": 0.056,
+          "ri1yrNoUpfront": 0.035,
+          "ri3yrNoUpfront": 0.024,
+          "sp1yrNoUpfront": 0.041
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.108,
+          "ri1yrNoUpfront": 0.068,
+          "ri3yrNoUpfront": 0.047,
+          "sp1yrNoUpfront": 0.087
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.108,
+          "ri1yrNoUpfront": 0.068,
+          "ri3yrNoUpfront": 0.047,
+          "sp1yrNoUpfront": 0.086
+        },
+        "ca-central-1": {
+          "onDemand": 0.096,
+          "ri1yrNoUpfront": 0.06,
+          "ri3yrNoUpfront": 0.041,
+          "sp1yrNoUpfront": 0.076
+        },
+        "eu-central-1": {
+          "onDemand": 0.104,
+          "ri1yrNoUpfront": 0.066,
+          "ri3yrNoUpfront": 0.045,
+          "sp1yrNoUpfront": 0.085
+        },
+        "eu-west-1": {
+          "onDemand": 0.096,
+          "ri1yrNoUpfront": 0.06,
+          "ri3yrNoUpfront": 0.041,
+          "sp1yrNoUpfront": 0.084
+        },
+        "eu-west-2": {
+          "onDemand": 0.1,
+          "ri1yrNoUpfront": 0.063,
+          "ri3yrNoUpfront": 0.043,
+          "sp1yrNoUpfront": 0.086
+        },
+        "eu-west-3": {
+          "onDemand": 0.101,
+          "ri1yrNoUpfront": 0.064,
+          "ri3yrNoUpfront": 0.044,
+          "sp1yrNoUpfront": 0.082
+        },
+        "us-east-1": {
+          "onDemand": 0.086,
+          "ri1yrNoUpfront": 0.054,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.063
+        },
+        "us-east-2": {
+          "onDemand": 0.086,
+          "ri1yrNoUpfront": 0.054,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.068
+        },
+        "us-west-1": {
+          "onDemand": 0.101,
+          "ri1yrNoUpfront": 0.064,
+          "ri3yrNoUpfront": 0.044,
+          "sp1yrNoUpfront": 0.093
+        },
+        "us-west-2": {
+          "onDemand": 0.086,
+          "ri1yrNoUpfront": 0.054,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.068
+        }
+      }
+    },
+    "t3a.small": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.0245,
+          "ri1yrNoUpfront": 0.0154,
+          "ri3yrNoUpfront": 0.0106,
+          "sp1yrNoUpfront": 0.0192
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.0234,
+          "ri1yrNoUpfront": 0.0141,
+          "ri3yrNoUpfront": 0.0101,
+          "sp1yrNoUpfront": 0.0163
+        },
+        "ap-south-1": {
+          "onDemand": 0.0123,
+          "ri1yrNoUpfront": 0.0078,
+          "ri3yrNoUpfront": 0.0052,
+          "sp1yrNoUpfront": 0.0089
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.0236,
+          "ri1yrNoUpfront": 0.0148,
+          "ri3yrNoUpfront": 0.01,
+          "sp1yrNoUpfront": 0.017
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.0238,
+          "ri1yrNoUpfront": 0.015,
+          "ri3yrNoUpfront": 0.0103,
+          "sp1yrNoUpfront": 0.0186
+        },
+        "ca-central-1": {
+          "onDemand": 0.0209,
+          "ri1yrNoUpfront": 0.0132,
+          "ri3yrNoUpfront": 0.009,
+          "sp1yrNoUpfront": 0.0151
+        },
+        "eu-central-1": {
+          "onDemand": 0.0216,
+          "ri1yrNoUpfront": 0.0136,
+          "ri3yrNoUpfront": 0.0093,
+          "sp1yrNoUpfront": 0.0179
+        },
+        "eu-west-1": {
+          "onDemand": 0.0204,
+          "ri1yrNoUpfront": 0.0129,
+          "ri3yrNoUpfront": 0.0088,
+          "sp1yrNoUpfront": 0.0167
+        },
+        "eu-west-2": {
+          "onDemand": 0.0212,
+          "ri1yrNoUpfront": 0.0134,
+          "ri3yrNoUpfront": 0.0092,
+          "sp1yrNoUpfront": 0.0173
+        },
+        "eu-west-3": {
+          "onDemand": 0.0212,
+          "ri1yrNoUpfront": 0.0134,
+          "ri3yrNoUpfront": 0.0092,
+          "sp1yrNoUpfront": 0.0173
+        },
+        "us-east-1": {
+          "onDemand": 0.0188,
+          "ri1yrNoUpfront": 0.0118,
+          "ri3yrNoUpfront": 0.0081,
+          "sp1yrNoUpfront": 0.0136
+        },
+        "us-east-2": {
+          "onDemand": 0.0188,
+          "ri1yrNoUpfront": 0.0118,
+          "ri3yrNoUpfront": 0.0081,
+          "sp1yrNoUpfront": 0.0136
+        },
+        "us-west-1": {
+          "onDemand": 0.0223,
+          "ri1yrNoUpfront": 0.0141,
+          "ri3yrNoUpfront": 0.0096,
+          "sp1yrNoUpfront": 0.0189
+        },
+        "us-west-2": {
+          "onDemand": 0.0188,
+          "ri1yrNoUpfront": 0.0118,
+          "ri3yrNoUpfront": 0.0081,
+          "sp1yrNoUpfront": 0.0136
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.112,
+          "ri1yrNoUpfront": 0.071,
+          "ri3yrNoUpfront": 0.048,
+          "sp1yrNoUpfront": 0.09
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.106,
+          "ri1yrNoUpfront": 0.066,
+          "ri3yrNoUpfront": 0.046,
+          "sp1yrNoUpfront": 0.076
+        },
+        "ap-south-1": {
+          "onDemand": 0.056,
+          "ri1yrNoUpfront": 0.035,
+          "ri3yrNoUpfront": 0.024,
+          "sp1yrNoUpfront": 0.041
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.108,
+          "ri1yrNoUpfront": 0.068,
+          "ri3yrNoUpfront": 0.047,
+          "sp1yrNoUpfront": 0.087
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.108,
+          "ri1yrNoUpfront": 0.068,
+          "ri3yrNoUpfront": 0.047,
+          "sp1yrNoUpfront": 0.086
+        },
+        "ca-central-1": {
+          "onDemand": 0.096,
+          "ri1yrNoUpfront": 0.06,
+          "ri3yrNoUpfront": 0.041,
+          "sp1yrNoUpfront": 0.076
+        },
+        "eu-central-1": {
+          "onDemand": 0.104,
+          "ri1yrNoUpfront": 0.066,
+          "ri3yrNoUpfront": 0.045,
+          "sp1yrNoUpfront": 0.085
+        },
+        "eu-west-1": {
+          "onDemand": 0.096,
+          "ri1yrNoUpfront": 0.06,
+          "ri3yrNoUpfront": 0.041,
+          "sp1yrNoUpfront": 0.084
+        },
+        "eu-west-2": {
+          "onDemand": 0.1,
+          "ri1yrNoUpfront": 0.063,
+          "ri3yrNoUpfront": 0.043,
+          "sp1yrNoUpfront": 0.086
+        },
+        "eu-west-3": {
+          "onDemand": 0.101,
+          "ri1yrNoUpfront": 0.064,
+          "ri3yrNoUpfront": 0.044,
+          "sp1yrNoUpfront": 0.082
+        },
+        "us-east-1": {
+          "onDemand": 0.086,
+          "ri1yrNoUpfront": 0.054,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.063
+        },
+        "us-east-2": {
+          "onDemand": 0.086,
+          "ri1yrNoUpfront": 0.054,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.068
+        },
+        "us-west-1": {
+          "onDemand": 0.101,
+          "ri1yrNoUpfront": 0.064,
+          "ri3yrNoUpfront": 0.044,
+          "sp1yrNoUpfront": 0.093
+        },
+        "us-west-2": {
+          "onDemand": 0.086,
+          "ri1yrNoUpfront": 0.054,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.068
+        }
+      }
+    },
+    "t3a.medium": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.049,
+          "ri1yrNoUpfront": 0.0308,
+          "ri3yrNoUpfront": 0.0212,
+          "sp1yrNoUpfront": 0.0385
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.0468,
+          "ri1yrNoUpfront": 0.0283,
+          "ri3yrNoUpfront": 0.0202,
+          "sp1yrNoUpfront": 0.0325
+        },
+        "ap-south-1": {
+          "onDemand": 0.0246,
+          "ri1yrNoUpfront": 0.0155,
+          "ri3yrNoUpfront": 0.0104,
+          "sp1yrNoUpfront": 0.0178
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.0472,
+          "ri1yrNoUpfront": 0.0297,
+          "ri3yrNoUpfront": 0.02,
+          "sp1yrNoUpfront": 0.0341
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.0475,
+          "ri1yrNoUpfront": 0.0299,
+          "ri3yrNoUpfront": 0.0205,
+          "sp1yrNoUpfront": 0.0371
+        },
+        "ca-central-1": {
+          "onDemand": 0.0418,
+          "ri1yrNoUpfront": 0.0263,
+          "ri3yrNoUpfront": 0.018,
+          "sp1yrNoUpfront": 0.0303
+        },
+        "eu-central-1": {
+          "onDemand": 0.0432,
+          "ri1yrNoUpfront": 0.0272,
+          "ri3yrNoUpfront": 0.0187,
+          "sp1yrNoUpfront": 0.0358
+        },
+        "eu-west-1": {
+          "onDemand": 0.0408,
+          "ri1yrNoUpfront": 0.0257,
+          "ri3yrNoUpfront": 0.0176,
+          "sp1yrNoUpfront": 0.0334
+        },
+        "eu-west-2": {
+          "onDemand": 0.0425,
+          "ri1yrNoUpfront": 0.0268,
+          "ri3yrNoUpfront": 0.0184,
+          "sp1yrNoUpfront": 0.0345
+        },
+        "eu-west-3": {
+          "onDemand": 0.0425,
+          "ri1yrNoUpfront": 0.0268,
+          "ri3yrNoUpfront": 0.0184,
+          "sp1yrNoUpfront": 0.0345
+        },
+        "us-east-1": {
+          "onDemand": 0.0376,
+          "ri1yrNoUpfront": 0.0236,
+          "ri3yrNoUpfront": 0.0162,
+          "sp1yrNoUpfront": 0.0271
+        },
+        "us-east-2": {
+          "onDemand": 0.0376,
+          "ri1yrNoUpfront": 0.0236,
+          "ri3yrNoUpfront": 0.0162,
+          "sp1yrNoUpfront": 0.0271
+        },
+        "us-west-1": {
+          "onDemand": 0.0446,
+          "ri1yrNoUpfront": 0.0281,
+          "ri3yrNoUpfront": 0.0193,
+          "sp1yrNoUpfront": 0.0377
+        },
+        "us-west-2": {
+          "onDemand": 0.0376,
+          "ri1yrNoUpfront": 0.0236,
+          "ri3yrNoUpfront": 0.0162,
+          "sp1yrNoUpfront": 0.0271
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.112,
+          "ri1yrNoUpfront": 0.071,
+          "ri3yrNoUpfront": 0.048,
+          "sp1yrNoUpfront": 0.09
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.106,
+          "ri1yrNoUpfront": 0.066,
+          "ri3yrNoUpfront": 0.046,
+          "sp1yrNoUpfront": 0.076
+        },
+        "ap-south-1": {
+          "onDemand": 0.056,
+          "ri1yrNoUpfront": 0.035,
+          "ri3yrNoUpfront": 0.024,
+          "sp1yrNoUpfront": 0.041
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.108,
+          "ri1yrNoUpfront": 0.068,
+          "ri3yrNoUpfront": 0.047,
+          "sp1yrNoUpfront": 0.087
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.108,
+          "ri1yrNoUpfront": 0.068,
+          "ri3yrNoUpfront": 0.047,
+          "sp1yrNoUpfront": 0.086
+        },
+        "ca-central-1": {
+          "onDemand": 0.096,
+          "ri1yrNoUpfront": 0.06,
+          "ri3yrNoUpfront": 0.041,
+          "sp1yrNoUpfront": 0.076
+        },
+        "eu-central-1": {
+          "onDemand": 0.104,
+          "ri1yrNoUpfront": 0.066,
+          "ri3yrNoUpfront": 0.045,
+          "sp1yrNoUpfront": 0.085
+        },
+        "eu-west-1": {
+          "onDemand": 0.096,
+          "ri1yrNoUpfront": 0.06,
+          "ri3yrNoUpfront": 0.041,
+          "sp1yrNoUpfront": 0.084
+        },
+        "eu-west-2": {
+          "onDemand": 0.1,
+          "ri1yrNoUpfront": 0.063,
+          "ri3yrNoUpfront": 0.043,
+          "sp1yrNoUpfront": 0.086
+        },
+        "eu-west-3": {
+          "onDemand": 0.101,
+          "ri1yrNoUpfront": 0.064,
+          "ri3yrNoUpfront": 0.044,
+          "sp1yrNoUpfront": 0.082
+        },
+        "us-east-1": {
+          "onDemand": 0.086,
+          "ri1yrNoUpfront": 0.054,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.063
+        },
+        "us-east-2": {
+          "onDemand": 0.086,
+          "ri1yrNoUpfront": 0.054,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.068
+        },
+        "us-west-1": {
+          "onDemand": 0.101,
+          "ri1yrNoUpfront": 0.064,
+          "ri3yrNoUpfront": 0.044,
+          "sp1yrNoUpfront": 0.093
+        },
+        "us-west-2": {
+          "onDemand": 0.086,
+          "ri1yrNoUpfront": 0.054,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.068
+        }
+      }
+    },
+    "t3a.large": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.0979,
+          "ri1yrNoUpfront": 0.0617,
+          "ri3yrNoUpfront": 0.0423,
+          "sp1yrNoUpfront": 0.0769
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.0936,
+          "ri1yrNoUpfront": 0.0566,
+          "ri3yrNoUpfront": 0.0404,
+          "sp1yrNoUpfront": 0.065
+        },
+        "ap-south-1": {
+          "onDemand": 0.0493,
+          "ri1yrNoUpfront": 0.031,
+          "ri3yrNoUpfront": 0.0208,
+          "sp1yrNoUpfront": 0.0357
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.0944,
+          "ri1yrNoUpfront": 0.0594,
+          "ri3yrNoUpfront": 0.04,
+          "sp1yrNoUpfront": 0.0682
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.095,
+          "ri1yrNoUpfront": 0.0599,
+          "ri3yrNoUpfront": 0.0411,
+          "sp1yrNoUpfront": 0.0742
+        },
+        "ca-central-1": {
+          "onDemand": 0.0835,
+          "ri1yrNoUpfront": 0.0526,
+          "ri3yrNoUpfront": 0.0361,
+          "sp1yrNoUpfront": 0.0605
+        },
+        "eu-central-1": {
+          "onDemand": 0.0864,
+          "ri1yrNoUpfront": 0.0544,
+          "ri3yrNoUpfront": 0.0373,
+          "sp1yrNoUpfront": 0.0717
+        },
+        "eu-west-1": {
+          "onDemand": 0.0816,
+          "ri1yrNoUpfront": 0.0514,
+          "ri3yrNoUpfront": 0.0353,
+          "sp1yrNoUpfront": 0.0668
+        },
+        "eu-west-2": {
+          "onDemand": 0.085,
+          "ri1yrNoUpfront": 0.0535,
+          "ri3yrNoUpfront": 0.0367,
+          "sp1yrNoUpfront": 0.069
+        },
+        "eu-west-3": {
+          "onDemand": 0.085,
+          "ri1yrNoUpfront": 0.0535,
+          "ri3yrNoUpfront": 0.0367,
+          "sp1yrNoUpfront": 0.069
+        },
+        "us-east-1": {
+          "onDemand": 0.0752,
+          "ri1yrNoUpfront": 0.0471,
+          "ri3yrNoUpfront": 0.0325,
+          "sp1yrNoUpfront": 0.0542
+        },
+        "us-east-2": {
+          "onDemand": 0.0752,
+          "ri1yrNoUpfront": 0.0471,
+          "ri3yrNoUpfront": 0.0325,
+          "sp1yrNoUpfront": 0.0542
+        },
+        "us-west-1": {
+          "onDemand": 0.0893,
+          "ri1yrNoUpfront": 0.0562,
+          "ri3yrNoUpfront": 0.0386,
+          "sp1yrNoUpfront": 0.0755
+        },
+        "us-west-2": {
+          "onDemand": 0.0752,
+          "ri1yrNoUpfront": 0.0471,
+          "ri3yrNoUpfront": 0.0325,
+          "sp1yrNoUpfront": 0.0542
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.112,
+          "ri1yrNoUpfront": 0.071,
+          "ri3yrNoUpfront": 0.048,
+          "sp1yrNoUpfront": 0.09
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.106,
+          "ri1yrNoUpfront": 0.066,
+          "ri3yrNoUpfront": 0.046,
+          "sp1yrNoUpfront": 0.076
+        },
+        "ap-south-1": {
+          "onDemand": 0.056,
+          "ri1yrNoUpfront": 0.035,
+          "ri3yrNoUpfront": 0.024,
+          "sp1yrNoUpfront": 0.041
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.108,
+          "ri1yrNoUpfront": 0.068,
+          "ri3yrNoUpfront": 0.047,
+          "sp1yrNoUpfront": 0.087
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.108,
+          "ri1yrNoUpfront": 0.068,
+          "ri3yrNoUpfront": 0.047,
+          "sp1yrNoUpfront": 0.086
+        },
+        "ca-central-1": {
+          "onDemand": 0.096,
+          "ri1yrNoUpfront": 0.06,
+          "ri3yrNoUpfront": 0.041,
+          "sp1yrNoUpfront": 0.076
+        },
+        "eu-central-1": {
+          "onDemand": 0.104,
+          "ri1yrNoUpfront": 0.066,
+          "ri3yrNoUpfront": 0.045,
+          "sp1yrNoUpfront": 0.085
+        },
+        "eu-west-1": {
+          "onDemand": 0.096,
+          "ri1yrNoUpfront": 0.06,
+          "ri3yrNoUpfront": 0.041,
+          "sp1yrNoUpfront": 0.084
+        },
+        "eu-west-2": {
+          "onDemand": 0.1,
+          "ri1yrNoUpfront": 0.063,
+          "ri3yrNoUpfront": 0.043,
+          "sp1yrNoUpfront": 0.086
+        },
+        "eu-west-3": {
+          "onDemand": 0.101,
+          "ri1yrNoUpfront": 0.064,
+          "ri3yrNoUpfront": 0.044,
+          "sp1yrNoUpfront": 0.082
+        },
+        "us-east-1": {
+          "onDemand": 0.086,
+          "ri1yrNoUpfront": 0.054,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.063
+        },
+        "us-east-2": {
+          "onDemand": 0.086,
+          "ri1yrNoUpfront": 0.054,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.068
+        },
+        "us-west-1": {
+          "onDemand": 0.101,
+          "ri1yrNoUpfront": 0.064,
+          "ri3yrNoUpfront": 0.044,
+          "sp1yrNoUpfront": 0.093
+        },
+        "us-west-2": {
+          "onDemand": 0.086,
+          "ri1yrNoUpfront": 0.054,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.068
+        }
+      }
+    },
+    "t3a.xlarge": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.1958,
+          "ri1yrNoUpfront": 0.1234,
+          "ri3yrNoUpfront": 0.0846,
+          "sp1yrNoUpfront": 0.1539
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.1872,
+          "ri1yrNoUpfront": 0.1131,
+          "ri3yrNoUpfront": 0.0809,
+          "sp1yrNoUpfront": 0.1301
+        },
+        "ap-south-1": {
+          "onDemand": 0.0986,
+          "ri1yrNoUpfront": 0.0621,
+          "ri3yrNoUpfront": 0.0416,
+          "sp1yrNoUpfront": 0.0714
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.1888,
+          "ri1yrNoUpfront": 0.1187,
+          "ri3yrNoUpfront": 0.0799,
+          "sp1yrNoUpfront": 0.1364
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.1901,
+          "ri1yrNoUpfront": 0.1198,
+          "ri3yrNoUpfront": 0.0821,
+          "sp1yrNoUpfront": 0.1485
+        },
+        "ca-central-1": {
+          "onDemand": 0.167,
+          "ri1yrNoUpfront": 0.1052,
+          "ri3yrNoUpfront": 0.0722,
+          "sp1yrNoUpfront": 0.121
+        },
+        "eu-central-1": {
+          "onDemand": 0.1728,
+          "ri1yrNoUpfront": 0.1089,
+          "ri3yrNoUpfront": 0.0746,
+          "sp1yrNoUpfront": 0.1433
+        },
+        "eu-west-1": {
+          "onDemand": 0.1632,
+          "ri1yrNoUpfront": 0.1028,
+          "ri3yrNoUpfront": 0.0705,
+          "sp1yrNoUpfront": 0.1337
+        },
+        "eu-west-2": {
+          "onDemand": 0.1699,
+          "ri1yrNoUpfront": 0.107,
+          "ri3yrNoUpfront": 0.0734,
+          "sp1yrNoUpfront": 0.138
+        },
+        "eu-west-3": {
+          "onDemand": 0.1699,
+          "ri1yrNoUpfront": 0.107,
+          "ri3yrNoUpfront": 0.0734,
+          "sp1yrNoUpfront": 0.138
+        },
+        "us-east-1": {
+          "onDemand": 0.1504,
+          "ri1yrNoUpfront": 0.0943,
+          "ri3yrNoUpfront": 0.065,
+          "sp1yrNoUpfront": 0.1085
+        },
+        "us-east-2": {
+          "onDemand": 0.1504,
+          "ri1yrNoUpfront": 0.0943,
+          "ri3yrNoUpfront": 0.065,
+          "sp1yrNoUpfront": 0.1085
+        },
+        "us-west-1": {
+          "onDemand": 0.1786,
+          "ri1yrNoUpfront": 0.1125,
+          "ri3yrNoUpfront": 0.0771,
+          "sp1yrNoUpfront": 0.151
+        },
+        "us-west-2": {
+          "onDemand": 0.1504,
+          "ri1yrNoUpfront": 0.0943,
+          "ri3yrNoUpfront": 0.065,
+          "sp1yrNoUpfront": 0.1085
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.224,
+          "ri1yrNoUpfront": 0.141,
+          "ri3yrNoUpfront": 0.097,
+          "sp1yrNoUpfront": 0.179
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.212,
+          "ri1yrNoUpfront": 0.132,
+          "ri3yrNoUpfront": 0.092,
+          "sp1yrNoUpfront": 0.152
+        },
+        "ap-south-1": {
+          "onDemand": 0.111,
+          "ri1yrNoUpfront": 0.07,
+          "ri3yrNoUpfront": 0.048,
+          "sp1yrNoUpfront": 0.082
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.216,
+          "ri1yrNoUpfront": 0.136,
+          "ri3yrNoUpfront": 0.093,
+          "sp1yrNoUpfront": 0.161
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.216,
+          "ri1yrNoUpfront": 0.136,
+          "ri3yrNoUpfront": 0.093,
+          "sp1yrNoUpfront": 0.185
+        },
+        "ca-central-1": {
+          "onDemand": 0.192,
+          "ri1yrNoUpfront": 0.121,
+          "ri3yrNoUpfront": 0.083,
+          "sp1yrNoUpfront": 0.152
+        },
+        "eu-central-1": {
+          "onDemand": 0.208,
+          "ri1yrNoUpfront": 0.131,
+          "ri3yrNoUpfront": 0.09,
+          "sp1yrNoUpfront": 0.17
+        },
+        "eu-west-1": {
+          "onDemand": 0.192,
+          "ri1yrNoUpfront": 0.121,
+          "ri3yrNoUpfront": 0.083,
+          "sp1yrNoUpfront": 0.156
+        },
+        "eu-west-2": {
+          "onDemand": 0.2,
+          "ri1yrNoUpfront": 0.126,
+          "ri3yrNoUpfront": 0.086,
+          "sp1yrNoUpfront": 0.161
+        },
+        "eu-west-3": {
+          "onDemand": 0.202,
+          "ri1yrNoUpfront": 0.127,
+          "ri3yrNoUpfront": 0.087,
+          "sp1yrNoUpfront": 0.163
+        },
+        "us-east-1": {
+          "onDemand": 0.172,
+          "ri1yrNoUpfront": 0.108,
+          "ri3yrNoUpfront": 0.074,
+          "sp1yrNoUpfront": 0.136
+        },
+        "us-east-2": {
+          "onDemand": 0.172,
+          "ri1yrNoUpfront": 0.108,
+          "ri3yrNoUpfront": 0.074,
+          "sp1yrNoUpfront": 0.126
+        },
+        "us-west-1": {
+          "onDemand": 0.202,
+          "ri1yrNoUpfront": 0.127,
+          "ri3yrNoUpfront": 0.087,
+          "sp1yrNoUpfront": 0.174
+        },
+        "us-west-2": {
+          "onDemand": 0.172,
+          "ri1yrNoUpfront": 0.108,
+          "ri3yrNoUpfront": 0.074,
+          "sp1yrNoUpfront": 0.136
+        }
+      }
+    },
+    "t3a.2xlarge": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.3917,
+          "ri1yrNoUpfront": 0.2468,
+          "ri3yrNoUpfront": 0.1692,
+          "sp1yrNoUpfront": 0.3077
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.3744,
+          "ri1yrNoUpfront": 0.2262,
+          "ri3yrNoUpfront": 0.1617,
+          "sp1yrNoUpfront": 0.2602
+        },
+        "ap-south-1": {
+          "onDemand": 0.1971,
+          "ri1yrNoUpfront": 0.1242,
+          "ri3yrNoUpfront": 0.0832,
+          "sp1yrNoUpfront": 0.1428
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.3776,
+          "ri1yrNoUpfront": 0.2375,
+          "ri3yrNoUpfront": 0.1599,
+          "sp1yrNoUpfront": 0.2728
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.3802,
+          "ri1yrNoUpfront": 0.2395,
+          "ri3yrNoUpfront": 0.1642,
+          "sp1yrNoUpfront": 0.297
+        },
+        "ca-central-1": {
+          "onDemand": 0.3341,
+          "ri1yrNoUpfront": 0.2105,
+          "ri3yrNoUpfront": 0.1443,
+          "sp1yrNoUpfront": 0.242
+        },
+        "eu-central-1": {
+          "onDemand": 0.3456,
+          "ri1yrNoUpfront": 0.2177,
+          "ri3yrNoUpfront": 0.1493,
+          "sp1yrNoUpfront": 0.2866
+        },
+        "eu-west-1": {
+          "onDemand": 0.3264,
+          "ri1yrNoUpfront": 0.2056,
+          "ri3yrNoUpfront": 0.141,
+          "sp1yrNoUpfront": 0.2673
+        },
+        "eu-west-2": {
+          "onDemand": 0.3398,
+          "ri1yrNoUpfront": 0.2141,
+          "ri3yrNoUpfront": 0.1468,
+          "sp1yrNoUpfront": 0.2761
+        },
+        "eu-west-3": {
+          "onDemand": 0.3398,
+          "ri1yrNoUpfront": 0.2141,
+          "ri3yrNoUpfront": 0.1468,
+          "sp1yrNoUpfront": 0.2761
+        },
+        "us-east-1": {
+          "onDemand": 0.3008,
+          "ri1yrNoUpfront": 0.1886,
+          "ri3yrNoUpfront": 0.1299,
+          "sp1yrNoUpfront": 0.217
+        },
+        "us-east-2": {
+          "onDemand": 0.3008,
+          "ri1yrNoUpfront": 0.1886,
+          "ri3yrNoUpfront": 0.1299,
+          "sp1yrNoUpfront": 0.217
+        },
+        "us-west-1": {
+          "onDemand": 0.3571,
+          "ri1yrNoUpfront": 0.225,
+          "ri3yrNoUpfront": 0.1543,
+          "sp1yrNoUpfront": 0.3019
+        },
+        "us-west-2": {
+          "onDemand": 0.3008,
+          "ri1yrNoUpfront": 0.1886,
+          "ri3yrNoUpfront": 0.1299,
+          "sp1yrNoUpfront": 0.217
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.448,
+          "ri1yrNoUpfront": 0.282,
+          "ri3yrNoUpfront": 0.194,
+          "sp1yrNoUpfront": 0.385
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.424,
+          "ri1yrNoUpfront": 0.264,
+          "ri3yrNoUpfront": 0.183,
+          "sp1yrNoUpfront": 0.304
+        },
+        "ap-south-1": {
+          "onDemand": 0.222,
+          "ri1yrNoUpfront": 0.14,
+          "ri3yrNoUpfront": 0.096,
+          "sp1yrNoUpfront": 0.164
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.432,
+          "ri1yrNoUpfront": 0.272,
+          "ri3yrNoUpfront": 0.187,
+          "sp1yrNoUpfront": 0.348
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.432,
+          "ri1yrNoUpfront": 0.272,
+          "ri3yrNoUpfront": 0.187,
+          "sp1yrNoUpfront": 0.344
+        },
+        "ca-central-1": {
+          "onDemand": 0.384,
+          "ri1yrNoUpfront": 0.242,
+          "ri3yrNoUpfront": 0.166,
+          "sp1yrNoUpfront": 0.304
+        },
+        "eu-central-1": {
+          "onDemand": 0.416,
+          "ri1yrNoUpfront": 0.262,
+          "ri3yrNoUpfront": 0.18,
+          "sp1yrNoUpfront": 0.366
+        },
+        "eu-west-1": {
+          "onDemand": 0.384,
+          "ri1yrNoUpfront": 0.242,
+          "ri3yrNoUpfront": 0.166,
+          "sp1yrNoUpfront": 0.311
+        },
+        "eu-west-2": {
+          "onDemand": 0.4,
+          "ri1yrNoUpfront": 0.252,
+          "ri3yrNoUpfront": 0.173,
+          "sp1yrNoUpfront": 0.346
+        },
+        "eu-west-3": {
+          "onDemand": 0.404,
+          "ri1yrNoUpfront": 0.255,
+          "ri3yrNoUpfront": 0.175,
+          "sp1yrNoUpfront": 0.326
+        },
+        "us-east-1": {
+          "onDemand": 0.344,
+          "ri1yrNoUpfront": 0.217,
+          "ri3yrNoUpfront": 0.149,
+          "sp1yrNoUpfront": 0.272
+        },
+        "us-east-2": {
+          "onDemand": 0.344,
+          "ri1yrNoUpfront": 0.217,
+          "ri3yrNoUpfront": 0.149,
+          "sp1yrNoUpfront": 0.272
+        },
+        "us-west-1": {
+          "onDemand": 0.404,
+          "ri1yrNoUpfront": 0.255,
+          "ri3yrNoUpfront": 0.175,
+          "sp1yrNoUpfront": 0.373
+        },
+        "us-west-2": {
+          "onDemand": 0.344,
+          "ri1yrNoUpfront": 0.217,
+          "ri3yrNoUpfront": 0.149,
+          "sp1yrNoUpfront": 0.272
+        }
+      }
+    },
+    "t4g.nano": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.0054,
+          "ri1yrNoUpfront": 0.0034,
+          "ri3yrNoUpfront": 0.0023,
+          "sp1yrNoUpfront": 0.0042
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.0052,
+          "ri1yrNoUpfront": 0.0031,
+          "ri3yrNoUpfront": 0.0022,
+          "sp1yrNoUpfront": 0.0036
+        },
+        "ap-south-1": {
+          "onDemand": 0.0028,
+          "ri1yrNoUpfront": 0.0018,
+          "ri3yrNoUpfront": 0.0012,
+          "sp1yrNoUpfront": 0.002
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.0053,
+          "ri1yrNoUpfront": 0.0033,
+          "ri3yrNoUpfront": 0.0022,
+          "sp1yrNoUpfront": 0.0038
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.0053,
+          "ri1yrNoUpfront": 0.0033,
+          "ri3yrNoUpfront": 0.0023,
+          "sp1yrNoUpfront": 0.0041
+        },
+        "ca-central-1": {
+          "onDemand": 0.0046,
+          "ri1yrNoUpfront": 0.0029,
+          "ri3yrNoUpfront": 0.002,
+          "sp1yrNoUpfront": 0.0033
+        },
+        "eu-central-1": {
+          "onDemand": 0.0048,
+          "ri1yrNoUpfront": 0.003,
+          "ri3yrNoUpfront": 0.0021,
+          "sp1yrNoUpfront": 0.004
+        },
+        "eu-west-1": {
+          "onDemand": 0.0046,
+          "ri1yrNoUpfront": 0.0029,
+          "ri3yrNoUpfront": 0.002,
+          "sp1yrNoUpfront": 0.0038
+        },
+        "eu-west-2": {
+          "onDemand": 0.0047,
+          "ri1yrNoUpfront": 0.003,
+          "ri3yrNoUpfront": 0.002,
+          "sp1yrNoUpfront": 0.0038
+        },
+        "eu-west-3": {
+          "onDemand": 0.0047,
+          "ri1yrNoUpfront": 0.003,
+          "ri3yrNoUpfront": 0.002,
+          "sp1yrNoUpfront": 0.0038
+        },
+        "us-east-1": {
+          "onDemand": 0.0042,
+          "ri1yrNoUpfront": 0.0026,
+          "ri3yrNoUpfront": 0.0018,
+          "sp1yrNoUpfront": 0.003
+        },
+        "us-east-2": {
+          "onDemand": 0.0042,
+          "ri1yrNoUpfront": 0.0026,
+          "ri3yrNoUpfront": 0.0018,
+          "sp1yrNoUpfront": 0.003
+        },
+        "us-west-1": {
+          "onDemand": 0.005,
+          "ri1yrNoUpfront": 0.0031,
+          "ri3yrNoUpfront": 0.0022,
+          "sp1yrNoUpfront": 0.0042
+        },
+        "us-west-2": {
+          "onDemand": 0.0042,
+          "ri1yrNoUpfront": 0.0026,
+          "ri3yrNoUpfront": 0.0018,
+          "sp1yrNoUpfront": 0.003
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.0856,
+          "ri1yrNoUpfront": 0.0539,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.0758
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.077,
+          "ri1yrNoUpfront": 0.0483,
+          "ri3yrNoUpfront": 0.0335,
+          "sp1yrNoUpfront": 0.0599
+        },
+        "ap-south-1": {
+          "onDemand": 0.0426,
+          "ri1yrNoUpfront": 0.0268,
+          "ri3yrNoUpfront": 0.0184,
+          "sp1yrNoUpfront": 0.0329
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.0784,
+          "ri1yrNoUpfront": 0.0494,
+          "ri3yrNoUpfront": 0.0339,
+          "sp1yrNoUpfront": 0.0653
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.0888,
+          "ri1yrNoUpfront": 0.0559,
+          "ri3yrNoUpfront": 0.0384,
+          "sp1yrNoUpfront": 0.0706
+        },
+        "ca-central-1": {
+          "onDemand": 0.0744,
+          "ri1yrNoUpfront": 0.0469,
+          "ri3yrNoUpfront": 0.0321,
+          "sp1yrNoUpfront": 0.0617
+        },
+        "eu-central-1": {
+          "onDemand": 0.0776,
+          "ri1yrNoUpfront": 0.0489,
+          "ri3yrNoUpfront": 0.0335,
+          "sp1yrNoUpfront": 0.0665
+        },
+        "eu-west-1": {
+          "onDemand": 0.073,
+          "ri1yrNoUpfront": 0.0483,
+          "ri3yrNoUpfront": 0.0332,
+          "sp1yrNoUpfront": 0.0558
+        },
+        "eu-west-2": {
+          "onDemand": 0.0808,
+          "ri1yrNoUpfront": 0.0509,
+          "ri3yrNoUpfront": 0.0349,
+          "sp1yrNoUpfront": 0.0687
+        },
+        "eu-west-3": {
+          "onDemand": 0.081,
+          "ri1yrNoUpfront": 0.0504,
+          "ri3yrNoUpfront": 0.0346,
+          "sp1yrNoUpfront": 0.0689
+        },
+        "us-east-1": {
+          "onDemand": 0.068,
+          "ri1yrNoUpfront": 0.0428,
+          "ri3yrNoUpfront": 0.0294,
+          "sp1yrNoUpfront": 0.0536
+        },
+        "us-east-2": {
+          "onDemand": 0.068,
+          "ri1yrNoUpfront": 0.0428,
+          "ri3yrNoUpfront": 0.0294,
+          "sp1yrNoUpfront": 0.05
+        },
+        "us-west-1": {
+          "onDemand": 0.0848,
+          "ri1yrNoUpfront": 0.0534,
+          "ri3yrNoUpfront": 0.0366,
+          "sp1yrNoUpfront": 0.0721
+        },
+        "us-west-2": {
+          "onDemand": 0.068,
+          "ri1yrNoUpfront": 0.0428,
+          "ri3yrNoUpfront": 0.0294,
+          "sp1yrNoUpfront": 0.0531
+        }
+      }
+    },
+    "t4g.micro": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.0108,
+          "ri1yrNoUpfront": 0.0068,
+          "ri3yrNoUpfront": 0.0047,
+          "sp1yrNoUpfront": 0.0085
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.0104,
+          "ri1yrNoUpfront": 0.0063,
+          "ri3yrNoUpfront": 0.0045,
+          "sp1yrNoUpfront": 0.0072
+        },
+        "ap-south-1": {
+          "onDemand": 0.0056,
+          "ri1yrNoUpfront": 0.0035,
+          "ri3yrNoUpfront": 0.0024,
+          "sp1yrNoUpfront": 0.0041
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.0106,
+          "ri1yrNoUpfront": 0.0067,
+          "ri3yrNoUpfront": 0.0045,
+          "sp1yrNoUpfront": 0.0077
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.0106,
+          "ri1yrNoUpfront": 0.0067,
+          "ri3yrNoUpfront": 0.0046,
+          "sp1yrNoUpfront": 0.0083
+        },
+        "ca-central-1": {
+          "onDemand": 0.0092,
+          "ri1yrNoUpfront": 0.0058,
+          "ri3yrNoUpfront": 0.004,
+          "sp1yrNoUpfront": 0.0067
+        },
+        "eu-central-1": {
+          "onDemand": 0.0096,
+          "ri1yrNoUpfront": 0.006,
+          "ri3yrNoUpfront": 0.0041,
+          "sp1yrNoUpfront": 0.008
+        },
+        "eu-west-1": {
+          "onDemand": 0.0092,
+          "ri1yrNoUpfront": 0.0058,
+          "ri3yrNoUpfront": 0.004,
+          "sp1yrNoUpfront": 0.0075
+        },
+        "eu-west-2": {
+          "onDemand": 0.0094,
+          "ri1yrNoUpfront": 0.0059,
+          "ri3yrNoUpfront": 0.0041,
+          "sp1yrNoUpfront": 0.0076
+        },
+        "eu-west-3": {
+          "onDemand": 0.0094,
+          "ri1yrNoUpfront": 0.0059,
+          "ri3yrNoUpfront": 0.0041,
+          "sp1yrNoUpfront": 0.0076
+        },
+        "us-east-1": {
+          "onDemand": 0.0084,
+          "ri1yrNoUpfront": 0.0053,
+          "ri3yrNoUpfront": 0.0036,
+          "sp1yrNoUpfront": 0.0061
+        },
+        "us-east-2": {
+          "onDemand": 0.0084,
+          "ri1yrNoUpfront": 0.0053,
+          "ri3yrNoUpfront": 0.0036,
+          "sp1yrNoUpfront": 0.0061
+        },
+        "us-west-1": {
+          "onDemand": 0.01,
+          "ri1yrNoUpfront": 0.0063,
+          "ri3yrNoUpfront": 0.0043,
+          "sp1yrNoUpfront": 0.0085
+        },
+        "us-west-2": {
+          "onDemand": 0.0084,
+          "ri1yrNoUpfront": 0.0053,
+          "ri3yrNoUpfront": 0.0036,
+          "sp1yrNoUpfront": 0.0061
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.0856,
+          "ri1yrNoUpfront": 0.0539,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.0758
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.077,
+          "ri1yrNoUpfront": 0.0483,
+          "ri3yrNoUpfront": 0.0335,
+          "sp1yrNoUpfront": 0.0599
+        },
+        "ap-south-1": {
+          "onDemand": 0.0426,
+          "ri1yrNoUpfront": 0.0268,
+          "ri3yrNoUpfront": 0.0184,
+          "sp1yrNoUpfront": 0.0329
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.0784,
+          "ri1yrNoUpfront": 0.0494,
+          "ri3yrNoUpfront": 0.0339,
+          "sp1yrNoUpfront": 0.0653
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.0888,
+          "ri1yrNoUpfront": 0.0559,
+          "ri3yrNoUpfront": 0.0384,
+          "sp1yrNoUpfront": 0.0706
+        },
+        "ca-central-1": {
+          "onDemand": 0.0744,
+          "ri1yrNoUpfront": 0.0469,
+          "ri3yrNoUpfront": 0.0321,
+          "sp1yrNoUpfront": 0.0617
+        },
+        "eu-central-1": {
+          "onDemand": 0.0776,
+          "ri1yrNoUpfront": 0.0489,
+          "ri3yrNoUpfront": 0.0335,
+          "sp1yrNoUpfront": 0.0665
+        },
+        "eu-west-1": {
+          "onDemand": 0.073,
+          "ri1yrNoUpfront": 0.0483,
+          "ri3yrNoUpfront": 0.0332,
+          "sp1yrNoUpfront": 0.0558
+        },
+        "eu-west-2": {
+          "onDemand": 0.0808,
+          "ri1yrNoUpfront": 0.0509,
+          "ri3yrNoUpfront": 0.0349,
+          "sp1yrNoUpfront": 0.0687
+        },
+        "eu-west-3": {
+          "onDemand": 0.081,
+          "ri1yrNoUpfront": 0.0504,
+          "ri3yrNoUpfront": 0.0346,
+          "sp1yrNoUpfront": 0.0689
+        },
+        "us-east-1": {
+          "onDemand": 0.068,
+          "ri1yrNoUpfront": 0.0428,
+          "ri3yrNoUpfront": 0.0294,
+          "sp1yrNoUpfront": 0.0536
+        },
+        "us-east-2": {
+          "onDemand": 0.068,
+          "ri1yrNoUpfront": 0.0428,
+          "ri3yrNoUpfront": 0.0294,
+          "sp1yrNoUpfront": 0.05
+        },
+        "us-west-1": {
+          "onDemand": 0.0848,
+          "ri1yrNoUpfront": 0.0534,
+          "ri3yrNoUpfront": 0.0366,
+          "sp1yrNoUpfront": 0.0721
+        },
+        "us-west-2": {
+          "onDemand": 0.068,
+          "ri1yrNoUpfront": 0.0428,
+          "ri3yrNoUpfront": 0.0294,
+          "sp1yrNoUpfront": 0.0531
+        }
+      }
+    },
+    "t4g.small": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.0216,
+          "ri1yrNoUpfront": 0.0136,
+          "ri3yrNoUpfront": 0.0093,
+          "sp1yrNoUpfront": 0.017
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.0208,
+          "ri1yrNoUpfront": 0.0126,
+          "ri3yrNoUpfront": 0.009,
+          "sp1yrNoUpfront": 0.0145
+        },
+        "ap-south-1": {
+          "onDemand": 0.0112,
+          "ri1yrNoUpfront": 0.0071,
+          "ri3yrNoUpfront": 0.0047,
+          "sp1yrNoUpfront": 0.0081
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.0212,
+          "ri1yrNoUpfront": 0.0134,
+          "ri3yrNoUpfront": 0.009,
+          "sp1yrNoUpfront": 0.0153
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.0212,
+          "ri1yrNoUpfront": 0.0134,
+          "ri3yrNoUpfront": 0.0092,
+          "sp1yrNoUpfront": 0.0165
+        },
+        "ca-central-1": {
+          "onDemand": 0.0184,
+          "ri1yrNoUpfront": 0.0116,
+          "ri3yrNoUpfront": 0.008,
+          "sp1yrNoUpfront": 0.0133
+        },
+        "eu-central-1": {
+          "onDemand": 0.0192,
+          "ri1yrNoUpfront": 0.0121,
+          "ri3yrNoUpfront": 0.0083,
+          "sp1yrNoUpfront": 0.0159
+        },
+        "eu-west-1": {
+          "onDemand": 0.0184,
+          "ri1yrNoUpfront": 0.0116,
+          "ri3yrNoUpfront": 0.0079,
+          "sp1yrNoUpfront": 0.0151
+        },
+        "eu-west-2": {
+          "onDemand": 0.0188,
+          "ri1yrNoUpfront": 0.0119,
+          "ri3yrNoUpfront": 0.0081,
+          "sp1yrNoUpfront": 0.0153
+        },
+        "eu-west-3": {
+          "onDemand": 0.0188,
+          "ri1yrNoUpfront": 0.0119,
+          "ri3yrNoUpfront": 0.0081,
+          "sp1yrNoUpfront": 0.0153
+        },
+        "us-east-1": {
+          "onDemand": 0.0168,
+          "ri1yrNoUpfront": 0.0105,
+          "ri3yrNoUpfront": 0.0073,
+          "sp1yrNoUpfront": 0.0121
+        },
+        "us-east-2": {
+          "onDemand": 0.0168,
+          "ri1yrNoUpfront": 0.0105,
+          "ri3yrNoUpfront": 0.0073,
+          "sp1yrNoUpfront": 0.0121
+        },
+        "us-west-1": {
+          "onDemand": 0.02,
+          "ri1yrNoUpfront": 0.0126,
+          "ri3yrNoUpfront": 0.0086,
+          "sp1yrNoUpfront": 0.0169
+        },
+        "us-west-2": {
+          "onDemand": 0.0168,
+          "ri1yrNoUpfront": 0.0105,
+          "ri3yrNoUpfront": 0.0073,
+          "sp1yrNoUpfront": 0.0121
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.0856,
+          "ri1yrNoUpfront": 0.0539,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.0758
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.077,
+          "ri1yrNoUpfront": 0.0483,
+          "ri3yrNoUpfront": 0.0335,
+          "sp1yrNoUpfront": 0.0599
+        },
+        "ap-south-1": {
+          "onDemand": 0.0426,
+          "ri1yrNoUpfront": 0.0268,
+          "ri3yrNoUpfront": 0.0184,
+          "sp1yrNoUpfront": 0.0329
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.0784,
+          "ri1yrNoUpfront": 0.0494,
+          "ri3yrNoUpfront": 0.0339,
+          "sp1yrNoUpfront": 0.0653
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.0888,
+          "ri1yrNoUpfront": 0.0559,
+          "ri3yrNoUpfront": 0.0384,
+          "sp1yrNoUpfront": 0.0706
+        },
+        "ca-central-1": {
+          "onDemand": 0.0744,
+          "ri1yrNoUpfront": 0.0469,
+          "ri3yrNoUpfront": 0.0321,
+          "sp1yrNoUpfront": 0.0617
+        },
+        "eu-central-1": {
+          "onDemand": 0.0776,
+          "ri1yrNoUpfront": 0.0489,
+          "ri3yrNoUpfront": 0.0335,
+          "sp1yrNoUpfront": 0.0665
+        },
+        "eu-west-1": {
+          "onDemand": 0.073,
+          "ri1yrNoUpfront": 0.0483,
+          "ri3yrNoUpfront": 0.0332,
+          "sp1yrNoUpfront": 0.0558
+        },
+        "eu-west-2": {
+          "onDemand": 0.0808,
+          "ri1yrNoUpfront": 0.0509,
+          "ri3yrNoUpfront": 0.0349,
+          "sp1yrNoUpfront": 0.0687
+        },
+        "eu-west-3": {
+          "onDemand": 0.081,
+          "ri1yrNoUpfront": 0.0504,
+          "ri3yrNoUpfront": 0.0346,
+          "sp1yrNoUpfront": 0.0689
+        },
+        "us-east-1": {
+          "onDemand": 0.068,
+          "ri1yrNoUpfront": 0.0428,
+          "ri3yrNoUpfront": 0.0294,
+          "sp1yrNoUpfront": 0.0536
+        },
+        "us-east-2": {
+          "onDemand": 0.068,
+          "ri1yrNoUpfront": 0.0428,
+          "ri3yrNoUpfront": 0.0294,
+          "sp1yrNoUpfront": 0.05
+        },
+        "us-west-1": {
+          "onDemand": 0.0848,
+          "ri1yrNoUpfront": 0.0534,
+          "ri3yrNoUpfront": 0.0366,
+          "sp1yrNoUpfront": 0.0721
+        },
+        "us-west-2": {
+          "onDemand": 0.068,
+          "ri1yrNoUpfront": 0.0428,
+          "ri3yrNoUpfront": 0.0294,
+          "sp1yrNoUpfront": 0.0531
+        }
+      }
+    },
+    "t4g.medium": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.0432,
+          "ri1yrNoUpfront": 0.0272,
+          "ri3yrNoUpfront": 0.0187,
+          "sp1yrNoUpfront": 0.034
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.0416,
+          "ri1yrNoUpfront": 0.0252,
+          "ri3yrNoUpfront": 0.018,
+          "sp1yrNoUpfront": 0.0289
+        },
+        "ap-south-1": {
+          "onDemand": 0.0224,
+          "ri1yrNoUpfront": 0.0142,
+          "ri3yrNoUpfront": 0.0095,
+          "sp1yrNoUpfront": 0.0162
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.0424,
+          "ri1yrNoUpfront": 0.0267,
+          "ri3yrNoUpfront": 0.018,
+          "sp1yrNoUpfront": 0.0307
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.0424,
+          "ri1yrNoUpfront": 0.0267,
+          "ri3yrNoUpfront": 0.0184,
+          "sp1yrNoUpfront": 0.0331
+        },
+        "ca-central-1": {
+          "onDemand": 0.0368,
+          "ri1yrNoUpfront": 0.0232,
+          "ri3yrNoUpfront": 0.0159,
+          "sp1yrNoUpfront": 0.0266
+        },
+        "eu-central-1": {
+          "onDemand": 0.0384,
+          "ri1yrNoUpfront": 0.0242,
+          "ri3yrNoUpfront": 0.0166,
+          "sp1yrNoUpfront": 0.0319
+        },
+        "eu-west-1": {
+          "onDemand": 0.0368,
+          "ri1yrNoUpfront": 0.0232,
+          "ri3yrNoUpfront": 0.0159,
+          "sp1yrNoUpfront": 0.0302
+        },
+        "eu-west-2": {
+          "onDemand": 0.0376,
+          "ri1yrNoUpfront": 0.0237,
+          "ri3yrNoUpfront": 0.0162,
+          "sp1yrNoUpfront": 0.0306
+        },
+        "eu-west-3": {
+          "onDemand": 0.0376,
+          "ri1yrNoUpfront": 0.0237,
+          "ri3yrNoUpfront": 0.0162,
+          "sp1yrNoUpfront": 0.0306
+        },
+        "us-east-1": {
+          "onDemand": 0.0336,
+          "ri1yrNoUpfront": 0.0211,
+          "ri3yrNoUpfront": 0.0145,
+          "sp1yrNoUpfront": 0.0242
+        },
+        "us-east-2": {
+          "onDemand": 0.0336,
+          "ri1yrNoUpfront": 0.0211,
+          "ri3yrNoUpfront": 0.0145,
+          "sp1yrNoUpfront": 0.0242
+        },
+        "us-west-1": {
+          "onDemand": 0.04,
+          "ri1yrNoUpfront": 0.0252,
+          "ri3yrNoUpfront": 0.0173,
+          "sp1yrNoUpfront": 0.0339
+        },
+        "us-west-2": {
+          "onDemand": 0.0336,
+          "ri1yrNoUpfront": 0.0211,
+          "ri3yrNoUpfront": 0.0145,
+          "sp1yrNoUpfront": 0.0242
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.0856,
+          "ri1yrNoUpfront": 0.0539,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.0758
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.077,
+          "ri1yrNoUpfront": 0.0483,
+          "ri3yrNoUpfront": 0.0335,
+          "sp1yrNoUpfront": 0.0599
+        },
+        "ap-south-1": {
+          "onDemand": 0.0426,
+          "ri1yrNoUpfront": 0.0268,
+          "ri3yrNoUpfront": 0.0184,
+          "sp1yrNoUpfront": 0.0329
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.0784,
+          "ri1yrNoUpfront": 0.0494,
+          "ri3yrNoUpfront": 0.0339,
+          "sp1yrNoUpfront": 0.0653
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.0888,
+          "ri1yrNoUpfront": 0.0559,
+          "ri3yrNoUpfront": 0.0384,
+          "sp1yrNoUpfront": 0.0706
+        },
+        "ca-central-1": {
+          "onDemand": 0.0744,
+          "ri1yrNoUpfront": 0.0469,
+          "ri3yrNoUpfront": 0.0321,
+          "sp1yrNoUpfront": 0.0617
+        },
+        "eu-central-1": {
+          "onDemand": 0.0776,
+          "ri1yrNoUpfront": 0.0489,
+          "ri3yrNoUpfront": 0.0335,
+          "sp1yrNoUpfront": 0.0665
+        },
+        "eu-west-1": {
+          "onDemand": 0.073,
+          "ri1yrNoUpfront": 0.0483,
+          "ri3yrNoUpfront": 0.0332,
+          "sp1yrNoUpfront": 0.0558
+        },
+        "eu-west-2": {
+          "onDemand": 0.0808,
+          "ri1yrNoUpfront": 0.0509,
+          "ri3yrNoUpfront": 0.0349,
+          "sp1yrNoUpfront": 0.0687
+        },
+        "eu-west-3": {
+          "onDemand": 0.081,
+          "ri1yrNoUpfront": 0.0504,
+          "ri3yrNoUpfront": 0.0346,
+          "sp1yrNoUpfront": 0.0689
+        },
+        "us-east-1": {
+          "onDemand": 0.068,
+          "ri1yrNoUpfront": 0.0428,
+          "ri3yrNoUpfront": 0.0294,
+          "sp1yrNoUpfront": 0.0536
+        },
+        "us-east-2": {
+          "onDemand": 0.068,
+          "ri1yrNoUpfront": 0.0428,
+          "ri3yrNoUpfront": 0.0294,
+          "sp1yrNoUpfront": 0.05
+        },
+        "us-west-1": {
+          "onDemand": 0.0848,
+          "ri1yrNoUpfront": 0.0534,
+          "ri3yrNoUpfront": 0.0366,
+          "sp1yrNoUpfront": 0.0721
+        },
+        "us-west-2": {
+          "onDemand": 0.068,
+          "ri1yrNoUpfront": 0.0428,
+          "ri3yrNoUpfront": 0.0294,
+          "sp1yrNoUpfront": 0.0531
+        }
+      }
+    },
+    "t4g.large": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.0864,
+          "ri1yrNoUpfront": 0.0544,
+          "ri3yrNoUpfront": 0.0374,
+          "sp1yrNoUpfront": 0.0679
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.0832,
+          "ri1yrNoUpfront": 0.0503,
+          "ri3yrNoUpfront": 0.0359,
+          "sp1yrNoUpfront": 0.0579
+        },
+        "ap-south-1": {
+          "onDemand": 0.0448,
+          "ri1yrNoUpfront": 0.0283,
+          "ri3yrNoUpfront": 0.0189,
+          "sp1yrNoUpfront": 0.0324
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.0848,
+          "ri1yrNoUpfront": 0.0534,
+          "ri3yrNoUpfront": 0.036,
+          "sp1yrNoUpfront": 0.0613
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.0848,
+          "ri1yrNoUpfront": 0.0534,
+          "ri3yrNoUpfront": 0.0367,
+          "sp1yrNoUpfront": 0.0662
+        },
+        "ca-central-1": {
+          "onDemand": 0.0736,
+          "ri1yrNoUpfront": 0.0463,
+          "ri3yrNoUpfront": 0.0318,
+          "sp1yrNoUpfront": 0.0533
+        },
+        "eu-central-1": {
+          "onDemand": 0.0768,
+          "ri1yrNoUpfront": 0.0484,
+          "ri3yrNoUpfront": 0.0332,
+          "sp1yrNoUpfront": 0.0638
+        },
+        "eu-west-1": {
+          "onDemand": 0.0736,
+          "ri1yrNoUpfront": 0.0464,
+          "ri3yrNoUpfront": 0.0318,
+          "sp1yrNoUpfront": 0.0603
+        },
+        "eu-west-2": {
+          "onDemand": 0.0752,
+          "ri1yrNoUpfront": 0.0474,
+          "ri3yrNoUpfront": 0.0324,
+          "sp1yrNoUpfront": 0.0612
+        },
+        "eu-west-3": {
+          "onDemand": 0.0752,
+          "ri1yrNoUpfront": 0.0474,
+          "ri3yrNoUpfront": 0.0324,
+          "sp1yrNoUpfront": 0.0612
+        },
+        "us-east-1": {
+          "onDemand": 0.0672,
+          "ri1yrNoUpfront": 0.0421,
+          "ri3yrNoUpfront": 0.029,
+          "sp1yrNoUpfront": 0.0485
+        },
+        "us-east-2": {
+          "onDemand": 0.0672,
+          "ri1yrNoUpfront": 0.0421,
+          "ri3yrNoUpfront": 0.029,
+          "sp1yrNoUpfront": 0.0485
+        },
+        "us-west-1": {
+          "onDemand": 0.08,
+          "ri1yrNoUpfront": 0.0504,
+          "ri3yrNoUpfront": 0.0345,
+          "sp1yrNoUpfront": 0.0677
+        },
+        "us-west-2": {
+          "onDemand": 0.0672,
+          "ri1yrNoUpfront": 0.0421,
+          "ri3yrNoUpfront": 0.029,
+          "sp1yrNoUpfront": 0.0485
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.099,
+          "ri1yrNoUpfront": 0.063,
+          "ri3yrNoUpfront": 0.0432,
+          "sp1yrNoUpfront": 0.0811
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.094,
+          "ri1yrNoUpfront": 0.0599,
+          "ri3yrNoUpfront": 0.041,
+          "sp1yrNoUpfront": 0.0672
+        },
+        "ap-south-1": {
+          "onDemand": 0.0506,
+          "ri1yrNoUpfront": 0.0319,
+          "ri3yrNoUpfront": 0.0219,
+          "sp1yrNoUpfront": 0.0376
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.096,
+          "ri1yrNoUpfront": 0.0605,
+          "ri3yrNoUpfront": 0.0415,
+          "sp1yrNoUpfront": 0.0777
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.096,
+          "ri1yrNoUpfront": 0.0605,
+          "ri3yrNoUpfront": 0.0415,
+          "sp1yrNoUpfront": 0.0827
+        },
+        "ca-central-1": {
+          "onDemand": 0.0856,
+          "ri1yrNoUpfront": 0.0539,
+          "ri3yrNoUpfront": 0.037,
+          "sp1yrNoUpfront": 0.0622
+        },
+        "eu-central-1": {
+          "onDemand": 0.092,
+          "ri1yrNoUpfront": 0.0577,
+          "ri3yrNoUpfront": 0.04,
+          "sp1yrNoUpfront": 0.0756
+        },
+        "eu-west-1": {
+          "onDemand": 0.086,
+          "ri1yrNoUpfront": 0.0535,
+          "ri3yrNoUpfront": 0.0367,
+          "sp1yrNoUpfront": 0.0701
+        },
+        "eu-west-2": {
+          "onDemand": 0.0888,
+          "ri1yrNoUpfront": 0.0559,
+          "ri3yrNoUpfront": 0.0384,
+          "sp1yrNoUpfront": 0.0772
+        },
+        "eu-west-3": {
+          "onDemand": 0.09,
+          "ri1yrNoUpfront": 0.0567,
+          "ri3yrNoUpfront": 0.0389,
+          "sp1yrNoUpfront": 0.0779
+        },
+        "us-east-1": {
+          "onDemand": 0.077,
+          "ri1yrNoUpfront": 0.0483,
+          "ri3yrNoUpfront": 0.0335,
+          "sp1yrNoUpfront": 0.0613
+        },
+        "us-east-2": {
+          "onDemand": 0.077,
+          "ri1yrNoUpfront": 0.0483,
+          "ri3yrNoUpfront": 0.0335,
+          "sp1yrNoUpfront": 0.0613
+        },
+        "us-west-1": {
+          "onDemand": 0.0896,
+          "ri1yrNoUpfront": 0.0564,
+          "ri3yrNoUpfront": 0.0387,
+          "sp1yrNoUpfront": 0.0682
+        },
+        "us-west-2": {
+          "onDemand": 0.077,
+          "ri1yrNoUpfront": 0.0483,
+          "ri3yrNoUpfront": 0.0335,
+          "sp1yrNoUpfront": 0.0613
+        }
+      }
+    },
+    "t4g.xlarge": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.1728,
+          "ri1yrNoUpfront": 0.1088,
+          "ri3yrNoUpfront": 0.0747,
+          "sp1yrNoUpfront": 0.1358
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.1664,
+          "ri1yrNoUpfront": 0.1007,
+          "ri3yrNoUpfront": 0.0718,
+          "sp1yrNoUpfront": 0.1157
+        },
+        "ap-south-1": {
+          "onDemand": 0.0896,
+          "ri1yrNoUpfront": 0.0567,
+          "ri3yrNoUpfront": 0.0379,
+          "sp1yrNoUpfront": 0.0648
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.1696,
+          "ri1yrNoUpfront": 0.1068,
+          "ri3yrNoUpfront": 0.072,
+          "sp1yrNoUpfront": 0.1226
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.1696,
+          "ri1yrNoUpfront": 0.1068,
+          "ri3yrNoUpfront": 0.0735,
+          "sp1yrNoUpfront": 0.1323
+        },
+        "ca-central-1": {
+          "onDemand": 0.1472,
+          "ri1yrNoUpfront": 0.0927,
+          "ri3yrNoUpfront": 0.0637,
+          "sp1yrNoUpfront": 0.1065
+        },
+        "eu-central-1": {
+          "onDemand": 0.1536,
+          "ri1yrNoUpfront": 0.0967,
+          "ri3yrNoUpfront": 0.0663,
+          "sp1yrNoUpfront": 0.1275
+        },
+        "eu-west-1": {
+          "onDemand": 0.1472,
+          "ri1yrNoUpfront": 0.0929,
+          "ri3yrNoUpfront": 0.0636,
+          "sp1yrNoUpfront": 0.1207
+        },
+        "eu-west-2": {
+          "onDemand": 0.1504,
+          "ri1yrNoUpfront": 0.0949,
+          "ri3yrNoUpfront": 0.0648,
+          "sp1yrNoUpfront": 0.1223
+        },
+        "eu-west-3": {
+          "onDemand": 0.1504,
+          "ri1yrNoUpfront": 0.0949,
+          "ri3yrNoUpfront": 0.0648,
+          "sp1yrNoUpfront": 0.1223
+        },
+        "us-east-1": {
+          "onDemand": 0.1344,
+          "ri1yrNoUpfront": 0.0843,
+          "ri3yrNoUpfront": 0.058,
+          "sp1yrNoUpfront": 0.0969
+        },
+        "us-east-2": {
+          "onDemand": 0.1344,
+          "ri1yrNoUpfront": 0.0843,
+          "ri3yrNoUpfront": 0.058,
+          "sp1yrNoUpfront": 0.0969
+        },
+        "us-west-1": {
+          "onDemand": 0.16,
+          "ri1yrNoUpfront": 0.1007,
+          "ri3yrNoUpfront": 0.0691,
+          "sp1yrNoUpfront": 0.1354
+        },
+        "us-west-2": {
+          "onDemand": 0.1344,
+          "ri1yrNoUpfront": 0.0843,
+          "ri3yrNoUpfront": 0.058,
+          "sp1yrNoUpfront": 0.0969
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.198,
+          "ri1yrNoUpfront": 0.126,
+          "ri3yrNoUpfront": 0.0864,
+          "sp1yrNoUpfront": 0.1503
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.188,
+          "ri1yrNoUpfront": 0.1197,
+          "ri3yrNoUpfront": 0.0821,
+          "sp1yrNoUpfront": 0.1458
+        },
+        "ap-south-1": {
+          "onDemand": 0.1012,
+          "ri1yrNoUpfront": 0.0638,
+          "ri3yrNoUpfront": 0.0437,
+          "sp1yrNoUpfront": 0.0752
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.192,
+          "ri1yrNoUpfront": 0.121,
+          "ri3yrNoUpfront": 0.0829,
+          "sp1yrNoUpfront": 0.1553
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.192,
+          "ri1yrNoUpfront": 0.121,
+          "ri3yrNoUpfront": 0.0829,
+          "sp1yrNoUpfront": 0.1653
+        },
+        "ca-central-1": {
+          "onDemand": 0.1712,
+          "ri1yrNoUpfront": 0.1079,
+          "ri3yrNoUpfront": 0.074,
+          "sp1yrNoUpfront": 0.1245
+        },
+        "eu-central-1": {
+          "onDemand": 0.184,
+          "ri1yrNoUpfront": 0.1155,
+          "ri3yrNoUpfront": 0.0799,
+          "sp1yrNoUpfront": 0.1403
+        },
+        "eu-west-1": {
+          "onDemand": 0.172,
+          "ri1yrNoUpfront": 0.1071,
+          "ri3yrNoUpfront": 0.0734,
+          "sp1yrNoUpfront": 0.1299
+        },
+        "eu-west-2": {
+          "onDemand": 0.1776,
+          "ri1yrNoUpfront": 0.1119,
+          "ri3yrNoUpfront": 0.0767,
+          "sp1yrNoUpfront": 0.1438
+        },
+        "eu-west-3": {
+          "onDemand": 0.18,
+          "ri1yrNoUpfront": 0.1134,
+          "ri3yrNoUpfront": 0.0778,
+          "sp1yrNoUpfront": 0.1449
+        },
+        "us-east-1": {
+          "onDemand": 0.154,
+          "ri1yrNoUpfront": 0.0966,
+          "ri3yrNoUpfront": 0.0669,
+          "sp1yrNoUpfront": 0.1134
+        },
+        "us-east-2": {
+          "onDemand": 0.154,
+          "ri1yrNoUpfront": 0.0966,
+          "ri3yrNoUpfront": 0.0669,
+          "sp1yrNoUpfront": 0.1226
+        },
+        "us-west-1": {
+          "onDemand": 0.1792,
+          "ri1yrNoUpfront": 0.1129,
+          "ri3yrNoUpfront": 0.0774,
+          "sp1yrNoUpfront": 0.1363
+        },
+        "us-west-2": {
+          "onDemand": 0.154,
+          "ri1yrNoUpfront": 0.0966,
+          "ri3yrNoUpfront": 0.0669,
+          "sp1yrNoUpfront": 0.1226
+        }
+      }
+    },
+    "t4g.2xlarge": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.3456,
+          "ri1yrNoUpfront": 0.2176,
+          "ri3yrNoUpfront": 0.1494,
+          "sp1yrNoUpfront": 0.2716
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.3328,
+          "ri1yrNoUpfront": 0.2013,
+          "ri3yrNoUpfront": 0.1437,
+          "sp1yrNoUpfront": 0.2314
+        },
+        "ap-south-1": {
+          "onDemand": 0.1792,
+          "ri1yrNoUpfront": 0.1133,
+          "ri3yrNoUpfront": 0.0758,
+          "sp1yrNoUpfront": 0.1296
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.3392,
+          "ri1yrNoUpfront": 0.2136,
+          "ri3yrNoUpfront": 0.144,
+          "sp1yrNoUpfront": 0.2452
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.3392,
+          "ri1yrNoUpfront": 0.2136,
+          "ri3yrNoUpfront": 0.1469,
+          "sp1yrNoUpfront": 0.2647
+        },
+        "ca-central-1": {
+          "onDemand": 0.2944,
+          "ri1yrNoUpfront": 0.1854,
+          "ri3yrNoUpfront": 0.1273,
+          "sp1yrNoUpfront": 0.2131
+        },
+        "eu-central-1": {
+          "onDemand": 0.3072,
+          "ri1yrNoUpfront": 0.1934,
+          "ri3yrNoUpfront": 0.1326,
+          "sp1yrNoUpfront": 0.255
+        },
+        "eu-west-1": {
+          "onDemand": 0.2944,
+          "ri1yrNoUpfront": 0.1857,
+          "ri3yrNoUpfront": 0.1271,
+          "sp1yrNoUpfront": 0.2414
+        },
+        "eu-west-2": {
+          "onDemand": 0.3008,
+          "ri1yrNoUpfront": 0.1898,
+          "ri3yrNoUpfront": 0.1297,
+          "sp1yrNoUpfront": 0.2447
+        },
+        "eu-west-3": {
+          "onDemand": 0.3008,
+          "ri1yrNoUpfront": 0.1898,
+          "ri3yrNoUpfront": 0.1297,
+          "sp1yrNoUpfront": 0.2447
+        },
+        "us-east-1": {
+          "onDemand": 0.2688,
+          "ri1yrNoUpfront": 0.1686,
+          "ri3yrNoUpfront": 0.1161,
+          "sp1yrNoUpfront": 0.1938
+        },
+        "us-east-2": {
+          "onDemand": 0.2688,
+          "ri1yrNoUpfront": 0.1686,
+          "ri3yrNoUpfront": 0.1161,
+          "sp1yrNoUpfront": 0.1938
+        },
+        "us-west-1": {
+          "onDemand": 0.32,
+          "ri1yrNoUpfront": 0.2015,
+          "ri3yrNoUpfront": 0.1382,
+          "sp1yrNoUpfront": 0.2708
+        },
+        "us-west-2": {
+          "onDemand": 0.2688,
+          "ri1yrNoUpfront": 0.1686,
+          "ri3yrNoUpfront": 0.1161,
+          "sp1yrNoUpfront": 0.1938
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.396,
+          "ri1yrNoUpfront": 0.252,
+          "ri3yrNoUpfront": 0.1728,
+          "sp1yrNoUpfront": 0.3246
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.376,
+          "ri1yrNoUpfront": 0.2394,
+          "ri3yrNoUpfront": 0.1642,
+          "sp1yrNoUpfront": 0.2916
+        },
+        "ap-south-1": {
+          "onDemand": 0.2024,
+          "ri1yrNoUpfront": 0.1275,
+          "ri3yrNoUpfront": 0.0874,
+          "sp1yrNoUpfront": 0.1626
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.384,
+          "ri1yrNoUpfront": 0.2419,
+          "ri3yrNoUpfront": 0.1659,
+          "sp1yrNoUpfront": 0.3106
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.384,
+          "ri1yrNoUpfront": 0.2419,
+          "ri3yrNoUpfront": 0.1659,
+          "sp1yrNoUpfront": 0.3306
+        },
+        "ca-central-1": {
+          "onDemand": 0.3424,
+          "ri1yrNoUpfront": 0.2157,
+          "ri3yrNoUpfront": 0.1479,
+          "sp1yrNoUpfront": 0.2695
+        },
+        "eu-central-1": {
+          "onDemand": 0.368,
+          "ri1yrNoUpfront": 0.231,
+          "ri3yrNoUpfront": 0.1598,
+          "sp1yrNoUpfront": 0.2806
+        },
+        "eu-west-1": {
+          "onDemand": 0.344,
+          "ri1yrNoUpfront": 0.2142,
+          "ri3yrNoUpfront": 0.1469,
+          "sp1yrNoUpfront": 0.2803
+        },
+        "eu-west-2": {
+          "onDemand": 0.3552,
+          "ri1yrNoUpfront": 0.2238,
+          "ri3yrNoUpfront": 0.1534,
+          "sp1yrNoUpfront": 0.3089
+        },
+        "eu-west-3": {
+          "onDemand": 0.36,
+          "ri1yrNoUpfront": 0.2268,
+          "ri3yrNoUpfront": 0.1555,
+          "sp1yrNoUpfront": 0.3114
+        },
+        "us-east-1": {
+          "onDemand": 0.308,
+          "ri1yrNoUpfront": 0.1932,
+          "ri3yrNoUpfront": 0.1339,
+          "sp1yrNoUpfront": 0.2452
+        },
+        "us-east-2": {
+          "onDemand": 0.308,
+          "ri1yrNoUpfront": 0.1932,
+          "ri3yrNoUpfront": 0.1339,
+          "sp1yrNoUpfront": 0.2268
+        },
+        "us-west-1": {
+          "onDemand": 0.3584,
+          "ri1yrNoUpfront": 0.2258,
+          "ri3yrNoUpfront": 0.1548,
+          "sp1yrNoUpfront": 0.2942
+        },
+        "us-west-2": {
+          "onDemand": 0.308,
+          "ri1yrNoUpfront": 0.1932,
+          "ri3yrNoUpfront": 0.1339,
+          "sp1yrNoUpfront": 0.2268
+        }
+      }
+    },
+    "t8i.nano": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.00816,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.0078,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ap-south-1": {
+          "onDemand": 0.00672,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.00792,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.00792,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ca-central-1": {
+          "onDemand": 0.00696,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "eu-central-1": {
+          "onDemand": 0.0072,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "eu-west-1": {
+          "onDemand": 0.00684,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "eu-west-2": {
+          "onDemand": 0.00708,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "eu-west-3": {
+          "onDemand": 0.00708,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "us-east-1": {
+          "onDemand": 0.00624,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "us-east-2": {
+          "onDemand": 0.00624,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "us-west-1": {
+          "onDemand": 0.00744,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "us-west-2": {
+          "onDemand": 0.00624,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.11207,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08508
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.10055,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.07654
+        },
+        "ap-south-1": {
+          "onDemand": 0.08902,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.06785
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.10265,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.07791
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.11626,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08523
+        },
+        "ca-central-1": {
+          "onDemand": 0.0974,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.0739
+        },
+        "eu-central-1": {
+          "onDemand": 0.10159,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.07732
+        },
+        "eu-west-1": {
+          "onDemand": 0.09552,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.07299
+        },
+        "eu-west-2": {
+          "onDemand": 0.10578,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08006
+        },
+        "eu-west-3": {
+          "onDemand": 0.10578,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08061
+        },
+        "us-east-1": {
+          "onDemand": 0.08902,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.06433
+        },
+        "us-east-2": {
+          "onDemand": 0.08902,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.06433
+        },
+        "us-west-1": {
+          "onDemand": 0.11102,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08471
+        },
+        "us-west-2": {
+          "onDemand": 0.08902,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.06433
+        }
+      }
+    },
+    "t8i.micro": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.01632,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.0156,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ap-south-1": {
+          "onDemand": 0.01344,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.01584,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.01584,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ca-central-1": {
+          "onDemand": 0.01392,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "eu-central-1": {
+          "onDemand": 0.0144,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "eu-west-1": {
+          "onDemand": 0.01368,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "eu-west-2": {
+          "onDemand": 0.01416,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "eu-west-3": {
+          "onDemand": 0.01416,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "us-east-1": {
+          "onDemand": 0.01248,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "us-east-2": {
+          "onDemand": 0.01248,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "us-west-1": {
+          "onDemand": 0.01488,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "us-west-2": {
+          "onDemand": 0.01248,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.11207,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08508
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.10055,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.07654
+        },
+        "ap-south-1": {
+          "onDemand": 0.08902,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.06785
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.10265,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.07791
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.11626,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08523
+        },
+        "ca-central-1": {
+          "onDemand": 0.0974,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.0739
+        },
+        "eu-central-1": {
+          "onDemand": 0.10159,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.07732
+        },
+        "eu-west-1": {
+          "onDemand": 0.09552,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.07299
+        },
+        "eu-west-2": {
+          "onDemand": 0.10578,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08006
+        },
+        "eu-west-3": {
+          "onDemand": 0.10578,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08061
+        },
+        "us-east-1": {
+          "onDemand": 0.08902,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.06433
+        },
+        "us-east-2": {
+          "onDemand": 0.08902,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.06433
+        },
+        "us-west-1": {
+          "onDemand": 0.11102,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08471
+        },
+        "us-west-2": {
+          "onDemand": 0.08902,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.06433
+        }
+      }
+    },
+    "t8i.small": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.03264,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.0312,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ap-south-1": {
+          "onDemand": 0.02688,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.03168,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.03168,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ca-central-1": {
+          "onDemand": 0.02784,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "eu-central-1": {
+          "onDemand": 0.0288,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "eu-west-1": {
+          "onDemand": 0.02736,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "eu-west-2": {
+          "onDemand": 0.02832,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "eu-west-3": {
+          "onDemand": 0.02832,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "us-east-1": {
+          "onDemand": 0.02496,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "us-east-2": {
+          "onDemand": 0.02496,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "us-west-1": {
+          "onDemand": 0.02976,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "us-west-2": {
+          "onDemand": 0.02496,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.11207,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08508
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.10055,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.07654
+        },
+        "ap-south-1": {
+          "onDemand": 0.08902,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.06785
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.10265,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.07791
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.11626,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08523
+        },
+        "ca-central-1": {
+          "onDemand": 0.0974,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.0739
+        },
+        "eu-central-1": {
+          "onDemand": 0.10159,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.07732
+        },
+        "eu-west-1": {
+          "onDemand": 0.09552,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.07299
+        },
+        "eu-west-2": {
+          "onDemand": 0.10578,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08006
+        },
+        "eu-west-3": {
+          "onDemand": 0.10578,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08061
+        },
+        "us-east-1": {
+          "onDemand": 0.08902,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.06433
+        },
+        "us-east-2": {
+          "onDemand": 0.08902,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.06433
+        },
+        "us-west-1": {
+          "onDemand": 0.11102,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08471
+        },
+        "us-west-2": {
+          "onDemand": 0.08902,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.06433
+        }
+      }
+    },
+    "t8i.medium": {
+      "burstable": {
+        "ap-northeast-1": {
+          "onDemand": 0.06528,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.0624,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ap-south-1": {
+          "onDemand": 0.05376,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.06336,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.06336,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "ca-central-1": {
+          "onDemand": 0.05568,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "eu-central-1": {
+          "onDemand": 0.0576,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "eu-west-1": {
+          "onDemand": 0.05472,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "eu-west-2": {
+          "onDemand": 0.05664,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "eu-west-3": {
+          "onDemand": 0.05664,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "us-east-1": {
+          "onDemand": 0.04992,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "us-east-2": {
+          "onDemand": 0.04992,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "us-west-1": {
+          "onDemand": 0.05952,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        },
+        "us-west-2": {
+          "onDemand": 0.04992,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": null
+        }
+      },
+      "candidate": {
+        "ap-northeast-1": {
+          "onDemand": 0.11207,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08508
+        },
+        "ap-northeast-2": {
+          "onDemand": 0.10055,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.07654
+        },
+        "ap-south-1": {
+          "onDemand": 0.08902,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.06785
+        },
+        "ap-southeast-1": {
+          "onDemand": 0.10265,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.07791
+        },
+        "ap-southeast-2": {
+          "onDemand": 0.11626,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08523
+        },
+        "ca-central-1": {
+          "onDemand": 0.0974,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.0739
+        },
+        "eu-central-1": {
+          "onDemand": 0.10159,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.07732
+        },
+        "eu-west-1": {
+          "onDemand": 0.09552,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.07299
+        },
+        "eu-west-2": {
+          "onDemand": 0.10578,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08006
+        },
+        "eu-west-3": {
+          "onDemand": 0.10578,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08061
+        },
+        "us-east-1": {
+          "onDemand": 0.08902,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.06433
+        },
+        "us-east-2": {
+          "onDemand": 0.08902,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.06433
+        },
+        "us-west-1": {
+          "onDemand": 0.11102,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.08471
+        },
+        "us-west-2": {
+          "onDemand": 0.08902,
+          "ri1yrNoUpfront": null,
+          "ri3yrNoUpfront": null,
+          "sp1yrNoUpfront": 0.06433
+        }
+      }
+    }
+  }
+}
