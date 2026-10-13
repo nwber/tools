@@ -19,10 +19,12 @@ was superseded by the 2026-10-14 revision note).
 ```
 alchemy.run.ts          Stack: providers + state + Worker (the composition root)
 src/worker.ts           Worker runtime: routing + responses (Effect 4)
+src/handler.ts          request handler (in-process testable)
 src/tools/ip.ts         /ip helpers (pure, vitest-tested)
-src/tools/ebs-pricing.ts EBS pricing calc (pure, vitest-tested)
-public/                 static assets (index.html), served without a Worker invocation
-tests/                  vitest unit tests for the pure modules
+public/index.html       tools index (static)
+public/ebs/             the EBS pricing calculator page (ported, see Phase notes)
+public/data/            shared datasets (ebs-pricing.json), served as static assets
+tests/                  vitest tests (pure modules, handler, client calc math)
 scripts/smoke.sh        post-deploy endpoint checks (deploy URL or local dev URL)
 ```
 
@@ -30,19 +32,17 @@ scripts/smoke.sh        post-deploy endpoint checks (deploy URL or local dev URL
 
 | Route | What it does |
 | --- | --- |
+| `GET /ebs/` | the AWS EBS Pricing calculator (static page, client-side math) |
+| `GET /data/ebs-pricing.json` | the pricing dataset the calculator loads (static asset) |
 | `GET /ip` | client IP as plain text (Cloudflare's `CF-Connecting-IP`, trailing newline) |
 | `GET /ip.json` | same + `ip_version` and Cloudflare geo (`country`, `city`, `region`, `colo`, `asn`, `as_organization`, `timezone`) |
 | `GET /api/health` | `{"status": "ok", ...}` with version, phase, edge colo, UTC time |
-| `GET \| POST /api/ebs/calc` | EBS pricing matrix across all volume types × regions |
+| `GET /api/ebs/pricing` | the same pricing dataset for API use (bundled from `public/data/ebs-pricing.json`) |
 
-`/api/ebs/calc` parameters: `size_gb` (1–16384, default 100), `iops`,
-`throughput_mbps`, `regions` (comma-separated subset, or a list in a JSON
-body). The response is the full matrix plus `compute_ms` (server-side compute
-time).
-
-> The pricing data is a **representative snapshot** (realistic shapes, not
-> verified AWS quotes) — the real dataset refreshed from the AWS Price List
-> API lands with the Phase 1 EBS port.
+> The pricing data is a hardcoded snapshot ported from the original EBS tool
+> (recovered from its `ebs-pricing-comparator.nwber.workers.dev` deployment).
+> A refresh script against the AWS Price List API is optional and, when it
+> lands, will diff visibly in git.
 
 ## Local development
 
@@ -120,6 +120,19 @@ gh secret set CLOUDFLARE_ACCOUNT_ID  --repo nwber/tools
 Phase 0 originally spiked Cloudflare **Python** Workers against the free
 plan's 10 ms CPU budget. The runtime was then moved to TypeScript/Effect —
 one language for runtime, tests, and IaC — which removes the Pyodide CPU
-question entirely. The EBS pricing endpoint and the health/IP endpoints carry
-over unchanged in shape; the Phase 3 speed-test fallback story (serve speed
-endpoints without a heavy runtime) is unaffected.
+question entirely.
+
+Phase 1 ported the EBS pricing calculator. The original source only existed
+as its live deployment (`ebs-pricing-comparator.nwber.workers.dev`), so it
+was recovered from there and ported faithfully:
+
+- the pricing tables became `public/data/ebs-pricing.json` (the dataset the
+  page loads, also served at `GET /api/ebs/pricing`);
+- the page became `public/ebs/` with the math split into `ebs-calc.js`
+  (vitest-tested against the real dataset) and the DOM wiring in `ebs-page.js`;
+- behavior parity with the original was verified in a real browser
+  (identical rendered tables and byte-identical screenshots across default,
+  modified-input, and limit-warning scenarios).
+
+The Phase 3 speed-test fallback story (serve speed endpoints without a heavy
+runtime) is unaffected.

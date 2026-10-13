@@ -1,0 +1,704 @@
+{
+  "regions": {
+    "us-east-1": "US East (N. Virginia)",
+    "us-east-2": "US East (Ohio)",
+    "us-west-1": "US West (N. California)",
+    "us-west-2": "US West (Oregon)",
+    "ca-central-1": "Canada (Central)",
+    "eu-west-1": "EU (Ireland)",
+    "eu-west-2": "EU (London)",
+    "eu-west-3": "EU (Paris)",
+    "eu-central-1": "EU (Frankfurt)",
+    "eu-central-2": "EU (Zurich)",
+    "eu-north-1": "EU (Stockholm)",
+    "eu-south-1": "EU (Milan)",
+    "ap-south-1": "Asia Pacific (Mumbai)",
+    "ap-southeast-1": "Asia Pacific (Singapore)",
+    "ap-southeast-2": "Asia Pacific (Sydney)",
+    "ap-southeast-3": "Asia Pacific (Jakarta)",
+    "ap-northeast-1": "Asia Pacific (Tokyo)",
+    "ap-northeast-2": "Asia Pacific (Seoul)",
+    "ap-northeast-3": "Asia Pacific (Osaka)",
+    "ap-east-1": "Asia Pacific (Hong Kong)",
+    "me-south-1": "Middle East (Bahrain)",
+    "af-south-1": "Africa (Cape Town)",
+    "sa-east-1": "South America (São Paulo)"
+  },
+  "volumeTypes": {
+    "gp2": {
+      "name": "General Purpose SSD (gp2)",
+      "durability": "99.8%",
+      "maxVolumeSize": 16384,
+      "baselineIOPS": 3000,
+      "maxIOPS": 16000,
+      "baselineThroughput": 125,
+      "maxThroughput": 250,
+      "pricing": {
+        "us-east-1": {
+          "perGB": 0.1,
+          "provisionedIOPS": 0.005
+        },
+        "us-east-2": {
+          "perGB": 0.1,
+          "provisionedIOPS": 0.005
+        },
+        "us-west-1": {
+          "perGB": 0.11,
+          "provisionedIOPS": 0.006
+        },
+        "us-west-2": {
+          "perGB": 0.1,
+          "provisionedIOPS": 0.005
+        },
+        "ca-central-1": {
+          "perGB": 0.11,
+          "provisionedIOPS": 0.006
+        },
+        "eu-west-1": {
+          "perGB": 0.1,
+          "provisionedIOPS": 0.005
+        },
+        "eu-west-2": {
+          "perGB": 0.1,
+          "provisionedIOPS": 0.005
+        },
+        "eu-west-3": {
+          "perGB": 0.11,
+          "provisionedIOPS": 0.006
+        },
+        "eu-central-1": {
+          "perGB": 0.1,
+          "provisionedIOPS": 0.005
+        },
+        "eu-central-2": {
+          "perGB": 0.1,
+          "provisionedIOPS": 0.005
+        },
+        "eu-north-1": {
+          "perGB": 0.11,
+          "provisionedIOPS": 0.006
+        },
+        "eu-south-1": {
+          "perGB": 0.11,
+          "provisionedIOPS": 0.006
+        },
+        "ap-south-1": {
+          "perGB": 0.11,
+          "provisionedIOPS": 0.006
+        },
+        "ap-southeast-1": {
+          "perGB": 0.1,
+          "provisionedIOPS": 0.005
+        },
+        "ap-southeast-2": {
+          "perGB": 0.1,
+          "provisionedIOPS": 0.005
+        },
+        "ap-southeast-3": {
+          "perGB": 0.11,
+          "provisionedIOPS": 0.006
+        },
+        "ap-northeast-1": {
+          "perGB": 0.1,
+          "provisionedIOPS": 0.005
+        },
+        "ap-northeast-2": {
+          "perGB": 0.1,
+          "provisionedIOPS": 0.005
+        },
+        "ap-northeast-3": {
+          "perGB": 0.11,
+          "provisionedIOPS": 0.006
+        },
+        "ap-east-1": {
+          "perGB": 0.11,
+          "provisionedIOPS": 0.006
+        },
+        "me-south-1": {
+          "perGB": 0.11,
+          "provisionedIOPS": 0.006
+        },
+        "af-south-1": {
+          "perGB": 0.12,
+          "provisionedIOPS": 0.007
+        },
+        "sa-east-1": {
+          "perGB": 0.12,
+          "provisionedIOPS": 0.007
+        }
+      }
+    },
+    "gp3": {
+      "name": "General Purpose SSD (gp3)",
+      "durability": "99.8%",
+      "maxVolumeSize": 16384,
+      "baselineIOPS": 3000,
+      "maxIOPS": 16000,
+      "baselineThroughput": 125,
+      "maxThroughput": 1000,
+      "pricing": {
+        "us-east-1": {
+          "perGB": 0.08,
+          "provisionedIOPS": 0.005,
+          "provisionedThroughput": 0.04
+        },
+        "us-east-2": {
+          "perGB": 0.08,
+          "provisionedIOPS": 0.005,
+          "provisionedThroughput": 0.04
+        },
+        "us-west-1": {
+          "perGB": 0.09,
+          "provisionedIOPS": 0.006,
+          "provisionedThroughput": 0.05
+        },
+        "us-west-2": {
+          "perGB": 0.08,
+          "provisionedIOPS": 0.005,
+          "provisionedThroughput": 0.04
+        },
+        "ca-central-1": {
+          "perGB": 0.09,
+          "provisionedIOPS": 0.006,
+          "provisionedThroughput": 0.05
+        },
+        "eu-west-1": {
+          "perGB": 0.08,
+          "provisionedIOPS": 0.005,
+          "provisionedThroughput": 0.04
+        },
+        "eu-west-2": {
+          "perGB": 0.08,
+          "provisionedIOPS": 0.005,
+          "provisionedThroughput": 0.04
+        },
+        "eu-west-3": {
+          "perGB": 0.09,
+          "provisionedIOPS": 0.006,
+          "provisionedThroughput": 0.05
+        },
+        "eu-central-1": {
+          "perGB": 0.08,
+          "provisionedIOPS": 0.005,
+          "provisionedThroughput": 0.04
+        },
+        "eu-central-2": {
+          "perGB": 0.08,
+          "provisionedIOPS": 0.005,
+          "provisionedThroughput": 0.04
+        },
+        "eu-north-1": {
+          "perGB": 0.09,
+          "provisionedIOPS": 0.006,
+          "provisionedThroughput": 0.05
+        },
+        "eu-south-1": {
+          "perGB": 0.09,
+          "provisionedIOPS": 0.006,
+          "provisionedThroughput": 0.05
+        },
+        "ap-south-1": {
+          "perGB": 0.09,
+          "provisionedIOPS": 0.006,
+          "provisionedThroughput": 0.05
+        },
+        "ap-southeast-1": {
+          "perGB": 0.08,
+          "provisionedIOPS": 0.005,
+          "provisionedThroughput": 0.04
+        },
+        "ap-southeast-2": {
+          "perGB": 0.08,
+          "provisionedIOPS": 0.005,
+          "provisionedThroughput": 0.04
+        },
+        "ap-southeast-3": {
+          "perGB": 0.09,
+          "provisionedIOPS": 0.006,
+          "provisionedThroughput": 0.05
+        },
+        "ap-northeast-1": {
+          "perGB": 0.08,
+          "provisionedIOPS": 0.005,
+          "provisionedThroughput": 0.04
+        },
+        "ap-northeast-2": {
+          "perGB": 0.08,
+          "provisionedIOPS": 0.005,
+          "provisionedThroughput": 0.04
+        },
+        "ap-northeast-3": {
+          "perGB": 0.09,
+          "provisionedIOPS": 0.006,
+          "provisionedThroughput": 0.05
+        },
+        "ap-east-1": {
+          "perGB": 0.09,
+          "provisionedIOPS": 0.006,
+          "provisionedThroughput": 0.05
+        },
+        "me-south-1": {
+          "perGB": 0.09,
+          "provisionedIOPS": 0.006,
+          "provisionedThroughput": 0.05
+        },
+        "af-south-1": {
+          "perGB": 0.1,
+          "provisionedIOPS": 0.007,
+          "provisionedThroughput": 0.06
+        },
+        "sa-east-1": {
+          "perGB": 0.1,
+          "provisionedIOPS": 0.007,
+          "provisionedThroughput": 0.06
+        }
+      }
+    },
+    "io1": {
+      "name": "Provisioned IOPS SSD (io1)",
+      "durability": "99.9%",
+      "maxVolumeSize": 16384,
+      "baselineIOPS": 50,
+      "maxIOPS": 64000,
+      "baselineThroughput": 256,
+      "maxThroughput": 1000,
+      "pricing": {
+        "us-east-1": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "us-east-2": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "us-west-1": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "us-west-2": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "ca-central-1": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "eu-west-1": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "eu-west-2": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "eu-west-3": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "eu-central-1": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "eu-central-2": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "eu-north-1": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "eu-south-1": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "ap-south-1": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "ap-southeast-1": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "ap-southeast-2": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "ap-southeast-3": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "ap-northeast-1": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "ap-northeast-2": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "ap-northeast-3": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "ap-east-1": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "me-south-1": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "af-south-1": {
+          "perGB": 0.15,
+          "provisionedIOPS": 0.078
+        },
+        "sa-east-1": {
+          "perGB": 0.15,
+          "provisionedIOPS": 0.078
+        }
+      }
+    },
+    "io2": {
+      "name": "Provisioned IOPS SSD (io2)",
+      "durability": "99.999%",
+      "maxVolumeSize": 65536,
+      "baselineIOPS": 50,
+      "maxIOPS": 256000,
+      "baselineThroughput": 256,
+      "maxThroughput": 4000,
+      "pricing": {
+        "us-east-1": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "us-east-2": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "us-west-1": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "us-west-2": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "ca-central-1": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "eu-west-1": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "eu-west-2": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "eu-west-3": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "eu-central-1": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "eu-central-2": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "eu-north-1": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "eu-south-1": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "ap-south-1": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "ap-southeast-1": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "ap-southeast-2": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "ap-southeast-3": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "ap-northeast-1": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "ap-northeast-2": {
+          "perGB": 0.125,
+          "provisionedIOPS": 0.065
+        },
+        "ap-northeast-3": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "ap-east-1": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "me-south-1": {
+          "perGB": 0.138,
+          "provisionedIOPS": 0.072
+        },
+        "af-south-1": {
+          "perGB": 0.15,
+          "provisionedIOPS": 0.078
+        },
+        "sa-east-1": {
+          "perGB": 0.15,
+          "provisionedIOPS": 0.078
+        }
+      }
+    },
+    "st1": {
+      "name": "Throughput Optimized HDD (st1)",
+      "durability": "99.8%",
+      "maxVolumeSize": 16384,
+      "baselineIOPS": 500,
+      "maxIOPS": 500,
+      "baselineThroughput": 250,
+      "maxThroughput": 500,
+      "pricing": {
+        "us-east-1": {
+          "perGB": 0.045
+        },
+        "us-east-2": {
+          "perGB": 0.045
+        },
+        "us-west-1": {
+          "perGB": 0.05
+        },
+        "us-west-2": {
+          "perGB": 0.045
+        },
+        "ca-central-1": {
+          "perGB": 0.05
+        },
+        "eu-west-1": {
+          "perGB": 0.045
+        },
+        "eu-west-2": {
+          "perGB": 0.045
+        },
+        "eu-west-3": {
+          "perGB": 0.05
+        },
+        "eu-central-1": {
+          "perGB": 0.045
+        },
+        "eu-central-2": {
+          "perGB": 0.045
+        },
+        "eu-north-1": {
+          "perGB": 0.05
+        },
+        "eu-south-1": {
+          "perGB": 0.05
+        },
+        "ap-south-1": {
+          "perGB": 0.05
+        },
+        "ap-southeast-1": {
+          "perGB": 0.045
+        },
+        "ap-southeast-2": {
+          "perGB": 0.045
+        },
+        "ap-southeast-3": {
+          "perGB": 0.05
+        },
+        "ap-northeast-1": {
+          "perGB": 0.045
+        },
+        "ap-northeast-2": {
+          "perGB": 0.045
+        },
+        "ap-northeast-3": {
+          "perGB": 0.05
+        },
+        "ap-east-1": {
+          "perGB": 0.05
+        },
+        "me-south-1": {
+          "perGB": 0.05
+        },
+        "af-south-1": {
+          "perGB": 0.055
+        },
+        "sa-east-1": {
+          "perGB": 0.055
+        }
+      }
+    },
+    "sc1": {
+      "name": "Cold HDD (sc1)",
+      "durability": "99.8%",
+      "maxVolumeSize": 16384,
+      "baselineIOPS": 250,
+      "maxIOPS": 250,
+      "baselineThroughput": 250,
+      "maxThroughput": 250,
+      "pricing": {
+        "us-east-1": {
+          "perGB": 0.025
+        },
+        "us-east-2": {
+          "perGB": 0.025
+        },
+        "us-west-1": {
+          "perGB": 0.028
+        },
+        "us-west-2": {
+          "perGB": 0.025
+        },
+        "ca-central-1": {
+          "perGB": 0.028
+        },
+        "eu-west-1": {
+          "perGB": 0.025
+        },
+        "eu-west-2": {
+          "perGB": 0.025
+        },
+        "eu-west-3": {
+          "perGB": 0.028
+        },
+        "eu-central-1": {
+          "perGB": 0.025
+        },
+        "eu-central-2": {
+          "perGB": 0.025
+        },
+        "eu-north-1": {
+          "perGB": 0.028
+        },
+        "eu-south-1": {
+          "perGB": 0.028
+        },
+        "ap-south-1": {
+          "perGB": 0.028
+        },
+        "ap-southeast-1": {
+          "perGB": 0.025
+        },
+        "ap-southeast-2": {
+          "perGB": 0.025
+        },
+        "ap-southeast-3": {
+          "perGB": 0.028
+        },
+        "ap-northeast-1": {
+          "perGB": 0.025
+        },
+        "ap-northeast-2": {
+          "perGB": 0.025
+        },
+        "ap-northeast-3": {
+          "perGB": 0.028
+        },
+        "ap-east-1": {
+          "perGB": 0.028
+        },
+        "me-south-1": {
+          "perGB": 0.028
+        },
+        "af-south-1": {
+          "perGB": 0.03
+        },
+        "sa-east-1": {
+          "perGB": 0.03
+        }
+      }
+    },
+    "standard": {
+      "name": "Magnetic (standard)",
+      "durability": "99.8%",
+      "maxVolumeSize": 1024,
+      "baselineIOPS": 100,
+      "maxIOPS": 100,
+      "baselineThroughput": 40,
+      "maxThroughput": 40,
+      "pricing": {
+        "us-east-1": {
+          "perGB": 0.05
+        },
+        "us-east-2": {
+          "perGB": 0.05
+        },
+        "us-west-1": {
+          "perGB": 0.055
+        },
+        "us-west-2": {
+          "perGB": 0.05
+        },
+        "ca-central-1": {
+          "perGB": 0.055
+        },
+        "eu-west-1": {
+          "perGB": 0.05
+        },
+        "eu-west-2": {
+          "perGB": 0.05
+        },
+        "eu-west-3": {
+          "perGB": 0.055
+        },
+        "eu-central-1": {
+          "perGB": 0.05
+        },
+        "eu-central-2": {
+          "perGB": 0.05
+        },
+        "eu-north-1": {
+          "perGB": 0.055
+        },
+        "eu-south-1": {
+          "perGB": 0.055
+        },
+        "ap-south-1": {
+          "perGB": 0.055
+        },
+        "ap-southeast-1": {
+          "perGB": 0.05
+        },
+        "ap-southeast-2": {
+          "perGB": 0.05
+        },
+        "ap-southeast-3": {
+          "perGB": 0.055
+        },
+        "ap-northeast-1": {
+          "perGB": 0.05
+        },
+        "ap-northeast-2": {
+          "perGB": 0.05
+        },
+        "ap-northeast-3": {
+          "perGB": 0.055
+        },
+        "ap-east-1": {
+          "perGB": 0.055
+        },
+        "me-south-1": {
+          "perGB": 0.055
+        },
+        "af-south-1": {
+          "perGB": 0.06
+        },
+        "sa-east-1": {
+          "perGB": 0.06
+        }
+      }
+    }
+  }
+}

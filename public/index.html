@@ -20,16 +20,13 @@
       a {
         color: #7fb4ff;
       }
-      button {
-        font: inherit;
+      h2 {
+        margin: 2rem 0 0.5rem;
+        font-size: 1.1rem;
+        color: #9fb6d0;
       }
-      .out {
-        white-space: pre-wrap;
-        background: #101a2c;
-        padding: 0.75rem;
-        border-radius: 6px;
-        min-height: 3rem;
-        font-size: 0.85rem;
+      ul {
+        padding-left: 1.2rem;
       }
       .muted {
         color: #6d7f97;
@@ -40,52 +37,31 @@
   <body>
     <h1>tools.nbergeron.dev</h1>
     <p>
-      Phase 0: Effect 4 on Cloudflare Workers, deployed with Alchemy. This page
-      is a static asset (zero Worker CPU); the endpoints below run in the Worker.
+      Small tools, served from a Cloudflare Worker (Effect 4) deployed with
+      Alchemy. Static pages are served by Cloudflare's asset layer; the API
+      runs in the Worker.
     </p>
+
+    <h2>Tools</h2>
+    <ul>
+      <li>
+        <a href="/ebs/">AWS EBS Pricing</a> — compare EBS volume costs across
+        types and regions with IOPS/throughput limits and provisioning costs
+      </li>
+    </ul>
+
+    <h2>API</h2>
     <ul>
       <li><a href="/ip">/ip</a> — client IP as plain text</li>
       <li><a href="/ip.json">/ip.json</a> — client IP + Cloudflare geo as JSON</li>
       <li><a href="/api/health">/api/health</a> — health check</li>
       <li>
-        <a href="/api/ebs/calc?size_gb=100">/api/ebs/calc</a> — EBS pricing calc
-        over all volume types &times; regions (CPU spike endpoint)
+        <a href="/api/ebs/pricing">/api/ebs/pricing</a> — the EBS pricing
+        dataset used by the calculator (<code>/data/ebs-pricing.json</code>
+        is the same file for direct use)
       </li>
     </ul>
-    <p>
-      <button id="probe" type="button">Measure endpoints</button>
-      <span class="muted">times each endpoint from your browser (wall time)</span>
-    </p>
-    <div class="out" id="out">waiting for the button…</div>
-    <script>
-      const out = document.getElementById("out");
-      const targets = [
-        "/ip",
-        "/ip.json",
-        "/api/health",
-        "/api/ebs/calc?size_gb=100",
-        "/api/ebs/calc?size_gb=1024&iops=5000&throughput_mbps=250",
-        "/api/ebs/calc?size_gb=16384&iops=256000&throughput_mbps=4000",
-      ];
-      document.getElementById("probe").addEventListener("click", async () => {
-        out.textContent = "measuring…";
-        const lines = [];
-        for (const target of targets) {
-          const t0 = performance.now();
-          let status = "?";
-          let note = "";
-          try {
-            const res = await fetch(target, { cache: "no-store" });
-            status = res.status;
-            const text = await res.text();
-            note = text.length > 60 ? text.slice(0, 60) + "…" : text.trim();
-          } catch (err) {
-            note = String(err);
-          }
-          lines.push(`${target}  ${status}  ${(performance.now() - t0).toFixed(0)} ms  ${note}`);
-        }
-        out.textContent = lines.join("\n");
-      });
-    </script>
+
+    <p class="muted">More tools land as phases complete — see TODO.md.</p>
   </body>
 </html>
