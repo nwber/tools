@@ -43,14 +43,23 @@ jobs:
           api "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID" \
             | jq -c '{success, name: .result.name, errors}'
           echo "== zone lookup nbergeron.dev (Zone:Read)"
-          api "https://api.cloudflare.com/client/v4/zones?name=nbergeron.dev" \
-            | jq -c '{success, zones: [.result[]?.name], errors}'
+          ZONE_JSON=$(api "https://api.cloudflare.com/client/v4/zones?name=nbergeron.dev")
+          echo "$ZONE_JSON" | jq -c '{success, zones: [.result[]?.name], errors}'
+          ZONE_ID=$(echo "$ZONE_JSON" | jq -r '.result[0].id // empty')
           echo "== workers scripts list (Workers Scripts)"
           api "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts" \
             | jq -c '{success, count: (.result | length), errors}'
           echo "== secrets store list (Secrets Store)"
           api "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/secrets_store/stores" \
             | jq -c '{success, count: (.result | length), errors}'
+          if [ -n "$ZONE_ID" ]; then
+            echo "== workers routes list (Workers Routes)"
+            api "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/workers/routes" \
+              | jq -c '{success, count: (.result | length), errors}'
+            echo "== dns records list (DNS)"
+            api "https://api.cloudflare.com/client/v4/zones/$ZONE_ID/dns_records?per_page=5" \
+              | jq -c '{success, count: (.result | length), errors}'
+          fi
       - name: No token secret
         if: env.HAS_CF_TOKEN != 'true'
         run: echo "CLOUDFLARE_API_TOKEN secret is not set; skipping probe."
