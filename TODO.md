@@ -20,6 +20,22 @@ Phase 0 — COMPLETE (2026-10-13)
   Pyodide), so the free plan's 10 ms/request budget is a non-issue; the EBS
   calc runs server-side in well under 1 ms (see compute_ms in responses).
 
+Phase 1 — COMPLETE (2026-10-14)
+
+- The original EBS tool's source existed only as its live deployment
+  (ebs-pricing-comparator.nwber.workers.dev); it was recovered from there
+  and ported faithfully to /ebs/ (calc stays client-side).
+- Pricing tables extracted verbatim to public/data/ebs-pricing.json; the
+  same JSON is also served at GET /api/ebs/pricing (the phase-0 synthetic
+  /api/ebs/calc endpoint was removed with its module/tests).
+- Parity proven in a real browser vs the original: identical rendered
+  tables in default / modified-input / limit-warning scenarios, and
+  md5-identical screenshots (local and live).
+- 29 vitest tests incl. the ported math against the real dataset; smoke.sh
+  now covers /ebs/, /data/ebs-pricing.json, and /api/ebs/pricing.
+- The old workers.dev deployment is still live; decommission it whenever
+  the custom-domain copy is confirmed as the one to keep.
+
 One Python Worker: static assets (HTML/CSS/JS/JSON) + Python endpoints for dynamic behavior + speed test streaming.
 Free-plan-aware layout: pricing datasets and UI logic are static/zero-CPU where possible; Python WorkerEntrypoint (plain, not FastAPI) as default to keep CPU and startup minimal — FastAPI only if the Phase 0 spike shows comfortable headroom.
 No KV at launch; pricing tables are JSON assets refreshed by a scheduled GitHub Action (regenerates + commits + deploys). This avoids runtime cron entirely, which matters since free-plan cron CPU is also 10ms.
