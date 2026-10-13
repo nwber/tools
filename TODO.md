@@ -57,6 +57,34 @@ Phase 2 — COMPLETE (2026-10-14)
   to be live before checking (the first phase-2 deploy hit a POP still
   serving the previous script version).
 
+Phase 3 — COMPLETE (2026-10-14)
+
+- /speedtest/ live: GET /speedtest/ping, GET /speedtest/down?bytes=N
+  (random bytes streamed, 1 KiB-100 MiB per request), POST /speedtest/up
+  (streaming drain, 16 MiB per-request cap, echoes bytes + ms).
+- Per-IP rate limiting in code via Cloudflare's Rate Limiting binding
+  (200 req/min per colo, fail-open); sizes capped server-side.
+- UI: latency + jitter (15 pings, warm-up discarded), 6 parallel download
+  streams + 4 parallel chunked uploads over ~10 s windows, live Mbps,
+  colo/IP display. Measurement math unit-tested.
+- Live run from this network: edge BOS, 187 Mbps down / 66.6 Mbps up,
+  latency 31.7-41.6 ms, jitter 8.8 ms. Smoke checks cover the endpoints.
+
+Phase 4 — S3 cost calculator — COMPLETE (2026-10-14)
+
+- /s3/ live: storage classes (incl. the five Intelligent-Tiering access
+  tiers + monitoring fee), per-class request pricing, retrieval with
+  standard/bulk/expedited modes, lifecycle transitions, minimum-duration
+  warnings; notes for unmodeled fees (restore requests, early delete).
+- Dataset generated from the public AWS Price List API offers
+  (scripts/generate-s3-pricing.mjs -> public/data/s3-pricing.json,
+  34 regions; Deep Archive from its separate offer; overloaded
+  usagetypes disambiguated by the operation attribute).
+- GET /api/s3/pricing for API use; browser-verified math.
+
+Remaining in phase 4: data transfer estimator, CIDR/subnet planner,
+AZ latency tool (added 2026-10-14).
+
 One Python Worker: static assets (HTML/CSS/JS/JSON) + Python endpoints for dynamic behavior + speed test streaming.
 Free-plan-aware layout: pricing datasets and UI logic are static/zero-CPU where possible; Python WorkerEntrypoint (plain, not FastAPI) as default to keep CPU and startup minimal — FastAPI only if the Phase 0 spike shows comfortable headroom.
 No KV at launch; pricing tables are JSON assets refreshed by a scheduled GitHub Action (regenerates + commits + deploys). This avoids runtime cron entirely, which matters since free-plan cron CPU is also 10ms.
