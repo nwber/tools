@@ -112,7 +112,8 @@ gh secret set CLOUDFLARE_ACCOUNT_ID  --repo nwber/tools
   (`git config core.hooksPath .githooks` after cloning; requires gitleaks on
   PATH).
 - The Worker pins its runtime behavior with `compatibility: { date }` in
-  `src/worker.ts`; bump it consciously (currently 2026-10-14).
+  `src/worker.ts`; bump it consciously (currently 2026-10-13 — Cloudflare
+  validates the date against UTC and rejects "future" dates).
 
 ## Phase notes
 

@@ -69,8 +69,9 @@ export default Cloudflare.Worker(
   {
     main: import.meta.url,
     // A deliberate pin to a current runtime behavior set (rustles in new
-    // defaults like nodejs_compat <= 2026-08-04). Bump consciously.
-    compatibility: { date: "2026-10-14" },
+    // defaults like nodejs_compat <= 2026-08-04). Bump consciously, never to
+    // a date Cloudflare considers "the future" (it validates against UTC).
+    compatibility: { date: "2026-10-13" },
     // Static pages are served by Cloudflare's asset layer without invoking
     // the Worker; the dynamic routes below always go through it.
     assets: {
