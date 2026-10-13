@@ -53,11 +53,20 @@ grep -q '<title>AWS EBS Pricing</title>' <<<"$body" || fail "/ebs/ did not retur
 body=$($CURL "$BASE/ec2/") || fail "GET /ec2/ failed"; check
 grep -q '<title>EC2 Burst Calculator</title>' <<<"$body" || fail "/ec2/ did not return the calculator page"
 
+body=$($CURL "$BASE/s3/") || fail "GET /s3/ failed"; check
+grep -q '<title>S3 Cost Calculator</title>' <<<"$body" || fail "/s3/ did not return the calculator page"
+
+body=$($CURL "$BASE/speedtest/") || fail "GET /speedtest/ failed"; check
+grep -q '<title>Speed Test</title>' <<<"$body" || fail "/speedtest/ did not return the page"
+
 body=$($CURL "$BASE/data/ebs-pricing.json") || fail "GET /data/ebs-pricing.json failed"; check
 grep -q '"volumeTypes"' <<<"$body" || fail "pricing asset missing volumeTypes"
 
 body=$($CURL "$BASE/data/ec2-burst-spec.json") || fail "GET /data/ec2-burst-spec.json failed"; check
 grep -q '"comparisons"' <<<"$body" || fail "burst spec asset missing comparisons"
+
+body=$($CURL "$BASE/data/s3-pricing.json") || fail "GET /data/s3-pricing.json failed"; check
+grep -q '"intelligent-tiering"' <<<"$body" || fail "s3 pricing asset missing classes"
 
 body=$($CURL "$BASE/ip") || fail "GET /ip failed"; check
 [[ -n "$body" ]] || fail "GET /ip returned an empty body"
@@ -75,6 +84,18 @@ grep -q '"volumeTypes"' <<<"$body" || fail "/api/ebs/pricing missing volumeTypes
 body=$($CURL "$BASE/api/ec2/burst-spec") || fail "GET /api/ec2/burst-spec failed"; check
 grep -q '"comparisons"' <<<"$body" || fail "/api/ec2/burst-spec missing comparisons"
 
+body=$($CURL "$BASE/api/s3/pricing") || fail "GET /api/s3/pricing failed"; check
+grep -q '"intelligent-tiering"' <<<"$body" || fail "/api/s3/pricing missing classes"
+
+body=$($CURL "$BASE/speedtest/ping") || fail "GET /speedtest/ping failed"; check
+[[ "$body" == "pong" ]] || fail "ping did not return pong: $body"
+
+bytes=$($CURL "$BASE/speedtest/down?bytes=65536" | wc -c | tr -d ' ') || fail "GET /speedtest/down failed"; check
+[[ "$bytes" == "65536" ]] || fail "download returned $bytes bytes, expected 65536"
+
+body=$($CURL -X POST --data-binary "speedtest-smoke" "$BASE/speedtest/up") || fail "POST /speedtest/up failed"; check
+grep -q '"bytes_received":15' <<<"$body" || fail "upload did not echo byte count: $body"
+
 status=$(curl -s -o /dev/null -w '%{http_code}' -X POST "$BASE/api/ebs/pricing") || fail "POST /api/ebs/pricing request failed"; check
 [[ "$status" == "405" ]] || fail "expected 405 for POST /api/ebs/pricing, got $status"
 
@@ -87,5 +108,5 @@ if [[ -n "$IP_BASE" ]]; then
   echo "ok: ip-host /ip -> $body"
 fi
 
-[[ "$CHECKS" -ge 13 ]] || fail "only $CHECKS checks ran; expected at least 13"
+[[ "$CHECKS" -ge 21 ]] || fail "only $CHECKS checks ran; expected at least 21"
 echo "all $CHECKS smoke checks passed for $BASE"

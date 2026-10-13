@@ -26,8 +26,14 @@ type Cf = {
 
 async function request(
   path: string,
-  init?: { method?: string; headers?: Record<string, string>; body?: string; cf?: Cf },
-): Promise<{ status: number; text: string; json: () => unknown; headers: Headers }> {
+  init?: { method?: string; headers?: Record<string, string>; body?: RequestInit["body"]; cf?: Cf },
+): Promise<{
+  status: number;
+  text: string;
+  json: () => unknown;
+  headers: Headers;
+  arrayBuffer: () => Promise<ArrayBuffer>;
+}> {
   const initOptions: RequestInit = {};
   if (init?.method !== undefined) initOptions.method = init.method;
   if (init?.headers !== undefined) initOptions.headers = init.headers;
@@ -41,12 +47,14 @@ async function request(
     fetchHandler.pipe(Effect.provideService(HttpServerRequest, serverRequest)),
   );
   const web = HttpServerResponse.toWeb(response);
-  const text = await web.text();
+  const buffer = await web.arrayBuffer();
+  const text = new TextDecoder().decode(buffer);
   return {
     status: web.status,
     text,
     json: () => JSON.parse(text),
     headers: web.headers,
+    arrayBuffer: async () => buffer,
   };
 }
 
@@ -88,7 +96,7 @@ describe("fetch handler", () => {
   it("serves /api/health", async () => {
     const res = await request("/api/health", { cf: { colo: "BOS" } });
     expect(res.status).toBe(200);
-    expect(res.json()).toMatchObject({ status: "ok", service: "tools", phase: 2, colo: "BOS" });
+    expect(res.json()).toMatchObject({ status: "ok", service: "tools", phase: 4, colo: "BOS" });
   });
 
   it("answers HEAD like GET", async () => {
@@ -145,6 +153,49 @@ describe("fetch handler", () => {
     expect(res.status).toBe(405);
     const res2 = await request("/api/ec2/burst-spec", { method: "POST" });
     expect(res2.status).toBe(405);
+  });
+
+  it("serves /speedtest/ping", async () => {
+    const res = await request("/speedtest/ping");
+    expect(res.status).toBe(200);
+    expect(res.text).toBe("pong");
+  });
+
+  it("streams the requested number of bytes from /speedtest/down", async () => {
+    const res = await request("/speedtest/down?bytes=1024");
+    expect(res.status).toBe(200);
+    expect(res.headers.get("content-length")).toBe("1024");
+    expect((await res.arrayBuffer()).byteLength).toBe(1024);
+  });
+
+  it("rejects invalid /speedtest/down sizes", async () => {
+    for (const bad of ["abc", "100", "999999999"]) {
+      const res = await request(`/speedtest/down?bytes=${bad}`);
+      expect(res.status, `bytes=${bad}`).toBe(400);
+    }
+  });
+
+  it("counts bytes on /speedtest/up", async () => {
+    const body = new Uint8Array(4096).fill(7);
+    const res = await request("/speedtest/up", { method: "POST", body });
+    expect(res.status).toBe(200);
+    expect(res.json()).toMatchObject({ bytes_received: 4096 });
+  });
+
+  it("rejects oversized declared uploads with 413", async () => {
+    const res = await request("/speedtest/up", {
+      method: "POST",
+      headers: { "content-length": String(20 * 1024 * 1024) },
+      body: "x",
+    });
+    expect(res.status).toBe(413);
+  });
+
+  it("answers 405/404 under /speedtest/", async () => {
+    const wrongMethod = await request("/speedtest/up");
+    expect(wrongMethod.status).toBe(405);
+    const missing = await request("/speedtest/nope");
+    expect(missing.status).toBe(404);
   });
 
   it("answers JSON 404 for unknown API routes", async () => {

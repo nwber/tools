@@ -53,6 +53,14 @@
         t3a/t4g/t8i against the cheapest same-processor non-burstable instance
         (credits, throttling, unlimited surcharges, break-even)
       </li>
+      <li>
+        <a href="/s3/">S3 Cost Calculator</a> — storage classes, request
+        pricing, retrieval, and lifecycle transitions from the AWS price list
+      </li>
+      <li>
+        <a href="/speedtest/">Speed Test</a> — latency/jitter and parallel
+        download/upload throughput against this edge
+      </li>
     </ul>
 
     <h2>API</h2>
@@ -69,6 +77,15 @@
         <a href="/api/ec2/burst-spec">/api/ec2/burst-spec</a> — the burstable
         spec + comparison dataset (<code>/data/ec2-burst-spec.json</code> is
         the same file for direct use)
+      </li>
+      <li>
+        <a href="/api/s3/pricing">/api/s3/pricing</a> — the S3 price dataset
+        (<code>/data/s3-pricing.json</code> is the same file for direct use)
+      </li>
+      <li>
+        <code>/speedtest/ping</code>, <code>/speedtest/down?bytes=N</code>,
+        <code>POST /speedtest/up</code> — the speed test endpoints (bounded
+        sizes, per-IP rate limited)
       </li>
     </ul>
 

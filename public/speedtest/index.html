@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Speed Test</title>
+    <style>
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+        color: #1f2933;
+      }
+      h1 {
+        color: #333;
+        border-bottom: 2px solid #e9ecef;
+        padding-bottom: 10px;
+      }
+      button {
+        background: #007bff;
+        color: white;
+        padding: 12px 28px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 600;
+      }
+      button:hover:not(:disabled) {
+        background: #0056b3;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+      .client {
+        color: #52606d;
+        font-size: 0.9rem;
+        margin: 8px 0 16px;
+      }
+      .phase {
+        border: 1px solid #e3e8ee;
+        border-radius: 6px;
+        padding: 12px 14px;
+        margin: 10px 0;
+      }
+      .phase.active {
+        border-color: #007bff;
+      }
+      .phase.done {
+        border-color: #28a745;
+      }
+      .phase-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .phase-name {
+        font-weight: 600;
+      }
+      .phase-status,
+      .phase-live {
+        color: #6d7f97;
+        font-size: 0.85rem;
+      }
+      .phase-result {
+        font-size: 1.15rem;
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        margin-top: 4px;
+      }
+      .bar {
+        height: 6px;
+        background: #eef2f7;
+        border-radius: 3px;
+        margin-top: 8px;
+        overflow: hidden;
+      }
+      .bar > div {
+        height: 100%;
+        width: 0;
+        background: #007bff;
+        transition: width 0.2s;
+      }
+      .summary {
+        margin-top: 14px;
+        color: #52606d;
+      }
+      .footnote {
+        color: #6d7f97;
+        font-size: 0.8rem;
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Speed Test</h1>
+    <p>
+      Measures latency (ping + jitter), download (6 parallel streams), and
+      upload (4 parallel chunked POSTs) against this edge. Your requests are
+      served from the Cloudflare location nearest you.
+    </p>
+    <div class="client" id="client">loading client info…</div>
+    <button id="run">Run test</button>
+    <div class="summary" id="summary"></div>
+
+    <div class="phase" id="phase-ping">
+      <div class="phase-head">
+        <span class="phase-name">Latency</span>
+        <span class="phase-live" id="ping-live"></span>
+        <span class="phase-status" id="ping-status"></span>
+      </div>
+      <div class="phase-result" id="ping-result">—</div>
+      <div class="bar"><div id="ping-bar"></div></div>
+    </div>
+
+    <div class="phase" id="phase-down">
+      <div class="phase-head">
+        <span class="phase-name">Download</span>
+        <span class="phase-live" id="down-live"></span>
+        <span class="phase-status" id="down-status"></span>
+      </div>
+      <div class="phase-result" id="down-result">—</div>
+      <div class="bar"><div id="down-bar"></div></div>
+    </div>
+
+    <div class="phase" id="phase-up">
+      <div class="phase-head">
+        <span class="phase-name">Upload</span>
+        <span class="phase-live" id="up-live"></span>
+        <span class="phase-status" id="up-status"></span>
+      </div>
+      <div class="phase-result" id="up-result">—</div>
+      <div class="bar"><div id="up-bar"></div></div>
+    </div>
+
+    <p class="footnote">
+      Downloads stream random bytes (up to 100 MiB per request) and uploads are
+      capped at 16 MiB per request; both phases run for ~10 seconds. Per-IP
+      rate limiting protects the endpoints (200 requests/minute). Browser
+      measurement includes TLS and HTTP overhead, so expect slightly lower
+      numbers than a native client.
+    </p>
+
+    <script type="module" src="/speedtest/speedtest-page.js"></script>
+  </body>
+</html>
