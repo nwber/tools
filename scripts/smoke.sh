@@ -32,8 +32,14 @@ grep -q 'AWS EBS Pricing' <<<"$body" || fail "index does not link the EBS tool"
 body=$($CURL "$BASE/ebs/") || fail "GET /ebs/ failed"; check
 grep -q '<title>AWS EBS Pricing</title>' <<<"$body" || fail "/ebs/ did not return the calculator page"
 
+body=$($CURL "$BASE/ec2/") || fail "GET /ec2/ failed"; check
+grep -q '<title>EC2 Burst Calculator</title>' <<<"$body" || fail "/ec2/ did not return the calculator page"
+
 body=$($CURL "$BASE/data/ebs-pricing.json") || fail "GET /data/ebs-pricing.json failed"; check
 grep -q '"volumeTypes"' <<<"$body" || fail "pricing asset missing volumeTypes"
+
+body=$($CURL "$BASE/data/ec2-burst-spec.json") || fail "GET /data/ec2-burst-spec.json failed"; check
+grep -q '"comparisons"' <<<"$body" || fail "burst spec asset missing comparisons"
 
 body=$($CURL "$BASE/ip") || fail "GET /ip failed"; check
 [[ -n "$body" ]] || fail "GET /ip returned an empty body"
@@ -48,6 +54,9 @@ grep -q '"status"[[:space:]]*:[[:space:]]*"ok"' <<<"$body" || fail "health not o
 body=$($CURL "$BASE/api/ebs/pricing") || fail "GET /api/ebs/pricing failed"; check
 grep -q '"volumeTypes"' <<<"$body" || fail "/api/ebs/pricing missing volumeTypes"
 
+body=$($CURL "$BASE/api/ec2/burst-spec") || fail "GET /api/ec2/burst-spec failed"; check
+grep -q '"comparisons"' <<<"$body" || fail "/api/ec2/burst-spec missing comparisons"
+
 status=$(curl -s -o /dev/null -w '%{http_code}' -X POST "$BASE/api/ebs/pricing") || fail "POST /api/ebs/pricing request failed"; check
 [[ "$status" == "405" ]] || fail "expected 405 for POST /api/ebs/pricing, got $status"
 
@@ -60,5 +69,5 @@ if [[ -n "$IP_BASE" ]]; then
   echo "ok: ip-host /ip -> $body"
 fi
 
-[[ "$CHECKS" -ge 10 ]] || fail "only $CHECKS checks ran; expected at least 10"
+[[ "$CHECKS" -ge 13 ]] || fail "only $CHECKS checks ran; expected at least 13"
 echo "all $CHECKS smoke checks passed for $BASE"

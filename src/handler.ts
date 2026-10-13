@@ -21,10 +21,11 @@ import * as HttpServerResponse from "effect/http/HttpServerResponse";
 import * as Option from "effect/Option";
 
 import ebsPricing from "../public/data/ebs-pricing.json";
+import ec2BurstSpec from "../public/data/ec2-burst-spec.json";
 import { cfSummary, clientIpFromHeaders, ipVersion, type CfProperties } from "./tools/ip.ts";
 
-export const WORKER_VERSION = "0.3.0";
-export const PHASE = 1;
+export const WORKER_VERSION = "0.4.0";
+export const PHASE = 2;
 
 type ResponseEffect = Effect.Effect<HttpServerResponse.HttpServerResponse, HttpBodyError>;
 
@@ -96,9 +97,18 @@ export const fetchHandler = Effect.gen(function* () {
       return yield* HttpServerResponse.json(ebsPricing, {
         headers: { ...BASE_HEADERS, "cache-control": "public, max-age=300" },
       });
+
+    case "GET /api/ec2/burst-spec":
+      return yield* HttpServerResponse.json(ec2BurstSpec, {
+        headers: { ...BASE_HEADERS, "cache-control": "public, max-age=300" },
+      });
   }
 
-  if (url.pathname === "/api/ebs/pricing" || url.pathname === "/api/health") {
+  if (
+    url.pathname === "/api/ebs/pricing" ||
+    url.pathname === "/api/ec2/burst-spec" ||
+    url.pathname === "/api/health"
+  ) {
     return yield* json({ error: "method not allowed", method: request.method }, 405);
   }
   if (url.pathname.startsWith("/api/")) {

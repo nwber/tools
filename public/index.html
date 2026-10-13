@@ -48,6 +48,11 @@
         <a href="/ebs/">AWS EBS Pricing</a> — compare EBS volume costs across
         types and regions with IOPS/throughput limits and provisioning costs
       </li>
+      <li>
+        <a href="/ec2/">EC2 Burst Calculator</a> — CPU-credit simulation for
+        t3a/t4g/t8i against the cheapest same-processor non-burstable instance
+        (credits, throttling, unlimited surcharges, break-even)
+      </li>
     </ul>
 
     <h2>API</h2>
@@ -59,6 +64,11 @@
         <a href="/api/ebs/pricing">/api/ebs/pricing</a> — the EBS pricing
         dataset used by the calculator (<code>/data/ebs-pricing.json</code>
         is the same file for direct use)
+      </li>
+      <li>
+        <a href="/api/ec2/burst-spec">/api/ec2/burst-spec</a> — the burstable
+        spec + comparison dataset (<code>/data/ec2-burst-spec.json</code> is
+        the same file for direct use)
       </li>
     </ul>
 

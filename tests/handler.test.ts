@@ -88,7 +88,7 @@ describe("fetch handler", () => {
   it("serves /api/health", async () => {
     const res = await request("/api/health", { cf: { colo: "BOS" } });
     expect(res.status).toBe(200);
-    expect(res.json()).toMatchObject({ status: "ok", service: "tools", phase: 1, colo: "BOS" });
+    expect(res.json()).toMatchObject({ status: "ok", service: "tools", phase: 2, colo: "BOS" });
   });
 
   it("answers HEAD like GET", async () => {
@@ -124,9 +124,27 @@ describe("fetch handler", () => {
     expect(body.volumeTypes["gp2"]?.durability).toBe("99.8%");
   });
 
+  it("serves /api/ec2/burst-spec with the generated dataset", async () => {
+    const res = await request("/api/ec2/burst-spec");
+    expect(res.status).toBe(200);
+    const body = res.json() as {
+      sizes: Array<{ type: string }>;
+      comparisons: Array<{ burstable: string; candidate: string; exact: boolean }>;
+      regions: Array<{ id: string }>;
+      families: Record<string, { unlimitedSurchargePerVcpuHour: number }>;
+    };
+    expect(body.sizes).toHaveLength(18);
+    expect(body.comparisons).toHaveLength(18);
+    expect(body.regions.length).toBeGreaterThanOrEqual(14);
+    expect(Object.keys(body.families).sort()).toEqual(["t3a", "t4g", "t8i"]);
+    expect(body.families["t8i"]?.unlimitedSurchargePerVcpuHour).toBe(0.06);
+  });
+
   it("answers 405 for unsupported methods on known routes", async () => {
     const res = await request("/api/ebs/pricing", { method: "POST" });
     expect(res.status).toBe(405);
+    const res2 = await request("/api/ec2/burst-spec", { method: "POST" });
+    expect(res2.status).toBe(405);
   });
 
   it("answers JSON 404 for unknown API routes", async () => {
