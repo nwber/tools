@@ -1,0 +1,8 @@
+{
+  "name": "tools",
+  "private": true,
+  "description": "Node tooling for the Cloudflare Worker (wrangler is invoked by pywrangler via npx)",
+  "devDependencies": {
+    "wrangler": "^4.150.0"
+  }
+}

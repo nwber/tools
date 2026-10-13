@@ -1,0 +1,6 @@
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "intentionally committed sops/age-encrypted files"
+paths = ['''.*\.sops\.ya?ml$''']

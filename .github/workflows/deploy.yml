@@ -1,0 +1,60 @@
+# Deploys the Worker to Cloudflare on every push to main.
+#
+# Requires two repository secrets (Settings > Secrets and variables > Actions):
+#
+#   CLOUDFLARE_API_TOKEN — API token with:
+#       Account > Workers Scripts > Edit      (upload the Worker)
+#       Account > Account Settings > Read     (resolve the account)
+#       Zone > Workers Routes > Edit          (attach the custom domain,
+#                                             scoped to the nbergeron.dev zone)
+#   CLOUDFLARE_ACCOUNT_ID — the account ID from the Cloudflare dashboard.
+#
+# Token: https://dash.cloudflare.com/profile/api-tokens
+
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v10
+        with:
+          enable-cache: true
+      - name: Install dependencies
+        run: uv sync --locked
+      - name: Unit tests
+        run: uv run pytest
+      - name: Lint
+        run: |
+          uv run ruff check src tests
+          uv run ruff format --check src tests
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v10
+        with:
+          enable-cache: true
+      - name: Install wrangler (pinned in package.json)
+        run: npm ci
+      - name: Install python dependencies
+        run: uv sync --locked
+      - name: Deploy Worker
+        run: uv run pywrangler deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      - name: Smoke tests
+        run: scripts/smoke.sh https://tools.nbergeron.dev
