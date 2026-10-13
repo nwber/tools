@@ -81,6 +81,7 @@ Risk: per-chunk Python FFI/CPU on upload drain under 10ms. Fallback if it's a pr
 Phase 4 — extras
 
 S3 cost calculator (storage classes, request pricing, lifecycle), data transfer estimator (egress/NAT vs VPC endpoints), CIDR/subnet planner (pure client-side math from your VPC CIDR).
+AZ latency tool: measure ping latency to AWS availability zones (from the browser, so HTTPS/TCP RTT; use per-AZ public endpoints where they exist — e.g. service endpoints pinned per AZ — and fall back to regional endpoints + AZ-local services where not). Show a per-AZ latency table, likely Europe/US first since that's what gets used from here.
 Workflow & verification
 
 Git worktree per your AGENTS.md, commits per phase, final on main. No ansible changes (wrangler owns deployment/DNS); I'll flag if anything turns out to need a homelab-side change.
