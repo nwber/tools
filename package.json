@@ -1,8 +1,23 @@
 {
   "name": "tools",
   "private": true,
-  "description": "Node tooling for the Cloudflare Worker (wrangler is invoked by pywrangler via npx)",
+  "type": "module",
+  "description": "tools.nbergeron.dev — Cloudflare Worker (Effect 4) + infrastructure as code (Alchemy v2)",
+  "scripts": {
+    "dev": "alchemy dev",
+    "plan": "alchemy plan",
+    "deploy": "alchemy deploy",
+    "destroy": "alchemy destroy",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm run test"
+  },
   "devDependencies": {
-    "wrangler": "^4.150.0"
+    "@effect/platform-node": "^4.0.4",
+    "@types/node": "^26.6.5",
+    "alchemy": "2.0.0-beta.83",
+    "effect": "^4.0.4",
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.4"
   }
 }

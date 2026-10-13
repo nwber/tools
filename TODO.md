@@ -1,5 +1,13 @@
 Architecture
 
+Revision (2026-10-14): the runtime language decision changed — the whole
+project is now TypeScript. Effect 4 for the Worker runtime, Alchemy v2
+("Infrastructure as Effects") for IaC; Python/pywrangler/uv/pytest dropped in
+favor of vitest. Phase 0 additionally validates the Alchemy deploy path
+(state store bootstrap, domains). The Python-flavored text below is the
+original plan and still useful as history; where it conflicts with the
+revision, the revision wins.
+
 One Python Worker: static assets (HTML/CSS/JS/JSON) + Python endpoints for dynamic behavior + speed test streaming.
 Free-plan-aware layout: pricing datasets and UI logic are static/zero-CPU where possible; Python WorkerEntrypoint (plain, not FastAPI) as default to keep CPU and startup minimal — FastAPI only if the Phase 0 spike shows comfortable headroom.
 No KV at launch; pricing tables are JSON assets refreshed by a scheduled GitHub Action (regenerates + commits + deploys). This avoids runtime cron entirely, which matters since free-plan cron CPU is also 10ms.
