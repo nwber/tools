@@ -191,7 +191,8 @@ disambiguated by the products' `operation` attribute.
 
 The AWS region latency tool (`/aws-latency/`) measures HTTPS round-trip time
 from the visitor's browser to the public endpoint of every commercial AWS
-region. The probe target is the regional DynamoDB health URL
+region except `il-central-1` (deliberately excluded). The probe target is the
+regional DynamoDB health URL
 (`https://dynamodb.<region>.amazonaws.com/`), which answers unauthenticated
 GETs with a tiny text body and no redirect — the s3/ec2/sts root endpoints
 30x to aws.amazon.com marketing pages, which a browser fetch would follow at
