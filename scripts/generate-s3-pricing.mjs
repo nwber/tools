@@ -147,7 +147,8 @@ function regionPrefix(offer, suffix) {
 const regionCodeUsable = (attrs) => typeof attrs.regionCode === "string";
 
 /** Storage tiers ordered smallest-first, as [upToGb, pricePerGbMonth].
- * "next 450 TB" means the following 450 TB, so boundaries are cumulative. */
+ * "next 450 TB" means the following 450 TB, so boundaries are cumulative.
+ * A class with a single price dimension is simply unbounded. */
 function storageTiers(dims, label) {
   const parsed = dims
     .map(({ usd, description }) => {
@@ -164,9 +165,14 @@ function storageTiers(dims, label) {
       if (b.isOver) return -1;
       return (a.sizeGb ?? 0) - (b.sizeGb ?? 0);
     });
+  if (parsed.length === 1) {
+    return [{ upToGb: null, perGbMonth: parsed[0].perGbMonth }];
+  }
   let boundary = 0;
   return parsed.map((tier) => {
-    if (tier.isOver) return { upToGb: null, perGbMonth: tier.perGbMonth };
+    if (tier.isOver || tier.sizeGb === null) {
+      return { upToGb: null, perGbMonth: tier.perGbMonth };
+    }
     boundary += tier.sizeGb;
     return { upToGb: boundary, perGbMonth: tier.perGbMonth };
   });

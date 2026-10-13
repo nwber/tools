@@ -18,14 +18,17 @@ was superseded by the 2026-10-14 revision note).
 
 ```
 alchemy.run.ts          Stack: providers + state + Worker (the composition root)
-src/worker.ts           Worker runtime: routing + responses (Effect 4)
+src/worker.ts           Worker resource: props + speed-test rate limit
 src/handler.ts          request handler (in-process testable)
 src/tools/ip.ts         /ip helpers (pure, vitest-tested)
+src/tools/speedtest.ts  speed-test parameter parsing + caps (pure)
 public/index.html       tools index (static)
 public/ebs/             the EBS pricing calculator page (ported, see Phase notes)
 public/ec2/             the EC2 burst calculator page (Phase 2)
-public/data/            shared datasets (ebs-pricing.json, ec2-burst-spec.json)
-scripts/                committed generators (scripts/generate-burst-spec.mjs)
+public/s3/              the S3 cost calculator page (Phase 4)
+public/speedtest/       the speed test page (Phase 3)
+public/data/            shared datasets (ebs-pricing.json, ec2-burst-spec.json, s3-pricing.json)
+scripts/                committed generators (generate-burst-spec.mjs, generate-s3-pricing.mjs)
 tests/                  vitest tests (pure modules, handler, client math)
 scripts/smoke.sh        post-deploy endpoint checks (deploy URL or local dev URL)
 ```
@@ -36,13 +39,18 @@ scripts/smoke.sh        post-deploy endpoint checks (deploy URL or local dev URL
 | --- | --- |
 | `GET /ebs/` | the AWS EBS Pricing calculator (static page, client-side math) |
 | `GET /ec2/` | the EC2 Burst Calculator (static page, client-side simulation) |
-| `GET /data/ebs-pricing.json` | the pricing dataset the EBS calculator loads (static asset) |
-| `GET /data/ec2-burst-spec.json` | the burstable spec + comparison dataset (static asset) |
+| `GET /s3/` | the S3 Cost Calculator (static page, client-side model) |
+| `GET /speedtest/` | the speed test page (latency + parallel down/upload) |
+| `GET /data/*.json` | the datasets the calculators load (static assets) |
 | `GET /ip` | client IP as plain text (Cloudflare's `CF-Connecting-IP`, trailing newline) |
 | `GET /ip.json` | same + `ip_version` and Cloudflare geo (`country`, `city`, `region`, `colo`, `asn`, `as_organization`, `timezone`) |
 | `GET /api/health` | `{"status": "ok", ...}` with version, phase, edge colo, UTC time |
 | `GET /api/ebs/pricing` | the EBS dataset for API use (bundled from `public/data/ebs-pricing.json`) |
 | `GET /api/ec2/burst-spec` | the burst dataset for API use (bundled from `public/data/ec2-burst-spec.json`) |
+| `GET /api/s3/pricing` | the S3 dataset for API use (bundled from `public/data/s3-pricing.json`) |
+| `GET /speedtest/ping` | tiny `pong` for latency measurement |
+| `GET /speedtest/down?bytes=N` | streams N random bytes (1 KiB – 100 MiB per request) |
+| `POST /speedtest/up` | drains the body, echoes `bytes_received` (16 MiB per-request cap) |
 
 > The pricing data is a hardcoded snapshot ported from the original EBS tool
 > (recovered from its `ebs-pricing-comparator.nwber.workers.dev` deployment).
@@ -160,3 +168,20 @@ t8i**:
   against the committed dataset;
 - t8i has no Reserved Instance pricing in the source yet, so RI terms fall
   back to on-demand with a visible note.
+
+Phase 3 added the speed test (`/speedtest/`): latency + jitter via
+`/speedtest/ping`, download through parallel streams of `/speedtest/down`
+(random bytes, 1 KiB–100 MiB per request), and upload through parallel
+chunked POSTs to `/speedtest/up` (16 MiB per-request cap, streaming drain).
+The endpoints are per-IP rate limited in code via Cloudflare's Rate Limiting
+binding (200 requests/minute, per colo), and the page shows the client's
+colo/IP and measured Mbps. Measurement math is unit-tested.
+
+The S3 cost calculator (`/s3/`) covers storage classes (including the five
+Intelligent-Tiering access tiers and its monitoring fee), request pricing,
+retrieval fees (standard/bulk/expedited where offered — including the
+currently-free Glacier Flexible bulk retrieval), lifecycle transitions, and
+minimum-storage-duration warnings. Prices are generated from the public AWS
+Price List API offers (`scripts/generate-s3-pricing.mjs` →
+`public/data/s3-pricing.json`, 34 regions) with the overloaded usagetypes
+disambiguated by the products' `operation` attribute.
