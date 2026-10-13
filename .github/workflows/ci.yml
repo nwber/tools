@@ -14,6 +14,10 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Guard the smoke script (it is not executed by unit tests)
+        run: |
+          bash -n scripts/smoke.sh
+          grep -q "smoke checks passed" scripts/smoke.sh
       - name: Typecheck
         run: npm run typecheck
       - name: Unit tests
