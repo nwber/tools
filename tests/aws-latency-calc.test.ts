@@ -99,8 +99,9 @@ describe("sortByMedian", () => {
 describe("aws-regions dataset", () => {
   const regions = dataset.regions;
 
-  it("covers the 34 commercial regions, sorted and unique", () => {
-    expect(regions).toHaveLength(34);
+  it("covers the 33 commercial regions (il-central-1 excluded), sorted and unique", () => {
+    expect(regions).toHaveLength(33);
+    expect(regions.some((r) => r.code === "il-central-1")).toBe(false);
     const codes = regions.map((r) => r.code);
     expect(new Set(codes).size).toBe(codes.length);
     expect([...codes].sort()).toEqual(codes);
@@ -142,7 +143,6 @@ describe("aws-regions dataset", () => {
     expect(byCode.get("ap-southeast-6")?.group).toBe("asia-pacific");
     expect(byCode.get("me-central-1")?.group).toBe("middle-east-africa");
     expect(byCode.get("af-south-1")?.group).toBe("middle-east-africa");
-    expect(byCode.get("il-central-1")?.group).toBe("middle-east-africa");
   });
 
   it("records the source endpoints hash for refreshes", () => {

@@ -156,7 +156,7 @@ describe("fetch handler", () => {
       groups: Array<{ id: string }>;
       regions: Array<{ code: string; name: string; group: string }>;
     };
-    expect(body.regions).toHaveLength(34);
+    expect(body.regions).toHaveLength(33);
     expect(body.regions.find((r) => r.code === "us-east-1")?.name).toBe("US East (N. Virginia)");
     expect(body.probe.template).toContain("{region}");
     expect(res.headers.get("access-control-allow-origin")).toBe("*");

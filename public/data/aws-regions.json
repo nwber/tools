@@ -158,11 +158,6 @@
       "group": "europe"
     },
     {
-      "code": "il-central-1",
-      "name": "Israel (Tel Aviv)",
-      "group": "middle-east-africa"
-    },
-    {
       "code": "me-central-1",
       "name": "Middle East (UAE)",
       "group": "middle-east-africa"

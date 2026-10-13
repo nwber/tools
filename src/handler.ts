@@ -36,7 +36,7 @@ import {
   parseDownloadBytes,
 } from "./tools/speedtest.ts";
 
-export const WORKER_VERSION = "0.6.1";
+export const WORKER_VERSION = "0.6.2";
 export const PHASE = 4;
 
 type ResponseEffect = Effect.Effect<HttpServerResponse.HttpServerResponse, HttpBodyError>;

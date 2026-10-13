@@ -89,8 +89,9 @@ Phase 4 — S3 cost calculator — COMPLETE (2026-10-14)
 
 Phase 4 — AWS region latency — COMPLETE (2026-10-14)
 
-- /aws-latency/ live: browser-measured HTTPS RTT to all 34 commercial AWS
-  regions against the regional DynamoDB health URL
+- /aws-latency/ live: browser-measured HTTPS RTT to 33 commercial AWS
+  regions (il-central-1 excluded by request) against the regional DynamoDB
+  health URL
   (https://dynamodb.<region>.amazonaws.com/ answers 200 with a tiny text
   body, no redirect; the s3/ec2/sts root endpoints 30x to aws.amazon.com).
 - Scope revision: the original item asked for availability zones, but AWS

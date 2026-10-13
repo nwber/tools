@@ -15,7 +15,7 @@
  * Probe choice (verified empirically 2026-10-14, from this network):
  *   - GET https://dynamodb.<region>.amazonaws.com/ answers 200 with a tiny
  *     text body ("healthy: dynamodb.<region>.amazonaws.com") and no redirect,
- *     in all 34 commercial regions — an explicit health contract.
+ *     in every commercial region we probe — an explicit health contract.
  *   - The obvious alternatives redirect before answering: s3.<region> ->
  *     aws.amazon.com/s3/, ec2.<region> -> aws.amazon.com/ec2, sts.<region> ->
  *     aws.amazon.com/iam. A browser fetch would follow those to a marketing
@@ -32,6 +32,12 @@ import process from "node:process";
 const ENDPOINTS_URL =
   "https://raw.githubusercontent.com/boto/botocore/develop/botocore/data/endpoints.json";
 const OUT_FILE = "public/data/aws-regions.json";
+
+/**
+ * Regions deliberately not probed (owner request, 2026-10-14). Kept explicit
+ * here so a regeneration cannot silently bring them back.
+ */
+const EXCLUDED_REGIONS = new Set(["il-central-1"]);
 
 /** Probe template; {region} is replaced per region. */
 const PROBE_TEMPLATE = "https://dynamodb.{region}.amazonaws.com/";
@@ -79,8 +85,15 @@ async function main() {
   if (codes.length === 0) throw new Error("no regions in partition 'aws'");
 
   const problems = [];
+  for (const code of EXCLUDED_REGIONS) {
+    if (!partition.regions[code]) {
+      problems.push(`excluded region ${code} is not in the endpoints file (typo?)`);
+    }
+  }
+
   const regions = [];
   for (const code of codes) {
+    if (EXCLUDED_REGIONS.has(code)) continue;
     const description = partition.regions[code].description;
     if (!description) problems.push(`${code}: no description`);
     const group = groupFor(code);
@@ -110,7 +123,10 @@ async function main() {
   };
 
   await writeFile(path.resolve(OUT_FILE), JSON.stringify(output, null, 2) + "\n");
-  console.error(`Wrote ${OUT_FILE}: ${regions.length} regions across ${GROUPS.length} groups`);
+  console.error(
+    `Wrote ${OUT_FILE}: ${regions.length} regions across ${GROUPS.length} groups` +
+      (EXCLUDED_REGIONS.size > 0 ? ` (excluded: ${[...EXCLUDED_REGIONS].join(", ")})` : ""),
+  );
 }
 
 main().catch((error) => {
