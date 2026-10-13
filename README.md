@@ -26,6 +26,11 @@ scripts/smoke.sh     post-deploy smoke checks (local dev or production URL)
 | `GET /api/health` | `{"status": "ok", ...}` with version, phase, edge colo, UTC time |
 | `GET \| POST /api/ebs/calc` | EBS pricing calc across all volume types x regions |
 
+The same Worker also serves **https://ip.nbergeron.dev** as a dedicated,
+curl-friendly host for the IP endpoints (`curl ip.nbergeron.dev/ip`). Its
+bare `/` shows the same static landing page as the main host, since static
+assets are hostname-agnostic.
+
 `/api/ebs/calc` parameters: `size_gb` (1–16384, default 100), `iops`,
 `throughput_mbps`, `repeat` (1–200), `regions` (comma-separated subset). The
 response is the full pricing matrix plus `compute_ms` (server-side compute

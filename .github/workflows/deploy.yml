@@ -58,3 +58,5 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       - name: Smoke tests
         run: scripts/smoke.sh https://tools.nbergeron.dev
+        env:
+          IP_BASE: https://ip.nbergeron.dev
