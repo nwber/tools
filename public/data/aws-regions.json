@@ -1,0 +1,206 @@
+{
+  "generatedBy": "scripts/generate-aws-regions.mjs",
+  "sources": {
+    "endpoints": "https://raw.githubusercontent.com/boto/botocore/develop/botocore/data/endpoints.json",
+    "endpoints_sha256": "a50bf5a863634c47bdc4eb5b3c0631b9a228f27e4340e9f5a85631cd471bbb5b",
+    "names": "region descriptions in the endpoints file; cross-checked against https://docs.aws.amazon.com/general/latest/gr/rande.html"
+  },
+  "probe": {
+    "template": "https://dynamodb.{region}.amazonaws.com/",
+    "note": "GET / on the regional DynamoDB endpoint answers 200 with a tiny text health body and no redirect; it is the fastest uniform public target per region."
+  },
+  "groups": [
+    {
+      "id": "us-canada",
+      "label": "US & Canada"
+    },
+    {
+      "id": "latin-america",
+      "label": "Latin America"
+    },
+    {
+      "id": "europe",
+      "label": "Europe"
+    },
+    {
+      "id": "asia-pacific",
+      "label": "Asia Pacific"
+    },
+    {
+      "id": "middle-east-africa",
+      "label": "Middle East & Africa"
+    }
+  ],
+  "regions": [
+    {
+      "code": "af-south-1",
+      "name": "Africa (Cape Town)",
+      "group": "middle-east-africa"
+    },
+    {
+      "code": "ap-east-1",
+      "name": "Asia Pacific (Hong Kong)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-east-2",
+      "name": "Asia Pacific (Taipei)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-northeast-1",
+      "name": "Asia Pacific (Tokyo)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-northeast-2",
+      "name": "Asia Pacific (Seoul)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-northeast-3",
+      "name": "Asia Pacific (Osaka)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-south-1",
+      "name": "Asia Pacific (Mumbai)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-south-2",
+      "name": "Asia Pacific (Hyderabad)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-southeast-1",
+      "name": "Asia Pacific (Singapore)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-southeast-2",
+      "name": "Asia Pacific (Sydney)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-southeast-3",
+      "name": "Asia Pacific (Jakarta)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-southeast-4",
+      "name": "Asia Pacific (Melbourne)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-southeast-5",
+      "name": "Asia Pacific (Malaysia)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-southeast-6",
+      "name": "Asia Pacific (New Zealand)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-southeast-7",
+      "name": "Asia Pacific (Thailand)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ca-central-1",
+      "name": "Canada (Central)",
+      "group": "us-canada"
+    },
+    {
+      "code": "ca-west-1",
+      "name": "Canada West (Calgary)",
+      "group": "us-canada"
+    },
+    {
+      "code": "eu-central-1",
+      "name": "Europe (Frankfurt)",
+      "group": "europe"
+    },
+    {
+      "code": "eu-central-2",
+      "name": "Europe (Zurich)",
+      "group": "europe"
+    },
+    {
+      "code": "eu-north-1",
+      "name": "Europe (Stockholm)",
+      "group": "europe"
+    },
+    {
+      "code": "eu-south-1",
+      "name": "Europe (Milan)",
+      "group": "europe"
+    },
+    {
+      "code": "eu-south-2",
+      "name": "Europe (Spain)",
+      "group": "europe"
+    },
+    {
+      "code": "eu-west-1",
+      "name": "Europe (Ireland)",
+      "group": "europe"
+    },
+    {
+      "code": "eu-west-2",
+      "name": "Europe (London)",
+      "group": "europe"
+    },
+    {
+      "code": "eu-west-3",
+      "name": "Europe (Paris)",
+      "group": "europe"
+    },
+    {
+      "code": "il-central-1",
+      "name": "Israel (Tel Aviv)",
+      "group": "middle-east-africa"
+    },
+    {
+      "code": "me-central-1",
+      "name": "Middle East (UAE)",
+      "group": "middle-east-africa"
+    },
+    {
+      "code": "me-south-1",
+      "name": "Middle East (Bahrain)",
+      "group": "middle-east-africa"
+    },
+    {
+      "code": "mx-central-1",
+      "name": "Mexico (Central)",
+      "group": "latin-america"
+    },
+    {
+      "code": "sa-east-1",
+      "name": "South America (Sao Paulo)",
+      "group": "latin-america"
+    },
+    {
+      "code": "us-east-1",
+      "name": "US East (N. Virginia)",
+      "group": "us-canada"
+    },
+    {
+      "code": "us-east-2",
+      "name": "US East (Ohio)",
+      "group": "us-canada"
+    },
+    {
+      "code": "us-west-1",
+      "name": "US West (N. California)",
+      "group": "us-canada"
+    },
+    {
+      "code": "us-west-2",
+      "name": "US West (Oregon)",
+      "group": "us-canada"
+    }
+  ]
+}
