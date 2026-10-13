@@ -1,0 +1,5213 @@
+{
+  "generatedBy": "scripts/generate-s3-pricing.mjs",
+  "sources": {
+    "s3_offer": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonS3/current/index.json",
+    "s3_offer_version": "20261012231102",
+    "gda_offer": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonS3GlacierDeepArchive/current/index.json",
+    "gda_offer_version": "20260911124507"
+  },
+  "classes": [
+    {
+      "id": "standard",
+      "name": "S3 Standard",
+      "minimumDays": null,
+      "kind": "storage"
+    },
+    {
+      "id": "intelligent-tiering",
+      "name": "S3 Intelligent-Tiering",
+      "minimumDays": null,
+      "kind": "tiered"
+    },
+    {
+      "id": "standard-ia",
+      "name": "S3 Standard-IA",
+      "minimumDays": 30,
+      "kind": "storage"
+    },
+    {
+      "id": "onezone-ia",
+      "name": "S3 One Zone-IA",
+      "minimumDays": 30,
+      "kind": "storage"
+    },
+    {
+      "id": "glacier-ir",
+      "name": "S3 Glacier Instant Retrieval",
+      "minimumDays": 90,
+      "kind": "storage"
+    },
+    {
+      "id": "glacier-flexible",
+      "name": "S3 Glacier Flexible Retrieval",
+      "minimumDays": 90,
+      "kind": "storage"
+    },
+    {
+      "id": "glacier-deep-archive",
+      "name": "S3 Glacier Deep Archive",
+      "minimumDays": 180,
+      "kind": "storage"
+    }
+  ],
+  "regions": [
+    {
+      "id": "af-south-1",
+      "name": "Africa (Cape Town)"
+    },
+    {
+      "id": "ap-east-1",
+      "name": "Asia Pacific (Hong Kong)"
+    },
+    {
+      "id": "ap-east-2",
+      "name": "Asia Pacific (Taipei)"
+    },
+    {
+      "id": "ap-northeast-1",
+      "name": "Asia Pacific (Tokyo)"
+    },
+    {
+      "id": "ap-northeast-2",
+      "name": "Asia Pacific (Seoul)"
+    },
+    {
+      "id": "ap-northeast-3",
+      "name": "Asia Pacific (Osaka)"
+    },
+    {
+      "id": "ap-south-1",
+      "name": "Asia Pacific (Mumbai)"
+    },
+    {
+      "id": "ap-south-2",
+      "name": "Asia Pacific (Hyderabad)"
+    },
+    {
+      "id": "ap-southeast-1",
+      "name": "Asia Pacific (Singapore)"
+    },
+    {
+      "id": "ap-southeast-2",
+      "name": "Asia Pacific (Sydney)"
+    },
+    {
+      "id": "ap-southeast-3",
+      "name": "Asia Pacific (Jakarta)"
+    },
+    {
+      "id": "ap-southeast-4",
+      "name": "Asia Pacific (Melbourne)"
+    },
+    {
+      "id": "ap-southeast-5",
+      "name": "Asia Pacific (Malaysia)"
+    },
+    {
+      "id": "ap-southeast-6",
+      "name": "Asia Pacific (New Zealand)"
+    },
+    {
+      "id": "ap-southeast-7",
+      "name": "Asia Pacific (Thailand)"
+    },
+    {
+      "id": "ca-central-1",
+      "name": "Canada (Central)"
+    },
+    {
+      "id": "ca-west-1",
+      "name": "Canada West (Calgary)"
+    },
+    {
+      "id": "eu-central-1",
+      "name": "EU (Frankfurt)"
+    },
+    {
+      "id": "eu-central-2",
+      "name": "Europe (Zurich)"
+    },
+    {
+      "id": "eu-north-1",
+      "name": "EU (Stockholm)"
+    },
+    {
+      "id": "eu-south-1",
+      "name": "EU (Milan)"
+    },
+    {
+      "id": "eu-south-2",
+      "name": "Europe (Spain)"
+    },
+    {
+      "id": "eu-west-1",
+      "name": "EU (Ireland)"
+    },
+    {
+      "id": "eu-west-2",
+      "name": "EU (London)"
+    },
+    {
+      "id": "eu-west-3",
+      "name": "EU (Paris)"
+    },
+    {
+      "id": "il-central-1",
+      "name": "Israel (Tel Aviv)"
+    },
+    {
+      "id": "me-central-1",
+      "name": "Middle East (UAE)"
+    },
+    {
+      "id": "me-south-1",
+      "name": "Middle East (Bahrain)"
+    },
+    {
+      "id": "mx-central-1",
+      "name": "Mexico (Central)"
+    },
+    {
+      "id": "sa-east-1",
+      "name": "South America (Sao Paulo)"
+    },
+    {
+      "id": "us-east-1",
+      "name": "US East (N. Virginia)"
+    },
+    {
+      "id": "us-east-2",
+      "name": "US East (Ohio)"
+    },
+    {
+      "id": "us-west-1",
+      "name": "US West (N. California)"
+    },
+    {
+      "id": "us-west-2",
+      "name": "US West (Oregon)"
+    }
+  ],
+  "prices": {
+    "af-south-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 0,
+            "perGbMonth": 0.0274
+          },
+          {
+            "upToGb": 0,
+            "perGbMonth": 0.0262
+          },
+          {
+            "upToGb": 0,
+            "perGbMonth": 0.025
+          }
+        ],
+        "putPer1000": 0.006,
+        "getPer1000": 0.0004
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0149
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0149,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0119
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0119,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00405
+          }
+        ],
+        "putPer1000": 0.036,
+        "transitionInPer1000": 0.036,
+        "getPer1000": 0.0004,
+        "restoreRequestPer1000": 0.06,
+        "retrievalPerGb": 0.012,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.036,
+        "earlyDeletePerGbMonth": 0.00405
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0018
+          }
+        ],
+        "putPer1000": 0.06,
+        "transitionInPer1000": 0.06,
+        "getPer1000": 0.0004,
+        "restoreStandardPer1000": 0.12,
+        "restoreBulkPer1000": 0.03,
+        "retrievalPerGb": 0.024,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.0018
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0274
+              },
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0262
+              },
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.025
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0149
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00405
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0018
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.006,
+        "getPer1000": 0.0004,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "ap-east-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.025
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.023
+          }
+        ],
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0138
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0138,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.011
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.011,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0045
+          }
+        ],
+        "putPer1000": 0.036,
+        "transitionInPer1000": 0.036,
+        "getPer1000": 0.0004,
+        "restoreRequestPer1000": 0.06,
+        "retrievalPerGb": 0.012,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.036,
+        "earlyDeletePerGbMonth": 0.0045
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.002
+          }
+        ],
+        "putPer1000": 0.06,
+        "transitionInPer1000": 0.06,
+        "getPer1000": 0.0004,
+        "restoreStandardPer1000": 0.12,
+        "restoreBulkPer1000": 0.03,
+        "retrievalPerGb": 0.024,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.002
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.025
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.023
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0138
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0045
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.002
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "ap-east-2": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.0225
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.0216
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0207
+          }
+        ],
+        "putPer1000": 0.00423,
+        "getPer1000": 0.000333
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01242
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01242,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0099
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0099,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0045
+          }
+        ],
+        "putPer1000": 0.030834,
+        "transitionInPer1000": 0.030834,
+        "getPer1000": 0.000333,
+        "restoreRequestPer1000": 0.05139,
+        "retrievalPerGb": 0.011,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.033,
+        "earlyDeletePerGbMonth": 0.00405
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.002
+          }
+        ],
+        "putPer1000": 0.0585,
+        "transitionInPer1000": 0.0585,
+        "getPer1000": 0.000333,
+        "restoreStandardPer1000": 0.1142,
+        "restoreBulkPer1000": 0.025,
+        "retrievalPerGb": 0.022,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.002
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.0225
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.0216
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.0207
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.01242
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0045
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.002
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.00423,
+        "getPer1000": 0.000333,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "ap-northeast-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.025
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.023
+          }
+        ],
+        "putPer1000": 0.0047,
+        "getPer1000": 0.00037
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0138
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0138,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.011
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.011,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0045
+          }
+        ],
+        "putPer1000": 0.03426,
+        "transitionInPer1000": 0.03426,
+        "getPer1000": 0.00037,
+        "restoreRequestPer1000": 0.0571,
+        "retrievalPerGb": 0.011,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.033,
+        "earlyDeletePerGbMonth": 0.0045
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.002
+          }
+        ],
+        "putPer1000": 0.065,
+        "transitionInPer1000": 0.065,
+        "getPer1000": 0.00037,
+        "restoreStandardPer1000": 0.1142,
+        "restoreBulkPer1000": 0.025,
+        "retrievalPerGb": 0.022,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.002
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.025
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.023
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0138
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0045
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.002
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0047,
+        "getPer1000": 0.00037,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "ap-northeast-2": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.025
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.023
+          }
+        ],
+        "putPer1000": 0.0045,
+        "getPer1000": 0.00035
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0138
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0138,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.011
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.011,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0045
+          }
+        ],
+        "putPer1000": 0.03258,
+        "transitionInPer1000": 0.03258,
+        "getPer1000": 0.00035,
+        "restoreRequestPer1000": 0.0543,
+        "retrievalPerGb": 0.011,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.033,
+        "earlyDeletePerGbMonth": 0.0045
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.002
+          }
+        ],
+        "putPer1000": 0.06,
+        "transitionInPer1000": 0.06,
+        "getPer1000": 0.00035,
+        "restoreStandardPer1000": 0.1086,
+        "restoreBulkPer1000": 0.0275,
+        "retrievalPerGb": 0.022,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.002
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.025
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.023
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0138
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0045
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.002
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0045,
+        "getPer1000": 0.00035,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "ap-northeast-3": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.025
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.023
+          }
+        ],
+        "putPer1000": 0.0047,
+        "getPer1000": 0.00037
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0138
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0138,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.011
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.011,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0045
+          }
+        ],
+        "putPer1000": 0.03426,
+        "transitionInPer1000": 0.03426,
+        "getPer1000": 0.00037,
+        "restoreRequestPer1000": 0.0571,
+        "retrievalPerGb": 0.011,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.033,
+        "earlyDeletePerGbMonth": 0.0045
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.002
+          }
+        ],
+        "putPer1000": 0.065,
+        "transitionInPer1000": 0.065,
+        "getPer1000": 0.00037,
+        "restoreStandardPer1000": 0.1142,
+        "restoreBulkPer1000": 0.025,
+        "retrievalPerGb": 0.022,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.002
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.025
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.023
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0138
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0045
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.002
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0047,
+        "getPer1000": 0.00037,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "ap-south-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.025
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.023
+          }
+        ],
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0138
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0138,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.011
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.011,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0045
+          }
+        ],
+        "putPer1000": 0.036,
+        "transitionInPer1000": 0.036,
+        "getPer1000": 0.0004,
+        "restoreRequestPer1000": 0.06,
+        "retrievalPerGb": 0.012,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.036,
+        "earlyDeletePerGbMonth": 0.0045
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.002
+          }
+        ],
+        "putPer1000": 0.07,
+        "transitionInPer1000": 0.07,
+        "getPer1000": 0.0004,
+        "restoreStandardPer1000": 0.12,
+        "restoreBulkPer1000": 0.03,
+        "retrievalPerGb": 0.024,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.002
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.025
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.023
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0138
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0045
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.002
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "ap-south-2": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 0,
+            "perGbMonth": 0.025
+          },
+          {
+            "upToGb": 0,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": 0,
+            "perGbMonth": 0.023
+          }
+        ],
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0138
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0138,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.011
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.011,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0045
+          }
+        ],
+        "putPer1000": 0.036,
+        "transitionInPer1000": 0.036,
+        "getPer1000": 0.0004,
+        "restoreRequestPer1000": 0.06,
+        "retrievalPerGb": 0.012,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.036,
+        "earlyDeletePerGbMonth": 0.0045
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.002
+          }
+        ],
+        "putPer1000": 0.07,
+        "transitionInPer1000": 0.07,
+        "getPer1000": 0.0004,
+        "restoreStandardPer1000": 0.12,
+        "restoreBulkPer1000": 0.03,
+        "retrievalPerGb": 0.024,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.002
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.025
+              },
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.023
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0138
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0045
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.002
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "ap-southeast-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.025
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.023
+          }
+        ],
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0138
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0138,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.011
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.011,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0045
+          }
+        ],
+        "putPer1000": 0.036,
+        "transitionInPer1000": 0.036,
+        "getPer1000": 0.0004,
+        "restoreRequestPer1000": 0.06,
+        "retrievalPerGb": 0.012,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.036,
+        "earlyDeletePerGbMonth": 0.0045
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.002
+          }
+        ],
+        "putPer1000": 0.06,
+        "transitionInPer1000": 0.06,
+        "getPer1000": 0.0004,
+        "restoreStandardPer1000": 0.12,
+        "restoreBulkPer1000": 0.03,
+        "retrievalPerGb": 0.024,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.002
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.025
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.023
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0138
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0045
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.002
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "ap-southeast-2": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.025
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.023
+          }
+        ],
+        "putPer1000": 0.0055,
+        "getPer1000": 0.00044
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0138
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0138,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.011
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.011,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0045
+          }
+        ],
+        "putPer1000": 0.036,
+        "transitionInPer1000": 0.036,
+        "getPer1000": 0.00044,
+        "restoreRequestPer1000": 0.06,
+        "retrievalPerGb": 0.012,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.036,
+        "earlyDeletePerGbMonth": 0.0045
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.002
+          }
+        ],
+        "putPer1000": 0.06,
+        "transitionInPer1000": 0.06,
+        "getPer1000": 0.00044,
+        "restoreStandardPer1000": 0.12,
+        "restoreBulkPer1000": 0.03,
+        "retrievalPerGb": 0.024,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.002
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.025
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.023
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0138
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0045
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.002
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0055,
+        "getPer1000": 0.00044,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "ap-southeast-3": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.025
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.023
+          }
+        ],
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0138
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0138,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.011
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.011,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0045
+          }
+        ],
+        "putPer1000": 0.036,
+        "transitionInPer1000": 0.036,
+        "getPer1000": 0.0004,
+        "restoreRequestPer1000": 0.06,
+        "retrievalPerGb": 0.012,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.036,
+        "earlyDeletePerGbMonth": 0.0045
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.002
+          }
+        ],
+        "putPer1000": 0.06,
+        "transitionInPer1000": 0.06,
+        "getPer1000": 0.0004,
+        "restoreStandardPer1000": 0.12,
+        "restoreBulkPer1000": 0.03,
+        "retrievalPerGb": 0.024,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.002
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.025
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.023
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0138
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0045
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.002
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "ap-southeast-4": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.025
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.023
+          }
+        ],
+        "putPer1000": 0.0055,
+        "getPer1000": 0.00044
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0138
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0138,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.011
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.011,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0045
+          }
+        ],
+        "putPer1000": 0.036,
+        "transitionInPer1000": 0.036,
+        "getPer1000": 0.00044,
+        "restoreRequestPer1000": 0.06,
+        "retrievalPerGb": 0.012,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.036,
+        "earlyDeletePerGbMonth": 0.0045
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.002
+          }
+        ],
+        "putPer1000": 0.06,
+        "transitionInPer1000": 0.06,
+        "getPer1000": 0.00044,
+        "restoreStandardPer1000": 0.12,
+        "restoreBulkPer1000": 0.03,
+        "retrievalPerGb": 0.024,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.002
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.025
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.023
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0138
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": null,
+                "perGbMonth": 0.0045
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.002
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0055,
+        "getPer1000": 0.00044,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "ap-southeast-5": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.0225
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.0216
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0207
+          }
+        ],
+        "putPer1000": 0.0045,
+        "getPer1000": 0.00036
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01242
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01242,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0099
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0099,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0045
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.0045,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00405
+          }
+        ],
+        "putPer1000": 0.0324,
+        "transitionInPer1000": 0.0324,
+        "getPer1000": 0.00036,
+        "restoreRequestPer1000": 0.054,
+        "retrievalPerGb": 0.0108,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.0324,
+        "earlyDeletePerGbMonth": 0.00405
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0018
+          }
+        ],
+        "putPer1000": 0.054,
+        "transitionInPer1000": 0.054,
+        "getPer1000": 0.00036,
+        "restoreStandardPer1000": 0.108,
+        "restoreBulkPer1000": 0.027,
+        "retrievalPerGb": 0.0216,
+        "retrievalBulkPerGb": 0.0045,
+        "earlyDeletePerGbMonth": 0.0018
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.0225
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.0216
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.0207
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.01242
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0045
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00405
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0018
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0045,
+        "getPer1000": 0.00036,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "ap-southeast-6": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.02625
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.0252
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.02415
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.02415
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.02415
+          }
+        ],
+        "putPer1000": 0.005775,
+        "getPer1000": 0.000462
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01449
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01449,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01155
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01155,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00525
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.00525,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.004725
+          }
+        ],
+        "putPer1000": 0.0378,
+        "transitionInPer1000": 0.0378,
+        "getPer1000": 0.000462,
+        "restoreRequestPer1000": 0.063,
+        "retrievalPerGb": 0.0126,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.0378,
+        "earlyDeletePerGbMonth": 0.004725
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0021
+          }
+        ],
+        "putPer1000": 0.063,
+        "transitionInPer1000": 0.063,
+        "getPer1000": 0.000462,
+        "restoreStandardPer1000": 0.126,
+        "restoreBulkPer1000": 0.0315,
+        "retrievalPerGb": 0.0252,
+        "retrievalBulkPerGb": 0.00525,
+        "earlyDeletePerGbMonth": 0.0021
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.02625
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.0252
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.02415
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.01449
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00525
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.004725
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.004725
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0021
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.0021
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.005775,
+        "getPer1000": 0.000462,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "ap-southeast-7": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.0225
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.0216
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0207
+          }
+        ],
+        "putPer1000": 0.0045,
+        "getPer1000": 0.00036
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01242
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01242,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0099
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0099,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0045
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.0045,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00405
+          }
+        ],
+        "putPer1000": 0.0324,
+        "transitionInPer1000": 0.0324,
+        "getPer1000": 0.00036,
+        "restoreRequestPer1000": 0.054,
+        "retrievalPerGb": 0.0108,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.0324,
+        "earlyDeletePerGbMonth": 0.00405
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0018
+          }
+        ],
+        "putPer1000": 0.054,
+        "transitionInPer1000": 0.054,
+        "getPer1000": 0.00036,
+        "restoreStandardPer1000": 0.108,
+        "restoreBulkPer1000": 0.027,
+        "retrievalPerGb": 0.0216,
+        "retrievalBulkPerGb": 0.0045,
+        "earlyDeletePerGbMonth": 0.0018
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.0225
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.0216
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.0207
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.01242
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0045
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00405
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0018
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0045,
+        "getPer1000": 0.00036,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "ca-central-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.025
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.023
+          }
+        ],
+        "putPer1000": 0.0055,
+        "getPer1000": 0.00044
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0138
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0138,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01104
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01104,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00405
+          }
+        ],
+        "putPer1000": 0.033,
+        "transitionInPer1000": 0.033,
+        "getPer1000": 0.00044,
+        "restoreRequestPer1000": 0.055,
+        "retrievalPerGb": 0.011,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.033,
+        "earlyDeletePerGbMonth": 0.00405
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0018
+          }
+        ],
+        "putPer1000": 0.06,
+        "transitionInPer1000": 0.06,
+        "getPer1000": 0.00044,
+        "restoreStandardPer1000": 0.11,
+        "restoreBulkPer1000": 0.0275,
+        "retrievalPerGb": 0.022,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.0018
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.025
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.023
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0138
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00405
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0018
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0055,
+        "getPer1000": 0.00044,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "ca-west-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.025
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.023
+          }
+        ],
+        "putPer1000": 0.0055,
+        "getPer1000": 0.00044
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0138
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0138,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01104
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01104,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00405
+          }
+        ],
+        "putPer1000": 0.033,
+        "transitionInPer1000": 0.033,
+        "getPer1000": 0.00044,
+        "restoreRequestPer1000": 0.055,
+        "retrievalPerGb": 0.011,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.033,
+        "earlyDeletePerGbMonth": 0.00405
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0018
+          }
+        ],
+        "putPer1000": 0.06,
+        "transitionInPer1000": 0.06,
+        "getPer1000": 0.00044,
+        "restoreStandardPer1000": 0.11,
+        "restoreBulkPer1000": 0.0275,
+        "retrievalPerGb": 0.022,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.0018
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.025
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.023
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0138
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00405
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0018
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0055,
+        "getPer1000": 0.00044,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "eu-central-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.0245
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.0235
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0225
+          }
+        ],
+        "putPer1000": 0.0054,
+        "getPer1000": 0.00043
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0135
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0135,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0108
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0108,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00405
+          }
+        ],
+        "putPer1000": 0.036,
+        "transitionInPer1000": 0.036,
+        "getPer1000": 0.00043,
+        "restoreRequestPer1000": 0.06,
+        "retrievalPerGb": 0.012,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.036,
+        "earlyDeletePerGbMonth": 0.00405
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0018
+          }
+        ],
+        "putPer1000": 0.06,
+        "transitionInPer1000": 0.06,
+        "getPer1000": 0.00043,
+        "restoreStandardPer1000": 0.12,
+        "restoreBulkPer1000": 0.03,
+        "retrievalPerGb": 0.024,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.0018
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.0245
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.0235
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.0225
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0135
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00405
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0018
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0054,
+        "getPer1000": 0.00043,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "eu-central-2": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.02695
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.02585
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.02475
+          }
+        ],
+        "putPer1000": 0.0054,
+        "getPer1000": 0.00043
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01485
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01485,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01188
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01188,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0055
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.0055,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.004455
+          }
+        ],
+        "putPer1000": 0.036,
+        "transitionInPer1000": 0.036,
+        "getPer1000": 0.00043,
+        "restoreRequestPer1000": 0.06,
+        "retrievalPerGb": 0.012,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.036,
+        "earlyDeletePerGbMonth": 0.004455
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00198
+          }
+        ],
+        "putPer1000": 0.06,
+        "transitionInPer1000": 0.06,
+        "getPer1000": 0.00043,
+        "restoreStandardPer1000": 0.12,
+        "restoreBulkPer1000": 0.03,
+        "retrievalPerGb": 0.024,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.00198
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.02695
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.02585
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.02475
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.01485
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0055
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.004455
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00198
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0054,
+        "getPer1000": 0.00043,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "eu-north-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.023
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.022
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.021
+          }
+        ],
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0125
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0125,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.004
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.004,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0036
+          }
+        ],
+        "putPer1000": 0.033,
+        "transitionInPer1000": 0.033,
+        "getPer1000": 0.0004,
+        "restoreRequestPer1000": 0.055,
+        "retrievalPerGb": 0.01,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.0036
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00099
+          }
+        ],
+        "putPer1000": 0.055,
+        "transitionInPer1000": 0.055,
+        "getPer1000": 0.0004,
+        "restoreStandardPer1000": 0.11,
+        "restoreBulkPer1000": 0.025,
+        "retrievalPerGb": 0.02,
+        "retrievalBulkPerGb": 0.003,
+        "earlyDeletePerGbMonth": 0.00099
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.023
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.022
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.021
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0125
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.004
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0036
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00099
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "eu-south-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 0,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": 0,
+            "perGbMonth": 0.023
+          },
+          {
+            "upToGb": 0,
+            "perGbMonth": 0.022
+          }
+        ],
+        "putPer1000": 0.0053,
+        "getPer1000": 0.0004
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0131
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0131,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0105
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0105,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00405
+          }
+        ],
+        "putPer1000": 0.036,
+        "transitionInPer1000": 0.036,
+        "getPer1000": 0.0004,
+        "restoreRequestPer1000": 0.06,
+        "retrievalPerGb": 0.012,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.036,
+        "earlyDeletePerGbMonth": 0.00405
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0018
+          }
+        ],
+        "putPer1000": 0.06,
+        "transitionInPer1000": 0.06,
+        "getPer1000": 0.0004,
+        "restoreStandardPer1000": 0.12,
+        "restoreBulkPer1000": 0.03,
+        "retrievalPerGb": 0.024,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.0018
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.023
+              },
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.022
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0131
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00405
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0018
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0053,
+        "getPer1000": 0.0004,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "eu-south-2": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.023
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.022
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.021
+          }
+        ],
+        "putPer1000": 0.0053,
+        "getPer1000": 0.0004
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0125
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0131,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0105,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00405
+          }
+        ],
+        "putPer1000": 0.036,
+        "transitionInPer1000": 0.036,
+        "getPer1000": 0.0004,
+        "restoreRequestPer1000": 0.06,
+        "retrievalPerGb": 0.012,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.036,
+        "earlyDeletePerGbMonth": 0.00405
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0018
+          }
+        ],
+        "putPer1000": 0.06,
+        "transitionInPer1000": 0.06,
+        "getPer1000": 0.0004,
+        "restoreStandardPer1000": 0.12,
+        "restoreBulkPer1000": 0.03,
+        "retrievalPerGb": 0.024,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.0018
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.023
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.022
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.021
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0125
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00405
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0018
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0053,
+        "getPer1000": 0.0004,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "eu-west-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.023
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.022
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.021
+          }
+        ],
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0125
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0125,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.004
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.004,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0036
+          }
+        ],
+        "putPer1000": 0.033,
+        "transitionInPer1000": 0.033,
+        "getPer1000": 0.0004,
+        "restoreRequestPer1000": 0.055,
+        "retrievalPerGb": 0.01,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.0036
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00099
+          }
+        ],
+        "putPer1000": 0.055,
+        "transitionInPer1000": 0.055,
+        "getPer1000": 0.0004,
+        "restoreStandardPer1000": 0.11,
+        "restoreBulkPer1000": 0.025,
+        "retrievalPerGb": 0.02,
+        "retrievalBulkPerGb": 0.003,
+        "earlyDeletePerGbMonth": 0.00099
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.023
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.022
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.021
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0125
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.004
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0036
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00099
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "eu-west-2": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.023
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.022
+          }
+        ],
+        "putPer1000": 0.0053,
+        "getPer1000": 0.00042
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0131
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0131,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01048
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01048,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00405
+          }
+        ],
+        "putPer1000": 0.0318,
+        "transitionInPer1000": 0.0318,
+        "getPer1000": 0.00042,
+        "restoreRequestPer1000": 0.053,
+        "retrievalPerGb": 0.0105,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.0315,
+        "earlyDeletePerGbMonth": 0.00405
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0018
+          }
+        ],
+        "putPer1000": 0.06,
+        "transitionInPer1000": 0.06,
+        "getPer1000": 0.00042,
+        "restoreStandardPer1000": 0.106,
+        "restoreBulkPer1000": 0.026,
+        "retrievalPerGb": 0.021,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.0018
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.023
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.022
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0131
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00405
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0018
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0053,
+        "getPer1000": 0.00042,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "eu-west-3": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.023
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.022
+          }
+        ],
+        "putPer1000": 0.0053,
+        "getPer1000": 0.00042
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0131
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0131,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01048
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01048,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00405
+          }
+        ],
+        "putPer1000": 0.0318,
+        "transitionInPer1000": 0.0318,
+        "getPer1000": 0.00042,
+        "restoreRequestPer1000": 0.053,
+        "retrievalPerGb": 0.0105,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.0315,
+        "earlyDeletePerGbMonth": 0.00405
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0018
+          }
+        ],
+        "putPer1000": 0.06,
+        "transitionInPer1000": 0.06,
+        "getPer1000": 0.00042,
+        "restoreStandardPer1000": 0.106,
+        "restoreBulkPer1000": 0.02625,
+        "retrievalPerGb": 0.021,
+        "retrievalBulkPerGb": 0.005,
+        "earlyDeletePerGbMonth": 0.0018
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.023
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.022
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0131
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00405
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0018
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0053,
+        "getPer1000": 0.00042,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "il-central-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.025
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.023
+          }
+        ],
+        "putPer1000": 0.0055,
+        "getPer1000": 0.00044
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0138
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0138,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01104
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01104,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00405
+          }
+        ],
+        "putPer1000": 0.0363,
+        "transitionInPer1000": 0.0363,
+        "getPer1000": 0.00044,
+        "restoreRequestPer1000": 0.0605,
+        "retrievalPerGb": 0.011,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.033,
+        "earlyDeletePerGbMonth": 0.00405
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0018
+          }
+        ],
+        "putPer1000": 0.0605,
+        "transitionInPer1000": 0.0605,
+        "getPer1000": 0.00044,
+        "restoreStandardPer1000": 0.121,
+        "restoreBulkPer1000": 0.0275,
+        "retrievalPerGb": 0.022,
+        "retrievalBulkPerGb": 0.0033,
+        "earlyDeletePerGbMonth": 0.0018
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.025
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.023
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0138
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00405
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0018
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0055,
+        "getPer1000": 0.00044,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "me-central-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.025
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.023
+          }
+        ],
+        "putPer1000": 0.0055,
+        "getPer1000": 0.00044
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0138
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0138,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01104
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01104,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00405
+          }
+        ],
+        "putPer1000": 0.0363,
+        "transitionInPer1000": 0.0363,
+        "getPer1000": 0.00044,
+        "restoreRequestPer1000": 0.0605,
+        "retrievalPerGb": 0.011,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.033,
+        "earlyDeletePerGbMonth": 0.00405
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0018
+          }
+        ],
+        "putPer1000": 0.0605,
+        "transitionInPer1000": 0.0605,
+        "getPer1000": 0.00044,
+        "restoreStandardPer1000": 0.121,
+        "restoreBulkPer1000": 0.0275,
+        "retrievalPerGb": 0.022,
+        "retrievalBulkPerGb": 0.0033,
+        "earlyDeletePerGbMonth": 0.0018
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.025
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.023
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0138
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00405
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0018
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0055,
+        "getPer1000": 0.00044,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "me-south-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.025
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.024
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.023
+          }
+        ],
+        "putPer1000": 0.0055,
+        "getPer1000": 0.00044
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0138
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0138,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01104
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01104,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00405
+          }
+        ],
+        "putPer1000": 0.0363,
+        "transitionInPer1000": 0.0363,
+        "getPer1000": 0.00044,
+        "restoreRequestPer1000": 0.0605,
+        "retrievalPerGb": 0.011,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.033,
+        "earlyDeletePerGbMonth": 0.00405
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0018
+          }
+        ],
+        "putPer1000": 0.0605,
+        "transitionInPer1000": 0.0605,
+        "getPer1000": 0.00044,
+        "restoreStandardPer1000": 0.121,
+        "restoreBulkPer1000": 0.03025,
+        "retrievalPerGb": 0.022,
+        "retrievalBulkPerGb": 0.0033,
+        "earlyDeletePerGbMonth": 0.0018
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.025
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.024
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.023
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0138
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00405
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0018
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0055,
+        "getPer1000": 0.00044,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "mx-central-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.02415
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.0231
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.02205
+          }
+        ],
+        "putPer1000": 0.00525,
+        "getPer1000": 0.00042
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.013125
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.013125,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0105
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0105,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0042
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.0042,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00378
+          }
+        ],
+        "putPer1000": 0.0315,
+        "transitionInPer1000": 0.0315,
+        "getPer1000": 0.00042,
+        "restoreRequestPer1000": 0.0525,
+        "retrievalPerGb": 0.0105,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.0315,
+        "earlyDeletePerGbMonth": 0.00378
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.002
+          }
+        ],
+        "putPer1000": 0.0525,
+        "transitionInPer1000": 0.0525,
+        "getPer1000": 0.00042,
+        "restoreStandardPer1000": 0.105,
+        "restoreBulkPer1000": 0.02625,
+        "retrievalPerGb": 0.021,
+        "retrievalBulkPerGb": 0.002625,
+        "earlyDeletePerGbMonth": 0.0010395
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.02415
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.0231
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.02205
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.013125
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0042
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00378
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.002
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.00525,
+        "getPer1000": 0.00042,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "sa-east-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.0405
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.039
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.037
+          }
+        ],
+        "putPer1000": 0.007,
+        "getPer1000": 0.00056
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0221
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0221,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0177
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0177,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0083
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.0083,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00765
+          }
+        ],
+        "putPer1000": 0.042,
+        "transitionInPer1000": 0.042,
+        "getPer1000": 0.00056,
+        "restoreRequestPer1000": 0.07,
+        "retrievalPerGb": 0.014,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.042,
+        "earlyDeletePerGbMonth": 0.00765
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0032
+          }
+        ],
+        "putPer1000": 0.1,
+        "transitionInPer1000": 0.1,
+        "getPer1000": 0.00056,
+        "restoreStandardPer1000": 0.14,
+        "restoreBulkPer1000": 0.035,
+        "retrievalPerGb": 0.028,
+        "retrievalBulkPerGb": 0.008,
+        "earlyDeletePerGbMonth": 0.0032
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.0405
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.039
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.037
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0221
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0083
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00765
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0032
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.007,
+        "getPer1000": 0.00056,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "us-east-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.023
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.022
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.021
+          }
+        ],
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0125
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0125,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.004
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.004,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0036
+          }
+        ],
+        "putPer1000": 0.03,
+        "transitionInPer1000": 0.03,
+        "getPer1000": 0.0004,
+        "restoreRequestPer1000": 0.05,
+        "retrievalPerGb": 0.01,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.0036
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00099
+          }
+        ],
+        "putPer1000": 0.05,
+        "transitionInPer1000": 0.05,
+        "getPer1000": 0.0004,
+        "restoreStandardPer1000": 0.1,
+        "restoreBulkPer1000": 0.025,
+        "retrievalPerGb": 0.02,
+        "retrievalBulkPerGb": 0.0025,
+        "earlyDeletePerGbMonth": 0.00099
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.023
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.022
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.021
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0125
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.004
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0036
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00099
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "us-east-2": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.023
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.022
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.021
+          }
+        ],
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0125
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0125,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.004
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.004,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0036
+          }
+        ],
+        "putPer1000": 0.03,
+        "transitionInPer1000": 0.03,
+        "getPer1000": 0.0004,
+        "restoreRequestPer1000": 0.05,
+        "retrievalPerGb": 0.01,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.0036
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00099
+          }
+        ],
+        "putPer1000": 0.05,
+        "transitionInPer1000": 0.05,
+        "getPer1000": 0.0004,
+        "restoreStandardPer1000": 0.1,
+        "restoreBulkPer1000": 0.025,
+        "retrievalPerGb": 0.02,
+        "retrievalBulkPerGb": 0.0025,
+        "earlyDeletePerGbMonth": 0.00099
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.023
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.022
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.021
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0125
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.004
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0036
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00099
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "us-west-1": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.026
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.025
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.024
+          }
+        ],
+        "putPer1000": 0.0055,
+        "getPer1000": 0.00044
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0144
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0144,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0115
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0115,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.005
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.005,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0045
+          }
+        ],
+        "putPer1000": 0.033,
+        "transitionInPer1000": 0.033,
+        "getPer1000": 0.00044,
+        "restoreRequestPer1000": 0.055,
+        "retrievalPerGb": 0.011,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.033,
+        "earlyDeletePerGbMonth": 0.0045
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.002
+          }
+        ],
+        "putPer1000": 0.06,
+        "transitionInPer1000": 0.06,
+        "getPer1000": 0.00044,
+        "restoreStandardPer1000": 0.11,
+        "restoreBulkPer1000": 0.0275,
+        "retrievalPerGb": 0.022,
+        "retrievalBulkPerGb": 0.0035,
+        "earlyDeletePerGbMonth": 0.002
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.026
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.025
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.024
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0144
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.005
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0045
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.002
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.0055,
+        "getPer1000": 0.00044,
+        "transitionInPer1000": 0.01
+      }
+    },
+    "us-west-2": {
+      "standard": {
+        "storageTiers": [
+          {
+            "upToGb": 51200,
+            "perGbMonth": 0.023
+          },
+          {
+            "upToGb": 512000,
+            "perGbMonth": 0.022
+          },
+          {
+            "upToGb": null,
+            "perGbMonth": 0.021
+          }
+        ],
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004
+      },
+      "standard-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0125
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.0125,
+        "transitionInPer1000": 0.01
+      },
+      "onezone-ia": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.01
+          }
+        ],
+        "putPer1000": 0.01,
+        "getPer1000": 0.001,
+        "retrievalPerGb": 0.01,
+        "earlyDeletePerGbMonth": 0.01,
+        "transitionInPer1000": 0.01
+      },
+      "glacier-ir": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.004
+          }
+        ],
+        "putPer1000": 0.02,
+        "getPer1000": 0.01,
+        "retrievalPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.004,
+        "transitionInPer1000": 0.02
+      },
+      "glacier-flexible": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.0036
+          }
+        ],
+        "putPer1000": 0.03,
+        "transitionInPer1000": 0.03,
+        "getPer1000": 0.0004,
+        "restoreRequestPer1000": 0.05,
+        "retrievalPerGb": 0.01,
+        "retrievalBulkPerGb": 0,
+        "retrievalExpeditedPerGb": 0.03,
+        "earlyDeletePerGbMonth": 0.0036
+      },
+      "glacier-deep-archive": {
+        "storageTiers": [
+          {
+            "upToGb": null,
+            "perGbMonth": 0.00099
+          }
+        ],
+        "putPer1000": 0.05,
+        "transitionInPer1000": 0.05,
+        "getPer1000": 0.0004,
+        "restoreStandardPer1000": 0.1,
+        "restoreBulkPer1000": 0.025,
+        "retrievalPerGb": 0.02,
+        "retrievalBulkPerGb": 0.0025,
+        "earlyDeletePerGbMonth": 0.00099
+      },
+      "intelligent-tiering": {
+        "tiers": {
+          "frequent": {
+            "storageTiers": [
+              {
+                "upToGb": 51200,
+                "perGbMonth": 0.023
+              },
+              {
+                "upToGb": 512000,
+                "perGbMonth": 0.022
+              },
+              {
+                "upToGb": null,
+                "perGbMonth": 0.021
+              }
+            ]
+          },
+          "infrequent": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0125
+              }
+            ]
+          },
+          "archive-instant": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.004
+              }
+            ]
+          },
+          "archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.0036
+              }
+            ]
+          },
+          "deep-archive": {
+            "storageTiers": [
+              {
+                "upToGb": 0,
+                "perGbMonth": 0.00099
+              }
+            ]
+          }
+        },
+        "monitoringPer1000ObjectsPerMonth": 0.0025,
+        "putPer1000": 0.005,
+        "getPer1000": 0.0004,
+        "transitionInPer1000": 0.01
+      }
+    }
+  },
+  "skippedRegions": [],
+  "notes": [
+    "Glacier Flexible Retrieval bulk retrieval is currently $0.00 in the AWS price list.",
+    "Deep Archive prices come from the separate AmazonS3GlacierDeepArchive offer file.",
+    "Intelligent-Tiering archive tiers bill retrieval like the matching Glacier class; this calculator does not model IT retrieval fees."
+  ]
+}
