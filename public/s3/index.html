@@ -21,6 +21,21 @@
         border-bottom: 2px solid #e9ecef;
         padding-bottom: 10px;
       }
+      .home {
+        display: inline-block;
+        margin: 0 0 4px -8px;
+        padding: 8px;
+        color: #52606d;
+        line-height: 0;
+      }
+      .home:hover {
+        color: #007bff;
+      }
+      .home svg {
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+      }
       h2 {
         font-size: 1.1rem;
         margin-top: 2rem;
@@ -109,14 +124,67 @@
         font-size: 0.8rem;
         margin-top: 2rem;
       }
-      @media (max-width: 768px) {
+      /* The requests table's natural width (~940px: six columns with long
+         headers and number inputs) exceeds narrow tablets, so this page
+         stacks a bit later than the others. */
+      @media (max-width: 1000px) {
         input[type="number"] {
           width: 100%;
+        }
+        /* Reflow tables into cards so the page never scrolls horizontally
+           on phones. Desktop layout is untouched. */
+        table,
+        tbody,
+        tr,
+        th,
+        td {
+          display: block;
+        }
+        thead {
+          display: none;
+        }
+        tr {
+          border: 1px solid #e3e8ee;
+          border-radius: 6px;
+          padding: 10px 12px;
+          margin-bottom: 10px;
+        }
+        th,
+        td {
+          border: none;
+          padding: 3px 0;
+        }
+        th[scope="row"],
+        td:first-child {
+          font-weight: 600;
+          padding-bottom: 6px;
+        }
+        td[data-label] {
+          padding-top: 6px;
+        }
+        td[data-label]::before {
+          content: attr(data-label);
+          display: block;
+          color: #6d7f97;
+          font-size: 0.8rem;
+        }
+        td input,
+        td select {
+          width: 100%;
+        }
+        td.num {
+          text-align: left;
+          font-weight: 600;
+          padding-top: 6px;
+        }
+        tr.subrow th {
+          padding-left: 0;
         }
       }
     </style>
   </head>
   <body>
+    <a class="home" href="/" aria-label="Toolbox home" title="Toolbox home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg></a>
     <h1>S3 Cost Calculator</h1>
     <p>
       Monthly S3 cost across storage classes, request pricing, retrieval, and

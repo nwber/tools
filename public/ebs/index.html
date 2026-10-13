@@ -20,6 +20,21 @@
         border-bottom: 2px solid #e9ecef;
         padding-bottom: 10px;
       }
+      .home {
+        display: inline-block;
+        margin: 0 0 4px -8px;
+        padding: 8px;
+        color: #52606d;
+        line-height: 0;
+      }
+      .home:hover {
+        color: #007bff;
+      }
+      .home svg {
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+      }
       .form {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -83,13 +98,55 @@
         .form {
           grid-template-columns: 1fr;
         }
-        table {
+        /* Reflow the results table into cards so the page never scrolls
+           horizontally on phones. Desktop layout is untouched. */
+        #results,
+        #results tbody,
+        #results tr,
+        #results td {
+          display: block;
+        }
+        #results {
           font-size: 14px;
+        }
+        #results thead {
+          display: none;
+        }
+        #results tr {
+          border: 1px solid #e3e8ee;
+          border-radius: 6px;
+          padding: 10px 12px;
+          margin-bottom: 10px;
+        }
+        #results td {
+          border: none;
+          padding: 3px 0;
+        }
+        #results td:first-child {
+          font-weight: 600;
+          padding-bottom: 6px;
+        }
+        #results td[data-label] {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          gap: 12px;
+        }
+        #results td[data-label]::before {
+          content: attr(data-label);
+          color: #6d7f97;
+          font-size: 0.85rem;
+        }
+        #results td:last-child {
+          border-top: 1px solid #eef2f7;
+          margin-top: 6px;
+          padding-top: 6px;
         }
       }
     </style>
   </head>
   <body>
+    <a class="home" href="/" aria-label="Toolbox home" title="Toolbox home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg></a>
     <h1>AWS EBS Pricing</h1>
     <div class="form">
       <div>

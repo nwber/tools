@@ -97,6 +97,11 @@ function buildRows() {
     nCell.className = "num";
     const stateCell = document.createElement("td");
     stateCell.className = "state";
+    latCell.dataset.label = "Median";
+    minCell.dataset.label = "Min";
+    jitterCell.dataset.label = "Jitter";
+    nCell.dataset.label = "Samples";
+    stateCell.dataset.label = "State";
 
     tr.append(regionCell, latCell, minCell, jitterCell, nCell, stateCell);
     tbody.append(tr);

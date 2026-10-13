@@ -205,3 +205,9 @@ median when the run finishes. This replaces the original per-AZ plan: AWS
 publishes no public per-AZ HTTPS endpoints (zone-pinned endpoints exist only
 for resources you create, like RDS instances or NLBs), so region reach is
 the honest granularity from a browser.
+
+Every page is mobile-friendly: wide tables reflow into stacked label/value
+cards (below 768px; the S3 requests table stacks below 1000px, where its
+~940px natural width would otherwise overflow), and nothing scrolls
+horizontally from 320px up. Each tool page carries a house icon back to the
+index; the index is titled `toolbox` and links this repository.

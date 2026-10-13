@@ -21,6 +21,21 @@
         border-bottom: 2px solid #e9ecef;
         padding-bottom: 10px;
       }
+      .home {
+        display: inline-block;
+        margin: 0 0 4px -8px;
+        padding: 8px;
+        color: #52606d;
+        line-height: 0;
+      }
+      .home:hover {
+        color: #007bff;
+      }
+      .home svg {
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+      }
       h2 {
         font-size: 1.1rem;
         margin-top: 2rem;
@@ -119,10 +134,57 @@
         .form {
           grid-template-columns: 1fr;
         }
+        /* Reflow the comparison matrix into cards so the page never scrolls
+           horizontally on phones. Desktop layout is untouched. */
+        table.detail,
+        table.detail tbody,
+        table.detail tr,
+        table.detail th,
+        table.detail td {
+          display: block;
+        }
+        table.detail thead {
+          display: none;
+        }
+        table.detail tr {
+          border: 1px solid #e3e8ee;
+          border-radius: 6px;
+          padding: 10px 12px;
+          margin-bottom: 10px;
+        }
+        table.detail th,
+        table.detail td {
+          border: none;
+          padding: 3px 0;
+        }
+        table.detail th[scope="row"] {
+          font-weight: 600;
+          padding-bottom: 6px;
+        }
+        table.detail td[data-label] {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          gap: 12px;
+        }
+        table.detail td[data-label]::before {
+          content: attr(data-label);
+          color: #6d7f97;
+          font-size: 0.85rem;
+        }
+        table.detail td.note {
+          color: #6d7f97;
+          font-size: 0.8rem;
+          padding-top: 4px;
+        }
+        table.detail td.note:empty {
+          display: none;
+        }
       }
     </style>
   </head>
   <body>
+    <a class="home" href="/" aria-label="Toolbox home" title="Toolbox home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg></a>
     <h1>EC2 Burst Calculator</h1>
     <p>
       Compare AWS burstable instances (t3a, t4g, t8i) with the cheapest

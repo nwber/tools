@@ -21,6 +21,21 @@
         border-bottom: 2px solid #e9ecef;
         padding-bottom: 10px;
       }
+      .home {
+        display: inline-block;
+        margin: 0 0 4px -8px;
+        padding: 8px;
+        color: #52606d;
+        line-height: 0;
+      }
+      .home:hover {
+        color: #007bff;
+      }
+      .home svg {
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+      }
       button {
         background: #007bff;
         color: white;
@@ -99,6 +114,7 @@
     </style>
   </head>
   <body>
+    <a class="home" href="/" aria-label="Toolbox home" title="Toolbox home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg></a>
     <h1>Speed Test</h1>
     <p>
       Measures latency (ping + jitter), download (6 parallel streams), and
