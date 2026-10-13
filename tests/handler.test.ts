@@ -148,11 +148,27 @@ describe("fetch handler", () => {
     expect(body.families["t8i"]?.unlimitedSurchargePerVcpuHour).toBe(0.06);
   });
 
+  it("serves /api/aws/regions with the generated dataset", async () => {
+    const res = await request("/api/aws/regions");
+    expect(res.status).toBe(200);
+    const body = res.json() as {
+      probe: { template: string; note: string };
+      groups: Array<{ id: string }>;
+      regions: Array<{ code: string; name: string; group: string }>;
+    };
+    expect(body.regions).toHaveLength(34);
+    expect(body.regions.find((r) => r.code === "us-east-1")?.name).toBe("US East (N. Virginia)");
+    expect(body.probe.template).toContain("{region}");
+    expect(res.headers.get("access-control-allow-origin")).toBe("*");
+  });
+
   it("answers 405 for unsupported methods on known routes", async () => {
     const res = await request("/api/ebs/pricing", { method: "POST" });
     expect(res.status).toBe(405);
     const res2 = await request("/api/ec2/burst-spec", { method: "POST" });
     expect(res2.status).toBe(405);
+    const res3 = await request("/api/aws/regions", { method: "POST" });
+    expect(res3.status).toBe(405);
   });
 
   it("serves /speedtest/ping", async () => {

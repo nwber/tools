@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AWS Region Latency</title>
+    <style>
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+        color: #1f2933;
+      }
+      h1 {
+        color: #333;
+        border-bottom: 2px solid #e9ecef;
+        padding-bottom: 10px;
+      }
+      button {
+        background: #007bff;
+        color: white;
+        padding: 12px 28px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font: inherit;
+        font-weight: 600;
+      }
+      button:hover:not(:disabled) {
+        background: #0056b3;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+      select {
+        font: inherit;
+        padding: 4px 8px;
+      }
+      .client {
+        color: #52606d;
+        font-size: 0.9rem;
+        margin: 8px 0 16px;
+      }
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 16px;
+        margin: 16px 0;
+      }
+      fieldset {
+        border: 1px solid #e3e8ee;
+        border-radius: 6px;
+        padding: 8px 12px;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px 14px;
+      }
+      legend {
+        color: #52606d;
+        font-size: 0.85rem;
+        padding: 0 4px;
+      }
+      fieldset label {
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+      .progress {
+        color: #52606d;
+        font-size: 0.9rem;
+        min-height: 1.4em;
+      }
+      .summary {
+        margin: 8px 0 14px;
+        font-weight: 600;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-variant-numeric: tabular-nums;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 6px 10px;
+        border-bottom: 1px solid #eef2f7;
+      }
+      th {
+        color: #52606d;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      tbody tr:nth-child(even) {
+        background: #fafbfc;
+      }
+      td.region .name {
+        font-weight: 600;
+      }
+      td.region .code {
+        color: #6d7f97;
+        font-size: 0.8rem;
+        margin-left: 6px;
+      }
+      .lat-flex {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .lat-flex .bar {
+        flex: 1;
+        max-width: 180px;
+        height: 6px;
+        background: #eef2f7;
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .lat-flex .bar-fill {
+        height: 100%;
+        width: 0;
+        background: #007bff;
+        transition: width 0.2s;
+      }
+      .lat-flex .val {
+        font-weight: 600;
+        min-width: 5.5em;
+      }
+      td.num {
+        color: #52606d;
+      }
+      td.state {
+        font-size: 0.85rem;
+        color: #6d7f97;
+      }
+      tr[data-state="done"] td.state {
+        color: #28a745;
+      }
+      tr[data-state="timeout"] td.state,
+      tr[data-state="error"] td.state,
+      tr[data-state="unreachable"] td.state {
+        color: #dc3545;
+      }
+      .footnote {
+        color: #6d7f97;
+        font-size: 0.8rem;
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>AWS Region Latency</h1>
+    <p>
+      Measures HTTPS round-trip time from this browser to each AWS region's
+      public endpoint — the regional DynamoDB health URL, which answers
+      unauthenticated GETs with a tiny text body. Lower is better; compare
+      regions relative to each other.
+    </p>
+    <div class="client" id="client">loading client info…</div>
+
+    <div class="controls">
+      <fieldset id="groups"><legend>Regions</legend></fieldset>
+      <label>
+        Probes per region
+        <select id="samples">
+          <option value="5">5</option>
+          <option value="7">7</option>
+          <option value="12">12</option>
+        </select>
+      </label>
+      <button id="run">Run test</button>
+    </div>
+
+    <div class="progress" id="progress"></div>
+    <div class="summary" id="summary"></div>
+
+    <table id="results">
+      <thead>
+        <tr>
+          <th>Region</th>
+          <th>Median</th>
+          <th>Min</th>
+          <th>Jitter</th>
+          <th>n</th>
+          <th>State</th>
+        </tr>
+      </thead>
+      <tbody id="rows"></tbody>
+    </table>
+
+    <p class="footnote">
+      Each probe is a cross-origin <code>fetch(mode: "no-cors")</code> timed
+      with <code>performance.now()</code>; AWS sends no CORS headers, so the
+      responses are opaque and only their timing is visible. The first probe
+      per region is discarded as DNS/TCP/TLS warm-up — the rest share a warm
+      connection. Results are HTTPS round-trip estimates (network RTT plus
+      TLS/HTTP overhead), not ICMP ping. US &amp; Canada and Europe are
+      pre-selected because that is what typically gets used from here; select
+      more groups to compare further regions.
+    </p>
+
+    <script type="module" src="/aws-latency/aws-latency-page.js"></script>
+  </body>
+</html>
