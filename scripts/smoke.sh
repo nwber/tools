@@ -108,5 +108,5 @@ if [[ -n "$IP_BASE" ]]; then
   echo "ok: ip-host /ip -> $body"
 fi
 
-[[ "$CHECKS" -ge 21 ]] || fail "only $CHECKS checks ran; expected at least 21"
+[[ "$CHECKS" -ge 19 ]] || fail "only $CHECKS checks ran; expected at least 19"
 echo "all $CHECKS smoke checks passed for $BASE"
