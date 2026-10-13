@@ -18,3 +18,39 @@ jobs:
         run: npm run typecheck
       - name: Unit tests
         run: npm test
+
+  # TEMPORARY: pre-merge probe that the CLOUDFLARE_API_TOKEN/ACCOUNT_ID
+  # secrets are valid and carry the scopes the deploy needs. Remove after
+  # verifying the first deploy.
+  verify-credentials:
+    runs-on: ubuntu-latest
+    env:
+      HAS_CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN != '' }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - name: Probe Cloudflare API scopes
+        if: env.HAS_CF_TOKEN == 'true'
+        run: |
+          set -uo pipefail
+          api() {
+            curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$@"
+          }
+          echo "== token verify"
+          api https://api.cloudflare.com/client/v4/user/tokens/verify \
+            | jq -c '{success, status: .result.status, errors}'
+          echo "== account read (Account Settings:Read)"
+          api "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID" \
+            | jq -c '{success, name: .result.name, errors}'
+          echo "== zone lookup nbergeron.dev (Zone:Read)"
+          api "https://api.cloudflare.com/client/v4/zones?name=nbergeron.dev" \
+            | jq -c '{success, zones: [.result[]?.name], errors}'
+          echo "== workers scripts list (Workers Scripts)"
+          api "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/workers/scripts" \
+            | jq -c '{success, count: (.result | length), errors}'
+          echo "== secrets store list (Secrets Store)"
+          api "https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/secrets_store/stores" \
+            | jq -c '{success, count: (.result | length), errors}'
+      - name: No token secret
+        if: env.HAS_CF_TOKEN != 'true'
+        run: echo "CLOUDFLARE_API_TOKEN secret is not set; skipping probe."
