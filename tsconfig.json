@@ -9,6 +9,8 @@
     "strict": true,
     "exactOptionalPropertyTypes": true,
     "allowImportingTsExtensions": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
     "noEmit": true,
     "skipLibCheck": true,
     "verbatimModuleSyntax": true

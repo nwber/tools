@@ -27,6 +27,13 @@ check() { CHECKS=$((CHECKS + 1)); }
 
 body=$($CURL "$BASE/") || fail "GET / failed"; check
 grep -qi '<!doctype html' <<<"$body" || fail "GET / did not return an HTML page"
+grep -q 'AWS EBS Pricing' <<<"$body" || fail "index does not link the EBS tool"
+
+body=$($CURL "$BASE/ebs/") || fail "GET /ebs/ failed"; check
+grep -q '<title>AWS EBS Pricing</title>' <<<"$body" || fail "/ebs/ did not return the calculator page"
+
+body=$($CURL "$BASE/data/ebs-pricing.json") || fail "GET /data/ebs-pricing.json failed"; check
+grep -q '"volumeTypes"' <<<"$body" || fail "pricing asset missing volumeTypes"
 
 body=$($CURL "$BASE/ip") || fail "GET /ip failed"; check
 [[ -n "$body" ]] || fail "GET /ip returned an empty body"
@@ -34,18 +41,15 @@ echo "ok: /ip -> $body"
 
 body=$($CURL "$BASE/ip.json") || fail "GET /ip.json failed"; check
 grep -q '"ip"' <<<"$body" || fail "GET /ip.json missing ip field: $body"
-echo "ok: /ip.json -> $body"
 
 body=$($CURL "$BASE/api/health") || fail "GET /api/health failed"; check
 grep -q '"status"[[:space:]]*:[[:space:]]*"ok"' <<<"$body" || fail "health not ok: $body"
-echo "ok: /api/health -> $body"
 
-body=$($CURL "$BASE/api/ebs/calc?size_gb=100") || fail "GET /api/ebs/calc failed"; check
-grep -q '"line_items"' <<<"$body" || fail "ebs calc missing line_items: $body"
-echo "ok: /api/ebs/calc -> $(head -c 120 <<<"$body")..."
+body=$($CURL "$BASE/api/ebs/pricing") || fail "GET /api/ebs/pricing failed"; check
+grep -q '"volumeTypes"' <<<"$body" || fail "/api/ebs/pricing missing volumeTypes"
 
-status=$(curl -s -o /dev/null -w '%{http_code}' "$BASE/api/ebs/calc?size_gb=0") || fail "ebs calc request failed"; check
-[[ "$status" == "400" ]] || fail "expected 400 for invalid size_gb, got $status"
+status=$(curl -s -o /dev/null -w '%{http_code}' -X POST "$BASE/api/ebs/pricing") || fail "POST /api/ebs/pricing request failed"; check
+[[ "$status" == "405" ]] || fail "expected 405 for POST /api/ebs/pricing, got $status"
 
 status=$(curl -s -o /dev/null -w '%{http_code}' "$BASE/api/missing") || fail "missing-route request failed"; check
 [[ "$status" == "404" ]] || fail "expected 404 for unknown api route, got $status"
@@ -56,5 +60,5 @@ if [[ -n "$IP_BASE" ]]; then
   echo "ok: ip-host /ip -> $body"
 fi
 
-[[ "$CHECKS" -ge 7 ]] || fail "only $CHECKS checks ran; expected at least 7"
+[[ "$CHECKS" -ge 10 ]] || fail "only $CHECKS checks ran; expected at least 10"
 echo "all $CHECKS smoke checks passed for $BASE"

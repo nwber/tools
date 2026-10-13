@@ -6,11 +6,11 @@
  * via `HttpServerRequest.fromWeb` and assert on real responses.
  *
  * Routes:
- *   GET  /ip            client IP as plain text
- *   GET  /ip.json       client IP + Cloudflare geo as JSON
- *   GET  /api/health    health check
- *   GET  /api/ebs/calc  EBS pricing matrix (all volume types x regions)
- *   POST /api/ebs/calc  same, JSON body
+ *   GET  /ip               client IP as plain text
+ *   GET  /ip.json          client IP + Cloudflare geo as JSON
+ *   GET  /api/health       health check
+ *   GET  /api/ebs/pricing  the shared EBS pricing dataset (same JSON asset
+ *                          the calculator page loads from /data/)
  */
 
 import * as Effect from "effect/Effect";
@@ -20,11 +20,11 @@ import { HttpServerRequest } from "effect/http/HttpServerRequest";
 import * as HttpServerResponse from "effect/http/HttpServerResponse";
 import * as Option from "effect/Option";
 
+import ebsPricing from "../public/data/ebs-pricing.json";
 import { cfSummary, clientIpFromHeaders, ipVersion, type CfProperties } from "./tools/ip.ts";
-import { computeEbsMatrix, parseEbsInputs } from "./tools/ebs-pricing.ts";
 
-export const WORKER_VERSION = "0.2.0";
-export const PHASE = 0;
+export const WORKER_VERSION = "0.3.0";
+export const PHASE = 1;
 
 type ResponseEffect = Effect.Effect<HttpServerResponse.HttpServerResponse, HttpBodyError>;
 
@@ -91,24 +91,14 @@ export const fetchHandler = Effect.gen(function* () {
         time_utc: new Date().toISOString(),
       });
 
-    case "GET /api/ebs/calc":
-      return yield* ebsCalcResponse(Object.fromEntries(url.searchParams));
-
-    case "POST /api/ebs/calc": {
-      const body = yield* Effect.option(request.json);
-      if (
-        Option.isNone(body) ||
-        typeof body.value !== "object" ||
-        body.value === null ||
-        Array.isArray(body.value)
-      ) {
-        return yield* json({ error: "request body must be a JSON object" }, 400);
-      }
-      return yield* ebsCalcResponse(body.value as Record<string, unknown>);
-    }
+    case "GET /api/ebs/pricing":
+      // The dataset is versioned by the deploy; a short public cache is fine.
+      return yield* HttpServerResponse.json(ebsPricing, {
+        headers: { ...BASE_HEADERS, "cache-control": "public, max-age=300" },
+      });
   }
 
-  if (url.pathname === "/api/ebs/calc") {
+  if (url.pathname === "/api/ebs/pricing" || url.pathname === "/api/health") {
     return yield* json({ error: "method not allowed", method: request.method }, 405);
   }
   if (url.pathname.startsWith("/api/")) {
@@ -117,28 +107,3 @@ export const fetchHandler = Effect.gen(function* () {
   // Unknown non-API paths: no static asset matched, so answer 404 here.
   return html(NOT_FOUND_HTML, 404);
 });
-
-function ebsCalcResponse(values: Record<string, unknown>): ResponseEffect {
-  const parsed = parseEbsInputs(values);
-  if (!parsed.ok) {
-    return json({ error: parsed.error }, 400);
-  }
-  const { inputs } = parsed;
-  const startedAt = performance.now();
-  const result = computeEbsMatrix(inputs);
-  const computeMs = Math.round((performance.now() - startedAt) * 1000) / 1000;
-  return json({
-    ok: true,
-    inputs: {
-      size_gb: inputs.sizeGb,
-      iops: inputs.iops ?? null,
-      throughput_mbps: inputs.throughputMbps ?? null,
-      regions: [...inputs.regions],
-    },
-    line_items: result.lineItems,
-    compute_ms: computeMs,
-    totals: result.totals,
-    matrix: result.matrix,
-    note: "representative snapshot prices; the real dataset lands with the Phase 1 EBS port",
-  });
-}

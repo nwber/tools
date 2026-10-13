@@ -88,7 +88,7 @@ describe("fetch handler", () => {
   it("serves /api/health", async () => {
     const res = await request("/api/health", { cf: { colo: "BOS" } });
     expect(res.status).toBe(200);
-    expect(res.json()).toMatchObject({ status: "ok", service: "tools", phase: 0, colo: "BOS" });
+    expect(res.json()).toMatchObject({ status: "ok", service: "tools", phase: 1, colo: "BOS" });
   });
 
   it("answers HEAD like GET", async () => {
@@ -99,56 +99,33 @@ describe("fetch handler", () => {
     expect(res.status).toBe(200);
   });
 
-  it("computes the EBS matrix for GET with a region subset", async () => {
-    const res = await request("/api/ebs/calc?size_gb=100&regions=us-east-1");
+  it("serves /api/ebs/pricing with the shared dataset", async () => {
+    const res = await request("/api/ebs/pricing");
     expect(res.status).toBe(200);
     const body = res.json() as {
-      ok: boolean;
-      line_items: number;
-      inputs: { size_gb: number; regions: string[] };
-      matrix: Record<string, Record<string, { total_usd: number }>>;
+      regions: Record<string, string>;
+      volumeTypes: Record<
+        string,
+        { durability: string; pricing: Record<string, { perGB: number }> }
+      >;
     };
-    expect(body.ok).toBe(true);
-    expect(body.line_items).toBe(6);
-    expect(body.inputs.size_gb).toBe(100);
-    expect(body.inputs.regions).toEqual(["us-east-1"]);
-    expect(body.matrix["gp2"]?.["us-east-1"]?.total_usd).toBeCloseTo(10);
-  });
-
-  it("computes the EBS matrix for POST with a JSON body", async () => {
-    const res = await request("/api/ebs/calc", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ size_gb: 512, iops: 5000, regions: ["eu-west-1"] }),
-    });
-    expect(res.status).toBe(200);
-    const body = res.json() as {
-      line_items: number;
-      matrix: Record<string, Record<string, { total_usd: number }>>;
-    };
-    expect(body.line_items).toBe(6);
-    expect(body.matrix["gp3"]?.["eu-west-1"]?.total_usd).toBeCloseTo(
-      (512 * 0.08 + (5000 - 3000) * 0.005) * 1.08,
-    );
-  });
-
-  it("rejects invalid EBS inputs with 400", async () => {
-    const res = await request("/api/ebs/calc?size_gb=0");
-    expect(res.status).toBe(400);
-    expect(res.json()).toMatchObject({ error: expect.stringContaining("size_gb") });
-  });
-
-  it("rejects a malformed POST body with 400", async () => {
-    const res = await request("/api/ebs/calc", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: "not json",
-    });
-    expect(res.status).toBe(400);
+    // The recovered dataset has 23 regions and 7 volume types.
+    expect(Object.keys(body.regions)).toHaveLength(23);
+    expect(Object.keys(body.volumeTypes).sort()).toEqual([
+      "gp2",
+      "gp3",
+      "io1",
+      "io2",
+      "sc1",
+      "st1",
+      "standard",
+    ]);
+    expect(body.volumeTypes["gp3"]?.pricing["us-east-1"]?.perGB).toBe(0.08);
+    expect(body.volumeTypes["gp2"]?.durability).toBe("99.8%");
   });
 
   it("answers 405 for unsupported methods on known routes", async () => {
-    const res = await request("/api/ebs/calc", { method: "DELETE" });
+    const res = await request("/api/ebs/pricing", { method: "POST" });
     expect(res.status).toBe(405);
   });
 
