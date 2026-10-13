@@ -25,6 +25,24 @@ fail() {
 
 check() { CHECKS=$((CHECKS + 1)); }
 
+# Post-deploy rollout gate: new deploys propagate to every edge location over
+# a few seconds, and an unlucky early request can hit a POP still serving the
+# previous version (assets and script versions roll over independently). When
+# the caller passes the expected WORKER_VERSION, wait for it before checking.
+if [[ -n "${EXPECT_VERSION:-}" ]]; then
+  version=""
+  for _ in $(seq 1 30); do
+    version=$(curl -sS --max-time 10 "$BASE/api/health" 2>/dev/null \
+      | grep -o '"version":"[^"]*"' | cut -d'"' -f4 || true)
+    [[ "$version" == "$EXPECT_VERSION" ]] && break
+    sleep 3
+  done
+  if [[ "$version" != "$EXPECT_VERSION" ]]; then
+    fail "version ${EXPECT_VERSION} not live after 90s (health reports ${version:-none})"
+  fi
+  echo "ok: rollout complete (version $EXPECT_VERSION live)"
+fi
+
 body=$($CURL "$BASE/") || fail "GET / failed"; check
 grep -qi '<!doctype html' <<<"$body" || fail "GET / did not return an HTML page"
 grep -q 'AWS EBS Pricing' <<<"$body" || fail "index does not link the EBS tool"
