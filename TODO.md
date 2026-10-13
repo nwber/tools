@@ -8,6 +8,18 @@ favor of vitest. Phase 0 additionally validates the Alchemy deploy path
 original plan and still useful as history; where it conflicts with the
 revision, the revision wins.
 
+Phase 0 — COMPLETE (2026-10-13)
+
+- Delivered: Effect 4 Worker + Alchemy v2 IaC in nwber/tools; live at
+  tools.nbergeron.dev (canonical) and ip.nbergeron.dev, with /ip, /ip.json,
+  /api/health, and GET|POST /api/ebs/calc (6 volume types x 34 regions).
+- CI: typecheck + 40 vitest tests on PRs (unit + in-process handler tests via
+  HttpServerRequest.fromWeb); credential preflight; deploy on main via
+  alchemy + real post-deploy smoke checks.
+- CPU question resolved by construction: the runtime is TypeScript (no
+  Pyodide), so the free plan's 10 ms/request budget is a non-issue; the EBS
+  calc runs server-side in well under 1 ms (see compute_ms in responses).
+
 One Python Worker: static assets (HTML/CSS/JS/JSON) + Python endpoints for dynamic behavior + speed test streaming.
 Free-plan-aware layout: pricing datasets and UI logic are static/zero-CPU where possible; Python WorkerEntrypoint (plain, not FastAPI) as default to keep CPU and startup minimal — FastAPI only if the Phase 0 spike shows comfortable headroom.
 No KV at launch; pricing tables are JSON assets refreshed by a scheduled GitHub Action (regenerates + commits + deploys). This avoids runtime cron entirely, which matters since free-plan cron CPU is also 10ms.

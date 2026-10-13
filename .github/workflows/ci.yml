@@ -23,9 +23,9 @@ jobs:
       - name: Unit tests
         run: npm test
 
-  # TEMPORARY: pre-merge probe that the CLOUDFLARE_API_TOKEN/ACCOUNT_ID
-  # secrets are valid and carry the scopes the deploy needs. Remove after
-  # verifying the first deploy.
+  # Preflight: verify the CLOUDFLARE_API_TOKEN/ACCOUNT_ID secrets are valid
+  # and still carry the scopes the deploy needs — early warning for token
+  # expiry or scope drift. Fork PRs skip via the guard below.
   verify-credentials:
     runs-on: ubuntu-latest
     env:
