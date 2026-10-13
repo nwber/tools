@@ -14,6 +14,7 @@
  */
 
 import * as Cloudflare from "alchemy/Cloudflare";
+import * as Cause from "effect/Cause";
 import * as Effect from "effect/Effect";
 import type { HttpBodyError } from "effect/http/HttpBody";
 import * as Headers from "effect/http/Headers";
@@ -61,8 +62,8 @@ const html = (body: string, status = 200) =>
     headers: { "cache-control": "no-store" },
   });
 
-const cfProperties = (source: object): CfProperties | undefined =>
-  (source as { readonly cf?: CfProperties }).cf;
+const cfProperties = (source: object | undefined): CfProperties | undefined =>
+  (source as { readonly cf?: CfProperties } | undefined)?.cf;
 
 export default Cloudflare.Worker(
   "Worker",
@@ -139,7 +140,19 @@ export default Cloudflare.Worker(
         }
         // Unknown non-API paths: no static asset matched, so answer 404 here.
         return html(NOT_FOUND_HTML, 404);
-      }),
+      }).pipe(
+        // TEMPORARY diagnostic: surface handler defects until the runtime
+        // error behind the production 500s is understood. Remove once fixed.
+        Effect.catchAllCause((cause) =>
+          Effect.succeed(
+            HttpServerResponse.text(`worker error:\n\n${Cause.pretty(cause)}`, {
+              status: 500,
+              contentType: "text/plain; charset=utf-8",
+              headers: { "cache-control": "no-store" },
+            }),
+          ),
+        ),
+      ),
     };
   }),
 );
