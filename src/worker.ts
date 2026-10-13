@@ -143,7 +143,7 @@ export default Cloudflare.Worker(
       }).pipe(
         // TEMPORARY diagnostic: surface handler defects until the runtime
         // error behind the production 500s is understood. Remove once fixed.
-        Effect.catchAllCause((cause) =>
+        Effect.catchCause((cause) =>
           Effect.succeed(
             HttpServerResponse.text(`worker error:\n\n${Cause.pretty(cause)}`, {
               status: 500,
