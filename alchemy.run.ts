@@ -1,5 +1,5 @@
 /**
- * Infrastructure as code for tools.nbergeron.dev.
+ * Infrastructure as code for toolbox.nbergeron.dev.
  *
  * One Effect 4 program (via Alchemy v2 "Infrastructure as Effects"). This
  * file is the composition root: it wires the Cloudflare provider plus the

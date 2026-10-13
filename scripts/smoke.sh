@@ -2,7 +2,7 @@
 # Post-deploy smoke tests: verify the endpoints answer as designed.
 #
 # Usage: scripts/smoke.sh <base-url>
-#   e.g. scripts/smoke.sh https://tools.nbergeron.dev
+#   e.g. scripts/smoke.sh https://toolbox.nbergeron.dev
 #        scripts/smoke.sh http://localhost:1337   # URL printed by `alchemy dev`
 #   IP_BASE=<url> optionally also checks the dedicated ip.* hostname.
 
