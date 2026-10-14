@@ -107,6 +107,18 @@ Phase 4 — AWS region latency — COMPLETE (2026-10-14)
   DNS/TCP/TLS warm-up, opaque no-cors fetches timed with performance.now(),
   rows ranked by median when the run finishes (or is stopped).
 
+Extra — IP ↔ Hex converter — COMPLETE (2026-10-14)
+
+- /ip-hex/ live: paste an IPv4/IPv6 address, a hex string (bare, 0x,
+  dotted, spaced), or a decimal integer and get every representation back
+  (hex, 0x-hex, dotted hex, canonical/expanded IPv6, IPv4-mapped, decimal).
+- Pure client-side math in public/ip-hex/ip-hex-calc.js, unit-tested
+  (parsing both versions incl. :: compression and embedded IPv4, RFC 5952
+  formatting, hex normalization, round trips, input-reading rules); the
+  ambiguous digit-only case (a string that is valid hex and decimal, e.g.
+  an 8-digit value) gets a read-as toggle instead of a silent guess.
+- Static page only — no Worker route; smoke.sh checks the page.
+
 Remaining in phase 4: data transfer estimator, CIDR/subnet planner.
 
 One Python Worker: static assets (HTML/CSS/JS/JSON) + Python endpoints for dynamic behavior + speed test streaming.
