@@ -11,7 +11,8 @@
  *   GET  /api/health       health check
  *   GET  /api/ebs/pricing  the shared EBS pricing dataset (same JSON asset
  *                          the calculator page loads from /data/)
- *   GET  /api/ec2/burst-spec, /api/s3/pricing, /api/aws/regions
+ *   GET  /api/ec2/burst-spec, /api/s3/pricing, /api/aws/regions,
+ *        /api/data-transfer/pricing
  *                          datasets for API use (same JSON assets as /data/)
  *   GET  /speedtest/ping, /speedtest/down; POST /speedtest/up
  *                          speed-test endpoints
@@ -26,6 +27,7 @@ import * as Option from "effect/Option";
 import * as Stream from "effect/Stream";
 
 import awsRegions from "../public/data/aws-regions.json";
+import dataTransferPricing from "../public/data/data-transfer-pricing.json";
 import ebsPricing from "../public/data/ebs-pricing.json";
 import ec2BurstSpec from "../public/data/ec2-burst-spec.json";
 import s3Pricing from "../public/data/s3-pricing.json";
@@ -36,7 +38,7 @@ import {
   parseDownloadBytes,
 } from "./tools/speedtest.ts";
 
-export const WORKER_VERSION = "0.7.1";
+export const WORKER_VERSION = "0.8.0";
 export const PHASE = 4;
 
 type ResponseEffect = Effect.Effect<HttpServerResponse.HttpServerResponse, HttpBodyError>;
@@ -163,6 +165,11 @@ export const fetchHandler = Effect.gen(function* () {
         headers: { ...BASE_HEADERS, "cache-control": "public, max-age=300" },
       });
 
+    case "GET /api/data-transfer/pricing":
+      return yield* HttpServerResponse.json(dataTransferPricing, {
+        headers: { ...BASE_HEADERS, "cache-control": "public, max-age=300" },
+      });
+
     case "GET /speedtest/ping":
       return HttpServerResponse.text("pong", { headers: speedtestHeaders });
 
@@ -203,6 +210,7 @@ export const fetchHandler = Effect.gen(function* () {
     url.pathname === "/api/ec2/burst-spec" ||
     url.pathname === "/api/s3/pricing" ||
     url.pathname === "/api/aws/regions" ||
+    url.pathname === "/api/data-transfer/pricing" ||
     url.pathname === "/api/health"
   ) {
     return yield* json({ error: "method not allowed", method: request.method }, 405);

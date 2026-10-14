@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Transfer Estimator</title>
+    <style>
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          sans-serif;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 20px;
+        line-height: 1.6;
+        color: #1f2933;
+      }
+      h1 {
+        color: #333;
+        border-bottom: 2px solid #e9ecef;
+        padding-bottom: 10px;
+      }
+      .home {
+        display: inline-block;
+        margin: 0 0 4px -8px;
+        padding: 8px;
+        color: #52606d;
+        line-height: 0;
+      }
+      .home:hover {
+        color: #007bff;
+      }
+      .home svg {
+        width: 22px;
+        height: 22px;
+        fill: currentColor;
+      }
+      h2 {
+        font-size: 1.1rem;
+        margin-top: 2rem;
+      }
+      h3 {
+        font-size: 0.95rem;
+        margin: 1rem 0 0.25rem;
+        color: #52606d;
+      }
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+      input,
+      select {
+        padding: 6px 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font: inherit;
+        background: white;
+        max-width: 100%;
+      }
+      input[type="number"] {
+        width: 9rem;
+      }
+      .controls {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 12px;
+        margin: 12px 0;
+      }
+      .controls select,
+      .controls input {
+        width: 100%;
+        box-sizing: border-box;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 8px;
+      }
+      th,
+      td {
+        padding: 7px 10px;
+        text-align: left;
+        border-bottom: 1px solid #e3e8ee;
+      }
+      thead th {
+        border-bottom: 2px solid #e3e8ee;
+      }
+      td.num,
+      th.num {
+        text-align: right;
+        font-variant-numeric: tabular-nums;
+      }
+      td.good {
+        color: #0b7a3b;
+      }
+      td.bad {
+        color: #b91c1c;
+      }
+      tr.total-row th,
+      tr.total-row td {
+        font-weight: 600;
+        border-top: 2px solid #e3e8ee;
+      }
+      .hint-cell span {
+        color: #6d7f97;
+        font-size: 0.85rem;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 12px;
+        margin: 16px 0;
+      }
+      .card {
+        border: 1px solid #e3e8ee;
+        border-radius: 6px;
+        padding: 10px 12px;
+      }
+      .card-label {
+        font-size: 0.8rem;
+        color: #6d7f97;
+      }
+      .card-value {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+      .card-sub {
+        font-size: 0.8rem;
+        color: #6d7f97;
+      }
+      .warning {
+        color: #856404;
+        background: #fff3cd;
+        border-radius: 4px;
+        padding: 10px;
+        margin: 10px 0;
+        font-size: 0.9rem;
+      }
+      .footnote {
+        color: #6d7f97;
+        font-size: 0.8rem;
+        margin-top: 2rem;
+      }
+      /* Reflow tables into cards so the page never scrolls horizontally on
+         phones. Desktop layout is untouched. */
+      @media (max-width: 860px) {
+        input[type="number"] {
+          width: 100%;
+        }
+        table,
+        tbody,
+        tr,
+        th,
+        td {
+          display: block;
+        }
+        thead {
+          display: none;
+        }
+        tr {
+          border: 1px solid #e3e8ee;
+          border-radius: 6px;
+          padding: 10px 12px;
+          margin-bottom: 10px;
+        }
+        th,
+        td {
+          border: none;
+          padding: 3px 0;
+        }
+        th[scope="row"],
+        td:first-child {
+          font-weight: 600;
+          padding-bottom: 6px;
+        }
+        td[data-label] {
+          padding-top: 6px;
+        }
+        td[data-label]::before {
+          content: attr(data-label);
+          display: block;
+          color: #6d7f97;
+          font-size: 0.8rem;
+          font-weight: 400;
+        }
+        td.num,
+        th.num {
+          text-align: left;
+        }
+        .hint-cell {
+          padding-top: 6px;
+        }
+        tr.total-row {
+          border-width: 2px;
+        }
+      }
+    </style>
+    <script src="/analytics.js" defer></script>
+  </head>
+  <body>
+    <a class="home" href="/" aria-label="Toolbox home" title="Toolbox home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" /></svg></a>
+    <h1>AWS Data Transfer Estimator</h1>
+    <p>
+      Monthly data-transfer cost for a VPC workload in private subnets,
+      comparing two routings side by side: everything through NAT gateways, or
+      S3/DynamoDB through free gateway endpoints and other AWS services through
+      interface endpoints (PrivateLink). Prices come from the AWS Price List
+      API (committed dataset; regenerate with
+      <code>scripts/generate-data-transfer-pricing.mjs</code>).
+    </p>
+
+    <div class="controls">
+      <div>
+        <label for="region">Region</label>
+        <select id="region"></select>
+      </div>
+      <div>
+        <label for="azCount">AZs with NAT gateways / endpoints</label>
+        <select id="azCount"></select>
+      </div>
+      <div>
+        <label for="endpointCount">Interface endpoints (distinct AWS services)</label>
+        <input type="number" id="endpointCount" value="3" min="0" step="1" />
+      </div>
+      <div>
+        <label for="crossRegionDest">Cross-region destination</label>
+        <select id="crossRegionDest"></select>
+      </div>
+    </div>
+
+    <h2>Traffic (GB per month)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Traffic</th>
+          <th>GB / month</th>
+          <th>Routing with endpoints</th>
+        </tr>
+      </thead>
+      <tbody id="traffic-body"></tbody>
+    </table>
+
+    <h2>Monthly cost</h2>
+    <div id="cards" class="cards"></div>
+    <div id="results"></div>
+    <table>
+      <thead>
+        <tr>
+          <th>Cost line</th>
+          <th class="num">All via NAT</th>
+          <th class="num">With VPC endpoints</th>
+          <th class="num">&Delta;</th>
+        </tr>
+      </thead>
+      <tbody id="compare-body"></tbody>
+    </table>
+    <div id="notes"></div>
+
+    <h2>Effective rates for this selection</h2>
+    <table>
+      <tbody id="rates-body"></tbody>
+    </table>
+
+    <p class="footnote">
+      Assumptions: NAT gateways are deployed one per AZ alongside the
+      workloads (no cross-AZ hop to reach them); internet egress is billed at
+      the region's tiered rates beyond the global 100 GB/month free tier, with
+      NAT processing on top; cross-AZ counts both directions at the regional
+      rate; cross-region is the outbound pair rate (inbound inter-region is
+      $0.00 in the current price list). Not modeled: VPC peering / Transit
+      Gateway hourly and processing charges, CloudFront, S3-specific egress
+      rates, public IPv4 address charges, and endpoint policies. All prices
+      are USD from the AWS Price List API; check the current AWS pricing pages
+      before relying on an estimate.
+    </p>
+
+    <script type="module" src="/data-transfer/data-transfer-page.js"></script>
+  </body>
+</html>

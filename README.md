@@ -25,9 +25,10 @@ public/ec2/             the EC2 burst calculator page
 public/s3/              the S3 cost calculator page
 public/aws-latency/     the AWS region latency page
 public/ip-hex/          the IP ↔ hex converter page
+public/data-transfer/   the data transfer estimator page
 public/speedtest/       the speed test page
-public/data/            shared datasets (ebs-pricing.json, ec2-burst-spec.json, s3-pricing.json, aws-regions.json)
-scripts/                committed generators (generate-burst-spec.mjs, generate-s3-pricing.mjs, generate-aws-regions.mjs, generate-analytics.mjs)
+public/data/            shared datasets (ebs-pricing.json, ec2-burst-spec.json, s3-pricing.json, aws-regions.json, data-transfer-pricing.json)
+scripts/                committed generators (generate-burst-spec.mjs, generate-s3-pricing.mjs, generate-aws-regions.mjs, generate-data-transfer-pricing.mjs, generate-analytics.mjs)
 tests/                  vitest tests (pure modules, handler, client math)
 scripts/smoke.sh        post-deploy endpoint checks (deploy URL or local dev URL)
 ```
@@ -41,6 +42,7 @@ scripts/smoke.sh        post-deploy endpoint checks (deploy URL or local dev URL
 | `GET /s3/` | the S3 Cost Calculator (static page, client-side model) |
 | `GET /aws-latency/` | the AWS Region Latency test (static page, browser-side measurement) |
 | `GET /ip-hex/` | the IP ↔ hex converter (static page, client-side conversion) |
+| `GET /data-transfer/` | the data transfer estimator (static page, client-side model) |
 | `GET /speedtest/` | the speed test page (latency + parallel down/upload) |
 | `GET /data/*.json` | the datasets the calculators load (static assets) |
 | `GET /ip` | client IP as plain text (Cloudflare's `CF-Connecting-IP`, trailing newline) |
@@ -50,6 +52,7 @@ scripts/smoke.sh        post-deploy endpoint checks (deploy URL or local dev URL
 | `GET /api/ec2/burst-spec` | the burst dataset for API use (bundled from `public/data/ec2-burst-spec.json`) |
 | `GET /api/s3/pricing` | the S3 dataset for API use (bundled from `public/data/s3-pricing.json`) |
 | `GET /api/aws/regions` | the AWS region list + probe metadata (bundled from `public/data/aws-regions.json`) |
+| `GET /api/data-transfer/pricing` | the data transfer dataset for API use (bundled from `public/data/data-transfer-pricing.json`) |
 | `GET /speedtest/ping` | tiny `pong` for latency measurement |
 | `GET /speedtest/down?bytes=N` | streams N random bytes (1 KiB – 100 MiB per request) |
 | `POST /speedtest/up` | drains the body, echoes `bytes_received` (16 MiB per-request cap) |
@@ -162,7 +165,6 @@ gh secret set CLOUDFLARE_ACCOUNT_ID  --repo nwber/tools
 
 See [TODO.md](TODO.md) for the plan and history.
 
-- Data transfer estimator — egress/NAT vs VPC endpoints
 - CIDR/subnet planner — pure client-side math from your VPC CIDR
 - Decommission the old `ebs-pricing-comparator.nwber.workers.dev` deployment
   (still live; superseded by `/ebs/`)

@@ -119,7 +119,33 @@ Extra — IP ↔ Hex converter — COMPLETE (2026-10-14)
   an 8-digit value) gets a read-as toggle instead of a silent guess.
 - Static page only — no Worker route; smoke.sh checks the page.
 
-Remaining in phase 4: data transfer estimator, CIDR/subnet planner.
+Phase 4 — Data transfer estimator — COMPLETE (2026-10-15)
+
+- /data-transfer/ live: monthly transfer costs for a VPC workload with a
+  side-by-side comparison of "all via NAT gateways" vs. "with VPC
+  endpoints" — free gateway endpoints for S3/DynamoDB, PrivateLink
+  interface endpoints for other AWS services (per-endpoint-per-AZ hourly +
+  per-GB processing), plus internet egress tiers, cross-AZ (both
+  directions), and the inter-region outbound pair rate. Per-service
+  break-even volume for interface endpoints; a pass of notes explains the
+  free tier, assumptions, and unpublished pairs.
+- Dataset from three public Price List API offers
+  (scripts/generate-data-transfer-pricing.mjs ->
+  public/data/data-transfer-pricing.json, 33 regions): NAT gateway prices
+  from the AmazonEC2 regional offers (~10 GB downloaded, dropped after
+  extraction; the script self re-execs with an 8 GB heap), interface
+  endpoints from AmazonVPC, and egress tiers / cross-AZ / the inter-region
+  pair matrix from AWSDataTransfer. usagetype prefixes are derived per
+  region per offer (us-east-1 is bare in some offers, prefixed "USE1" in
+  others); inter-region inbound is $0.00; two Jakarta outbound pairs have
+  no published rate and are flagged, not guessed.
+- GET /api/data-transfer/pricing for API use; smoke.sh checks the page,
+  the dataset, and the endpoint (27 checks).
+- 15 new vitest tests (tiering, NAT math, gateway savings, interface
+  endpoint costs and break-even, cross-AZ doubling, pair gaps, junk
+  inputs) against the real dataset.
+
+Remaining in phase 4: CIDR/subnet planner.
 
 One Python Worker: static assets (HTML/CSS/JS/JSON) + Python endpoints for dynamic behavior + speed test streaming.
 Free-plan-aware layout: pricing datasets and UI logic are static/zero-CPU where possible; Python WorkerEntrypoint (plain, not FastAPI) as default to keep CPU and startup minimal — FastAPI only if the Phase 0 spike shows comfortable headroom.
