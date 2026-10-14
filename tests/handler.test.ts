@@ -162,6 +162,20 @@ describe("fetch handler", () => {
     expect(res.headers.get("access-control-allow-origin")).toBe("*");
   });
 
+  it("serves /api/data-transfer/pricing with the generated dataset", async () => {
+    const res = await request("/api/data-transfer/pricing");
+    expect(res.status).toBe(200);
+    const body = res.json() as {
+      internetOutFreeGb: number;
+      regions: Array<{ code: string }>;
+      prices: Record<string, { natGateway: { hourUsd: number } }>;
+    };
+    expect(body.internetOutFreeGb).toBe(100);
+    expect(body.regions.length).toBeGreaterThanOrEqual(30);
+    expect(body.prices["us-east-1"]?.natGateway.hourUsd).toBe(0.045);
+    expect(res.headers.get("access-control-allow-origin")).toBe("*");
+  });
+
   it("answers 405 for unsupported methods on known routes", async () => {
     const res = await request("/api/ebs/pricing", { method: "POST" });
     expect(res.status).toBe(405);
@@ -169,6 +183,8 @@ describe("fetch handler", () => {
     expect(res2.status).toBe(405);
     const res3 = await request("/api/aws/regions", { method: "POST" });
     expect(res3.status).toBe(405);
+    const res4 = await request("/api/data-transfer/pricing", { method: "POST" });
+    expect(res4.status).toBe(405);
   });
 
   it("serves /speedtest/ping", async () => {

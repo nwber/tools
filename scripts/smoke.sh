@@ -67,6 +67,9 @@ grep -q '<title>AWS Region Latency</title>' <<<"$body" || fail "/aws-latency/ di
 body=$($CURL "$BASE/ip-hex/") || fail "GET /ip-hex/ failed"; check
 grep -q '<title>IP &harr; Hex Converter</title>' <<<"$body" || fail "/ip-hex/ did not return the converter page"
 
+body=$($CURL "$BASE/data-transfer/") || fail "GET /data-transfer/ failed"; check
+grep -q '<title>Data Transfer Estimator</title>' <<<"$body" || fail "/data-transfer/ did not return the estimator page"
+
 body=$($CURL "$BASE/analytics.js") || fail "GET /analytics.js failed"; check
 grep -q 'posthog.init(' <<<"$body" || fail "/analytics.js does not boot PostHog"
 
@@ -81,6 +84,9 @@ grep -q '"intelligent-tiering"' <<<"$body" || fail "s3 pricing asset missing cla
 
 body=$($CURL "$BASE/data/aws-regions.json") || fail "GET /data/aws-regions.json failed"; check
 grep -q '"regions"' <<<"$body" || fail "aws-regions asset missing regions"
+
+body=$($CURL "$BASE/data/data-transfer-pricing.json") || fail "GET /data/data-transfer-pricing.json failed"; check
+grep -q '"natGateway"' <<<"$body" || fail "data transfer pricing asset missing natGateway"
 
 body=$($CURL "$BASE/ip") || fail "GET /ip failed"; check
 [[ -n "$body" ]] || fail "GET /ip returned an empty body"
@@ -104,6 +110,9 @@ grep -q '"intelligent-tiering"' <<<"$body" || fail "/api/s3/pricing missing clas
 body=$($CURL "$BASE/api/aws/regions") || fail "GET /api/aws/regions failed"; check
 grep -q '"probe"' <<<"$body" || fail "/api/aws/regions missing probe metadata"
 
+body=$($CURL "$BASE/api/data-transfer/pricing") || fail "GET /api/data-transfer/pricing failed"; check
+grep -q '"natGateway"' <<<"$body" || fail "/api/data-transfer/pricing missing natGateway"
+
 body=$($CURL "$BASE/speedtest/ping") || fail "GET /speedtest/ping failed"; check
 [[ "$body" == "pong" ]] || fail "ping did not return pong: $body"
 
@@ -125,6 +134,6 @@ if [[ -n "$IP_BASE" ]]; then
   echo "ok: ip-host /ip -> $body"
 fi
 
-# 24 unconditional checks (25 with IP_BASE)
-[[ "$CHECKS" -ge 24 ]] || fail "only $CHECKS checks ran; expected at least 24"
+# 27 unconditional checks (28 with IP_BASE)
+[[ "$CHECKS" -ge 27 ]] || fail "only $CHECKS checks ran; expected at least 27"
 echo "all $CHECKS smoke checks passed for $BASE"

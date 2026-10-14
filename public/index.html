@@ -69,6 +69,12 @@
         representation back (hex, 0x-hex, dotted hex, canonical/expanded IPv6,
         IPv4-mapped, decimal)
       </li>
+      <li>
+        <a href="/data-transfer/" data-tool="data-transfer">Data Transfer Estimator</a> — monthly
+        transfer cost for a VPC workload: NAT gateways vs. VPC endpoints
+        (free gateway endpoints for S3/DynamoDB, PrivateLink interface
+        endpoints), plus cross-AZ and cross-region transfer
+      </li>
     </ul>
 
     <h2>API</h2>
@@ -94,6 +100,13 @@
         <a href="/api/aws/regions">/api/aws/regions</a> — the AWS region list
         and probe metadata used by the latency test
         (<code>/data/aws-regions.json</code> is the same file for direct use)
+      </li>
+      <li>
+        <a href="/api/data-transfer/pricing">/api/data-transfer/pricing</a> —
+        the data transfer price dataset (NAT gateways, interface endpoints,
+        egress tiers, cross-AZ, inter-region pairs;
+        <code>/data/data-transfer-pricing.json</code> is the same file for
+        direct use)
       </li>
       <li>
         <code>/speedtest/ping</code>, <code>/speedtest/down?bytes=N</code>,

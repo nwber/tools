@@ -1,0 +1,2724 @@
+{
+  "generatedBy": "scripts/generate-data-transfer-pricing.mjs",
+  "sources": {
+    "datatransfer_offer": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AWSDataTransfer/current/index.json",
+    "datatransfer_offer_version": "20260916132208",
+    "vpc_offer": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonVPC/current/index.json",
+    "vpc_offer_version": "20260917190528",
+    "ec2_offer_template": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonEC2/current/{region}/index.json",
+    "ec2_offer_versions": [
+      "20261012193925"
+    ]
+  },
+  "internetOutFreeGb": 100,
+  "groups": [
+    {
+      "id": "us-canada",
+      "label": "US & Canada"
+    },
+    {
+      "id": "latin-america",
+      "label": "Latin America"
+    },
+    {
+      "id": "europe",
+      "label": "Europe"
+    },
+    {
+      "id": "asia-pacific",
+      "label": "Asia Pacific"
+    },
+    {
+      "id": "middle-east-africa",
+      "label": "Middle East & Africa"
+    }
+  ],
+  "regions": [
+    {
+      "code": "af-south-1",
+      "name": "Africa (Cape Town)",
+      "group": "middle-east-africa"
+    },
+    {
+      "code": "ap-east-1",
+      "name": "Asia Pacific (Hong Kong)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-east-2",
+      "name": "Asia Pacific (Taipei)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-northeast-1",
+      "name": "Asia Pacific (Tokyo)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-northeast-2",
+      "name": "Asia Pacific (Seoul)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-northeast-3",
+      "name": "Asia Pacific (Osaka)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-south-1",
+      "name": "Asia Pacific (Mumbai)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-south-2",
+      "name": "Asia Pacific (Hyderabad)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-southeast-1",
+      "name": "Asia Pacific (Singapore)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-southeast-2",
+      "name": "Asia Pacific (Sydney)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-southeast-3",
+      "name": "Asia Pacific (Jakarta)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-southeast-4",
+      "name": "Asia Pacific (Melbourne)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-southeast-5",
+      "name": "Asia Pacific (Malaysia)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-southeast-6",
+      "name": "Asia Pacific (New Zealand)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ap-southeast-7",
+      "name": "Asia Pacific (Thailand)",
+      "group": "asia-pacific"
+    },
+    {
+      "code": "ca-central-1",
+      "name": "Canada (Central)",
+      "group": "us-canada"
+    },
+    {
+      "code": "ca-west-1",
+      "name": "Canada West (Calgary)",
+      "group": "us-canada"
+    },
+    {
+      "code": "eu-central-1",
+      "name": "Europe (Frankfurt)",
+      "group": "europe"
+    },
+    {
+      "code": "eu-central-2",
+      "name": "Europe (Zurich)",
+      "group": "europe"
+    },
+    {
+      "code": "eu-north-1",
+      "name": "Europe (Stockholm)",
+      "group": "europe"
+    },
+    {
+      "code": "eu-south-1",
+      "name": "Europe (Milan)",
+      "group": "europe"
+    },
+    {
+      "code": "eu-south-2",
+      "name": "Europe (Spain)",
+      "group": "europe"
+    },
+    {
+      "code": "eu-west-1",
+      "name": "Europe (Ireland)",
+      "group": "europe"
+    },
+    {
+      "code": "eu-west-2",
+      "name": "Europe (London)",
+      "group": "europe"
+    },
+    {
+      "code": "eu-west-3",
+      "name": "Europe (Paris)",
+      "group": "europe"
+    },
+    {
+      "code": "me-central-1",
+      "name": "Middle East (UAE)",
+      "group": "middle-east-africa"
+    },
+    {
+      "code": "me-south-1",
+      "name": "Middle East (Bahrain)",
+      "group": "middle-east-africa"
+    },
+    {
+      "code": "mx-central-1",
+      "name": "Mexico (Central)",
+      "group": "latin-america"
+    },
+    {
+      "code": "sa-east-1",
+      "name": "South America (Sao Paulo)",
+      "group": "latin-america"
+    },
+    {
+      "code": "us-east-1",
+      "name": "US East (N. Virginia)",
+      "group": "us-canada"
+    },
+    {
+      "code": "us-east-2",
+      "name": "US East (Ohio)",
+      "group": "us-canada"
+    },
+    {
+      "code": "us-west-1",
+      "name": "US West (N. California)",
+      "group": "us-canada"
+    },
+    {
+      "code": "us-west-2",
+      "name": "US West (Oregon)",
+      "group": "us-canada"
+    }
+  ],
+  "prices": {
+    "af-south-1": {
+      "natGateway": {
+        "hourUsd": 0.057,
+        "gbUsd": 0.057
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.01309,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.154
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.147
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.126
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.112
+        }
+      ],
+      "interRegionOut": {
+        "ap-east-1": 0.147,
+        "ap-east-2": 0.147,
+        "ap-northeast-1": 0.147,
+        "ap-northeast-2": 0.147,
+        "ap-northeast-3": 0.147,
+        "ap-south-1": 0.147,
+        "ap-south-2": 0.147,
+        "ap-southeast-1": 0.147,
+        "ap-southeast-2": 0.147,
+        "ap-southeast-3": 0.147,
+        "ap-southeast-4": 0.147,
+        "ap-southeast-5": 0.147,
+        "ap-southeast-6": 0.147,
+        "ap-southeast-7": 0.147,
+        "ca-central-1": 0.147,
+        "ca-west-1": 0.147,
+        "eu-central-1": 0.147,
+        "eu-central-2": 0.147,
+        "eu-north-1": 0.147,
+        "eu-south-1": 0.147,
+        "eu-south-2": 0.147,
+        "eu-west-1": 0.147,
+        "eu-west-2": 0.147,
+        "eu-west-3": 0.147,
+        "me-central-1": 0.147,
+        "me-south-1": 0.147,
+        "mx-central-1": 0.147,
+        "sa-east-1": 0.147,
+        "us-east-1": 0.147,
+        "us-east-2": 0.147,
+        "us-west-1": 0.147,
+        "us-west-2": 0.147
+      }
+    },
+    "ap-east-1": {
+      "natGateway": {
+        "hourUsd": 0.065,
+        "gbUsd": 0.065
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.0143,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.12
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.082
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.08
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.09,
+        "ap-east-2": 0.09,
+        "ap-northeast-1": 0.09,
+        "ap-northeast-2": 0.09,
+        "ap-northeast-3": 0.09,
+        "ap-south-1": 0.09,
+        "ap-south-2": 0.09,
+        "ap-southeast-1": 0.09,
+        "ap-southeast-2": 0.09,
+        "ap-southeast-3": 0.09,
+        "ap-southeast-4": 0.09,
+        "ap-southeast-5": 0.09,
+        "ap-southeast-6": 0.09,
+        "ap-southeast-7": 0.09,
+        "ca-central-1": 0.09,
+        "ca-west-1": 0.09,
+        "eu-central-1": 0.09,
+        "eu-central-2": 0.09,
+        "eu-north-1": 0.09,
+        "eu-south-1": 0.09,
+        "eu-south-2": 0.09,
+        "eu-west-1": 0.09,
+        "eu-west-2": 0.09,
+        "eu-west-3": 0.09,
+        "me-central-1": 0.09,
+        "me-south-1": 0.09,
+        "mx-central-1": 0.09,
+        "sa-east-1": 0.09,
+        "us-east-1": 0.09,
+        "us-east-2": 0.09,
+        "us-west-1": 0.09,
+        "us-west-2": 0.09
+      }
+    },
+    "ap-east-2": {
+      "natGateway": {
+        "hourUsd": 0.0558,
+        "gbUsd": 0.0558
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.0126,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.1083
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.08455
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.0817
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.0798
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.11,
+        "ap-east-1": 0.08,
+        "ap-northeast-1": 0.08,
+        "ap-northeast-2": 0.08,
+        "ap-northeast-3": 0.09,
+        "ap-south-1": 0.08,
+        "ap-south-2": 0.08,
+        "ap-southeast-1": 0.08,
+        "ap-southeast-2": 0.08,
+        "ap-southeast-3": 0.08,
+        "ap-southeast-4": 0.08,
+        "ap-southeast-5": 0.08,
+        "ap-southeast-6": 0.08,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.08,
+        "ca-west-1": 0.08,
+        "eu-central-1": 0.08,
+        "eu-central-2": 0.08,
+        "eu-north-1": 0.08,
+        "eu-south-1": 0.08,
+        "eu-south-2": 0.08,
+        "eu-west-1": 0.08,
+        "eu-west-2": 0.08,
+        "eu-west-3": 0.08,
+        "me-central-1": 0.11,
+        "me-south-1": 0.11,
+        "mx-central-1": 0.14,
+        "sa-east-1": 0.14,
+        "us-east-1": 0.08,
+        "us-east-2": 0.08,
+        "us-west-1": 0.08,
+        "us-west-2": 0.08
+      }
+    },
+    "ap-northeast-1": {
+      "natGateway": {
+        "hourUsd": 0.062,
+        "gbUsd": 0.062
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.014,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.114
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.089
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.086
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.084
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.09,
+        "ap-east-1": 0.09,
+        "ap-east-2": 0.09,
+        "ap-northeast-2": 0.09,
+        "ap-northeast-3": 0.09,
+        "ap-south-1": 0.09,
+        "ap-south-2": 0.09,
+        "ap-southeast-1": 0.09,
+        "ap-southeast-2": 0.09,
+        "ap-southeast-3": 0.09,
+        "ap-southeast-4": 0.09,
+        "ap-southeast-5": 0.09,
+        "ap-southeast-6": 0.09,
+        "ap-southeast-7": 0.09,
+        "ca-central-1": 0.09,
+        "ca-west-1": 0.09,
+        "eu-central-1": 0.09,
+        "eu-central-2": 0.09,
+        "eu-north-1": 0.09,
+        "eu-south-1": 0.09,
+        "eu-south-2": 0.09,
+        "eu-west-1": 0.09,
+        "eu-west-2": 0.09,
+        "eu-west-3": 0.09,
+        "me-central-1": 0.09,
+        "me-south-1": 0.09,
+        "mx-central-1": 0.09,
+        "sa-east-1": 0.09,
+        "us-east-1": 0.09,
+        "us-east-2": 0.09,
+        "us-west-1": 0.09,
+        "us-west-2": 0.09
+      }
+    },
+    "ap-northeast-2": {
+      "natGateway": {
+        "hourUsd": 0.059,
+        "gbUsd": 0.059
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.013,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.126
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.122
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.117
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.108
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.08,
+        "ap-east-1": 0.08,
+        "ap-east-2": 0.08,
+        "ap-northeast-1": 0.08,
+        "ap-northeast-3": 0.08,
+        "ap-south-1": 0.08,
+        "ap-south-2": 0.08,
+        "ap-southeast-1": 0.08,
+        "ap-southeast-2": 0.08,
+        "ap-southeast-3": 0.08,
+        "ap-southeast-4": 0.08,
+        "ap-southeast-5": 0.08,
+        "ap-southeast-6": 0.08,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.08,
+        "ca-west-1": 0.08,
+        "eu-central-1": 0.08,
+        "eu-central-2": 0.08,
+        "eu-north-1": 0.08,
+        "eu-south-1": 0.08,
+        "eu-south-2": 0.08,
+        "eu-west-1": 0.08,
+        "eu-west-2": 0.08,
+        "eu-west-3": 0.08,
+        "me-central-1": 0.08,
+        "me-south-1": 0.08,
+        "mx-central-1": 0.08,
+        "sa-east-1": 0.08,
+        "us-east-1": 0.08,
+        "us-east-2": 0.08,
+        "us-west-1": 0.08,
+        "us-west-2": 0.08
+      }
+    },
+    "ap-northeast-3": {
+      "natGateway": {
+        "hourUsd": 0.062,
+        "gbUsd": 0.062
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.014,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.114
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.089
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.086
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.084
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.09,
+        "ap-east-1": 0.09,
+        "ap-east-2": 0.08,
+        "ap-northeast-1": 0.09,
+        "ap-northeast-2": 0.09,
+        "ap-south-1": 0.09,
+        "ap-south-2": 0.09,
+        "ap-southeast-1": 0.09,
+        "ap-southeast-2": 0.09,
+        "ap-southeast-3": 0.09,
+        "ap-southeast-4": 0.09,
+        "ap-southeast-5": 0.09,
+        "ap-southeast-6": 0.09,
+        "ap-southeast-7": 0.09,
+        "ca-central-1": 0.09,
+        "ca-west-1": 0.09,
+        "eu-central-1": 0.09,
+        "eu-central-2": 0.09,
+        "eu-north-1": 0.09,
+        "eu-south-1": 0.09,
+        "eu-south-2": 0.09,
+        "eu-west-1": 0.09,
+        "eu-west-2": 0.09,
+        "eu-west-3": 0.09,
+        "me-central-1": 0.09,
+        "me-south-1": 0.09,
+        "mx-central-1": 0.09,
+        "sa-east-1": 0.09,
+        "us-east-1": 0.09,
+        "us-east-2": 0.09,
+        "us-west-1": 0.09,
+        "us-west-2": 0.09
+      }
+    },
+    "ap-south-1": {
+      "natGateway": {
+        "hourUsd": 0.056,
+        "gbUsd": 0.056
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.013,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.1093
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.082
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.08
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.086,
+        "ap-east-1": 0.086,
+        "ap-east-2": 0.086,
+        "ap-northeast-1": 0.086,
+        "ap-northeast-2": 0.086,
+        "ap-northeast-3": 0.086,
+        "ap-south-2": 0.086,
+        "ap-southeast-1": 0.086,
+        "ap-southeast-2": 0.086,
+        "ap-southeast-3": 0.086,
+        "ap-southeast-4": 0.086,
+        "ap-southeast-5": 0.086,
+        "ap-southeast-6": 0.086,
+        "ap-southeast-7": 0.086,
+        "ca-central-1": 0.086,
+        "ca-west-1": 0.086,
+        "eu-central-1": 0.086,
+        "eu-central-2": 0.086,
+        "eu-north-1": 0.086,
+        "eu-south-1": 0.086,
+        "eu-south-2": 0.086,
+        "eu-west-1": 0.086,
+        "eu-west-2": 0.086,
+        "eu-west-3": 0.086,
+        "me-central-1": 0.086,
+        "me-south-1": 0.086,
+        "mx-central-1": 0.086,
+        "sa-east-1": 0.086,
+        "us-east-1": 0.086,
+        "us-east-2": 0.086,
+        "us-west-1": 0.086,
+        "us-west-2": 0.086
+      }
+    },
+    "ap-south-2": {
+      "natGateway": {
+        "hourUsd": 0.056,
+        "gbUsd": 0.056
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.013,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.1093
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.082
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.08
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.086,
+        "ap-east-1": 0.086,
+        "ap-east-2": 0.086,
+        "ap-northeast-1": 0.086,
+        "ap-northeast-2": 0.086,
+        "ap-northeast-3": 0.086,
+        "ap-south-1": 0.086,
+        "ap-southeast-1": 0.086,
+        "ap-southeast-2": 0.086,
+        "ap-southeast-3": 0.086,
+        "ap-southeast-4": 0.086,
+        "ap-southeast-5": 0.086,
+        "ap-southeast-6": 0.086,
+        "ap-southeast-7": 0.086,
+        "ca-central-1": 0.086,
+        "ca-west-1": 0.086,
+        "eu-central-1": 0.086,
+        "eu-central-2": 0.086,
+        "eu-north-1": 0.086,
+        "eu-south-1": 0.086,
+        "eu-south-2": 0.086,
+        "eu-west-1": 0.086,
+        "eu-west-2": 0.086,
+        "eu-west-3": 0.086,
+        "me-central-1": 0.086,
+        "me-south-1": 0.086,
+        "mx-central-1": 0.086,
+        "sa-east-1": 0.086,
+        "us-east-1": 0.086,
+        "us-east-2": 0.086,
+        "us-west-1": 0.086,
+        "us-west-2": 0.086
+      }
+    },
+    "ap-southeast-1": {
+      "natGateway": {
+        "hourUsd": 0.059,
+        "gbUsd": 0.059
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.013,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.12
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.082
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.08
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.09,
+        "ap-east-1": 0.09,
+        "ap-east-2": 0.09,
+        "ap-northeast-1": 0.09,
+        "ap-northeast-2": 0.09,
+        "ap-northeast-3": 0.09,
+        "ap-south-1": 0.09,
+        "ap-south-2": 0.09,
+        "ap-southeast-2": 0.09,
+        "ap-southeast-3": 0.09,
+        "ap-southeast-4": 0.09,
+        "ap-southeast-5": 0.08,
+        "ap-southeast-6": 0.09,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.09,
+        "ca-west-1": 0.09,
+        "eu-central-1": 0.09,
+        "eu-central-2": 0.09,
+        "eu-north-1": 0.09,
+        "eu-south-1": 0.09,
+        "eu-south-2": 0.09,
+        "eu-west-1": 0.09,
+        "eu-west-2": 0.09,
+        "eu-west-3": 0.09,
+        "me-central-1": 0.09,
+        "me-south-1": 0.09,
+        "mx-central-1": 0.09,
+        "sa-east-1": 0.09,
+        "us-east-1": 0.09,
+        "us-east-2": 0.09,
+        "us-west-1": 0.09,
+        "us-west-2": 0.09
+      }
+    },
+    "ap-southeast-2": {
+      "natGateway": {
+        "hourUsd": 0.059,
+        "gbUsd": 0.059
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.013,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.114
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.098
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.094
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.092
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.098,
+        "ap-east-1": 0.098,
+        "ap-east-2": 0.098,
+        "ap-northeast-1": 0.098,
+        "ap-northeast-2": 0.098,
+        "ap-northeast-3": 0.098,
+        "ap-south-1": 0.098,
+        "ap-south-2": 0.098,
+        "ap-southeast-1": 0.098,
+        "ap-southeast-3": 0.098,
+        "ap-southeast-4": 0.08,
+        "ap-southeast-5": 0.098,
+        "ap-southeast-6": 0.08,
+        "ap-southeast-7": 0.098,
+        "ca-central-1": 0.098,
+        "ca-west-1": 0.098,
+        "eu-central-1": 0.098,
+        "eu-central-2": 0.098,
+        "eu-north-1": 0.098,
+        "eu-south-1": 0.098,
+        "eu-south-2": 0.098,
+        "eu-west-1": 0.098,
+        "eu-west-2": 0.098,
+        "eu-west-3": 0.098,
+        "me-central-1": 0.098,
+        "me-south-1": 0.098,
+        "mx-central-1": 0.098,
+        "sa-east-1": 0.098,
+        "us-east-1": 0.098,
+        "us-east-2": 0.098,
+        "us-west-1": 0.098,
+        "us-west-2": 0.098
+      }
+    },
+    "ap-southeast-3": {
+      "natGateway": {
+        "hourUsd": 0.059,
+        "gbUsd": 0.059
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.013,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.132
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.1
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.095
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.09
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.1,
+        "ap-east-1": 0.1,
+        "ap-east-2": 0.1,
+        "ap-northeast-1": 0.1,
+        "ap-northeast-2": 0.1,
+        "ap-south-1": 0.1,
+        "ap-south-2": 0.1,
+        "ap-southeast-1": 0.1,
+        "ap-southeast-2": 0.1,
+        "ap-southeast-4": 0.1,
+        "ap-southeast-5": 0.1,
+        "ap-southeast-6": 0.1,
+        "ap-southeast-7": 0.1,
+        "ca-central-1": 0.1,
+        "ca-west-1": 0.1,
+        "eu-central-1": 0.1,
+        "eu-central-2": 0.1,
+        "eu-north-1": 0.1,
+        "eu-south-1": 0.1,
+        "eu-south-2": 0.1,
+        "eu-west-1": 0.1,
+        "eu-west-2": 0.1,
+        "eu-west-3": 0.1,
+        "me-central-1": 0.1,
+        "me-south-1": 0.1,
+        "mx-central-1": 0.1,
+        "us-east-1": 0.1,
+        "us-east-2": 0.1,
+        "us-west-1": 0.1,
+        "us-west-2": 0.1
+      }
+    },
+    "ap-southeast-4": {
+      "natGateway": {
+        "hourUsd": 0.059,
+        "gbUsd": 0.059
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.013,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.114
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.098
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.094
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.092
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.1,
+        "ap-east-1": 0.1,
+        "ap-east-2": 0.1,
+        "ap-northeast-1": 0.1,
+        "ap-northeast-2": 0.1,
+        "ap-northeast-3": 0.1,
+        "ap-south-1": 0.1,
+        "ap-south-2": 0.1,
+        "ap-southeast-1": 0.1,
+        "ap-southeast-2": 0.08,
+        "ap-southeast-3": 0.1,
+        "ap-southeast-5": 0.1,
+        "ap-southeast-6": 0.08,
+        "ap-southeast-7": 0.1,
+        "ca-central-1": 0.1,
+        "ca-west-1": 0.1,
+        "eu-central-1": 0.1,
+        "eu-central-2": 0.1,
+        "eu-north-1": 0.1,
+        "eu-south-1": 0.1,
+        "eu-south-2": 0.1,
+        "eu-west-1": 0.1,
+        "eu-west-2": 0.1,
+        "eu-west-3": 0.1,
+        "me-central-1": 0.14,
+        "me-south-1": 0.14,
+        "mx-central-1": 0.1,
+        "sa-east-1": 0.1,
+        "us-east-1": 0.1,
+        "us-east-2": 0.1,
+        "us-west-1": 0.1,
+        "us-west-2": 0.1
+      }
+    },
+    "ap-southeast-5": {
+      "natGateway": {
+        "hourUsd": 0.05015,
+        "gbUsd": 0.05015
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.0117,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.108
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.0765
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.0738
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.072
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.11,
+        "ap-east-1": 0.08,
+        "ap-east-2": 0.08,
+        "ap-northeast-1": 0.08,
+        "ap-northeast-2": 0.08,
+        "ap-northeast-3": 0.08,
+        "ap-south-1": 0.08,
+        "ap-south-2": 0.08,
+        "ap-southeast-1": 0.08,
+        "ap-southeast-2": 0.08,
+        "ap-southeast-3": 0.08,
+        "ap-southeast-4": 0.08,
+        "ap-southeast-6": 0.08,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.08,
+        "ca-west-1": 0.08,
+        "eu-central-1": 0.08,
+        "eu-central-2": 0.08,
+        "eu-north-1": 0.08,
+        "eu-south-1": 0.08,
+        "eu-south-2": 0.08,
+        "eu-west-1": 0.08,
+        "eu-west-2": 0.08,
+        "eu-west-3": 0.08,
+        "me-central-1": 0.11,
+        "me-south-1": 0.11,
+        "mx-central-1": 0.08,
+        "sa-east-1": 0.14,
+        "us-east-1": 0.08,
+        "us-east-2": 0.08,
+        "us-west-1": 0.08,
+        "us-west-2": 0.08
+      }
+    },
+    "ap-southeast-6": {
+      "natGateway": {
+        "hourUsd": 0.06195,
+        "gbUsd": 0.06195
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.01365,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.114
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.098
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.094
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.092
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.098,
+        "ap-east-1": 0.098,
+        "ap-east-2": 0.098,
+        "ap-northeast-1": 0.098,
+        "ap-northeast-2": 0.098,
+        "ap-northeast-3": 0.098,
+        "ap-south-1": 0.098,
+        "ap-south-2": 0.098,
+        "ap-southeast-1": 0.098,
+        "ap-southeast-2": 0.08,
+        "ap-southeast-3": 0.098,
+        "ap-southeast-4": 0.08,
+        "ap-southeast-5": 0.098,
+        "ap-southeast-7": 0.098,
+        "ca-central-1": 0.098,
+        "ca-west-1": 0.098,
+        "eu-central-1": 0.098,
+        "eu-central-2": 0.098,
+        "eu-north-1": 0.098,
+        "eu-south-1": 0.098,
+        "eu-south-2": 0.098,
+        "eu-west-1": 0.098,
+        "eu-west-2": 0.098,
+        "eu-west-3": 0.098,
+        "me-central-1": 0.098,
+        "me-south-1": 0.098,
+        "mx-central-1": 0.098,
+        "sa-east-1": 0.098,
+        "us-east-1": 0.098,
+        "us-east-2": 0.098,
+        "us-west-1": 0.098,
+        "us-west-2": 0.098
+      }
+    },
+    "ap-southeast-7": {
+      "natGateway": {
+        "hourUsd": 0.05015,
+        "gbUsd": 0.05015
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.0117,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.108
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.0765
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.0738
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.072
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.11,
+        "ap-east-1": 0.08,
+        "ap-east-2": 0.08,
+        "ap-northeast-1": 0.08,
+        "ap-northeast-2": 0.08,
+        "ap-northeast-3": 0.08,
+        "ap-south-1": 0.08,
+        "ap-south-2": 0.08,
+        "ap-southeast-1": 0.08,
+        "ap-southeast-2": 0.08,
+        "ap-southeast-3": 0.08,
+        "ap-southeast-4": 0.08,
+        "ap-southeast-5": 0.08,
+        "ap-southeast-6": 0.08,
+        "ca-central-1": 0.08,
+        "ca-west-1": 0.08,
+        "eu-central-1": 0.08,
+        "eu-central-2": 0.08,
+        "eu-north-1": 0.08,
+        "eu-south-1": 0.08,
+        "eu-south-2": 0.08,
+        "eu-west-1": 0.08,
+        "eu-west-2": 0.08,
+        "eu-west-3": 0.08,
+        "me-central-1": 0.11,
+        "me-south-1": 0.11,
+        "mx-central-1": 0.08,
+        "sa-east-1": 0.14,
+        "us-east-1": 0.08,
+        "us-east-2": 0.08,
+        "us-west-1": 0.08,
+        "us-west-2": 0.08
+      }
+    },
+    "ca-central-1": {
+      "natGateway": {
+        "hourUsd": 0.05,
+        "gbUsd": 0.05
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.011,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.09
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.07
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.05
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.02,
+        "ap-east-1": 0.02,
+        "ap-east-2": 0.02,
+        "ap-northeast-1": 0.02,
+        "ap-northeast-2": 0.02,
+        "ap-northeast-3": 0.02,
+        "ap-south-1": 0.02,
+        "ap-south-2": 0.02,
+        "ap-southeast-1": 0.02,
+        "ap-southeast-2": 0.02,
+        "ap-southeast-3": 0.02,
+        "ap-southeast-4": 0.02,
+        "ap-southeast-5": 0.02,
+        "ap-southeast-6": 0.02,
+        "ap-southeast-7": 0.08,
+        "ca-west-1": 0.02,
+        "eu-central-1": 0.02,
+        "eu-central-2": 0.02,
+        "eu-north-1": 0.02,
+        "eu-south-1": 0.02,
+        "eu-south-2": 0.02,
+        "eu-west-1": 0.02,
+        "eu-west-2": 0.02,
+        "eu-west-3": 0.02,
+        "me-central-1": 0.02,
+        "me-south-1": 0.02,
+        "mx-central-1": 0.02,
+        "sa-east-1": 0.02,
+        "us-east-1": 0.02,
+        "us-east-2": 0.02,
+        "us-west-1": 0.02,
+        "us-west-2": 0.02
+      }
+    },
+    "ca-west-1": {
+      "natGateway": {
+        "hourUsd": 0.05,
+        "gbUsd": 0.05
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.011,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.09
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.07
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.05
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.14,
+        "ap-east-1": 0.08,
+        "ap-east-2": 0.08,
+        "ap-northeast-1": 0.08,
+        "ap-northeast-2": 0.08,
+        "ap-northeast-3": 0.08,
+        "ap-south-1": 0.08,
+        "ap-south-2": 0.08,
+        "ap-southeast-1": 0.08,
+        "ap-southeast-2": 0.08,
+        "ap-southeast-3": 0.08,
+        "ap-southeast-4": 0.08,
+        "ap-southeast-5": 0.08,
+        "ap-southeast-6": 0.08,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.02,
+        "eu-central-1": 0.05,
+        "eu-central-2": 0.05,
+        "eu-north-1": 0.05,
+        "eu-south-1": 0.05,
+        "eu-south-2": 0.05,
+        "eu-west-1": 0.05,
+        "eu-west-2": 0.05,
+        "eu-west-3": 0.05,
+        "me-central-1": 0.14,
+        "me-south-1": 0.14,
+        "mx-central-1": 0.02,
+        "sa-east-1": 0.05,
+        "us-east-1": 0.02,
+        "us-east-2": 0.02,
+        "us-west-1": 0.02,
+        "us-west-2": 0.02
+      }
+    },
+    "eu-central-1": {
+      "natGateway": {
+        "hourUsd": 0.052,
+        "gbUsd": 0.052
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.012,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.09
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.07
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.05
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.02,
+        "ap-east-1": 0.02,
+        "ap-east-2": 0.02,
+        "ap-northeast-1": 0.02,
+        "ap-northeast-2": 0.02,
+        "ap-northeast-3": 0.02,
+        "ap-south-1": 0.02,
+        "ap-south-2": 0.02,
+        "ap-southeast-1": 0.02,
+        "ap-southeast-2": 0.02,
+        "ap-southeast-3": 0.02,
+        "ap-southeast-4": 0.02,
+        "ap-southeast-5": 0.02,
+        "ap-southeast-6": 0.02,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.02,
+        "ca-west-1": 0.05,
+        "eu-central-2": 0.02,
+        "eu-north-1": 0.02,
+        "eu-south-1": 0.02,
+        "eu-south-2": 0.02,
+        "eu-west-1": 0.02,
+        "eu-west-2": 0.02,
+        "eu-west-3": 0.02,
+        "me-central-1": 0.02,
+        "me-south-1": 0.02,
+        "mx-central-1": 0.05,
+        "sa-east-1": 0.02,
+        "us-east-1": 0.02,
+        "us-east-2": 0.02,
+        "us-west-1": 0.02,
+        "us-west-2": 0.02
+      }
+    },
+    "eu-central-2": {
+      "natGateway": {
+        "hourUsd": 0.0572,
+        "gbUsd": 0.0572
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.0132,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.09
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.07
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.05
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.02,
+        "ap-east-1": 0.02,
+        "ap-east-2": 0.02,
+        "ap-northeast-1": 0.02,
+        "ap-northeast-2": 0.02,
+        "ap-northeast-3": 0.02,
+        "ap-south-1": 0.02,
+        "ap-south-2": 0.02,
+        "ap-southeast-1": 0.02,
+        "ap-southeast-2": 0.02,
+        "ap-southeast-3": 0.02,
+        "ap-southeast-4": 0.02,
+        "ap-southeast-5": 0.02,
+        "ap-southeast-6": 0.02,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.02,
+        "ca-west-1": 0.05,
+        "eu-central-1": 0.02,
+        "eu-north-1": 0.02,
+        "eu-south-1": 0.02,
+        "eu-south-2": 0.02,
+        "eu-west-1": 0.02,
+        "eu-west-2": 0.02,
+        "eu-west-3": 0.02,
+        "me-central-1": 0.02,
+        "me-south-1": 0.02,
+        "mx-central-1": 0.05,
+        "sa-east-1": 0.02,
+        "us-east-1": 0.02,
+        "us-east-2": 0.02,
+        "us-west-1": 0.02,
+        "us-west-2": 0.02
+      }
+    },
+    "eu-north-1": {
+      "natGateway": {
+        "hourUsd": 0.046,
+        "gbUsd": 0.046
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.0105,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.09
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.07
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.05
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.02,
+        "ap-east-1": 0.02,
+        "ap-east-2": 0.02,
+        "ap-northeast-1": 0.02,
+        "ap-northeast-2": 0.02,
+        "ap-northeast-3": 0.02,
+        "ap-south-1": 0.02,
+        "ap-south-2": 0.02,
+        "ap-southeast-1": 0.02,
+        "ap-southeast-2": 0.02,
+        "ap-southeast-3": 0.02,
+        "ap-southeast-4": 0.02,
+        "ap-southeast-5": 0.02,
+        "ap-southeast-6": 0.02,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.02,
+        "ca-west-1": 0.05,
+        "eu-central-1": 0.02,
+        "eu-central-2": 0.02,
+        "eu-south-1": 0.02,
+        "eu-south-2": 0.02,
+        "eu-west-1": 0.02,
+        "eu-west-2": 0.02,
+        "eu-west-3": 0.02,
+        "me-central-1": 0.02,
+        "me-south-1": 0.02,
+        "mx-central-1": 0.05,
+        "sa-east-1": 0.02,
+        "us-east-1": 0.02,
+        "us-east-2": 0.02,
+        "us-west-1": 0.02,
+        "us-west-2": 0.02
+      }
+    },
+    "eu-south-1": {
+      "natGateway": {
+        "hourUsd": 0.05,
+        "gbUsd": 0.05
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.01155,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.09
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.07
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.05
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.02,
+        "ap-east-1": 0.02,
+        "ap-east-2": 0.02,
+        "ap-northeast-1": 0.02,
+        "ap-northeast-2": 0.02,
+        "ap-northeast-3": 0.02,
+        "ap-south-1": 0.02,
+        "ap-south-2": 0.02,
+        "ap-southeast-1": 0.02,
+        "ap-southeast-2": 0.02,
+        "ap-southeast-3": 0.02,
+        "ap-southeast-4": 0.02,
+        "ap-southeast-5": 0.02,
+        "ap-southeast-6": 0.02,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.02,
+        "ca-west-1": 0.05,
+        "eu-central-1": 0.02,
+        "eu-central-2": 0.02,
+        "eu-north-1": 0.02,
+        "eu-south-2": 0.02,
+        "eu-west-1": 0.02,
+        "eu-west-2": 0.02,
+        "eu-west-3": 0.02,
+        "me-central-1": 0.02,
+        "me-south-1": 0.02,
+        "mx-central-1": 0.05,
+        "sa-east-1": 0.02,
+        "us-east-1": 0.02,
+        "us-east-2": 0.02,
+        "us-west-1": 0.02,
+        "us-west-2": 0.02
+      }
+    },
+    "eu-south-2": {
+      "natGateway": {
+        "hourUsd": 0.048,
+        "gbUsd": 0.048
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.011,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.09
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.07
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.05
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.02,
+        "ap-east-1": 0.02,
+        "ap-east-2": 0.02,
+        "ap-northeast-1": 0.02,
+        "ap-northeast-2": 0.02,
+        "ap-northeast-3": 0.02,
+        "ap-south-1": 0.02,
+        "ap-south-2": 0.02,
+        "ap-southeast-1": 0.02,
+        "ap-southeast-2": 0.02,
+        "ap-southeast-3": 0.02,
+        "ap-southeast-4": 0.02,
+        "ap-southeast-5": 0.02,
+        "ap-southeast-6": 0.02,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.02,
+        "ca-west-1": 0.05,
+        "eu-central-1": 0.02,
+        "eu-central-2": 0.02,
+        "eu-north-1": 0.02,
+        "eu-south-1": 0.02,
+        "eu-west-1": 0.02,
+        "eu-west-2": 0.02,
+        "eu-west-3": 0.02,
+        "me-central-1": 0.02,
+        "me-south-1": 0.02,
+        "mx-central-1": 0.05,
+        "sa-east-1": 0.02,
+        "us-east-1": 0.02,
+        "us-east-2": 0.02,
+        "us-west-1": 0.02,
+        "us-west-2": 0.02
+      }
+    },
+    "eu-west-1": {
+      "natGateway": {
+        "hourUsd": 0.048,
+        "gbUsd": 0.048
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.011,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.09
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.07
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.05
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.02,
+        "ap-east-1": 0.02,
+        "ap-east-2": 0.02,
+        "ap-northeast-1": 0.02,
+        "ap-northeast-2": 0.02,
+        "ap-northeast-3": 0.02,
+        "ap-south-1": 0.02,
+        "ap-south-2": 0.02,
+        "ap-southeast-1": 0.02,
+        "ap-southeast-2": 0.02,
+        "ap-southeast-3": 0.02,
+        "ap-southeast-4": 0.02,
+        "ap-southeast-5": 0.02,
+        "ap-southeast-6": 0.02,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.02,
+        "ca-west-1": 0.05,
+        "eu-central-1": 0.02,
+        "eu-central-2": 0.02,
+        "eu-north-1": 0.02,
+        "eu-south-1": 0.02,
+        "eu-south-2": 0.02,
+        "eu-west-2": 0.02,
+        "eu-west-3": 0.02,
+        "me-central-1": 0.02,
+        "me-south-1": 0.02,
+        "mx-central-1": 0.05,
+        "sa-east-1": 0.02,
+        "us-east-1": 0.02,
+        "us-east-2": 0.02,
+        "us-west-1": 0.02,
+        "us-west-2": 0.02
+      }
+    },
+    "eu-west-2": {
+      "natGateway": {
+        "hourUsd": 0.05,
+        "gbUsd": 0.05
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.011,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.09
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.07
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.05
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.02,
+        "ap-east-1": 0.02,
+        "ap-east-2": 0.02,
+        "ap-northeast-1": 0.02,
+        "ap-northeast-2": 0.02,
+        "ap-northeast-3": 0.02,
+        "ap-south-1": 0.02,
+        "ap-south-2": 0.02,
+        "ap-southeast-1": 0.02,
+        "ap-southeast-2": 0.02,
+        "ap-southeast-3": 0.02,
+        "ap-southeast-4": 0.02,
+        "ap-southeast-5": 0.02,
+        "ap-southeast-6": 0.02,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.02,
+        "ca-west-1": 0.05,
+        "eu-central-1": 0.02,
+        "eu-central-2": 0.02,
+        "eu-north-1": 0.02,
+        "eu-south-1": 0.02,
+        "eu-south-2": 0.02,
+        "eu-west-1": 0.02,
+        "eu-west-3": 0.02,
+        "me-central-1": 0.02,
+        "me-south-1": 0.02,
+        "mx-central-1": 0.05,
+        "sa-east-1": 0.02,
+        "us-east-1": 0.02,
+        "us-east-2": 0.02,
+        "us-west-1": 0.02,
+        "us-west-2": 0.02
+      }
+    },
+    "eu-west-3": {
+      "natGateway": {
+        "hourUsd": 0.05,
+        "gbUsd": 0.05
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.011,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.09
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.07
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.05
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.02,
+        "ap-east-1": 0.02,
+        "ap-east-2": 0.02,
+        "ap-northeast-1": 0.02,
+        "ap-northeast-2": 0.02,
+        "ap-northeast-3": 0.02,
+        "ap-south-1": 0.02,
+        "ap-south-2": 0.02,
+        "ap-southeast-1": 0.02,
+        "ap-southeast-2": 0.02,
+        "ap-southeast-3": 0.02,
+        "ap-southeast-4": 0.02,
+        "ap-southeast-5": 0.02,
+        "ap-southeast-6": 0.02,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.02,
+        "ca-west-1": 0.05,
+        "eu-central-1": 0.02,
+        "eu-central-2": 0.02,
+        "eu-north-1": 0.02,
+        "eu-south-1": 0.02,
+        "eu-south-2": 0.02,
+        "eu-west-1": 0.02,
+        "eu-west-2": 0.02,
+        "me-central-1": 0.02,
+        "me-south-1": 0.02,
+        "mx-central-1": 0.05,
+        "sa-east-1": 0.02,
+        "us-east-1": 0.02,
+        "us-east-2": 0.02,
+        "us-west-1": 0.02,
+        "us-west-2": 0.02
+      }
+    },
+    "me-central-1": {
+      "natGateway": {
+        "hourUsd": 0.0528,
+        "gbUsd": 0.0528
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.0121,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.11
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.077
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.055
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.085,
+        "ap-east-1": 0.085,
+        "ap-east-2": 0.085,
+        "ap-northeast-1": 0.085,
+        "ap-northeast-2": 0.085,
+        "ap-northeast-3": 0.085,
+        "ap-south-1": 0.085,
+        "ap-south-2": 0.085,
+        "ap-southeast-1": 0.085,
+        "ap-southeast-2": 0.085,
+        "ap-southeast-3": 0.085,
+        "ap-southeast-4": 0.085,
+        "ap-southeast-5": 0.085,
+        "ap-southeast-6": 0.085,
+        "ap-southeast-7": 0.1105,
+        "ca-central-1": 0.085,
+        "ca-west-1": 0.085,
+        "eu-central-1": 0.085,
+        "eu-central-2": 0.085,
+        "eu-north-1": 0.085,
+        "eu-south-1": 0.085,
+        "eu-south-2": 0.085,
+        "eu-west-1": 0.085,
+        "eu-west-2": 0.085,
+        "eu-west-3": 0.085,
+        "me-south-1": 0.085,
+        "mx-central-1": 0.085,
+        "sa-east-1": 0.085,
+        "us-east-1": 0.085,
+        "us-east-2": 0.085,
+        "us-west-1": 0.085,
+        "us-west-2": 0.085
+      }
+    },
+    "me-south-1": {
+      "natGateway": {
+        "hourUsd": 0.0528,
+        "gbUsd": 0.0528
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.0121,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.117
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.1105
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.091
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.065
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.1105,
+        "ap-east-1": 0.1105,
+        "ap-east-2": 0.1105,
+        "ap-northeast-1": 0.1105,
+        "ap-northeast-2": 0.1105,
+        "ap-northeast-3": 0.1105,
+        "ap-south-1": 0.1105,
+        "ap-south-2": 0.1105,
+        "ap-southeast-1": 0.1105,
+        "ap-southeast-2": 0.1105,
+        "ap-southeast-3": 0.1105,
+        "ap-southeast-4": 0.1105,
+        "ap-southeast-5": 0.1105,
+        "ap-southeast-6": 0.1105,
+        "ap-southeast-7": 0.1105,
+        "ca-central-1": 0.1105,
+        "ca-west-1": 0.1105,
+        "eu-central-1": 0.1105,
+        "eu-central-2": 0.1105,
+        "eu-north-1": 0.1105,
+        "eu-south-1": 0.1105,
+        "eu-south-2": 0.1105,
+        "eu-west-1": 0.1105,
+        "eu-west-2": 0.1105,
+        "eu-west-3": 0.1105,
+        "me-central-1": 0.1105,
+        "mx-central-1": 0.1105,
+        "sa-east-1": 0.1105,
+        "us-east-1": 0.1105,
+        "us-east-2": 0.1105,
+        "us-west-1": 0.1105,
+        "us-west-2": 0.1105
+      }
+    },
+    "mx-central-1": {
+      "natGateway": {
+        "hourUsd": 0.04725,
+        "gbUsd": 0.04725
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.0105,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.09
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.07
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.05
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.14,
+        "ap-east-1": 0.08,
+        "ap-east-2": 0.08,
+        "ap-northeast-1": 0.08,
+        "ap-northeast-2": 0.08,
+        "ap-northeast-3": 0.08,
+        "ap-south-1": 0.08,
+        "ap-south-2": 0.08,
+        "ap-southeast-1": 0.08,
+        "ap-southeast-2": 0.08,
+        "ap-southeast-3": 0.08,
+        "ap-southeast-4": 0.08,
+        "ap-southeast-5": 0.08,
+        "ap-southeast-6": 0.08,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.02,
+        "ca-west-1": 0.02,
+        "eu-central-1": 0.05,
+        "eu-central-2": 0.05,
+        "eu-north-1": 0.05,
+        "eu-south-1": 0.05,
+        "eu-south-2": 0.05,
+        "eu-west-1": 0.05,
+        "eu-west-2": 0.05,
+        "eu-west-3": 0.05,
+        "me-central-1": 0.14,
+        "me-south-1": 0.14,
+        "sa-east-1": 0.05,
+        "us-east-1": 0.02,
+        "us-east-2": 0.02,
+        "us-west-1": 0.02,
+        "us-west-2": 0.02
+      }
+    },
+    "sa-east-1": {
+      "natGateway": {
+        "hourUsd": 0.093,
+        "gbUsd": 0.093
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.021,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.15
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.138
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.126
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.114
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.138,
+        "ap-east-1": 0.138,
+        "ap-east-2": 0.138,
+        "ap-northeast-1": 0.138,
+        "ap-northeast-2": 0.138,
+        "ap-northeast-3": 0.138,
+        "ap-south-1": 0.138,
+        "ap-south-2": 0.138,
+        "ap-southeast-1": 0.138,
+        "ap-southeast-2": 0.138,
+        "ap-southeast-3": 0.138,
+        "ap-southeast-4": 0.138,
+        "ap-southeast-5": 0.138,
+        "ap-southeast-6": 0.138,
+        "ap-southeast-7": 0.14,
+        "ca-central-1": 0.138,
+        "ca-west-1": 0.138,
+        "eu-central-1": 0.138,
+        "eu-central-2": 0.138,
+        "eu-north-1": 0.138,
+        "eu-south-1": 0.138,
+        "eu-south-2": 0.138,
+        "eu-west-1": 0.138,
+        "eu-west-2": 0.138,
+        "eu-west-3": 0.138,
+        "me-central-1": 0.138,
+        "me-south-1": 0.138,
+        "mx-central-1": 0.138,
+        "us-east-1": 0.138,
+        "us-east-2": 0.138,
+        "us-west-1": 0.138,
+        "us-west-2": 0.138
+      }
+    },
+    "us-east-1": {
+      "natGateway": {
+        "hourUsd": 0.045,
+        "gbUsd": 0.045
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.01,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.09
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.07
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.05
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.02,
+        "ap-east-1": 0.02,
+        "ap-east-2": 0.02,
+        "ap-northeast-1": 0.02,
+        "ap-northeast-2": 0.02,
+        "ap-northeast-3": 0.02,
+        "ap-south-1": 0.02,
+        "ap-south-2": 0.02,
+        "ap-southeast-1": 0.02,
+        "ap-southeast-2": 0.02,
+        "ap-southeast-3": 0.02,
+        "ap-southeast-4": 0.02,
+        "ap-southeast-5": 0.02,
+        "ap-southeast-6": 0.02,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.02,
+        "ca-west-1": 0.02,
+        "eu-central-1": 0.02,
+        "eu-central-2": 0.02,
+        "eu-north-1": 0.02,
+        "eu-south-1": 0.02,
+        "eu-south-2": 0.02,
+        "eu-west-1": 0.02,
+        "eu-west-2": 0.02,
+        "eu-west-3": 0.02,
+        "me-central-1": 0.02,
+        "me-south-1": 0.02,
+        "mx-central-1": 0.02,
+        "sa-east-1": 0.02,
+        "us-east-2": 0.01,
+        "us-west-1": 0.02,
+        "us-west-2": 0.02
+      }
+    },
+    "us-east-2": {
+      "natGateway": {
+        "hourUsd": 0.045,
+        "gbUsd": 0.045
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.01,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.09
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.07
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.05
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.02,
+        "ap-east-1": 0.02,
+        "ap-east-2": 0.02,
+        "ap-northeast-1": 0.02,
+        "ap-northeast-2": 0.02,
+        "ap-northeast-3": 0.02,
+        "ap-south-1": 0.02,
+        "ap-south-2": 0.02,
+        "ap-southeast-1": 0.02,
+        "ap-southeast-2": 0.02,
+        "ap-southeast-3": 0.02,
+        "ap-southeast-4": 0.02,
+        "ap-southeast-5": 0.02,
+        "ap-southeast-6": 0.02,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.02,
+        "ca-west-1": 0.02,
+        "eu-central-1": 0.02,
+        "eu-central-2": 0.02,
+        "eu-north-1": 0.02,
+        "eu-south-1": 0.02,
+        "eu-south-2": 0.02,
+        "eu-west-1": 0.02,
+        "eu-west-2": 0.02,
+        "eu-west-3": 0.02,
+        "me-central-1": 0.02,
+        "me-south-1": 0.02,
+        "mx-central-1": 0.02,
+        "sa-east-1": 0.02,
+        "us-east-1": 0.01,
+        "us-west-1": 0.02,
+        "us-west-2": 0.02
+      }
+    },
+    "us-west-1": {
+      "natGateway": {
+        "hourUsd": 0.048,
+        "gbUsd": 0.048
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.011,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.09
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.07
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.05
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.02,
+        "ap-east-1": 0.02,
+        "ap-east-2": 0.02,
+        "ap-northeast-1": 0.02,
+        "ap-northeast-2": 0.02,
+        "ap-northeast-3": 0.02,
+        "ap-south-1": 0.02,
+        "ap-south-2": 0.02,
+        "ap-southeast-1": 0.02,
+        "ap-southeast-2": 0.02,
+        "ap-southeast-3": 0.02,
+        "ap-southeast-4": 0.02,
+        "ap-southeast-5": 0.02,
+        "ap-southeast-6": 0.02,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.02,
+        "ca-west-1": 0.02,
+        "eu-central-1": 0.02,
+        "eu-central-2": 0.02,
+        "eu-north-1": 0.02,
+        "eu-south-1": 0.02,
+        "eu-south-2": 0.02,
+        "eu-west-1": 0.02,
+        "eu-west-2": 0.02,
+        "eu-west-3": 0.02,
+        "me-central-1": 0.02,
+        "me-south-1": 0.02,
+        "mx-central-1": 0.02,
+        "sa-east-1": 0.02,
+        "us-east-1": 0.02,
+        "us-east-2": 0.02,
+        "us-west-2": 0.02
+      }
+    },
+    "us-west-2": {
+      "natGateway": {
+        "hourUsd": 0.045,
+        "gbUsd": 0.045
+      },
+      "interfaceEndpoint": {
+        "hourUsd": 0.01,
+        "gbTiers": [
+          {
+            "upToGb": 1048576,
+            "perGbUsd": 0.01
+          },
+          {
+            "upToGb": 5242880,
+            "perGbUsd": 0.006
+          },
+          {
+            "upToGb": null,
+            "perGbUsd": 0.004
+          }
+        ]
+      },
+      "crossAzPerGb": 0.01,
+      "internetOutTiers": [
+        {
+          "upToGb": 10240,
+          "perGbUsd": 0.09
+        },
+        {
+          "upToGb": 51200,
+          "perGbUsd": 0.085
+        },
+        {
+          "upToGb": 153600,
+          "perGbUsd": 0.07
+        },
+        {
+          "upToGb": null,
+          "perGbUsd": 0.05
+        }
+      ],
+      "interRegionOut": {
+        "af-south-1": 0.02,
+        "ap-east-1": 0.02,
+        "ap-east-2": 0.02,
+        "ap-northeast-1": 0.02,
+        "ap-northeast-2": 0.02,
+        "ap-northeast-3": 0.02,
+        "ap-south-1": 0.02,
+        "ap-south-2": 0.02,
+        "ap-southeast-1": 0.02,
+        "ap-southeast-2": 0.02,
+        "ap-southeast-3": 0.02,
+        "ap-southeast-4": 0.02,
+        "ap-southeast-5": 0.02,
+        "ap-southeast-6": 0.02,
+        "ap-southeast-7": 0.08,
+        "ca-central-1": 0.02,
+        "ca-west-1": 0.02,
+        "eu-central-1": 0.02,
+        "eu-central-2": 0.02,
+        "eu-north-1": 0.02,
+        "eu-south-1": 0.02,
+        "eu-south-2": 0.02,
+        "eu-west-1": 0.02,
+        "eu-west-2": 0.02,
+        "eu-west-3": 0.02,
+        "me-central-1": 0.02,
+        "me-south-1": 0.02,
+        "mx-central-1": 0.02,
+        "sa-east-1": 0.02,
+        "us-east-1": 0.02,
+        "us-east-2": 0.02,
+        "us-west-1": 0.02
+      }
+    }
+  },
+  "skippedRegions": [],
+  "missingPairs": [
+    "ap-southeast-3->ap-northeast-3",
+    "ap-southeast-3->sa-east-1"
+  ],
+  "notes": [
+    "Internet egress is tiered per region and applies beyond the 100 GB/month free tier, which AWS aggregates across all services and regions; this tool applies it to the entered internet-egress volume only.",
+    "Cross-AZ data transfer (DataTransfer-Regional-Bytes) is $/GB in each direction between resources in different AZs; a byte transferred and answered bills twice the rate.",
+    "Inter-region inbound is $0.00 in the current price list; only the outbound direction is billed, at the pair rate in interRegionOut. Pairs without a published rate are listed in missingPairs and are flagged (not priced) by the tool.",
+    "Interface endpoint prices are per endpoint per AZ (VpcEndpoint-Hours) plus tiered $/GB processed (VpcEndpoint-Bytes: $0.01 up to 1 PB/month, less above); gateway endpoints (S3, DynamoDB) are free.",
+    "NAT gateway prices are the classic NAT gateway (hourly + per-GB processed); the newer regional NAT gateway is priced identically in every region sampled.",
+    "Not modeled: VPC peering / Transit Gateway charges, CloudFront, S3-specific egress rates, public IPv4 address charges, and the legacy 1 GB regional free-tier SKU."
+  ]
+}
