@@ -5,8 +5,11 @@
   "description": "toolbox.nbergeron.dev — Cloudflare Worker (Effect 4) + infrastructure as code (Alchemy v2)",
   "scripts": {
     "dev": "alchemy dev",
+    "predev": "node scripts/generate-analytics.mjs",
+    "analytics": "node scripts/generate-analytics.mjs",
     "plan": "alchemy plan",
     "deploy": "alchemy deploy",
+    "predeploy": "node scripts/generate-analytics.mjs",
     "destroy": "alchemy destroy",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",

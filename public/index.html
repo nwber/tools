@@ -33,6 +33,7 @@
         font-size: 0.85rem;
       }
     </style>
+    <script src="/analytics.js" defer></script>
   </head>
   <body>
     <h1>toolbox</h1>
@@ -41,29 +42,29 @@
     <h2>Tools</h2>
     <ul>
       <li>
-        <a href="/ebs/">AWS EBS Pricing</a> — compare EBS volume costs across
+        <a href="/ebs/" data-tool="ebs">AWS EBS Pricing</a> — compare EBS volume costs across
         types and regions with IOPS/throughput limits and provisioning costs
       </li>
       <li>
-        <a href="/ec2/">EC2 Burst Calculator</a> — CPU-credit simulation for
+        <a href="/ec2/" data-tool="ec2">EC2 Burst Calculator</a> — CPU-credit simulation for
         t3a/t4g/t8i against the cheapest same-processor non-burstable instance
         (credits, throttling, unlimited surcharges, break-even)
       </li>
       <li>
-        <a href="/s3/">S3 Cost Calculator</a> — storage classes, request
+        <a href="/s3/" data-tool="s3">S3 Cost Calculator</a> — storage classes, request
         pricing, retrieval, and lifecycle transitions from the AWS price list
       </li>
       <li>
-        <a href="/speedtest/">Speed Test</a> — latency/jitter and parallel
+        <a href="/speedtest/" data-tool="speedtest">Speed Test</a> — latency/jitter and parallel
         download/upload throughput against this edge
       </li>
       <li>
-        <a href="/aws-latency/">AWS Region Latency</a> — browser-to-AWS
+        <a href="/aws-latency/" data-tool="aws-latency">AWS Region Latency</a> — browser-to-AWS
         round-trip latency per region (median + jitter against the regional
         DynamoDB health endpoints)
       </li>
       <li>
-        <a href="/ip-hex/">IP &harr; Hex Converter</a> — paste an IPv4/IPv6
+        <a href="/ip-hex/" data-tool="ip-hex">IP &harr; Hex Converter</a> — paste an IPv4/IPv6
         address, a hex string, or a decimal integer and get every
         representation back (hex, 0x-hex, dotted hex, canonical/expanded IPv6,
         IPv4-mapped, decimal)
@@ -102,5 +103,13 @@
     </ul>
 
     <p class="muted">More tools land as phases complete — see TODO.md.</p>
+
+    <script>
+      document.querySelectorAll("[data-tool]").forEach((link) => {
+        link.addEventListener("click", () => {
+          window.posthog?.capture("tool_selected", { tool: link.dataset.tool });
+        });
+      });
+    </script>
   </body>
 </html>

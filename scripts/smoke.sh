@@ -47,6 +47,7 @@ body=$($CURL "$BASE/") || fail "GET / failed"; check
 grep -qi '<!doctype html' <<<"$body" || fail "GET / did not return an HTML page"
 grep -q 'AWS EBS Pricing' <<<"$body" || fail "index does not link the EBS tool"
 grep -q 'github.com/nwber/tools' <<<"$body" || fail "index is missing the repo link"
+grep -q '/analytics.js' <<<"$body" || fail "index is missing the analytics script"
 
 body=$($CURL "$BASE/ebs/") || fail "GET /ebs/ failed"; check
 grep -q '<title>AWS EBS Pricing</title>' <<<"$body" || fail "/ebs/ did not return the calculator page"
@@ -65,6 +66,9 @@ grep -q '<title>AWS Region Latency</title>' <<<"$body" || fail "/aws-latency/ di
 
 body=$($CURL "$BASE/ip-hex/") || fail "GET /ip-hex/ failed"; check
 grep -q '<title>IP &harr; Hex Converter</title>' <<<"$body" || fail "/ip-hex/ did not return the converter page"
+
+body=$($CURL "$BASE/analytics.js") || fail "GET /analytics.js failed"; check
+grep -q 'posthog.init(' <<<"$body" || fail "/analytics.js does not boot PostHog"
 
 body=$($CURL "$BASE/data/ebs-pricing.json") || fail "GET /data/ebs-pricing.json failed"; check
 grep -q '"volumeTypes"' <<<"$body" || fail "pricing asset missing volumeTypes"
@@ -121,6 +125,6 @@ if [[ -n "$IP_BASE" ]]; then
   echo "ok: ip-host /ip -> $body"
 fi
 
-# 23 unconditional checks (24 with IP_BASE)
-[[ "$CHECKS" -ge 23 ]] || fail "only $CHECKS checks ran; expected at least 23"
+# 24 unconditional checks (25 with IP_BASE)
+[[ "$CHECKS" -ge 24 ]] || fail "only $CHECKS checks ran; expected at least 24"
 echo "all $CHECKS smoke checks passed for $BASE"
