@@ -24,6 +24,7 @@ public/ebs/             the EBS pricing calculator page (ported from the origina
 public/ec2/             the EC2 burst calculator page
 public/s3/              the S3 cost calculator page
 public/aws-latency/     the AWS region latency page
+public/ip-hex/          the IP ↔ hex converter page
 public/speedtest/       the speed test page
 public/data/            shared datasets (ebs-pricing.json, ec2-burst-spec.json, s3-pricing.json, aws-regions.json)
 scripts/                committed generators (generate-burst-spec.mjs, generate-s3-pricing.mjs, generate-aws-regions.mjs)
@@ -39,6 +40,7 @@ scripts/smoke.sh        post-deploy endpoint checks (deploy URL or local dev URL
 | `GET /ec2/` | the EC2 Burst Calculator (static page, client-side simulation) |
 | `GET /s3/` | the S3 Cost Calculator (static page, client-side model) |
 | `GET /aws-latency/` | the AWS Region Latency test (static page, browser-side measurement) |
+| `GET /ip-hex/` | the IP ↔ hex converter (static page, client-side conversion) |
 | `GET /speedtest/` | the speed test page (latency + parallel down/upload) |
 | `GET /data/*.json` | the datasets the calculators load (static assets) |
 | `GET /ip` | client IP as plain text (Cloudflare's `CF-Connecting-IP`, trailing newline) |

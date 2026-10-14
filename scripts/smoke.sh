@@ -63,6 +63,9 @@ grep -q '<title>Speed Test</title>' <<<"$body" || fail "/speedtest/ did not retu
 body=$($CURL "$BASE/aws-latency/") || fail "GET /aws-latency/ failed"; check
 grep -q '<title>AWS Region Latency</title>' <<<"$body" || fail "/aws-latency/ did not return the page"
 
+body=$($CURL "$BASE/ip-hex/") || fail "GET /ip-hex/ failed"; check
+grep -q '<title>IP &harr; Hex Converter</title>' <<<"$body" || fail "/ip-hex/ did not return the converter page"
+
 body=$($CURL "$BASE/data/ebs-pricing.json") || fail "GET /data/ebs-pricing.json failed"; check
 grep -q '"volumeTypes"' <<<"$body" || fail "pricing asset missing volumeTypes"
 
@@ -118,6 +121,6 @@ if [[ -n "$IP_BASE" ]]; then
   echo "ok: ip-host /ip -> $body"
 fi
 
-# 22 unconditional checks (23 with IP_BASE)
-[[ "$CHECKS" -ge 22 ]] || fail "only $CHECKS checks ran; expected at least 22"
+# 23 unconditional checks (24 with IP_BASE)
+[[ "$CHECKS" -ge 23 ]] || fail "only $CHECKS checks ran; expected at least 23"
 echo "all $CHECKS smoke checks passed for $BASE"
