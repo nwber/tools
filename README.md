@@ -27,7 +27,7 @@ public/aws-latency/     the AWS region latency page
 public/ip-hex/          the IP ↔ hex converter page
 public/speedtest/       the speed test page
 public/data/            shared datasets (ebs-pricing.json, ec2-burst-spec.json, s3-pricing.json, aws-regions.json)
-scripts/                committed generators (generate-burst-spec.mjs, generate-s3-pricing.mjs, generate-aws-regions.mjs)
+scripts/                committed generators (generate-burst-spec.mjs, generate-s3-pricing.mjs, generate-aws-regions.mjs, generate-analytics.mjs)
 tests/                  vitest tests (pure modules, handler, client math)
 scripts/smoke.sh        post-deploy endpoint checks (deploy URL or local dev URL)
 ```
@@ -77,6 +77,27 @@ scripts/smoke.sh <url>       # e.g. the http://localhost:... URL `alchemy dev` p
 `alchemy dev` runs the Worker locally in workerd with hot reload. It still
 resolves Cloudflare credentials (even though nothing is created in the cloud
 for this stack), so the profile must exist.
+
+## Analytics
+
+PostHog loads on every page when `PUBLIC_POSTHOG_PROJECT_TOKEN` and
+`PUBLIC_POSTHOG_HOST` are set — the same variables, script, and init options
+as the blog ([nwber.github.io](https://github.com/nwber/nwber.github.io)):
+
+- `scripts/generate-analytics.mjs` writes `public/analytics.js` (gitignored;
+  the asset upload only honors `.assetsignore`, so the file still deploys);
+- local runs read `.env` if present (`PUBLIC_POSTHOG_PROJECT_TOKEN=phc_...`,
+  `PUBLIC_POSTHOG_HOST=https://us.i.posthog.com`); `npm run dev` regenerates
+  automatically via `predev`, and `npm run analytics` runs the generator
+  alone. Without the variables, the pages' `/analytics.js` request 404s and
+  analytics stays off (local dev only);
+- CI passes the repo **Actions variables** of the same names to the
+  generator (`--require`, so a missing variable fails the deploy), keeping
+  the token out of git.
+
+Every page loads `<script src="/analytics.js" defer>`; the index additionally
+captures a `tool_selected` event per tool link, mirroring the blog's
+`blog_post_selected`.
 
 ## Infrastructure & deploy
 
