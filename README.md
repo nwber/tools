@@ -121,6 +121,9 @@ gh secret set CLOUDFLARE_ACCOUNT_ID  --repo nwber/tools
 
 - Work happens in git worktrees on branches; finished work merges to `main`
   (which auto-deploys).
+- PRs against `main` pass through a review gate: the `protect_main` ruleset
+  requires one approving review and dismisses stale approvals on new pushes;
+  the admin account is in the bypass list for emergencies only.
 - A gitleaks pre-commit hook blocks commits containing secrets
   (`git config core.hooksPath .githooks` after cloning; requires gitleaks on
   PATH).
