@@ -51,6 +51,11 @@ grep -q '/analytics.js' <<<"$body" || fail "index is missing the analytics scrip
 
 body=$($CURL "$BASE/ebs/") || fail "GET /ebs/ failed"; check
 grep -q '<title>AWS EBS Pricing</title>' <<<"$body" || fail "/ebs/ did not return the calculator page"
+grep -q 'id="graphX"' <<<"$body" || fail "/ebs/ is missing the graph X-axis select"
+grep -q 'id="costChart"' <<<"$body" || fail "/ebs/ is missing the cost graph container"
+
+body=$($CURL "$BASE/ebs/ebs-chart.js") || fail "GET /ebs/ebs-chart.js failed"; check
+grep -q 'renderCostChart' <<<"$body" || fail "/ebs/ebs-chart.js does not render the cost chart"
 
 body=$($CURL "$BASE/ec2/") || fail "GET /ec2/ failed"; check
 grep -q '<title>EC2 Burst Calculator</title>' <<<"$body" || fail "/ec2/ did not return the calculator page"
@@ -125,6 +130,6 @@ if [[ -n "$IP_BASE" ]]; then
   echo "ok: ip-host /ip -> $body"
 fi
 
-# 24 unconditional checks (25 with IP_BASE)
-[[ "$CHECKS" -ge 24 ]] || fail "only $CHECKS checks ran; expected at least 24"
+# 25 unconditional checks (26 with IP_BASE)
+[[ "$CHECKS" -ge 25 ]] || fail "only $CHECKS checks ran; expected at least 25"
 echo "all $CHECKS smoke checks passed for $BASE"

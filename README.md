@@ -20,7 +20,7 @@ src/handler.ts          request handler (in-process testable)
 src/tools/ip.ts         /ip helpers (pure, vitest-tested)
 src/tools/speedtest.ts  speed-test parameter parsing + caps (pure)
 public/index.html       tools index (static)
-public/ebs/             the EBS pricing calculator page (ported from the original tool)
+public/ebs/             the EBS pricing calculator page (ported from the original tool, plus a cost-vs-IOPS/throughput/size graph)
 public/ec2/             the EC2 burst calculator page
 public/s3/              the S3 cost calculator page
 public/aws-latency/     the AWS region latency page
@@ -36,7 +36,7 @@ scripts/smoke.sh        post-deploy endpoint checks (deploy URL or local dev URL
 
 | Route | What it does |
 | --- | --- |
-| `GET /ebs/` | the AWS EBS Pricing calculator (static page, client-side math) |
+| `GET /ebs/` | the AWS EBS Pricing calculator (static page, client-side math, cost graph by IOPS/throughput/size) |
 | `GET /ec2/` | the EC2 Burst Calculator (static page, client-side simulation) |
 | `GET /s3/` | the S3 Cost Calculator (static page, client-side model) |
 | `GET /aws-latency/` | the AWS Region Latency test (static page, browser-side measurement) |
