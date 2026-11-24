@@ -102,13 +102,44 @@
       }
       .graph-controls {
         display: flex;
-        align-items: baseline;
+        flex-wrap: wrap;
+        align-items: center;
         gap: 10px;
         margin: 16px 0 0;
-        max-width: 360px;
+        max-width: 420px;
       }
       .graph-controls select {
-        flex: 1;
+        flex: 1 1 160px;
+      }
+      .scale-toggle {
+        display: inline-flex;
+      }
+      .scale-toggle button {
+        background: white;
+        color: #52606d;
+        border: 1px solid #ddd;
+        border-radius: 0;
+        padding: 8px 14px;
+      }
+      .scale-toggle button:first-child {
+        border-radius: 4px 0 0 4px;
+      }
+      .scale-toggle button:last-child {
+        border-radius: 0 4px 4px 0;
+      }
+      .scale-toggle button + button {
+        border-left: none;
+      }
+      .scale-toggle button:hover {
+        background: #f8f9fa;
+      }
+      .scale-toggle button.active {
+        background: #007bff;
+        border-color: #007bff;
+        color: white;
+      }
+      .scale-toggle button.active:hover {
+        background: #0056b3;
       }
       #costChart {
         margin-top: 10px;
@@ -290,12 +321,22 @@
     </table>
     <h2>Cost graph</h2>
     <div class="graph-controls">
-      <label for="graphX">X axis</label
-      ><select id="graphX" onchange="calculate()">
+      <select
+        id="graphX"
+        title="X axis"
+        aria-label="X axis"
+        onchange="calculate()"
+      >
         <option value="iops" selected>IOPS</option>
         <option value="throughput">Throughput (MiB/s)</option>
         <option value="size">Size (GiB)</option>
       </select>
+      <div class="scale-toggle" role="group" aria-label="Y axis scale">
+        <button type="button" id="scaleLinear" class="active" aria-pressed="true">
+          Linear
+        </button>
+        <button type="button" id="scaleLog" aria-pressed="false">Log</button>
+      </div>
     </div>
     <div id="costChart"></div>
     <script type="module" src="/ebs/ebs-page.js"></script>

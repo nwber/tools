@@ -52,6 +52,7 @@ grep -q '/analytics.js' <<<"$body" || fail "index is missing the analytics scrip
 body=$($CURL "$BASE/ebs/") || fail "GET /ebs/ failed"; check
 grep -q '<title>AWS EBS Pricing</title>' <<<"$body" || fail "/ebs/ did not return the calculator page"
 grep -q 'id="graphX"' <<<"$body" || fail "/ebs/ is missing the graph X-axis select"
+grep -q 'id="scaleLog"' <<<"$body" || fail "/ebs/ is missing the graph scale buttons"
 grep -q 'id="costChart"' <<<"$body" || fail "/ebs/ is missing the cost graph container"
 
 body=$($CURL "$BASE/ebs/ebs-chart.js") || fail "GET /ebs/ebs-chart.js failed"; check
