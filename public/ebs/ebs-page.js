@@ -5,13 +5,15 @@
  * ebs-pricing-comparator.nwber.workers.dev): same ids, same behaviors, same
  * rendered output. The pricing data now loads from the shared JSON asset
  * (/data/ebs-pricing.json) instead of being inlined, and the math lives in
- * ebs-calc.js where it is unit-tested.
+ * ebs-calc.js where it is unit-tested. The cost graph (a later addition)
+ * renders via ebs-chart.js from calculateSeries curves.
  *
  * Inline handlers in index.html (onchange="calculate()", onclick="sortTable(0)")
  * keep working because calculate/sortTable are also assigned onto window.
  */
 
-import { calculateRows } from "./ebs-calc.js";
+import { calculateRows, calculateSeries } from "./ebs-calc.js";
+import { renderCostChart } from "./ebs-chart.js";
 
 const pricing = await fetch("/data/ebs-pricing.json").then((response) => response.json());
 
@@ -81,6 +83,19 @@ function calculate() {
     throughput,
     selectedTypes: Array.from(selected),
   });
+
+  // The graph sweeps the selected X-axis input up to each type's own limit,
+  // holding the other inputs at the values above.
+  const chartModel = calculateSeries(pricing, {
+    region,
+    size,
+    unit,
+    iops,
+    throughput,
+    selectedTypes: Array.from(selected),
+    axis: document.getElementById("graphX").value,
+  });
+  renderCostChart(document.getElementById("costChart"), chartModel);
 
   rows.forEach((row) => {
     const tr = document.createElement("tr");
