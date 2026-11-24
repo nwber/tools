@@ -145,6 +145,24 @@ describe("aws-regions dataset", () => {
     expect(byCode.get("af-south-1")?.group).toBe("middle-east-africa");
   });
 
+  it("carries plausible map coordinates for every region", () => {
+    for (const region of regions) {
+      expect(Number.isFinite(region.lat), `${region.code}: lat not finite`).toBe(true);
+      expect(Number.isFinite(region.lon), `${region.code}: lon not finite`).toBe(true);
+      expect(Math.abs(region.lat ?? 0), region.code).toBeLessThanOrEqual(90);
+      expect(Math.abs(region.lon ?? 0), region.code).toBeLessThanOrEqual(180);
+      // Null Island (0, 0) means "unset", never a real AWS location.
+      expect(`${region.lat},${region.lon}`, region.code).not.toBe("0,0");
+    }
+    const byCode = new Map(regions.map((r) => [r.code, r]));
+    expect(byCode.get("us-east-1")?.lat).toBe(39.0438); // Ashburn
+    expect(byCode.get("us-east-1")?.lon).toBe(-77.4874);
+    expect(byCode.get("ap-southeast-5")?.lat).toBe(1.4927); // Johor Bahru
+    expect(byCode.get("ap-southeast-5")?.lon).toBe(103.7414);
+    expect(byCode.get("ca-west-1")?.lat).toBe(51.0447); // Calgary
+    expect(byCode.get("ca-west-1")?.lon).toBe(-114.0719);
+  });
+
   it("records the source endpoints hash for refreshes", () => {
     expect(dataset.sources.endpoints_sha256).toMatch(/^[0-9a-f]{64}$/);
   });

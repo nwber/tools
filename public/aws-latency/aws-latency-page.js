@@ -1,7 +1,9 @@
 /**
- * AWS region latency orchestration: opaque cross-origin GETs to each region's
- * public DynamoDB health endpoint, timed with performance.now(). All math
- * lives in aws-latency-calc.js.
+ * AWS region latency orchestration: opaque cross-origin GETs to each
+ * region's public DynamoDB health endpoint, timed with performance.now().
+ * Probe math lives in aws-latency-calc.js; the map (this page also draws
+ * your location and a route line to every selected region) is wired in
+ * through aws-latency-map.js.
  *
  * Methodology:
  *  - probes run sample-major (round 1 for every selected region, then round
@@ -15,6 +17,7 @@
  */
 
 import { probeUrl, sortByMedian, summarize } from "./aws-latency-calc.js";
+import { createMap } from "./aws-latency-map.js";
 
 const PROBE_TIMEOUT_MS = 6000;
 const CONCURRENCY = 6;
@@ -30,6 +33,63 @@ const controllers = new Set();
 const rows = new Map(); // region code -> row state
 const groupChecks = new Map(); // group id -> checkbox
 
+const map = createMap(document.getElementById("map"), {
+  onHover: (code) => highlightRow(code),
+  onSelect: (code) => focusRow(code),
+});
+
+const captionState = { outline: "loading", hasUser: false };
+
+function refreshMapCaption() {
+  if (captionState.outline === "loading") {
+    $("mapCaption").textContent = "Loading the map…";
+    return;
+  }
+  if (captionState.outline !== "ready") {
+    $("mapCaption").textContent = captionState.outline;
+    return;
+  }
+  const from = captionState.hasUser
+    ? "from your location (city-level, via Cloudflare geo)"
+    : "— your location is unavailable here, so no routes are drawn —";
+  $("mapCaption").textContent =
+    `Great-circle routes ${from} to each selected region. ` +
+    "Line color follows the measured median: green fast, red slow, gray not measured. " +
+    "Drag to pan, scroll or pinch to zoom, ⤢ to refit.";
+}
+
+map.ready.then((status) => {
+  captionState.outline = status === "ready" ? "ready" : status;
+  refreshMapCaption();
+});
+
+/** Toggle the map's line + marker emphasis for one region's table row. */
+function highlightRow(code) {
+  for (const tr of $("rows").querySelectorAll("tr.map-hover")) tr.classList.remove("map-hover");
+  if (code !== null) {
+    $("rows").querySelector(`tr[data-code="${code}"]`)?.classList.add("map-hover");
+  }
+}
+
+/** A map marker/line was clicked: scroll to the region's row and flash it. */
+function focusRow(code) {
+  const tr = $("rows").querySelector(`tr[data-code="${code}"]`);
+  if (!tr) return;
+  tr.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  highlightRow(code);
+  setTimeout(() => highlightRow(null), 1500);
+}
+
+/** Push the current selection (and any known results) to the map. */
+function syncMap() {
+  const selected = selectedRows();
+  map.sync(selected.map((row) => row.region));
+  const maxMedian = maxMeasuredMedian();
+  for (const row of selected) {
+    map.updateRegion(row.region.code, { state: row.state, summary: row.summary, maxMedian });
+  }
+}
+
 /** Stats over the usable samples (the warm-up first sample is dropped). */
 function summaryFor(row) {
   return row.samples.length > 1 ? summarize(row.samples.slice(1)) : null;
@@ -40,9 +100,25 @@ function showClientInfo() {
     .then((r) => r.json())
     .then((info) => {
       $("client").textContent = `${info.ip} · ${info.city ?? "?"}, ${info.region ?? "?"} · edge ${info.colo ?? "?"} · ${info.as_organization ?? "?"}`;
+      const place = [info.city, info.region].filter(Boolean).join(", ");
+      if (info.latitude != null && info.longitude != null) {
+        map.setUser({
+          lat: info.latitude,
+          lon: info.longitude,
+          label: [place, info.country].filter(Boolean).join(" ") || info.ip,
+        });
+        captionState.hasUser = true;
+      } else {
+        map.setUser(null);
+        captionState.hasUser = false;
+      }
+      refreshMapCaption();
     })
     .catch(() => {
       $("client").textContent = "client info unavailable";
+      map.setUser(null);
+      captionState.hasUser = false;
+      refreshMapCaption();
     });
 }
 
@@ -54,6 +130,7 @@ function buildGroups() {
     checkbox.type = "checkbox";
     checkbox.checked = DEFAULT_GROUPS.includes(group.id);
     checkbox.dataset.group = group.id;
+    checkbox.addEventListener("change", syncMap);
     groupChecks.set(group.id, checkbox);
     label.append(checkbox, ` ${group.label}`);
     fieldset.append(label);
@@ -65,6 +142,7 @@ function buildRows() {
   for (const region of dataset.regions) {
     const tr = document.createElement("tr");
     tr.dataset.state = "queued";
+    tr.dataset.code = region.code;
     const regionCell = document.createElement("td");
     regionCell.className = "region";
     const name = document.createElement("span");
@@ -148,6 +226,8 @@ function updateRow(row) {
   const max = maxMeasuredMedian();
   const pct = row.summary && max > 0 ? Math.max(2, (row.summary.median / max) * 100) : 0;
   cells.barFill.style.width = `${pct}%`;
+
+  map.updateRegion(row.region.code, { state: row.state, summary: row.summary, maxMedian: max });
 }
 
 function refreshSort() {
@@ -284,6 +364,17 @@ $("run").addEventListener("click", () => {
   else run();
 });
 
+$("zoomIn").addEventListener("click", () => map.zoom(1.5));
+$("zoomOut").addEventListener("click", () => map.zoom(1 / 1.5));
+$("zoomFit").addEventListener("click", () => map.fit());
+
+// Hovering a region's row emphasizes its line and marker on the map.
+$("rows").addEventListener("mouseover", (event) => {
+  const tr = event.target.closest("tr[data-code]");
+  map.highlight(tr ? tr.dataset.code : null);
+});
+$("rows").addEventListener("mouseleave", () => map.highlight(null));
+
 async function load() {
   try {
     const response = await fetch("/data/aws-regions.json", { cache: "no-store" });
@@ -295,6 +386,7 @@ async function load() {
   }
   buildGroups();
   buildRows();
+  syncMap();
   $("progress").textContent = `${dataset.regions.length} regions loaded — pick groups and run.`;
 }
 

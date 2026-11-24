@@ -2,7 +2,7 @@
   "generatedBy": "scripts/generate-aws-regions.mjs",
   "sources": {
     "endpoints": "https://raw.githubusercontent.com/boto/botocore/develop/botocore/data/endpoints.json",
-    "endpoints_sha256": "a50bf5a863634c47bdc4eb5b3c0631b9a228f27e4340e9f5a85631cd471bbb5b",
+    "endpoints_sha256": "ae67628a5393caab1ef9a6dbfc9843fcbcefea4aaac2a1828d08d3ee1710fa1f",
     "names": "region descriptions in the endpoints file; cross-checked against https://docs.aws.amazon.com/general/latest/gr/rande.html"
   },
   "probe": {
@@ -35,167 +35,233 @@
     {
       "code": "af-south-1",
       "name": "Africa (Cape Town)",
-      "group": "middle-east-africa"
+      "group": "middle-east-africa",
+      "lat": -33.9249,
+      "lon": 18.4241
     },
     {
       "code": "ap-east-1",
       "name": "Asia Pacific (Hong Kong)",
-      "group": "asia-pacific"
+      "group": "asia-pacific",
+      "lat": 22.3193,
+      "lon": 114.1694
     },
     {
       "code": "ap-east-2",
       "name": "Asia Pacific (Taipei)",
-      "group": "asia-pacific"
+      "group": "asia-pacific",
+      "lat": 25.033,
+      "lon": 121.5654
     },
     {
       "code": "ap-northeast-1",
       "name": "Asia Pacific (Tokyo)",
-      "group": "asia-pacific"
+      "group": "asia-pacific",
+      "lat": 35.6762,
+      "lon": 139.6503
     },
     {
       "code": "ap-northeast-2",
       "name": "Asia Pacific (Seoul)",
-      "group": "asia-pacific"
+      "group": "asia-pacific",
+      "lat": 37.5665,
+      "lon": 126.978
     },
     {
       "code": "ap-northeast-3",
       "name": "Asia Pacific (Osaka)",
-      "group": "asia-pacific"
+      "group": "asia-pacific",
+      "lat": 34.6937,
+      "lon": 135.5023
     },
     {
       "code": "ap-south-1",
       "name": "Asia Pacific (Mumbai)",
-      "group": "asia-pacific"
+      "group": "asia-pacific",
+      "lat": 19.076,
+      "lon": 72.8777
     },
     {
       "code": "ap-south-2",
       "name": "Asia Pacific (Hyderabad)",
-      "group": "asia-pacific"
+      "group": "asia-pacific",
+      "lat": 17.385,
+      "lon": 78.4867
     },
     {
       "code": "ap-southeast-1",
       "name": "Asia Pacific (Singapore)",
-      "group": "asia-pacific"
+      "group": "asia-pacific",
+      "lat": 1.3521,
+      "lon": 103.8198
     },
     {
       "code": "ap-southeast-2",
       "name": "Asia Pacific (Sydney)",
-      "group": "asia-pacific"
+      "group": "asia-pacific",
+      "lat": -33.8688,
+      "lon": 151.2093
     },
     {
       "code": "ap-southeast-3",
       "name": "Asia Pacific (Jakarta)",
-      "group": "asia-pacific"
+      "group": "asia-pacific",
+      "lat": -6.2088,
+      "lon": 106.8456
     },
     {
       "code": "ap-southeast-4",
       "name": "Asia Pacific (Melbourne)",
-      "group": "asia-pacific"
+      "group": "asia-pacific",
+      "lat": -37.8136,
+      "lon": 144.9631
     },
     {
       "code": "ap-southeast-5",
       "name": "Asia Pacific (Malaysia)",
-      "group": "asia-pacific"
+      "group": "asia-pacific",
+      "lat": 1.4927,
+      "lon": 103.7414
     },
     {
       "code": "ap-southeast-6",
       "name": "Asia Pacific (New Zealand)",
-      "group": "asia-pacific"
+      "group": "asia-pacific",
+      "lat": -36.8485,
+      "lon": 174.7633
     },
     {
       "code": "ap-southeast-7",
       "name": "Asia Pacific (Thailand)",
-      "group": "asia-pacific"
+      "group": "asia-pacific",
+      "lat": 13.7563,
+      "lon": 100.5018
     },
     {
       "code": "ca-central-1",
       "name": "Canada (Central)",
-      "group": "us-canada"
+      "group": "us-canada",
+      "lat": 45.5017,
+      "lon": -73.5673
     },
     {
       "code": "ca-west-1",
       "name": "Canada West (Calgary)",
-      "group": "us-canada"
+      "group": "us-canada",
+      "lat": 51.0447,
+      "lon": -114.0719
     },
     {
       "code": "eu-central-1",
       "name": "Europe (Frankfurt)",
-      "group": "europe"
+      "group": "europe",
+      "lat": 50.1109,
+      "lon": 8.6821
     },
     {
       "code": "eu-central-2",
       "name": "Europe (Zurich)",
-      "group": "europe"
+      "group": "europe",
+      "lat": 47.3769,
+      "lon": 8.5417
     },
     {
       "code": "eu-north-1",
       "name": "Europe (Stockholm)",
-      "group": "europe"
+      "group": "europe",
+      "lat": 59.3293,
+      "lon": 18.0686
     },
     {
       "code": "eu-south-1",
       "name": "Europe (Milan)",
-      "group": "europe"
+      "group": "europe",
+      "lat": 45.4642,
+      "lon": 9.19
     },
     {
       "code": "eu-south-2",
       "name": "Europe (Spain)",
-      "group": "europe"
+      "group": "europe",
+      "lat": 40.4168,
+      "lon": -3.7038
     },
     {
       "code": "eu-west-1",
       "name": "Europe (Ireland)",
-      "group": "europe"
+      "group": "europe",
+      "lat": 53.3498,
+      "lon": -6.2603
     },
     {
       "code": "eu-west-2",
       "name": "Europe (London)",
-      "group": "europe"
+      "group": "europe",
+      "lat": 51.5074,
+      "lon": -0.1278
     },
     {
       "code": "eu-west-3",
       "name": "Europe (Paris)",
-      "group": "europe"
+      "group": "europe",
+      "lat": 48.8566,
+      "lon": 2.3522
     },
     {
       "code": "me-central-1",
       "name": "Middle East (UAE)",
-      "group": "middle-east-africa"
+      "group": "middle-east-africa",
+      "lat": 25.2048,
+      "lon": 55.2708
     },
     {
       "code": "me-south-1",
       "name": "Middle East (Bahrain)",
-      "group": "middle-east-africa"
+      "group": "middle-east-africa",
+      "lat": 26.2285,
+      "lon": 50.586
     },
     {
       "code": "mx-central-1",
       "name": "Mexico (Central)",
-      "group": "latin-america"
+      "group": "latin-america",
+      "lat": 20.5888,
+      "lon": -100.388
     },
     {
       "code": "sa-east-1",
       "name": "South America (Sao Paulo)",
-      "group": "latin-america"
+      "group": "latin-america",
+      "lat": -23.5505,
+      "lon": -46.6333
     },
     {
       "code": "us-east-1",
       "name": "US East (N. Virginia)",
-      "group": "us-canada"
+      "group": "us-canada",
+      "lat": 39.0438,
+      "lon": -77.4874
     },
     {
       "code": "us-east-2",
       "name": "US East (Ohio)",
-      "group": "us-canada"
+      "group": "us-canada",
+      "lat": 39.9612,
+      "lon": -82.9988
     },
     {
       "code": "us-west-1",
       "name": "US West (N. California)",
-      "group": "us-canada"
+      "group": "us-canada",
+      "lat": 37.7749,
+      "lon": -122.4194
     },
     {
       "code": "us-west-2",
       "name": "US West (Oregon)",
-      "group": "us-canada"
+      "group": "us-canada",
+      "lat": 45.5152,
+      "lon": -122.6784
     }
   ]
 }

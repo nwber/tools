@@ -22,6 +22,12 @@
  *     page, adding a second round trip and a different host's latency.
  *   - sqs/sns/kms/lambda/ssm also answer quickly (404/403/400, tiny bodies),
  *     but DynamoDB's response is the one designed to be a health check.
+ *
+ * Coordinates: city-level anchors for the /aws-latency/ map (the region's
+ * metro area, e.g. Tokyo for ap-northeast-1). They place the dot on the map;
+ * they are not data-center addresses. Cross-checked against the region
+ * descriptions in the AWS docs region table. A new region without an entry
+ * here fails loudly below instead of silently landing in the ocean.
  */
 
 import { createHash } from "node:crypto";
@@ -38,6 +44,51 @@ const OUT_FILE = "public/data/aws-regions.json";
  * here so a regeneration cannot silently bring them back.
  */
 const EXCLUDED_REGIONS = new Set(["il-central-1"]);
+
+/**
+ * City-level map anchors per region code (see the header note). Ordered by
+ * group, then alphabetically, for easy diffing.
+ */
+const REGION_COORDS = {
+  // us-canada
+  "ca-central-1": [45.5017, -73.5673], // Montreal
+  "ca-west-1": [51.0447, -114.0719], // Calgary
+  "us-east-1": [39.0438, -77.4874], // Ashburn, Virginia
+  "us-east-2": [39.9612, -82.9988], // Columbus, Ohio
+  "us-west-1": [37.7749, -122.4194], // San Francisco
+  "us-west-2": [45.5152, -122.6784], // Portland, Oregon
+  // latin-america
+  "mx-central-1": [20.5888, -100.388], // Querétaro
+  "sa-east-1": [-23.5505, -46.6333], // São Paulo
+  // europe
+  "eu-central-1": [50.1109, 8.6821], // Frankfurt
+  "eu-central-2": [47.3769, 8.5417], // Zurich
+  "eu-north-1": [59.3293, 18.0686], // Stockholm
+  "eu-south-1": [45.4642, 9.19], // Milan
+  "eu-south-2": [40.4168, -3.7038], // Madrid
+  "eu-west-1": [53.3498, -6.2603], // Dublin
+  "eu-west-2": [51.5074, -0.1278], // London
+  "eu-west-3": [48.8566, 2.3522], // Paris
+  // asia-pacific
+  "ap-east-1": [22.3193, 114.1694], // Hong Kong
+  "ap-east-2": [25.033, 121.5654], // Taipei
+  "ap-northeast-1": [35.6762, 139.6503], // Tokyo
+  "ap-northeast-2": [37.5665, 126.978], // Seoul
+  "ap-northeast-3": [34.6937, 135.5023], // Osaka
+  "ap-south-1": [19.076, 72.8777], // Mumbai
+  "ap-south-2": [17.385, 78.4867], // Hyderabad
+  "ap-southeast-1": [1.3521, 103.8198], // Singapore
+  "ap-southeast-2": [-33.8688, 151.2093], // Sydney
+  "ap-southeast-3": [-6.2088, 106.8456], // Jakarta
+  "ap-southeast-4": [-37.8136, 144.9631], // Melbourne
+  "ap-southeast-5": [1.4927, 103.7414], // Johor Bahru, Malaysia
+  "ap-southeast-6": [-36.8485, 174.7633], // Auckland
+  "ap-southeast-7": [13.7563, 100.5018], // Bangkok
+  // middle-east-africa
+  "af-south-1": [-33.9249, 18.4241], // Cape Town
+  "me-central-1": [25.2048, 55.2708], // Dubai, UAE
+  "me-south-1": [26.2285, 50.586], // Manama, Bahrain
+};
 
 /** Probe template; {region} is replaced per region. */
 const PROBE_TEMPLATE = "https://dynamodb.{region}.amazonaws.com/";
@@ -99,8 +150,13 @@ async function main() {
     const group = groupFor(code);
     if (!group) problems.push(`${code}: no group mapping (new region prefix?)`);
     if (!dynamodbRegions.has(code)) problems.push(`${code}: no dynamodb endpoint to probe`);
-    if (description && group && dynamodbRegions.has(code)) {
-      regions.push({ code, name: description, group });
+    const coords = REGION_COORDS[code];
+    if (!coords) problems.push(`${code}: no map coordinates (add them to REGION_COORDS)`);
+    else if (Math.abs(coords[0]) > 90 || Math.abs(coords[1]) > 180) {
+      problems.push(`${code}: map coordinates out of range: ${coords}`);
+    }
+    if (description && group && dynamodbRegions.has(code) && coords) {
+      regions.push({ code, name: description, group, lat: coords[0], lon: coords[1] });
     }
   }
   if (problems.length > 0) {

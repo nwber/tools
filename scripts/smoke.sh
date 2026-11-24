@@ -63,6 +63,7 @@ grep -q '<title>Speed Test</title>' <<<"$body" || fail "/speedtest/ did not retu
 
 body=$($CURL "$BASE/aws-latency/") || fail "GET /aws-latency/ failed"; check
 grep -q '<title>AWS Region Latency</title>' <<<"$body" || fail "/aws-latency/ did not return the page"
+grep -q 'id="map"' <<<"$body" || fail "/aws-latency/ is missing the map container"
 
 body=$($CURL "$BASE/ip-hex/") || fail "GET /ip-hex/ failed"; check
 grep -q '<title>IP &harr; Hex Converter</title>' <<<"$body" || fail "/ip-hex/ did not return the converter page"
@@ -81,6 +82,9 @@ grep -q '"intelligent-tiering"' <<<"$body" || fail "s3 pricing asset missing cla
 
 body=$($CURL "$BASE/data/aws-regions.json") || fail "GET /data/aws-regions.json failed"; check
 grep -q '"regions"' <<<"$body" || fail "aws-regions asset missing regions"
+
+body=$($CURL "$BASE/data/world-outline.json") || fail "GET /data/world-outline.json failed"; check
+grep -q '"topology"' <<<"$body" || fail "world-outline asset missing topology"
 
 body=$($CURL "$BASE/ip") || fail "GET /ip failed"; check
 [[ -n "$body" ]] || fail "GET /ip returned an empty body"
@@ -125,6 +129,6 @@ if [[ -n "$IP_BASE" ]]; then
   echo "ok: ip-host /ip -> $body"
 fi
 
-# 24 unconditional checks (25 with IP_BASE)
-[[ "$CHECKS" -ge 24 ]] || fail "only $CHECKS checks ran; expected at least 24"
+# 25 unconditional checks (26 with IP_BASE)
+[[ "$CHECKS" -ge 25 ]] || fail "only $CHECKS checks ran; expected at least 25"
 echo "all $CHECKS smoke checks passed for $BASE"
