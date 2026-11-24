@@ -23,11 +23,11 @@ public/index.html       tools index (static)
 public/ebs/             the EBS pricing calculator page (ported from the original tool, plus a cost-vs-IOPS/throughput/size graph)
 public/ec2/             the EC2 burst calculator page
 public/s3/              the S3 cost calculator page
-public/aws-latency/     the AWS region latency page
+public/aws-latency/     the AWS region latency page (map of your location → each region, plus the table)
 public/ip-hex/          the IP ↔ hex converter page
 public/speedtest/       the speed test page
-public/data/            shared datasets (ebs-pricing.json, ec2-burst-spec.json, s3-pricing.json, aws-regions.json)
-scripts/                committed generators (generate-burst-spec.mjs, generate-s3-pricing.mjs, generate-aws-regions.mjs, generate-analytics.mjs)
+public/data/            shared datasets (ebs-pricing.json, ec2-burst-spec.json, s3-pricing.json, aws-regions.json, world-outline.json)
+scripts/                committed generators (generate-burst-spec.mjs, generate-s3-pricing.mjs, generate-aws-regions.mjs, generate-world-outline.mjs, generate-analytics.mjs)
 tests/                  vitest tests (pure modules, handler, client math)
 scripts/smoke.sh        post-deploy endpoint checks (deploy URL or local dev URL)
 ```
@@ -39,17 +39,17 @@ scripts/smoke.sh        post-deploy endpoint checks (deploy URL or local dev URL
 | `GET /ebs/` | the AWS EBS Pricing calculator (static page, client-side math, cost graph by IOPS/throughput/size) |
 | `GET /ec2/` | the EC2 Burst Calculator (static page, client-side simulation) |
 | `GET /s3/` | the S3 Cost Calculator (static page, client-side model) |
-| `GET /aws-latency/` | the AWS Region Latency test (static page, browser-side measurement) |
+| `GET /aws-latency/` | the AWS Region Latency test (static page: browser-side measurement + a map of routes from your location) |
 | `GET /ip-hex/` | the IP ↔ hex converter (static page, client-side conversion) |
 | `GET /speedtest/` | the speed test page (latency + parallel down/upload) |
 | `GET /data/*.json` | the datasets the calculators load (static assets) |
 | `GET /ip` | client IP as plain text (Cloudflare's `CF-Connecting-IP`, trailing newline) |
-| `GET /ip.json` | same + `ip_version` and Cloudflare geo (`country`, `city`, `region`, `colo`, `asn`, `as_organization`, `timezone`) |
+| `GET /ip.json` | same + `ip_version` and Cloudflare geo (`country`, `city`, `region`, `colo`, `asn`, `as_organization`, `timezone`, `latitude`, `longitude`) |
 | `GET /api/health` | `{"status": "ok", ...}` with version, phase, edge colo, UTC time |
 | `GET /api/ebs/pricing` | the EBS dataset for API use (bundled from `public/data/ebs-pricing.json`) |
 | `GET /api/ec2/burst-spec` | the burst dataset for API use (bundled from `public/data/ec2-burst-spec.json`) |
 | `GET /api/s3/pricing` | the S3 dataset for API use (bundled from `public/data/s3-pricing.json`) |
-| `GET /api/aws/regions` | the AWS region list + probe metadata (bundled from `public/data/aws-regions.json`) |
+| `GET /api/aws/regions` | the AWS region list + probe metadata + map coordinates (bundled from `public/data/aws-regions.json`) |
 | `GET /speedtest/ping` | tiny `pong` for latency measurement |
 | `GET /speedtest/down?bytes=N` | streams N random bytes (1 KiB – 100 MiB per request) |
 | `POST /speedtest/up` | drains the body, echoes `bytes_received` (16 MiB per-request cap) |

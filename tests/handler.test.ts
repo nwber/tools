@@ -22,6 +22,8 @@ type Cf = {
   asn?: number;
   asOrganization?: string;
   timezone?: string;
+  latitude?: string;
+  longitude?: string;
 };
 
 async function request(
@@ -78,7 +80,15 @@ describe("fetch handler", () => {
   it("serves /ip.json with cf geo data", async () => {
     const res = await request("/ip.json", {
       headers: { "cf-connecting-ip": "203.0.113.7" },
-      cf: { colo: "MIA", country: "US", city: "Miami", asn: 7922, asOrganization: "Comcast" },
+      cf: {
+        colo: "MIA",
+        country: "US",
+        city: "Miami",
+        asn: 7922,
+        asOrganization: "Comcast",
+        latitude: "25.7617",
+        longitude: "-80.1918",
+      },
     });
     expect(res.status).toBe(200);
     expect(res.json()).toMatchObject({
@@ -90,6 +100,8 @@ describe("fetch handler", () => {
       asn: 7922,
       as_organization: "Comcast",
       timezone: null,
+      latitude: 25.7617,
+      longitude: -80.1918,
     });
   });
 
@@ -154,10 +166,11 @@ describe("fetch handler", () => {
     const body = res.json() as {
       probe: { template: string; note: string };
       groups: Array<{ id: string }>;
-      regions: Array<{ code: string; name: string; group: string }>;
+      regions: Array<{ code: string; name: string; group: string; lat: number; lon: number }>;
     };
     expect(body.regions).toHaveLength(33);
     expect(body.regions.find((r) => r.code === "us-east-1")?.name).toBe("US East (N. Virginia)");
+    expect(body.regions.find((r) => r.code === "us-east-1")?.lat).toBe(39.0438);
     expect(body.probe.template).toContain("{region}");
     expect(res.headers.get("access-control-allow-origin")).toBe("*");
   });

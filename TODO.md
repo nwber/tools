@@ -101,11 +101,22 @@ Phase 4 — AWS region latency — COMPLETE (2026-10-14)
   called for.
 - Dataset from botocore's endpoints.json (scripts/generate-aws-regions.mjs
   -> public/data/aws-regions.json: codes, display names, geography groups,
-  source sha256 recorded); also served at GET /api/aws/regions.
+  city-level map coordinates, source sha256 recorded); also served at GET
+  /api/aws/regions.
 - UI: group filters (US & Canada + Europe pre-selected), sample-major probe
   schedule with a concurrency cap, first probe per region discarded as
   DNS/TCP/TLS warm-up, opaque no-cors fetches timed with performance.now(),
   rows ranked by median when the run finishes (or is stopped).
+- Map view (2026-11-25): /ip.json now surfaces Cloudflare's city-level
+  latitude/longitude, and the page draws an equirectangular world map
+  (public/data/world-outline.json, Natural Earth 110m via world-atlas,
+  TopoJSON decoded client-side) with the user's location, a great-circle
+  line to every selected region colored by measured median, and pan/zoom
+  (drag, wheel, pinch, buttons) that auto-fits the current selection —
+  zoomed in on US & Canada, or the whole world when everything is
+  selected. All map math is pure and unit-tested
+  (aws-latency-map-calc.js; decode, projection, fit/clamp/zoom,
+  great-circle + antimeridian wrapping, latency colors).
 
 Extra — IP ↔ Hex converter — COMPLETE (2026-10-14)
 

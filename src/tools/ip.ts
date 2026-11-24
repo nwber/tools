@@ -5,7 +5,11 @@
  * against Effect's `Headers` service in the Worker and plain maps in tests.
  */
 
-/** The Cloudflare `request.cf` fields we surface (subset of IncomingRequestCfProperties). */
+/**
+ * The Cloudflare `request.cf` fields we surface (subset of
+ * IncomingRequestCfProperties). Cloudflare sends latitude/longitude as
+ * strings (e.g. "45.50170"); they are parsed to numbers in cfSummary.
+ */
 export interface CfProperties {
   readonly colo?: string;
   readonly country?: string;
@@ -14,6 +18,8 @@ export interface CfProperties {
   readonly asn?: number;
   readonly asOrganization?: string;
   readonly timezone?: string;
+  readonly latitude?: string;
+  readonly longitude?: string;
 }
 
 export type HeaderLookup = (name: string) => string | undefined;
@@ -44,11 +50,18 @@ export function ipVersion(ip: string): 4 | 6 | null {
   return null;
 }
 
+/** A Cloudflare geo coordinate as a number, or null when absent/implausible. */
+function cfCoordinate(value: string | undefined, limit: number): number | null {
+  if (value === undefined || value.trim() === "") return null;
+  const parsed = Number(value);
+  return Number.isFinite(parsed) && Math.abs(parsed) <= limit ? parsed : null;
+}
+
 /** The useful Cloudflare request properties as a plain, JSON-ready object. */
 export function cfSummary(
   cf: CfProperties | undefined,
 ): Record<string, string | number | null> {
-  const entries: ReadonlyArray<readonly [string, string | number | undefined]> = [
+  const entries: ReadonlyArray<readonly [string, string | number | null | undefined]> = [
     ["country", cf?.country],
     ["city", cf?.city],
     ["region", cf?.region],
@@ -56,6 +69,8 @@ export function cfSummary(
     ["asn", cf?.asn],
     ["as_organization", cf?.asOrganization],
     ["timezone", cf?.timezone],
+    ["latitude", cfCoordinate(cf?.latitude, 90)],
+    ["longitude", cfCoordinate(cf?.longitude, 180)],
   ];
   return Object.fromEntries(entries.map(([key, value]) => [key, value ?? null]));
 }

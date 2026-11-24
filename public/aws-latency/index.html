@@ -124,6 +124,81 @@
         font-size: 0.8rem;
         margin-left: 6px;
       }
+      /* Map: an equirectangular world (2:1) that the view pans and zooms
+         inside. Phones get a fixed height instead: with aspect-ratio,
+         min-height would transfer into a min-width and overflow the
+         viewport (240px * 2 = 480px on a 320px screen). */
+      .map-wrap {
+        position: relative;
+        margin: 18px 0 0;
+      }
+      #map {
+        position: relative;
+        aspect-ratio: 2 / 1;
+        max-height: 480px;
+        background: #e8f1f8;
+        border: 1px solid #e3e8ee;
+        border-radius: 8px;
+        overflow: hidden;
+        touch-action: none;
+        cursor: grab;
+      }
+      @media (max-width: 520px) {
+        #map {
+          aspect-ratio: auto;
+          height: 260px;
+        }
+      }
+      #map.dragging {
+        cursor: grabbing;
+      }
+      #map svg {
+        display: block;
+      }
+      #map .world path {
+        fill: #f4f8fb;
+        stroke: #cfd9e2;
+      }
+      #map .marker,
+      #map polyline.hit {
+        cursor: pointer;
+      }
+      #map .marker.user {
+        cursor: default;
+      }
+      .map-tools {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .map-tools button {
+        width: 34px;
+        height: 34px;
+        padding: 0;
+        border: 1px solid #e3e8ee;
+        border-radius: 6px;
+        background: #fff;
+        color: #52606d;
+        font-size: 19px;
+        font-weight: 600;
+        line-height: 1;
+        box-shadow: 0 1px 3px rgba(31, 41, 51, 0.18);
+      }
+      .map-tools button:hover:not(:disabled) {
+        background: #f3f7fb;
+        color: #1f2933;
+      }
+      .map-caption {
+        color: #6d7f97;
+        font-size: 0.8rem;
+        margin: 8px 0 0;
+      }
+      #results tr.map-hover td {
+        background: #e8f3ff;
+      }
       .lat-flex {
         display: flex;
         align-items: center;
@@ -246,6 +321,16 @@
       </label>
       <button id="run">Run test</button>
     </div>
+
+    <div class="map-wrap">
+      <div id="map"></div>
+      <div class="map-tools">
+        <button id="zoomIn" type="button" title="Zoom in" aria-label="Zoom in">+</button>
+        <button id="zoomOut" type="button" title="Zoom out" aria-label="Zoom out">−</button>
+        <button id="zoomFit" type="button" title="Fit selected regions" aria-label="Fit selected regions">⤢</button>
+      </div>
+    </div>
+    <p class="map-caption" id="mapCaption">Loading the map…</p>
 
     <div class="progress" id="progress"></div>
     <div class="summary" id="summary"></div>

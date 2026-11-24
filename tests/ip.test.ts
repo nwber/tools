@@ -66,6 +66,8 @@ describe("cfSummary", () => {
       asn: 7922,
       asOrganization: "Comcast",
       timezone: "America/New_York",
+      latitude: "25.7617",
+      longitude: "-80.1918",
     });
     expect(summary).toEqual({
       country: "US",
@@ -75,6 +77,8 @@ describe("cfSummary", () => {
       asn: 7922,
       as_organization: "Comcast",
       timezone: "America/New_York",
+      latitude: 25.7617,
+      longitude: -80.1918,
     });
   });
 
@@ -82,5 +86,16 @@ describe("cfSummary", () => {
     const summary = cfSummary({ colo: "MIA" });
     expect(summary["city"]).toBeNull();
     expect(summary["colo"]).toBe("MIA");
+    expect(summary["latitude"]).toBeNull();
+    expect(summary["longitude"]).toBeNull();
+  });
+
+  it("keeps empty or implausible coordinates as null", () => {
+    const empty = cfSummary({ latitude: "", longitude: "" });
+    expect(empty["latitude"]).toBeNull();
+    expect(empty["longitude"]).toBeNull();
+    const nonsense = cfSummary({ latitude: "not-a-number", longitude: "999" });
+    expect(nonsense["latitude"]).toBeNull();
+    expect(nonsense["longitude"]).toBeNull();
   });
 });
