@@ -10,7 +10,8 @@
  * Exports:
  *   calculateRows    the comparison table (one row per selected type)
  *   calculateSeries  the cost graph (one curve per selected type, sweeping
- *                    IOPS, throughput, or size while holding the others)
+ *                    IOPS, throughput, or size up to 1.5x that input's
+ *                    current value while holding the others)
  */
 
 /**
@@ -167,12 +168,14 @@ const GRAPH_AXES = {
 
 /**
  * The cost graph: one curve per selected volume type as one input is swept
- * from 0 up to the type's own limit, holding the other inputs at the given
- * values.
+ * from 0 up to 1.5x that input's current value — so the calculator's own
+ * configuration sits at two-thirds of the X axis — holding the other
+ * inputs at the given values. A type whose own limit is closer than the
+ * cap ends there instead.
  *
  * Cost is piecewise linear in each input (flat until the baseline, then the
  * provisioned rate's slope), so a curve is exact at just its vertices: 0,
- * the baseline when it lies inside the range, and the type's maximum.
+ * the baseline when it lies inside the range, and the curve's end.
  *
  * A type whose held inputs already exceed its limits has no valid
  * configuration at any x — it is returned with empty points (the table
@@ -188,7 +191,9 @@ const GRAPH_AXES = {
  * @param {number} inputs.throughput - MiB/s
  * @param {string[]} inputs.selectedTypes
  * @param {("iops" | "throughput" | "size")} inputs.axis
- * @returns {{ axis: string, series: EbsSeries[] }}
+ * @returns {{ axis: string, limit: number, series: EbsSeries[] }}
+ *   limit is the X-axis upper bound: 1.5x the swept input's current value,
+ *   or the widest selected type's limit when that value is 0 or missing.
  */
 export function calculateSeries(pricing, inputs) {
   const { region, size, unit, iops, throughput, selectedTypes, axis } = inputs;
@@ -197,15 +202,23 @@ export function calculateSeries(pricing, inputs) {
   const base = { sizeGB, iops, throughput };
   const series = [];
 
-  if (!axisSpec) return { axis, series };
+  if (!axisSpec) return { axis, limit: 0, series };
+
+  // X-axis upper bound: the swept input's current value + 50%. Zero,
+  // negative, or missing values fall back to each type's full range.
+  const swept = base[axisSpec.key];
+  const cap = Number.isFinite(swept) && swept > 0 ? swept * 1.5 : null;
+  let widest = 0;
 
   Object.entries(pricing.volumeTypes).forEach(([type, volume]) => {
     if (!selectedTypes.includes(type)) return;
     const prices = volume.pricing[region];
     if (!prices) return;
 
+    const maxX = cap !== null ? Math.min(volume[axisSpec.max], cap) : volume[axisSpec.max];
+    widest = Math.max(widest, volume[axisSpec.max]);
+
     const at = (x) => ({ ...base, [axisSpec.key]: x });
-    const maxX = volume[axisSpec.max];
     const xs = [0];
     const baseline = axisSpec.baseline ? volume[axisSpec.baseline] : null;
     if (baseline !== null && baseline > 0 && baseline < maxX) xs.push(baseline);
@@ -220,5 +233,5 @@ export function calculateSeries(pricing, inputs) {
     });
   });
 
-  return { axis, series };
+  return { axis, limit: cap ?? widest, series };
 }

@@ -6,7 +6,9 @@
  * rendered output. The pricing data now loads from the shared JSON asset
  * (/data/ebs-pricing.json) instead of being inlined, and the math lives in
  * ebs-calc.js where it is unit-tested. The cost graph (a later addition)
- * renders via ebs-chart.js from calculateSeries curves.
+ * renders via ebs-chart.js from calculateSeries curves; its Linear/Log
+ * scale buttons live in index.html and only flip this module's
+ * chartScale before re-rendering.
  *
  * Inline handlers in index.html (onchange="calculate()", onclick="sortTable(0)")
  * keep working because calculate/sortTable are also assigned onto window.
@@ -18,6 +20,29 @@ import { renderCostChart } from "./ebs-chart.js";
 const pricing = await fetch("/data/ebs-pricing.json").then((response) => response.json());
 
 const selected = new Set(["gp3", "io2"]);
+
+/** Current Y-axis scale, flipped by the Linear/Log buttons. */
+let chartScale = "linear";
+
+function initScaleToggle() {
+  const buttons = {
+    linear: document.getElementById("scaleLinear"),
+    log: document.getElementById("scaleLog"),
+  };
+  const setScale = (scale) => {
+    chartScale = scale;
+    Object.entries(buttons).forEach(([s, button]) => {
+      button.classList.toggle("active", s === scale);
+      button.setAttribute("aria-pressed", String(s === scale));
+    });
+  };
+  Object.entries(buttons).forEach(([s, button]) => {
+    button.addEventListener("click", () => {
+      setScale(s);
+      calculate();
+    });
+  });
+}
 
 function initVolumeTypes() {
   const input = document.getElementById("volumeTypesInput");
@@ -84,8 +109,8 @@ function calculate() {
     selectedTypes: Array.from(selected),
   });
 
-  // The graph sweeps the selected X-axis input up to each type's own limit,
-  // holding the other inputs at the values above.
+  // The graph sweeps the selected X-axis input up to 1.5x its current
+  // value, holding the other inputs at the values above.
   const chartModel = calculateSeries(pricing, {
     region,
     size,
@@ -95,7 +120,7 @@ function calculate() {
     selectedTypes: Array.from(selected),
     axis: document.getElementById("graphX").value,
   });
-  renderCostChart(document.getElementById("costChart"), chartModel);
+  renderCostChart(document.getElementById("costChart"), { ...chartModel, scale: chartScale });
 
   rows.forEach((row) => {
     const tr = document.createElement("tr");
@@ -177,4 +202,5 @@ function sortTable(n) {
 window.calculate = calculate;
 window.sortTable = sortTable;
 initVolumeTypes();
+initScaleToggle();
 calculate();

@@ -114,53 +114,78 @@ describe("calculateRows (recovered tool math)", () => {
 });
 
 describe("calculateSeries (cost graph curves)", () => {
-  it("sweeps gp3 IOPS flat to its baseline, then at the provisioned rate", () => {
-    const { series } = calculateSeries(pricing, graphInputs({ selectedTypes: ["gp3"] }));
-    expect(series).toHaveLength(1);
+  it("sweeps gp3 IOPS to the 1.5x cap, flat to its baseline then at the provisioned rate", () => {
+    // 3,000 IOPS in the calculator -> X domain 0..4,500.
+    const { series, limit } = calculateSeries(pricing, graphInputs({ selectedTypes: ["gp3"] }));
+    expect(limit).toBe(4500);
     // The cost is piecewise linear, so vertices alone are exact.
-    expect(series[0]?.points.map((p) => p.x)).toEqual([0, 3000, 16000]);
+    expect(series[0]?.points.map((p) => p.x)).toEqual([0, 3000, 4500]);
     // 100 GiB at $0.08/GiB with throughput held at its baseline.
     expect(series[0]?.points[0]?.y).toBeCloseTo(8);
     expect(series[0]?.points[1]?.y).toBeCloseTo(8);
-    expect(series[0]?.points[2]?.y).toBeCloseTo(8 + (16000 - 3000) * 0.005);
+    expect(series[0]?.points[2]?.y).toBeCloseTo(8 + (4500 - 3000) * 0.005);
+  });
+
+  it("caps a 5,000-IOPS configuration at 7,500", () => {
+    const { series, limit } = calculateSeries(
+      pricing,
+      graphInputs({ iops: 5000, selectedTypes: ["gp3", "io2"] }),
+    );
+    expect(limit).toBe(7500);
+    expect(series[0]?.points.map((p) => p.x)).toEqual([0, 3000, 7500]);
+    expect(series[1]?.points.map((p) => p.x)).toEqual([0, 50, 7500]);
+  });
+
+  it("still ends a type early at its own limit when the cap is beyond it", () => {
+    // st1 tops out at 500 IOPS, well below the 4,500 cap.
+    const { series } = calculateSeries(pricing, graphInputs({ selectedTypes: ["st1"] }));
+    const points = series[0]?.points ?? [];
+    expect(points.map((p) => p.x)).toEqual([0, 500]);
+    expect(points.map((p) => p.y)).toEqual([4.5, 4.5]);
+  });
+
+  it("falls back to each type's full range when the swept input is 0", () => {
+    const { series, limit } = calculateSeries(
+      pricing,
+      graphInputs({ iops: 0, selectedTypes: ["gp3", "io2"] }),
+    );
+    expect(limit).toBe(256000);
+    expect(series[0]?.points.map((p) => p.x)).toEqual([0, 3000, 16000]);
+    expect(series[1]?.points.map((p) => p.x)).toEqual([0, 50, 256000]);
   });
 
   it("starts io1's provisioned-IOPS slope at its baseline of 50", () => {
     const { series } = calculateSeries(pricing, graphInputs({ selectedTypes: ["io1"] }));
     const points = series[0]?.points ?? [];
-    expect(points.map((p) => p.x)).toEqual([0, 50, 64000]);
+    expect(points.map((p) => p.x)).toEqual([0, 50, 4500]);
     expect(points[1]?.y).toBeCloseTo(12.5); // 100 GiB at $0.125/GiB, at baseline
-    expect(points[2]?.y).toBeCloseTo(12.5 + (64000 - 50) * 0.065);
+    expect(points[2]?.y).toBeCloseTo(12.5 + (4500 - 50) * 0.065);
   });
 
-  it("keeps st1 flat across IOPS (no provisioned-IOPS pricing)", () => {
-    const { series } = calculateSeries(pricing, graphInputs({ selectedTypes: ["st1"] }));
-    const points = series[0]?.points ?? [];
-    // baseline == max IOPS, so no interior vertex.
-    expect(points.map((p) => p.x)).toEqual([0, 500]);
-    expect(points.map((p) => p.y)).toEqual([4.5, 4.5]);
-  });
-
-  it("sweeps gp3 throughput at the provisioned rate past its baseline", () => {
-    const { series } = calculateSeries(
+  it("sweeps gp3 throughput at the provisioned rate past its baseline to the cap", () => {
+    const { series, limit } = calculateSeries(
       pricing,
       graphInputs({ selectedTypes: ["gp3"], axis: "throughput" }),
     );
+    // 125 MiB/s in the calculator -> X domain 0..187.5.
+    expect(limit).toBe(187.5);
     const points = series[0]?.points ?? [];
-    expect(points.map((p) => p.x)).toEqual([0, 125, 1000]);
+    expect(points.map((p) => p.x)).toEqual([0, 125, 187.5]);
     expect(points[0]?.y).toBeCloseTo(8);
-    expect(points[2]?.y).toBeCloseTo(8 + (1000 - 125) * 0.04);
+    expect(points[2]?.y).toBeCloseTo(8 + (187.5 - 125) * 0.04);
   });
 
-  it("sweeps size linearly from $0 at 0 GiB", () => {
-    const { series } = calculateSeries(
+  it("sweeps size linearly from $0 at 0 GiB to the cap", () => {
+    const { series, limit } = calculateSeries(
       pricing,
       graphInputs({ selectedTypes: ["gp3"], axis: "size" }),
     );
+    // 100 GiB in the calculator -> X domain 0..150.
+    expect(limit).toBe(150);
     const points = series[0]?.points ?? [];
-    expect(points.map((p) => p.x)).toEqual([0, 16384]);
+    expect(points.map((p) => p.x)).toEqual([0, 150]);
     expect(points[0]?.y).toBe(0);
-    expect(points[1]?.y).toBeCloseTo(16384 * 0.08);
+    expect(points[1]?.y).toBeCloseTo(150 * 0.08);
   });
 
   it("returns an empty curve when held inputs already exceed a type's limits", () => {
@@ -187,7 +212,7 @@ describe("calculateSeries (cost graph curves)", () => {
       pricing,
       graphInputs({ region: "sa-east-1", axis: "size" }),
     );
-    expect(series[0]?.points[1]?.y).toBeCloseTo(16384 * 0.1);
+    expect(series[0]?.points[1]?.y).toBeCloseTo(150 * 0.1);
   });
 
   it("holds TiB sizes at their GiB equivalent on the IOPS axis", () => {
